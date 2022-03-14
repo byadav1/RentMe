@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using RentMe.Controller;
+using System;
 using System.Windows.Forms;
 
 namespace RentMe
 {
+    /// <summary>
+    /// This is the entry point of the application.
+    /// </summary>
     static class Program
     {
         /// <summary>
@@ -16,7 +17,7 @@ namespace RentMe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(FormProvider.LoginForm);
         }
     }
 }
