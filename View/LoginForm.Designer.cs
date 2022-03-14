@@ -29,7 +29,7 @@ namespace RentMe
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.loginTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.loginFormHeaderLabel = new System.Windows.Forms.Label();
             this.errorMessage = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
@@ -37,40 +37,40 @@ namespace RentMe
             this.usernameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.loginTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // loginTableLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.02929F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.97071F));
-            this.tableLayoutPanel1.Controls.Add(this.loginFormHeaderLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.errorMessage, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.usernameTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.passwordTextBox, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.usernameLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.passwordLabel, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.loginButton, 0, 4);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.20713F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.35412F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.908686F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.799555F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.5078F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(478, 449);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.loginTableLayoutPanel.ColumnCount = 2;
+            this.loginTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.02929F));
+            this.loginTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.97071F));
+            this.loginTableLayoutPanel.Controls.Add(this.loginFormHeaderLabel, 0, 0);
+            this.loginTableLayoutPanel.Controls.Add(this.errorMessage, 0, 3);
+            this.loginTableLayoutPanel.Controls.Add(this.usernameTextBox, 1, 1);
+            this.loginTableLayoutPanel.Controls.Add(this.passwordTextBox, 1, 2);
+            this.loginTableLayoutPanel.Controls.Add(this.usernameLabel, 0, 1);
+            this.loginTableLayoutPanel.Controls.Add(this.passwordLabel, 0, 2);
+            this.loginTableLayoutPanel.Controls.Add(this.loginButton, 0, 4);
+            this.loginTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loginTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.loginTableLayoutPanel.Name = "loginTableLayoutPanel";
+            this.loginTableLayoutPanel.RowCount = 5;
+            this.loginTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.20713F));
+            this.loginTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.35412F));
+            this.loginTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.908686F));
+            this.loginTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.799555F));
+            this.loginTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.5078F));
+            this.loginTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.loginTableLayoutPanel.Size = new System.Drawing.Size(478, 449);
+            this.loginTableLayoutPanel.TabIndex = 0;
             // 
             // loginFormHeaderLabel
             // 
             this.loginFormHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginFormHeaderLabel.AutoSize = true;
             this.loginFormHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tableLayoutPanel1.SetColumnSpan(this.loginFormHeaderLabel, 2);
+            this.loginTableLayoutPanel.SetColumnSpan(this.loginFormHeaderLabel, 2);
             this.loginFormHeaderLabel.Font = new System.Drawing.Font("Nirmala UI", 40F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginFormHeaderLabel.Location = new System.Drawing.Point(49, 51);
             this.loginFormHeaderLabel.Name = "loginFormHeaderLabel";
@@ -82,7 +82,7 @@ namespace RentMe
             // 
             this.errorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.errorMessage.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.errorMessage, 2);
+            this.loginTableLayoutPanel.SetColumnSpan(this.errorMessage, 2);
             this.errorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorMessage.ForeColor = System.Drawing.Color.Red;
             this.errorMessage.Location = new System.Drawing.Point(108, 286);
@@ -138,7 +138,7 @@ namespace RentMe
             // loginButton
             // 
             this.loginButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.loginButton, 2);
+            this.loginTableLayoutPanel.SetColumnSpan(this.loginButton, 2);
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginButton.Location = new System.Drawing.Point(175, 360);
             this.loginButton.Name = "loginButton";
@@ -153,21 +153,21 @@ namespace RentMe
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 449);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.loginTableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentMe: Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginFormClosedEventHandle);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.loginTableLayoutPanel.ResumeLayout(false);
+            this.loginTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel loginTableLayoutPanel;
         private System.Windows.Forms.Label loginFormHeaderLabel;
         private System.Windows.Forms.Label errorMessage;
         private System.Windows.Forms.TextBox usernameTextBox;
