@@ -1,4 +1,6 @@
-﻿namespace RentMe.Controller
+﻿using RentMe.View;
+
+namespace RentMe.Controller
 {
     /// <summary>
     /// This class serves as an accessor
@@ -7,19 +9,35 @@
     public class FormProvider
     {
         /// <summary>
-        /// Manages a single instance of LoginForm.
+        /// Manages MainForm instance.
         /// </summary>
-        public static LoginForm LoginForm
+        public static MainForm MainForm
         {
             get
             {
-                if (_loginForm == null)
+                if (_mainForm == null)
                 {
-                    _loginForm = new LoginForm();
+                    _mainForm = new MainForm();
                 }
-                return _loginForm;
+                return _mainForm;
             }
         }
-        private static LoginForm _loginForm;
+        private static MainForm _mainForm;
+
+        /// <summary>
+        /// Manages LoginForm instance.
+        /// </summary>
+        public static LoginForm LoginForm
+            {
+                get
+                {
+                    if (_loginForm == null)
+                    {
+                        _loginForm = new LoginForm();
+                    }
+                    return _loginForm;
+                }
+            }
+            private static LoginForm _loginForm;
     }
 }
