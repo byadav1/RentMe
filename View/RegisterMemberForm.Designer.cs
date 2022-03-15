@@ -30,6 +30,7 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.registrationTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.errorMessage = new System.Windows.Forms.Label();
             this.lnameTextBox = new System.Windows.Forms.TextBox();
             this.lnameLabel = new System.Windows.Forms.Label();
             this.registerMemberHeaderLabel = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@ namespace RentMe.View
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
-            this.errorMessage = new System.Windows.Forms.Label();
             this.registrationTableLayoutPanel.SuspendLayout();
             this.registrationButtonsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -93,31 +93,45 @@ namespace RentMe.View
             this.registrationTableLayoutPanel.Name = "registrationTableLayoutPanel";
             this.registrationTableLayoutPanel.RowCount = 13;
             this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
             this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.registrationTableLayoutPanel.Size = new System.Drawing.Size(482, 703);
             this.registrationTableLayoutPanel.TabIndex = 0;
+            // 
+            // errorMessage
+            // 
+            this.errorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.errorMessage.AutoSize = true;
+            this.registrationTableLayoutPanel.SetColumnSpan(this.errorMessage, 2);
+            this.errorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessage.ForeColor = System.Drawing.Color.Red;
+            this.errorMessage.Location = new System.Drawing.Point(181, 548);
+            this.errorMessage.Name = "errorMessage";
+            this.errorMessage.Size = new System.Drawing.Size(119, 24);
+            this.errorMessage.TabIndex = 23;
+            this.errorMessage.Text = "Invalid Fields";
+            this.errorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.errorMessage.Visible = false;
             // 
             // lnameTextBox
             // 
             this.lnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameTextBox.Location = new System.Drawing.Point(171, 164);
+            this.lnameTextBox.Location = new System.Drawing.Point(171, 154);
             this.lnameTextBox.MaxLength = 50;
             this.lnameTextBox.Name = "lnameTextBox";
             this.lnameTextBox.Size = new System.Drawing.Size(212, 28);
-            this.lnameTextBox.TabIndex = 14;
+            this.lnameTextBox.TabIndex = 2;
             this.lnameTextBox.TextChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
             // lnameLabel
@@ -125,7 +139,7 @@ namespace RentMe.View
             this.lnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lnameLabel.AutoSize = true;
             this.lnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameLabel.Location = new System.Drawing.Point(61, 166);
+            this.lnameLabel.Location = new System.Drawing.Point(61, 156);
             this.lnameLabel.Name = "lnameLabel";
             this.lnameLabel.Size = new System.Drawing.Size(104, 24);
             this.lnameLabel.TabIndex = 5;
@@ -155,21 +169,21 @@ namespace RentMe.View
             this.registrationButtonsTableLayoutPanel.Controls.Add(this.clearButton, 1, 0);
             this.registrationButtonsTableLayoutPanel.Controls.Add(this.cancelButton, 2, 0);
             this.registrationButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registrationButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 633);
+            this.registrationButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 598);
             this.registrationButtonsTableLayoutPanel.Name = "registrationButtonsTableLayoutPanel";
             this.registrationButtonsTableLayoutPanel.RowCount = 1;
             this.registrationButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.registrationButtonsTableLayoutPanel.Size = new System.Drawing.Size(476, 67);
-            this.registrationButtonsTableLayoutPanel.TabIndex = 2;
+            this.registrationButtonsTableLayoutPanel.Size = new System.Drawing.Size(476, 102);
+            this.registrationButtonsTableLayoutPanel.TabIndex = 11;
             // 
             // registerButton
             // 
             this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(28, 13);
+            this.registerButton.Location = new System.Drawing.Point(28, 31);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(100, 40);
-            this.registerButton.TabIndex = 0;
+            this.registerButton.TabIndex = 12;
             this.registerButton.Text = "Register";
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.RegisterButtonClick);
@@ -178,10 +192,10 @@ namespace RentMe.View
             // 
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(187, 13);
+            this.clearButton.Location = new System.Drawing.Point(187, 31);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(100, 40);
-            this.clearButton.TabIndex = 1;
+            this.clearButton.TabIndex = 13;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
@@ -190,10 +204,10 @@ namespace RentMe.View
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(347, 13);
+            this.cancelButton.Location = new System.Drawing.Point(347, 31);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 40);
-            this.cancelButton.TabIndex = 2;
+            this.cancelButton.TabIndex = 14;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
@@ -203,7 +217,7 @@ namespace RentMe.View
             this.fnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.fnameLabel.AutoSize = true;
             this.fnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameLabel.Location = new System.Drawing.Point(59, 117);
+            this.fnameLabel.Location = new System.Drawing.Point(59, 114);
             this.fnameLabel.Name = "fnameLabel";
             this.fnameLabel.Size = new System.Drawing.Size(106, 24);
             this.fnameLabel.TabIndex = 3;
@@ -213,11 +227,11 @@ namespace RentMe.View
             // 
             this.fnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.fnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameTextBox.Location = new System.Drawing.Point(171, 115);
+            this.fnameTextBox.Location = new System.Drawing.Point(171, 112);
             this.fnameTextBox.MaxLength = 50;
             this.fnameTextBox.Name = "fnameTextBox";
             this.fnameTextBox.Size = new System.Drawing.Size(212, 28);
-            this.fnameTextBox.TabIndex = 4;
+            this.fnameTextBox.TabIndex = 1;
             this.fnameTextBox.TextChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
             // sexLabel
@@ -225,7 +239,7 @@ namespace RentMe.View
             this.sexLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.sexLabel.AutoSize = true;
             this.sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sexLabel.Location = new System.Drawing.Point(117, 215);
+            this.sexLabel.Location = new System.Drawing.Point(117, 198);
             this.sexLabel.Name = "sexLabel";
             this.sexLabel.Size = new System.Drawing.Size(48, 24);
             this.sexLabel.TabIndex = 6;
@@ -236,7 +250,7 @@ namespace RentMe.View
             this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneLabel.Location = new System.Drawing.Point(94, 264);
+            this.phoneLabel.Location = new System.Drawing.Point(94, 240);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(71, 24);
             this.phoneLabel.TabIndex = 7;
@@ -247,7 +261,7 @@ namespace RentMe.View
             this.dobLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dobLabel.AutoSize = true;
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobLabel.Location = new System.Drawing.Point(50, 313);
+            this.dobLabel.Location = new System.Drawing.Point(50, 282);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(115, 24);
             this.dobLabel.TabIndex = 8;
@@ -258,7 +272,7 @@ namespace RentMe.View
             this.address1Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.address1Label.AutoSize = true;
             this.address1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1Label.Location = new System.Drawing.Point(65, 362);
+            this.address1Label.Location = new System.Drawing.Point(65, 324);
             this.address1Label.Name = "address1Label";
             this.address1Label.Size = new System.Drawing.Size(100, 24);
             this.address1Label.TabIndex = 9;
@@ -269,7 +283,7 @@ namespace RentMe.View
             this.address2Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.address2Label.AutoSize = true;
             this.address2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2Label.Location = new System.Drawing.Point(65, 411);
+            this.address2Label.Location = new System.Drawing.Point(65, 366);
             this.address2Label.Name = "address2Label";
             this.address2Label.Size = new System.Drawing.Size(100, 24);
             this.address2Label.TabIndex = 10;
@@ -280,7 +294,7 @@ namespace RentMe.View
             this.cityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.cityLabel.AutoSize = true;
             this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityLabel.Location = new System.Drawing.Point(120, 460);
+            this.cityLabel.Location = new System.Drawing.Point(120, 408);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(45, 24);
             this.cityLabel.TabIndex = 11;
@@ -291,7 +305,7 @@ namespace RentMe.View
             this.stateLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.stateLabel.AutoSize = true;
             this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateLabel.Location = new System.Drawing.Point(109, 509);
+            this.stateLabel.Location = new System.Drawing.Point(109, 450);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(56, 24);
             this.stateLabel.TabIndex = 12;
@@ -302,7 +316,7 @@ namespace RentMe.View
             this.zipLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.zipLabel.AutoSize = true;
             this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipLabel.Location = new System.Drawing.Point(123, 558);
+            this.zipLabel.Location = new System.Drawing.Point(123, 492);
             this.zipLabel.Name = "zipLabel";
             this.zipLabel.Size = new System.Drawing.Size(42, 24);
             this.zipLabel.TabIndex = 13;
@@ -312,11 +326,11 @@ namespace RentMe.View
             // 
             this.phoneTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneTextBox.Location = new System.Drawing.Point(171, 262);
-            this.phoneTextBox.MaxLength = 10;
+            this.phoneTextBox.Location = new System.Drawing.Point(171, 238);
+            this.phoneTextBox.MaxLength = 12;
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(212, 28);
-            this.phoneTextBox.TabIndex = 15;
+            this.phoneTextBox.TabIndex = 4;
             this.phoneTextBox.TextChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
             // dobPicker
@@ -324,10 +338,10 @@ namespace RentMe.View
             this.dobPicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dobPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dobPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dobPicker.Location = new System.Drawing.Point(171, 311);
+            this.dobPicker.Location = new System.Drawing.Point(171, 280);
             this.dobPicker.Name = "dobPicker";
             this.dobPicker.Size = new System.Drawing.Size(212, 28);
-            this.dobPicker.TabIndex = 16;
+            this.dobPicker.TabIndex = 5;
             this.dobPicker.Value = new System.DateTime(2022, 3, 14, 0, 0, 0, 0);
             this.dobPicker.ValueChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
@@ -335,55 +349,55 @@ namespace RentMe.View
             // 
             this.address1TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.address1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1TextBox.Location = new System.Drawing.Point(171, 360);
+            this.address1TextBox.Location = new System.Drawing.Point(171, 322);
             this.address1TextBox.MaxLength = 50;
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(212, 28);
-            this.address1TextBox.TabIndex = 17;
+            this.address1TextBox.TabIndex = 6;
             this.address1TextBox.TextChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
             // address2TextBox
             // 
             this.address2TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.address2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2TextBox.Location = new System.Drawing.Point(171, 409);
+            this.address2TextBox.Location = new System.Drawing.Point(171, 364);
             this.address2TextBox.MaxLength = 50;
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(212, 28);
-            this.address2TextBox.TabIndex = 18;
+            this.address2TextBox.TabIndex = 7;
             this.address2TextBox.TextChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
             // cityTextBox
             // 
             this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(171, 458);
+            this.cityTextBox.Location = new System.Drawing.Point(171, 406);
             this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);
-            this.cityTextBox.TabIndex = 19;
+            this.cityTextBox.TabIndex = 8;
             this.cityTextBox.TextChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
             // stateTextBox
             // 
             this.stateTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.stateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateTextBox.Location = new System.Drawing.Point(171, 507);
+            this.stateTextBox.Location = new System.Drawing.Point(171, 448);
             this.stateTextBox.MaxLength = 2;
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(212, 28);
-            this.stateTextBox.TabIndex = 20;
+            this.stateTextBox.TabIndex = 9;
             this.stateTextBox.TextChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
             // zipTextBox
             // 
             this.zipTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.zipTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipTextBox.Location = new System.Drawing.Point(171, 556);
+            this.zipTextBox.Location = new System.Drawing.Point(171, 490);
             this.zipTextBox.MaxLength = 5;
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(212, 28);
-            this.zipTextBox.TabIndex = 21;
+            this.zipTextBox.TabIndex = 10;
             this.zipTextBox.TextChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
             // 
             // sexComboBox
@@ -395,25 +409,11 @@ namespace RentMe.View
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(171, 211);
+            this.sexComboBox.Location = new System.Drawing.Point(171, 195);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
-            this.sexComboBox.TabIndex = 22;
+            this.sexComboBox.TabIndex = 3;
             this.sexComboBox.SelectedIndexChanged += new System.EventHandler(this.ControlValueChangedEventHandle);
-            // 
-            // errorMessage
-            // 
-            this.errorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.errorMessage.AutoSize = true;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.errorMessage, 2);
-            this.errorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessage.ForeColor = System.Drawing.Color.Red;
-            this.errorMessage.Location = new System.Drawing.Point(181, 600);
-            this.errorMessage.Name = "errorMessage";
-            this.errorMessage.Size = new System.Drawing.Size(119, 24);
-            this.errorMessage.TabIndex = 23;
-            this.errorMessage.Text = "Invalid Fields";
-            this.errorMessage.Visible = false;
             // 
             // RegisterMemberForm
             // 
