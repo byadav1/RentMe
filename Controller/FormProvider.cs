@@ -7,23 +7,7 @@ namespace RentMe.Controller
     /// of each form.
     /// </summary>
     public class FormProvider
-    {
-        /// <summary>
-        /// Manages MainForm instance.
-        /// </summary>
-        public static MainForm MainForm
-        {
-            get
-            {
-                if (_mainForm == null)
-                {
-                    _mainForm = new MainForm();
-                }
-                return _mainForm;
-            }
-        }
-        private static MainForm _mainForm;
-
+    { 
         /// <summary>
         /// Manages LoginForm instance.
         /// </summary>

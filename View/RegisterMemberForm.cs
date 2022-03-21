@@ -184,7 +184,8 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void CancelButtonClick(object sender, System.EventArgs e)
         {
-            this.Close();
+            this.Dispose();
+            GC.Collect();
         }
     }
 }

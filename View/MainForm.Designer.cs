@@ -46,6 +46,7 @@ namespace RentMe.View
             this.memberNameTextBox = new System.Windows.Forms.TextBox();
             this.searchIDButton = new System.Windows.Forms.Button();
             this.logoutLink = new System.Windows.Forms.LinkLabel();
+            this.currentUserLabel = new System.Windows.Forms.Label();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,7 @@ namespace RentMe.View
             this.servicesTableLayoutPanel.Controls.Add(this.memberNameTextBox, 1, 4);
             this.servicesTableLayoutPanel.Controls.Add(this.searchIDButton, 2, 3);
             this.servicesTableLayoutPanel.Controls.Add(this.logoutLink, 2, 0);
+            this.servicesTableLayoutPanel.Controls.Add(this.currentUserLabel, 0, 0);
             this.servicesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.servicesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.servicesTableLayoutPanel.Name = "servicesTableLayoutPanel";
@@ -273,6 +275,18 @@ namespace RentMe.View
             this.logoutLink.Text = "Logout";
             this.logoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkClickedEventHandle);
             // 
+            // currentUserLabel
+            // 
+            this.currentUserLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.currentUserLabel.AutoSize = true;
+            this.servicesTableLayoutPanel.SetColumnSpan(this.currentUserLabel, 2);
+            this.currentUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentUserLabel.Location = new System.Drawing.Point(3, 2);
+            this.currentUserLabel.Name = "currentUserLabel";
+            this.currentUserLabel.Size = new System.Drawing.Size(108, 20);
+            this.currentUserLabel.TabIndex = 11;
+            this.currentUserLabel.Text = "Current user:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -310,5 +324,6 @@ namespace RentMe.View
         private System.Windows.Forms.Button searchIDButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel logoutLink;
+        private System.Windows.Forms.Label currentUserLabel;
     }
 }

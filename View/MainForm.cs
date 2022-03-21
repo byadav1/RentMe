@@ -1,4 +1,5 @@
 ﻿using RentMe.Controller;
+using System;
 using System.Windows.Forms;
 
 namespace RentMe.View
@@ -24,7 +25,7 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void MainFormClosedEventHandle(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); 
         }
 
         /// <summary>
@@ -35,7 +36,8 @@ namespace RentMe.View
         private void LogoutLinkClickedEventHandle(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FormProvider.LoginForm.Show();
-            this.Hide();
+            this.Dispose();
+            GC.Collect();
         }
 
         /// <summary>
@@ -45,8 +47,7 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void RegisterMemberButtonClick(object sender, System.EventArgs e)
         {
-            RegisterMemberForm registerMemberForm = new RegisterMemberForm();
-            registerMemberForm.Show();
+            new RegisterMemberForm().Show();
         }
     }
 }

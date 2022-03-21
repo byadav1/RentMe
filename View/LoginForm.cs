@@ -1,4 +1,5 @@
 ﻿using RentMe.Controller;
+using RentMe.View;
 using System;
 using System.Windows.Forms;
 
@@ -37,7 +38,7 @@ namespace RentMe
         {
             if (ValidateLogin())
             {
-                FormProvider.MainForm.Show();
+                new MainForm().Show();
                 this.Hide();
             }
             else
