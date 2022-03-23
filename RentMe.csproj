@@ -56,6 +56,13 @@
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
+    <Compile Include="RentMeProgram.cs" />
+    <Compile Include="UserControls\SearchCustomerUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchCustomerUserControl.Designer.cs">
+      <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +76,12 @@
     </Compile>
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainRentMeFormUserControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainRentMeFormUserControl.Designer.cs">
+      <DependentUpon>MainRentMeFormUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RegisterMemberForm.cs">
       <SubType>Form</SubType>
@@ -85,11 +98,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\SearchCustomerUserControl.resx">
+      <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainRentMeFormUserControl.resx">
+      <DependentUpon>MainRentMeFormUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RegisterMemberForm.resx">
       <DependentUpon>RegisterMemberForm.cs</DependentUpon>
@@ -107,5 +126,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
