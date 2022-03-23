@@ -20,14 +20,15 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Return true if member account exists.
+        /// Return true if member account exists
+        /// based on search criteria.
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>
-        public bool MemberExists(Member member)
+        public bool MemberSearchSuccessful(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
-            return MembersDAL.MemberExists(member);
+            return MembersDAL.MemberSearchSuccessful(member);
         }
     }
 }
