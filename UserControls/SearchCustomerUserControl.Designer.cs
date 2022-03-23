@@ -54,15 +54,16 @@ namespace RentMe.UserControls
             this.customerStateTextBox = new System.Windows.Forms.TextBox();
             this.customerUpdateButton = new System.Windows.Forms.Button();
             this.customerDeleteButton = new System.Windows.Forms.Button();
+            this.customerPhoneTextBOx = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // searchCustomerLabel
             // 
             this.searchCustomerLabel.AutoSize = true;
-            this.searchCustomerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCustomerLabel.Location = new System.Drawing.Point(234, 10);
+            this.searchCustomerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCustomerLabel.Location = new System.Drawing.Point(12, 16);
             this.searchCustomerLabel.Name = "searchCustomerLabel";
-            this.searchCustomerLabel.Size = new System.Drawing.Size(427, 55);
+            this.searchCustomerLabel.Size = new System.Drawing.Size(268, 36);
             this.searchCustomerLabel.TabIndex = 0;
             this.searchCustomerLabel.Text = "Member Services ";
             this.searchCustomerLabel.Click += new System.EventHandler(this.label1_Click);
@@ -70,7 +71,7 @@ namespace RentMe.UserControls
             // searchCustomertextbox
             // 
             this.searchCustomertextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCustomertextbox.Location = new System.Drawing.Point(265, 80);
+            this.searchCustomertextbox.Location = new System.Drawing.Point(32, 80);
             this.searchCustomertextbox.Name = "searchCustomertextbox";
             this.searchCustomertextbox.Size = new System.Drawing.Size(398, 30);
             this.searchCustomertextbox.TabIndex = 1;
@@ -79,7 +80,7 @@ namespace RentMe.UserControls
             // searchCustomerButton
             // 
             this.searchCustomerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCustomerButton.Location = new System.Drawing.Point(669, 80);
+            this.searchCustomerButton.Location = new System.Drawing.Point(459, 80);
             this.searchCustomerButton.Name = "searchCustomerButton";
             this.searchCustomerButton.Size = new System.Drawing.Size(107, 30);
             this.searchCustomerButton.TabIndex = 2;
@@ -91,7 +92,7 @@ namespace RentMe.UserControls
             this.searchinfoLabel.AutoSize = true;
             this.searchinfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchinfoLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.searchinfoLabel.Location = new System.Drawing.Point(535, 113);
+            this.searchinfoLabel.Location = new System.Drawing.Point(349, 113);
             this.searchinfoLabel.Name = "searchinfoLabel";
             this.searchinfoLabel.Size = new System.Drawing.Size(229, 13);
             this.searchinfoLabel.TabIndex = 3;
@@ -102,7 +103,7 @@ namespace RentMe.UserControls
             // 
             this.customerFirstNameLabel.AutoSize = true;
             this.customerFirstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerFirstNameLabel.Location = new System.Drawing.Point(121, 182);
+            this.customerFirstNameLabel.Location = new System.Drawing.Point(26, 139);
             this.customerFirstNameLabel.Name = "customerFirstNameLabel";
             this.customerFirstNameLabel.Size = new System.Drawing.Size(117, 25);
             this.customerFirstNameLabel.TabIndex = 4;
@@ -112,7 +113,7 @@ namespace RentMe.UserControls
             // 
             this.customerLastNameLabel.AutoSize = true;
             this.customerLastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerLastNameLabel.Location = new System.Drawing.Point(121, 225);
+            this.customerLastNameLabel.Location = new System.Drawing.Point(26, 175);
             this.customerLastNameLabel.Name = "customerLastNameLabel";
             this.customerLastNameLabel.Size = new System.Drawing.Size(117, 25);
             this.customerLastNameLabel.TabIndex = 5;
@@ -122,7 +123,7 @@ namespace RentMe.UserControls
             // 
             this.customerSexLabel.AutoSize = true;
             this.customerSexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerSexLabel.Location = new System.Drawing.Point(121, 265);
+            this.customerSexLabel.Location = new System.Drawing.Point(26, 212);
             this.customerSexLabel.Name = "customerSexLabel";
             this.customerSexLabel.Size = new System.Drawing.Size(58, 25);
             this.customerSexLabel.TabIndex = 6;
@@ -132,7 +133,7 @@ namespace RentMe.UserControls
             // 
             this.customerPhoneLabel.AutoSize = true;
             this.customerPhoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerPhoneLabel.Location = new System.Drawing.Point(121, 307);
+            this.customerPhoneLabel.Location = new System.Drawing.Point(26, 246);
             this.customerPhoneLabel.Name = "customerPhoneLabel";
             this.customerPhoneLabel.Size = new System.Drawing.Size(80, 25);
             this.customerPhoneLabel.TabIndex = 7;
@@ -142,7 +143,7 @@ namespace RentMe.UserControls
             // 
             this.customerDOBLabel.AutoSize = true;
             this.customerDOBLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerDOBLabel.Location = new System.Drawing.Point(118, 352);
+            this.customerDOBLabel.Location = new System.Drawing.Point(26, 285);
             this.customerDOBLabel.Name = "customerDOBLabel";
             this.customerDOBLabel.Size = new System.Drawing.Size(66, 25);
             this.customerDOBLabel.TabIndex = 8;
@@ -152,7 +153,7 @@ namespace RentMe.UserControls
             // 
             this.customerAddress1Label.AutoSize = true;
             this.customerAddress1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerAddress1Label.Location = new System.Drawing.Point(120, 393);
+            this.customerAddress1Label.Location = new System.Drawing.Point(26, 316);
             this.customerAddress1Label.Name = "customerAddress1Label";
             this.customerAddress1Label.Size = new System.Drawing.Size(112, 25);
             this.customerAddress1Label.TabIndex = 9;
@@ -162,7 +163,7 @@ namespace RentMe.UserControls
             // 
             this.customerAddress2Label.AutoSize = true;
             this.customerAddress2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerAddress2Label.Location = new System.Drawing.Point(121, 441);
+            this.customerAddress2Label.Location = new System.Drawing.Point(27, 350);
             this.customerAddress2Label.Name = "customerAddress2Label";
             this.customerAddress2Label.Size = new System.Drawing.Size(107, 25);
             this.customerAddress2Label.TabIndex = 10;
@@ -172,7 +173,7 @@ namespace RentMe.UserControls
             // 
             this.customerCityLabel.AutoSize = true;
             this.customerCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerCityLabel.Location = new System.Drawing.Point(118, 481);
+            this.customerCityLabel.Location = new System.Drawing.Point(32, 386);
             this.customerCityLabel.Name = "customerCityLabel";
             this.customerCityLabel.Size = new System.Drawing.Size(57, 25);
             this.customerCityLabel.TabIndex = 11;
@@ -182,7 +183,7 @@ namespace RentMe.UserControls
             // 
             this.customerZipLabel.AutoSize = true;
             this.customerZipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerZipLabel.Location = new System.Drawing.Point(118, 525);
+            this.customerZipLabel.Location = new System.Drawing.Point(27, 422);
             this.customerZipLabel.Name = "customerZipLabel";
             this.customerZipLabel.Size = new System.Drawing.Size(55, 25);
             this.customerZipLabel.TabIndex = 12;
@@ -192,7 +193,7 @@ namespace RentMe.UserControls
             // 
             this.customerStateLabel.AutoSize = true;
             this.customerStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerStateLabel.Location = new System.Drawing.Point(118, 568);
+            this.customerStateLabel.Location = new System.Drawing.Point(32, 462);
             this.customerStateLabel.Name = "customerStateLabel";
             this.customerStateLabel.Size = new System.Drawing.Size(74, 25);
             this.customerStateLabel.TabIndex = 13;
@@ -201,7 +202,7 @@ namespace RentMe.UserControls
             // customerFNameTextBox
             // 
             this.customerFNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerFNameTextBox.Location = new System.Drawing.Point(274, 184);
+            this.customerFNameTextBox.Location = new System.Drawing.Point(179, 141);
             this.customerFNameTextBox.Name = "customerFNameTextBox";
             this.customerFNameTextBox.Size = new System.Drawing.Size(304, 28);
             this.customerFNameTextBox.TabIndex = 14;
@@ -209,7 +210,7 @@ namespace RentMe.UserControls
             // customerLNameTextBox
             // 
             this.customerLNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerLNameTextBox.Location = new System.Drawing.Point(274, 228);
+            this.customerLNameTextBox.Location = new System.Drawing.Point(179, 175);
             this.customerLNameTextBox.Name = "customerLNameTextBox";
             this.customerLNameTextBox.Size = new System.Drawing.Size(304, 28);
             this.customerLNameTextBox.TabIndex = 15;
@@ -217,7 +218,7 @@ namespace RentMe.UserControls
             // customerSexTextBox
             // 
             this.customerSexTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerSexTextBox.Location = new System.Drawing.Point(274, 282);
+            this.customerSexTextBox.Location = new System.Drawing.Point(179, 212);
             this.customerSexTextBox.Name = "customerSexTextBox";
             this.customerSexTextBox.Size = new System.Drawing.Size(304, 28);
             this.customerSexTextBox.TabIndex = 16;
@@ -225,7 +226,7 @@ namespace RentMe.UserControls
             // customerDobTextBox
             // 
             this.customerDobTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerDobTextBox.Location = new System.Drawing.Point(274, 334);
+            this.customerDobTextBox.Location = new System.Drawing.Point(179, 279);
             this.customerDobTextBox.Name = "customerDobTextBox";
             this.customerDobTextBox.Size = new System.Drawing.Size(304, 28);
             this.customerDobTextBox.TabIndex = 17;
@@ -233,7 +234,7 @@ namespace RentMe.UserControls
             // customerAdr1TextBox
             // 
             this.customerAdr1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerAdr1TextBox.Location = new System.Drawing.Point(274, 390);
+            this.customerAdr1TextBox.Location = new System.Drawing.Point(179, 313);
             this.customerAdr1TextBox.Name = "customerAdr1TextBox";
             this.customerAdr1TextBox.Size = new System.Drawing.Size(304, 28);
             this.customerAdr1TextBox.TabIndex = 18;
@@ -241,7 +242,7 @@ namespace RentMe.UserControls
             // customerAdr2TextBox
             // 
             this.customerAdr2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerAdr2TextBox.Location = new System.Drawing.Point(274, 438);
+            this.customerAdr2TextBox.Location = new System.Drawing.Point(179, 347);
             this.customerAdr2TextBox.Name = "customerAdr2TextBox";
             this.customerAdr2TextBox.Size = new System.Drawing.Size(304, 28);
             this.customerAdr2TextBox.TabIndex = 19;
@@ -249,7 +250,7 @@ namespace RentMe.UserControls
             // customerCityTextBox
             // 
             this.customerCityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerCityTextBox.Location = new System.Drawing.Point(274, 484);
+            this.customerCityTextBox.Location = new System.Drawing.Point(179, 383);
             this.customerCityTextBox.Name = "customerCityTextBox";
             this.customerCityTextBox.Size = new System.Drawing.Size(304, 28);
             this.customerCityTextBox.TabIndex = 20;
@@ -257,7 +258,7 @@ namespace RentMe.UserControls
             // customerZipTextBox
             // 
             this.customerZipTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerZipTextBox.Location = new System.Drawing.Point(274, 524);
+            this.customerZipTextBox.Location = new System.Drawing.Point(179, 422);
             this.customerZipTextBox.Name = "customerZipTextBox";
             this.customerZipTextBox.Size = new System.Drawing.Size(304, 28);
             this.customerZipTextBox.TabIndex = 21;
@@ -265,7 +266,7 @@ namespace RentMe.UserControls
             // customerStateTextBox
             // 
             this.customerStateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerStateTextBox.Location = new System.Drawing.Point(274, 568);
+            this.customerStateTextBox.Location = new System.Drawing.Point(179, 462);
             this.customerStateTextBox.Name = "customerStateTextBox";
             this.customerStateTextBox.Size = new System.Drawing.Size(304, 28);
             this.customerStateTextBox.TabIndex = 22;
@@ -273,7 +274,7 @@ namespace RentMe.UserControls
             // customerUpdateButton
             // 
             this.customerUpdateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerUpdateButton.Location = new System.Drawing.Point(265, 624);
+            this.customerUpdateButton.Location = new System.Drawing.Point(179, 517);
             this.customerUpdateButton.Name = "customerUpdateButton";
             this.customerUpdateButton.Size = new System.Drawing.Size(101, 43);
             this.customerUpdateButton.TabIndex = 23;
@@ -283,17 +284,26 @@ namespace RentMe.UserControls
             // customerDeleteButton
             // 
             this.customerDeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerDeleteButton.Location = new System.Drawing.Point(423, 627);
+            this.customerDeleteButton.Location = new System.Drawing.Point(301, 520);
             this.customerDeleteButton.Name = "customerDeleteButton";
             this.customerDeleteButton.Size = new System.Drawing.Size(108, 40);
             this.customerDeleteButton.TabIndex = 24;
             this.customerDeleteButton.Text = "Delete";
             this.customerDeleteButton.UseVisualStyleBackColor = true;
             // 
+            // customerPhoneTextBOx
+            // 
+            this.customerPhoneTextBOx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customerPhoneTextBOx.Location = new System.Drawing.Point(179, 243);
+            this.customerPhoneTextBOx.Name = "customerPhoneTextBOx";
+            this.customerPhoneTextBOx.Size = new System.Drawing.Size(304, 28);
+            this.customerPhoneTextBOx.TabIndex = 25;
+            // 
             // SearchCustomerUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.customerPhoneTextBOx);
             this.Controls.Add(this.customerDeleteButton);
             this.Controls.Add(this.customerUpdateButton);
             this.Controls.Add(this.customerStateTextBox);
@@ -320,7 +330,7 @@ namespace RentMe.UserControls
             this.Controls.Add(this.searchCustomertextbox);
             this.Controls.Add(this.searchCustomerLabel);
             this.Name = "SearchCustomerUserControl";
-            this.Size = new System.Drawing.Size(868, 701);
+            this.Size = new System.Drawing.Size(614, 589);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,5 +363,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TextBox customerStateTextBox;
         private System.Windows.Forms.Button customerUpdateButton;
         private System.Windows.Forms.Button customerDeleteButton;
+        private System.Windows.Forms.TextBox customerPhoneTextBOx;
     }
 }

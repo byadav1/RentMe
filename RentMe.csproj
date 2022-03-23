@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\EmployeeCustomerController.cs" />
     <Compile Include="Controller\FormProvider.cs" />
+    <Compile Include="RentMeProgram.cs" />
     <Compile Include="UserControls\SearchCustomerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -66,6 +68,12 @@
     </Compile>
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainRentMeFormUserControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainRentMeFormUserControl.Designer.cs">
+      <DependentUpon>MainRentMeFormUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RegisterMemberForm.cs">
       <SubType>Form</SubType>
@@ -90,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainRentMeFormUserControl.resx">
+      <DependentUpon>MainRentMeFormUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RegisterMemberForm.resx">
       <DependentUpon>RegisterMemberForm.cs</DependentUpon>
