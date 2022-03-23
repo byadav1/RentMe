@@ -46,7 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\EmployeesController.cs" />
     <Compile Include="Controller\FormProvider.cs" />
+    <Compile Include="DAL\EmployeesDAL.cs" />
+    <Compile Include="DAL\RentMeDBConnection.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Validators\EmployeeValidator.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
