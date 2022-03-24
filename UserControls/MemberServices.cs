@@ -15,6 +15,7 @@ namespace RentMe.UserControls
     {
 
         private readonly MembersController membersController;
+        private  Member memberSearchDetails;
 
         /// <summary>
         /// Initialize the control.
@@ -46,7 +47,9 @@ namespace RentMe.UserControls
             try
             {
                 Member member = this.CreateMemberFromSearch();
-                this.membersController.MemberSearchSuccessful(member);
+                //  this.membersController.MemberSearchSuccessful(member);
+                this.memberSearchDetails= this.membersController.SearchMember(member);               
+                this.DisplayMemberDetails();
             }
             catch(ArgumentException ae)
             {
@@ -55,7 +58,22 @@ namespace RentMe.UserControls
             }
             
         }
+        private void DisplayMemberDetails()
+        {
+            this.fnameTextBox.Text = this.memberSearchDetails.FName;
+                this.lnameTextBox.Text = this.memberSearchDetails.FName;
+            this.phoneTextBox.Text = this.memberSearchDetails.Phone;
+          // this.dobPicker.Text = this.memberSearchDetails.DOB.ToString("MM/dd/yyyy");
 
+            this.sexComboBox.Text= this.memberSearchDetails.Sex;           
+            this.address1TextBox.Text = this.memberSearchDetails.Address1;
+            this.address2TextBox.Text = this.memberSearchDetails.Address2;
+            this.cityTextBox.Text = this.memberSearchDetails.City;
+            this.zipTextBox.Text = this.memberSearchDetails.Zip;
+            this.stateTextBox.Text = this.memberSearchDetails.State;
+            this.updateButton.Enabled = true; ;
+            this.deleteButton.Enabled = true; ;
+        }
         /// <summary>
         /// Takes input from the search field
         /// and returns a Member.
