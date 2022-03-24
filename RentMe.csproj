@@ -57,11 +57,11 @@
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
     <Compile Include="RentMeProgram.cs" />
-    <Compile Include="UserControls\SearchCustomerUserControl.cs">
+    <Compile Include="UserControls\MemberServices.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SearchCustomerUserControl.Designer.cs">
-      <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\MemberServices.Designer.cs">
+      <DependentUpon>MemberServices.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -77,18 +77,6 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainRentMeFormUserControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\MainRentMeFormUserControl.Designer.cs">
-      <DependentUpon>MainRentMeFormUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\RegisterMemberForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\RegisterMemberForm.Designer.cs">
-      <DependentUpon>RegisterMemberForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,20 +86,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\SearchCustomerUserControl.resx">
-      <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MemberServices.resx">
+      <DependentUpon>MemberServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\MainRentMeFormUserControl.resx">
-      <DependentUpon>MainRentMeFormUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\RegisterMemberForm.resx">
-      <DependentUpon>RegisterMemberForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
