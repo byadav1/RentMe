@@ -46,9 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\EmployeeCustomerController.cs" />
     <Compile Include="Controller\FormProvider.cs" />
-    <Compile Include="RentMeProgram.cs" />
     <Compile Include="UserControls\SearchCustomerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,8 +116,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

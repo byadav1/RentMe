@@ -55,6 +55,7 @@ namespace RentMe.UserControls
             this.customerUpdateButton = new System.Windows.Forms.Button();
             this.customerDeleteButton = new System.Windows.Forms.Button();
             this.customerPhoneTextBOx = new System.Windows.Forms.TextBox();
+            this.registerLinkLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // searchCustomerLabel
@@ -299,10 +300,22 @@ namespace RentMe.UserControls
             this.customerPhoneTextBOx.Size = new System.Drawing.Size(304, 28);
             this.customerPhoneTextBOx.TabIndex = 25;
             // 
+            // registerLinkLabel
+            // 
+            this.registerLinkLabel.AutoSize = true;
+            this.registerLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerLinkLabel.Location = new System.Drawing.Point(405, 25);
+            this.registerLinkLabel.Name = "registerLinkLabel";
+            this.registerLinkLabel.Size = new System.Drawing.Size(173, 25);
+            this.registerLinkLabel.TabIndex = 27;
+            this.registerLinkLabel.TabStop = true;
+            this.registerLinkLabel.Text = "Register Customer";
+            // 
             // SearchCustomerUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.registerLinkLabel);
             this.Controls.Add(this.customerPhoneTextBOx);
             this.Controls.Add(this.customerDeleteButton);
             this.Controls.Add(this.customerUpdateButton);
@@ -331,6 +344,7 @@ namespace RentMe.UserControls
             this.Controls.Add(this.searchCustomerLabel);
             this.Name = "SearchCustomerUserControl";
             this.Size = new System.Drawing.Size(614, 589);
+            this.Load += new System.EventHandler(this.SearchCustomerUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,5 +378,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Button customerUpdateButton;
         private System.Windows.Forms.Button customerDeleteButton;
         private System.Windows.Forms.TextBox customerPhoneTextBOx;
+        private System.Windows.Forms.LinkLabel registerLinkLabel;
     }
 }

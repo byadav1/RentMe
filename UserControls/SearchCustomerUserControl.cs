@@ -31,5 +31,10 @@ namespace RentMe.UserControls
         {
 
         }
+
+        private void SearchCustomerUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
