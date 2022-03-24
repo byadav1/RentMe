@@ -39,15 +39,5 @@ namespace RentMe.View
             this.Dispose();
             GC.Collect();
         }
-
-        /// <summary>
-        /// Event handler for clicking register new member button.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RegisterMemberButtonClick(object sender, System.EventArgs e)
-        {
-            new RegisterMemberForm().Show();
-        }
     }
 }

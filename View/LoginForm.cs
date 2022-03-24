@@ -1,4 +1,5 @@
 ﻿using RentMe.Controller;
+using RentMe.Model;
 using RentMe.View;
 using System;
 using System.Windows.Forms;
@@ -11,12 +12,15 @@ namespace RentMe
     /// </summary>
     public partial class LoginForm : Form
     {
+
+        private readonly EmployeesController employeesController;
         /// <summary>
         /// Initializes LoginForm.
         /// </summary>
         public LoginForm()
         {
             InitializeComponent();
+            this.employeesController = new EmployeesController();
         }
 
         /// <summary>
@@ -36,14 +40,23 @@ namespace RentMe
         /// <param name="e"></param>
         private void LoginButtonClickEventHandle(object sender, EventArgs e)
         {
-            if (ValidateLogin())
+            try
             {
-                new MainForm().Show();
-                this.Hide();
+                Employee employee = new Employee
+                {
+                    Username = this.usernameTextBox.Text,
+                    Password = this.passwordTextBox.Text
+                };
+                if (ValidLogin(employee))
+                {
+                    new MainForm().Show();
+                    this.Hide();
+                }
             }
-            else
+            catch (ArgumentException ae)
             {
-                errorMessage.Visible = true;
+                this.errorMessage.Visible = true;
+                this.errorMessage.Text = ae.Message;
             }
         }
 
@@ -51,9 +64,9 @@ namespace RentMe
         /// Validates usernameTextBox entry for login.
         /// </summary>
         /// <returns>true for valid login</returns>
-        private bool ValidateLogin()
+        private bool ValidLogin(Employee employee)
         {
-            return (usernameTextBox.Text == "Bill") && (passwordTextBox.Text == "password1234");
+            return this.employeesController.ValidEmployeeLogin(employee);
         }
 
         /// <summary>
