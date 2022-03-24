@@ -34,8 +34,10 @@ namespace RentMe.View
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.searchMemberTab = new System.Windows.Forms.TabPage();
+            this.memberServices1 = new RentMe.UserControls.MemberServices();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
+            this.searchMemberTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // servicesTableLayoutPanel
@@ -59,7 +61,7 @@ namespace RentMe.View
             this.servicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.servicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.servicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.servicesTableLayoutPanel.Size = new System.Drawing.Size(578, 749);
+            this.servicesTableLayoutPanel.Size = new System.Drawing.Size(764, 772);
             this.servicesTableLayoutPanel.TabIndex = 1;
             // 
             // logoutLink
@@ -67,7 +69,7 @@ namespace RentMe.View
             this.logoutLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logoutLink.AutoSize = true;
             this.logoutLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutLink.Location = new System.Drawing.Point(448, 6);
+            this.logoutLink.Location = new System.Drawing.Point(603, 7);
             this.logoutLink.Name = "logoutLink";
             this.logoutLink.Size = new System.Drawing.Size(68, 24);
             this.logoutLink.TabIndex = 10;
@@ -81,7 +83,7 @@ namespace RentMe.View
             this.currentUserLabel.AutoSize = true;
             this.servicesTableLayoutPanel.SetColumnSpan(this.currentUserLabel, 2);
             this.currentUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentUserLabel.Location = new System.Drawing.Point(3, 8);
+            this.currentUserLabel.Location = new System.Drawing.Point(3, 9);
             this.currentUserLabel.Name = "currentUserLabel";
             this.currentUserLabel.Size = new System.Drawing.Size(108, 20);
             this.currentUserLabel.TabIndex = 11;
@@ -92,27 +94,35 @@ namespace RentMe.View
             this.servicesTableLayoutPanel.SetColumnSpan(this.mainTabControl, 3);
             this.mainTabControl.Controls.Add(this.searchMemberTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTabControl.Location = new System.Drawing.Point(3, 40);
+            this.mainTabControl.Location = new System.Drawing.Point(3, 41);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(572, 706);
+            this.mainTabControl.Size = new System.Drawing.Size(758, 728);
             this.mainTabControl.TabIndex = 12;
             // 
             // searchMemberTab
             // 
+            this.searchMemberTab.Controls.Add(this.memberServices1);
             this.searchMemberTab.Location = new System.Drawing.Point(4, 25);
             this.searchMemberTab.Name = "searchMemberTab";
             this.searchMemberTab.Padding = new System.Windows.Forms.Padding(3);
-            this.searchMemberTab.Size = new System.Drawing.Size(564, 677);
+            this.searchMemberTab.Size = new System.Drawing.Size(750, 699);
             this.searchMemberTab.TabIndex = 0;
             this.searchMemberTab.Text = "Search Member";
             this.searchMemberTab.UseVisualStyleBackColor = true;
+            // 
+            // memberServices1
+            // 
+            this.memberServices1.Location = new System.Drawing.Point(19, 6);
+            this.memberServices1.Name = "memberServices1";
+            this.memberServices1.Size = new System.Drawing.Size(645, 631);
+            this.memberServices1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 749);
+            this.ClientSize = new System.Drawing.Size(764, 772);
             this.Controls.Add(this.servicesTableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainForm";
@@ -122,6 +132,7 @@ namespace RentMe.View
             this.servicesTableLayoutPanel.ResumeLayout(false);
             this.servicesTableLayoutPanel.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
+            this.searchMemberTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -133,5 +144,6 @@ namespace RentMe.View
         private System.Windows.Forms.Label currentUserLabel;
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage searchMemberTab;
+        private UserControls.MemberServices memberServices1;
     }
 }

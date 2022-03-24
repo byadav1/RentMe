@@ -46,10 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Controller\FormProvider.cs" />
-    <Compile Include="UserControls\SearchCustomerUserControl.cs">
-=======
     <Compile Include="Controller\EmployeesController.cs" />
     <Compile Include="Controller\FormProvider.cs" />
     <Compile Include="Controller\MembersController.cs" />
@@ -60,9 +56,7 @@
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
-    <Compile Include="RentMeProgram.cs" />
     <Compile Include="UserControls\MemberServices.cs">
->>>>>>> 0a57a90d31417dabd64e57579f837e194b3b56f9
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\MemberServices.Designer.cs">
