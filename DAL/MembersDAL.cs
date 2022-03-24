@@ -17,10 +17,89 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>
-        public static bool MemberSearchSuccessful(Member member)
+        public static bool ValidMemberSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
-            return MemberIDExists(member) || MemberPhoneExists(member) || MemberNameExists(member);
+            if (MemberIDExists(member) || MemberPhoneExists(member) || MemberNameExists(member))
+            {
+                return true;
+            }
+            else
+            {
+                throw new ArgumentException("No search results");
+            }
+        }
+
+        /// <summary>
+        /// Return Member information based upon search.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
+        public static Member GetMemberFromSearch(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            string selectStatement = "SELECT * " +
+                                        "FROM Members " +
+                                        "WHERE ";
+            if (MemberIDExists(member))
+            {
+                selectStatement += "MemberID = @MemberID";
+            }
+            else if (MemberPhoneExists(member))
+            {
+                selectStatement += "Phone = @Phone";               
+            }
+            else if (MemberNameExists(member))
+            {
+                selectStatement += "Fname = @FName AND Lname = @LName";
+            }
+            else
+            {
+                throw new ArgumentException("Must search a member by their ID, Phone, or Name");
+            }
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    if (MemberIDExists(member))
+                    {
+                        selectCommand.Parameters.AddWithValue("MemberID", member.MemberID);
+                    }
+                    else if (MemberPhoneExists(member))
+                    {
+                        selectCommand.Parameters.AddWithValue("Phone", member.Phone);
+                    }
+                    else if (MemberNameExists(member))
+                    {
+                        selectCommand.Parameters.AddWithValue("FName", member.FName);
+                        selectCommand.Parameters.AddWithValue("LName", member.LName);
+                    }                  
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            member.MemberID = Convert.ToInt32(reader["MemberID"]);
+                            member.FName = reader["Fname"].ToString();
+                            member.LName = reader["Lname"].ToString();
+                            member.DOB = (DateTime)reader["DateOfBirth"];
+                            member.Phone = reader["Phone"].ToString();
+                            member.Sex = reader["Sex"].ToString();
+                            member.Address1 = reader["Address1"].ToString();
+                            if (!reader.IsDBNull(8))
+                            {
+                                member.Address2 = reader["Address2"].ToString();
+                            }
+                            member.City = reader["City"].ToString();
+                            member.State = reader["State"].ToString();
+                            member.Zip = reader["ZipCode"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return member;
         }
 
         /// <summary>
@@ -58,6 +137,10 @@ namespace RentMe.DAL
         private static bool MemberPhoneExists(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
+            if (member.Phone == null)
+            {
+                return false;
+            }
             member.Phone = member.Phone.Replace("-", string.Empty);
             string selectStatement = "SELECT COUNT(*) " +
                                         "FROM Members " +
@@ -86,6 +169,10 @@ namespace RentMe.DAL
         private static bool MemberNameExists(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
+            if (member.FName == null || member.LName == null)
+            {
+                return false;
+            }
             string selectStatement = "SELECT COUNT(*) " +
                                         "FROM Members " +
                                         "WHERE Fname = @FName AND Lname = @LName";

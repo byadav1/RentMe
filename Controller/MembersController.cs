@@ -25,10 +25,21 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>
-        public bool MemberSearchSuccessful(Member member)
+        public bool ValidMemberSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
-            return MembersDAL.MemberSearchSuccessful(member);
+            return MembersDAL.ValidMemberSearch(member);
+        }
+
+        /// <summary>
+        /// Return member using search input.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
+        public Member GetMemberFromSearch(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            return MembersDAL.GetMemberFromSearch(member);
         }
     }
 }
