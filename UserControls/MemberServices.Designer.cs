@@ -29,7 +29,7 @@ namespace RentMe.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.errorMessage = new System.Windows.Forms.Label();
+            this.statusMessage = new System.Windows.Forms.Label();
             this.lnameTextBox = new System.Windows.Forms.TextBox();
             this.lnameLabel = new System.Windows.Forms.Label();
             this.registerMemberHeaderLabel = new System.Windows.Forms.Label();
@@ -66,20 +66,20 @@ namespace RentMe.UserControls
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // errorMessage
+            // statusMessage
             // 
-            this.errorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.errorMessage.AutoSize = true;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.errorMessage, 2);
-            this.errorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessage.ForeColor = System.Drawing.Color.Red;
-            this.errorMessage.Location = new System.Drawing.Point(240, 582);
-            this.errorMessage.Name = "errorMessage";
-            this.errorMessage.Size = new System.Drawing.Size(119, 24);
-            this.errorMessage.TabIndex = 23;
-            this.errorMessage.Text = "Invalid Fields";
-            this.errorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.errorMessage.Visible = false;
+            this.statusMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.statusMessage.AutoSize = true;
+            this.registrationTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
+            this.statusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusMessage.ForeColor = System.Drawing.Color.Red;
+            this.statusMessage.Location = new System.Drawing.Point(240, 582);
+            this.statusMessage.Name = "statusMessage";
+            this.statusMessage.Size = new System.Drawing.Size(119, 24);
+            this.statusMessage.TabIndex = 23;
+            this.statusMessage.Text = "Invalid Fields";
+            this.statusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.statusMessage.Visible = false;
             // 
             // lnameTextBox
             // 
@@ -394,7 +394,7 @@ namespace RentMe.UserControls
             this.registrationTableLayoutPanel.ColumnCount = 2;
             this.registrationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.registrationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.registrationTableLayoutPanel.Controls.Add(this.errorMessage, 0, 12);
+            this.registrationTableLayoutPanel.Controls.Add(this.statusMessage, 0, 12);
             this.registrationTableLayoutPanel.Controls.Add(this.lnameTextBox, 1, 3);
             this.registrationTableLayoutPanel.Controls.Add(this.lnameLabel, 0, 3);
             this.registrationTableLayoutPanel.Controls.Add(this.registerMemberHeaderLabel, 0, 0);
@@ -509,7 +509,7 @@ namespace RentMe.UserControls
 
         #endregion
 
-        private System.Windows.Forms.Label errorMessage;
+        private System.Windows.Forms.Label statusMessage;
         private System.Windows.Forms.TableLayoutPanel registrationTableLayoutPanel;
         private System.Windows.Forms.TextBox lnameTextBox;
         private System.Windows.Forms.Label lnameLabel;

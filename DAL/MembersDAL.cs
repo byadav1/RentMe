@@ -103,6 +103,45 @@ namespace RentMe.DAL
         }
 
         /// <summary>
+        /// Register and return a new RentMe Member.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
+        public static void RegisterNewMember(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            string insertStatement = "INSERT INTO Members " +
+                                     "VALUES(@FName, @LName, @DOB, @Phone, " +
+                                     "@Sex, @Address1, @Address2, @City, @State, @Zip) " +
+                                     "SELECT SCOPE_IDENTITY()";
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(insertStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("FName", member.FName);
+                    selectCommand.Parameters.AddWithValue("LName", member.LName);
+                    selectCommand.Parameters.AddWithValue("DOB", member.DOB);
+                    selectCommand.Parameters.AddWithValue("Phone", member.Phone);
+                    selectCommand.Parameters.AddWithValue("Sex", member.Sex);
+                    selectCommand.Parameters.AddWithValue("Address1", member.Address1);
+                    if (string.IsNullOrEmpty(member.Address2))
+                    {
+                        selectCommand.Parameters.AddWithValue("Address2", DBNull.Value);
+                    }
+                    else
+                    {
+                        selectCommand.Parameters.AddWithValue("Address2", member.Address2);
+                    }
+                    selectCommand.Parameters.AddWithValue("City", member.City);
+                    selectCommand.Parameters.AddWithValue("State", member.State);
+                    selectCommand.Parameters.AddWithValue("Zip", member.Zip);
+                    member.MemberID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                }
+            }
+        }
+
+        /// <summary>
         /// Return true if MemberID exists.
         /// </summary>
         /// <param name="member"></param>

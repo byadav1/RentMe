@@ -56,7 +56,6 @@
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
-    <Compile Include="RentMeProgram.cs" />
     <Compile Include="UserControls\MemberServices.cs">
       <SubType>UserControl</SubType>
     </Compile>
