@@ -141,7 +141,6 @@ namespace RentMe.DAL
             {
                 return false;
             }
-            member.Phone = member.Phone.Replace("-", string.Empty);
             string selectStatement = "SELECT COUNT(*) " +
                                         "FROM Members " +
                                         "WHERE Phone = @Phone";

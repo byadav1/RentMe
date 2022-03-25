@@ -49,8 +49,7 @@ namespace RentMe.UserControls
                 Member member = this.CreateMemberFromSearch();
                 if (this.membersController.ValidMemberSearch(member))
                 {
-                    member = this.membersController.GetMemberFromSearch(member);
-                    this.ToggleFormFields(true);                   
+                    member = this.membersController.GetMemberFromSearch(member);                   
                     this.ToggleFormButtons(true);
                     this.SetFields(member);
                 }
@@ -59,8 +58,6 @@ namespace RentMe.UserControls
             {
                 this.errorMessage.Visible = true;
                 this.errorMessage.Text = ae.Message;
-                this.ClearFields();
-                this.ToggleFormFields(false);
                 this.ToggleFormButtons(false);
             }        
         }
@@ -78,7 +75,7 @@ namespace RentMe.UserControls
             {
                 throw new ArgumentException("Member search field cannot be empty");
             }
-            else if (new Regex("[0-9]{10}").IsMatch(search.Text))
+            else if (new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$").IsMatch(search.Text))
             {
                 member.Phone = search.Text;
                 
@@ -143,7 +140,6 @@ namespace RentMe.UserControls
         private void ClearButtonClick(object sender, System.EventArgs e)
         {
             this.ToggleFormButtons(false);
-            this.ToggleFormFields(false);
             this.ClearFields();
         }
 
@@ -217,7 +213,7 @@ namespace RentMe.UserControls
             else if (this.InvalidInput(this.phoneTextBox, this.GenerateRegexForTextBox(this.phoneTextBox)))
             {
                 throw new Exception("Invalid phone number.\n" +
-                    "Should only consist of numbers");
+                    "Should consist of numbers and be in XXX-XXX-XXXX format");
             }
             else if (this.InvalidInput(this.address1TextBox, this.GenerateRegexForTextBox(this.address1TextBox)))
             {
@@ -279,7 +275,7 @@ namespace RentMe.UserControls
                     regex = new Regex("[a-zA-Z]");
                     break;
                 case "phoneTextBox":
-                    regex = new Regex("[0-9]{10}");
+                    regex = new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
                     break;
                 case "address1TextBox":
                     regex = new Regex("^[0-9a-zA-Z#&/. -]+$");
@@ -308,23 +304,6 @@ namespace RentMe.UserControls
             this.updateButton.Enabled = enabled;
             this.deleteButton.Enabled = enabled;
             this.registerButton.Enabled = !enabled;
-        }
-
-        /// <summary>
-        /// Enables, disables form fields based on state of the form.
-        /// </summary>
-        private void ToggleFormFields(bool enabled)
-        {
-            this.fnameTextBox.Enabled = enabled;
-            this.lnameTextBox.Enabled = enabled;
-            this.sexComboBox.Enabled = enabled;
-            this.phoneTextBox.Enabled = enabled;
-            this.dobPicker.Enabled = enabled;
-            this.address1TextBox.Enabled = enabled;
-            this.address2TextBox.Enabled = enabled;
-            this.cityTextBox.Enabled = enabled;
-            this.stateTextBox.Enabled = enabled;
-            this.zipTextBox.Enabled = enabled;
         }
     }
 }
