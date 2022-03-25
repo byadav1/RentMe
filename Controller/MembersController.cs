@@ -41,5 +41,15 @@ namespace RentMe.Controller
             MemberValidator.ValidateMemberNotNull(member);
             return MembersDAL.GetMemberFromSearch(member);
         }
+
+        /// <summary>
+        /// Register and return a new RentMe Member.
+        /// </summary>
+        /// <param name="member"></param>
+        public void RegisterNewMember(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            MembersDAL.RegisterNewMember(member);
+        }
     }
 }
