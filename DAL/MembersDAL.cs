@@ -195,7 +195,8 @@ namespace RentMe.DAL
                         " City=@NewCity ," +
                         " zipcode=@NewZip ," +
                         " State=@NewState," + " Address1=@NewAddress1 ," +
-                                            " Address2=@NewAddress2 Where MEMBERID=@OldMemberID";
+                                            " Address2=@NewAddress2 " +
+                                            "Where MEMBERID=@OldMemberID";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -212,29 +213,54 @@ namespace RentMe.DAL
                     selectCommand.Parameters.Add("@NewSex", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewDob", SqlDbType.DateTime);
                     selectCommand.Parameters.Add("@NewPhone", SqlDbType.VarChar);
-
                     selectCommand.Parameters.Add("@NewCity", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewZip", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewState", SqlDbType.VarChar);
-
-
                     selectCommand.Parameters.Add("@NewAddress1", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewAddress2", SqlDbType.VarChar);
-
-
                     selectCommand.Parameters["@NewFName"].Value = newMember.FName;
                     selectCommand.Parameters["@NewLName"].Value = newMember.LName;
                     selectCommand.Parameters["@NewSex"].Value = newMember.Sex;
                     selectCommand.Parameters["@NewDob"].Value = newMember.DOB;
-
                     selectCommand.Parameters["@NewPhone"].Value = newMember.Phone;
                     selectCommand.Parameters["@NewCity"].Value = newMember.City;
-
                     selectCommand.Parameters["@NewZip"].Value = newMember.Zip;
                     selectCommand.Parameters["@NewState"].Value = newMember.State;
-
                     selectCommand.Parameters["@NewAddress1"].Value = newMember.Address1;
                     selectCommand.Parameters["@NewAddress2"].Value = newMember.Address2;
+                    int resultCount = selectCommand.ExecuteNonQuery();
+                    if (resultCount > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Deactivate the Member 
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool DeactivateMember(Member member)
+        {
+            string selectStatement =
+                      " UPDATE MEMBERS SET DELETE_FLAG='Y' Where MEMBERID=@deleteMemberID";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+
+                    selectCommand.Parameters.Add("@deleteMemberID", SqlDbType.VarChar);
+                    selectCommand.Parameters["@deleteMemberID"].Value = member.MemberID;
+
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)
                     {

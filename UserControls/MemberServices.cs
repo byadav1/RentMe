@@ -17,7 +17,7 @@ namespace RentMe.UserControls
     {
 
         private readonly MembersController membersController;
-        private  Member memberSearchDetails;
+        private Member memberSearchDetails;
 
         /// <summary>
         /// Initialize the control.
@@ -50,24 +50,24 @@ namespace RentMe.UserControls
             {
                 Member member = this.CreateMemberFromSearch();
                 //  this.membersController.MemberSearchSuccessful(member);
-                this.memberSearchDetails= this.membersController.SearchMember(member);               
+                this.memberSearchDetails = this.membersController.SearchMember(member);
                 this.DisplayMemberDetails();
             }
-            catch(ArgumentException ae)
+            catch (ArgumentException ae)
             {
                 this.errorMessage.Visible = true;
                 this.errorMessage.Text = ae.Message;
             }
-            
+
         }
         private void DisplayMemberDetails()
         {
             this.fnameTextBox.Text = this.memberSearchDetails.FName;
-             this.lnameTextBox.Text = this.memberSearchDetails.FName;
+            this.lnameTextBox.Text = this.memberSearchDetails.FName;
             this.phoneTextBox.Text = this.memberSearchDetails.Phone;
-          // this.dobPicker.Text = this.memberSearchDetails.DOB.ToString("MM/dd/yyyy");
+            // this.dobPicker.Text = this.memberSearchDetails.DOB.ToString("MM/dd/yyyy");
 
-            this.sexComboBox.Text= this.memberSearchDetails.Sex;           
+            this.sexComboBox.Text = this.memberSearchDetails.Sex;
             this.address1TextBox.Text = this.memberSearchDetails.Address1;
             this.address2TextBox.Text = this.memberSearchDetails.Address2;
             this.cityTextBox.Text = this.memberSearchDetails.City;
@@ -113,7 +113,7 @@ namespace RentMe.UserControls
 
             try
             {
-             //   this.ValidateFormFields();
+                //   this.ValidateFormFields();
                 this.ProcessUpdate();
             }
             catch (Exception ex)
@@ -121,7 +121,7 @@ namespace RentMe.UserControls
                 this.errorMessage.Visible = true;
                 this.errorMessage.Text = ex.Message;
             }
-           
+
         }
 
         private void ProcessUpdate()
@@ -130,7 +130,7 @@ namespace RentMe.UserControls
             Member memberUpdateData =
                 new Member()
                 {
-                    MemberID=this.memberSearchDetails.MemberID,
+                    MemberID = this.memberSearchDetails.MemberID,
                     FName = this.fnameTextBox.Text,
                     LName = this.lnameTextBox.Text,
                     DOB = this.dobPicker.Value,
@@ -147,7 +147,7 @@ namespace RentMe.UserControls
                 if (this.membersController.UpdateMemberInformation(this.memberSearchDetails, memberUpdateData))
                 {
                     this.errorMessage.Visible = true;
-                   
+
                     this.errorMessage.Text = "Member information updated successfully";
                     this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
                 };
@@ -165,13 +165,13 @@ namespace RentMe.UserControls
             List<Member> lstNew_MemberData = new List<Member>();
             bool isModified = false;
             lstOld_MemberData.Add(this.memberSearchDetails);
-            lstNew_MemberData.Add(memberUpdateData);          
+            lstNew_MemberData.Add(memberUpdateData);
             if (lstOld_MemberData.Count > 0 && lstNew_MemberData.Count > 0)
             {
                 var result = lstNew_MemberData.Where(l2 =>
                       lstOld_MemberData.Any(l1 => l2.MemberID == l1.MemberID
-                              && (l1.FName !=l2.FName || l1.LName != l2.LName ||
-                             l1.DOB != l2.DOB || 
+                              && (l1.FName != l2.FName || l1.LName != l2.LName ||
+                             l1.DOB != l2.DOB ||
                               l1.Phone != l2.Phone ||
                               l1.Sex != l2.Sex || l1.Address1 != l2.Address1 ||
                               l1.Address2 != l2.Address2 || l1.State != l2.State ||
@@ -179,7 +179,7 @@ namespace RentMe.UserControls
                               )));
                 isModified = result.Any();
 
-            }      
+            }
 
             return isModified;
         }
@@ -192,13 +192,27 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void DeleteButtonClick(object sender, System.EventArgs e)
         {
-           
+
+            try
+            {
+
                 if (this.membersController.DeleteMember(this.memberSearchDetails))
                 {
                     this.errorMessage.Visible = true;
                     this.errorMessage.Text = "Member deleted  successfully";
+                }
+                else
+                {
+                    this.errorMessage.Visible = true;
+                    this.errorMessage.Text = "Member deletion failed!!";
                 };
-            
+            }
+            catch (Exception ex)
+            {
+                this.errorMessage.Visible = true;
+                this.errorMessage.Text = ex.Message;
+            }
+
         }
 
         /// <summary>
