@@ -1,9 +1,15 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+
+using RentMe.Validators;
+
+using System.Drawing;
+
 
 namespace RentMe.UserControls
 {
@@ -16,6 +22,7 @@ namespace RentMe.UserControls
     {
 
         private readonly MembersController membersController;
+        private Member memberSearchDetails;
 
         /// <summary>
         /// Initialize the control.
@@ -46,15 +53,36 @@ namespace RentMe.UserControls
         {
             try
             {
-                Member member = this.CreateMemberFromSearch();
-                this.membersController.MemberSearchSuccessful(member);
+                this.memberSearchDetails = this.CreateMemberFromSearch();
+                if (this.membersController.ValidMemberSearch(this.memberSearchDetails))
+                {
+                    this.memberSearchDetails = this.membersController.GetMemberFromSearch(this.memberSearchDetails);
+                    this.ToggleFormButtons(true);
+                    this.SetFields(this.memberSearchDetails);
+                }
             }
-            catch(ArgumentException ae)
+            catch (ArgumentException ae)
             {
-                this.errorMessage.Visible = true;
-                this.errorMessage.Text = ae.Message;
+                this.UpdateStatusMessage(ae.Message, true);
+                this.ToggleFormButtons(false);
             }
-            
+
+
+
+
+            // try
+            //{
+            //    Member member = this.CreateMemberFromSearch();
+            //    //  this.membersController.MemberSearchSuccessful(member);
+            //    this.memberSearchDetails = this.membersController.SearchMember(member);
+            //    this.DisplayMemberDetails();
+            // }
+           // catch (ArgumentException ae)
+            //{
+             //   this.statusMessage.Visible = true;
+            //    this.statusMessage.Text = ae.Message;
+           // }
+
         }
         private void DisplayMemberDetails()
         {
@@ -71,6 +99,8 @@ namespace RentMe.UserControls
             this.updateButton.Enabled = true; ;
             this.deleteButton.Enabled = true; ;
         }
+     
+
         /// <summary>
         /// Event handler for update button click.
         /// </summary>
@@ -78,17 +108,7 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void UpdateButtonClick(object sender, System.EventArgs e)
         {
-
-        }
-
-        /// <summary>
-        /// Event handler for delete button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DeleteButtonClick(object sender, System.EventArgs e)
-        {
-            this.errorMessage.Text = "";
+            this.statusMessage.Text = "";
             try
             {
                 //   this.ValidateFormFields();
@@ -96,8 +116,8 @@ namespace RentMe.UserControls
             }
             catch (Exception ex)
             {
-                this.errorMessage.Visible = true;
-                this.errorMessage.Text = ex.Message;
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = ex.Message;
             }
 
         }
@@ -124,23 +144,23 @@ namespace RentMe.UserControls
             {
                 if (this.membersController.UpdateMemberInformation(this.memberSearchDetails, memberUpdateData))
                 {
-                    this.errorMessage.Visible = true;
+                    this.statusMessage.Visible = true;
 
-                    this.errorMessage.Text = "Member information updated successfully";
+                    this.statusMessage.Text = "Member information updated successfully";
                     this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
                 }
                 else
                 {
-                    this.errorMessage.Visible = true;
+                    this.statusMessage.Visible = true;
 
-                    this.errorMessage.Text = "Member inforamtion cannot be perfomed.SOmthinbg went wrong with the process or member data is updated at the backend";
+                    this.statusMessage.Text = "Member inforamtion cannot be perfomed.SOmthinbg went wrong with the process or member data is updated at the backend";
                     this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
                 };
             }
             else
             {
-                this.errorMessage.Visible = true;
-                this.errorMessage.Text = "No Updates found!!";
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = "No Updates found!!";
             }
         }
 
@@ -171,13 +191,57 @@ namespace RentMe.UserControls
 
 
         /// <summary>
+        /// Event handler for clear button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteButtonClick(object sender, System.EventArgs e)
+        {
+
+            try
+            {
+
+                if (this.membersController.DeleteMember(this.memberSearchDetails))
+                {
+                    this.statusMessage.Visible = true;
+                    this.statusMessage.Text = "Member deleted  successfully";
+                }
+                else
+                {
+                    this.statusMessage.Visible = true;
+                    this.statusMessage.Text = "Member deletion failed!!";
+                };
+            }
+            catch (Exception ex)
+            {
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = ex.Message;
+            }
+
+        }
+
+        /// <summary>
         /// Event handler for register member button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void RegisterButtonClick(object sender, System.EventArgs e)
         {
-
+            try
+            {
+                Member member = this.CreateMemberFromFormFields();
+                if (this.ConfirmMemberRegistration(member) == DialogResult.OK)
+                {
+                    this.membersController.RegisterNewMember(member);
+                    UpdateStatusMessage("Member registration successfully!\n" +
+                    "MemberID is " + member.MemberID, false);
+                    this.ToggleFormButtons(true);
+                }
+            }
+            catch (ArgumentException ae)
+            {
+                this.UpdateStatusMessage(ae.Message, true);
+            }
         }
 
         /// <summary>
@@ -283,7 +347,7 @@ namespace RentMe.UserControls
         private DialogResult ConfirmMemberRegistration(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
-            DialogResult result = MessageBox.Show("Are you sure you want to register new RentMe member:\n" + 
+            DialogResult result = MessageBox.Show("Are you sure you want to register new RentMe member:\n" +
                 member.FName + " " + member.LName + "?",
                 "Confirm Member Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             return result;
@@ -366,7 +430,7 @@ namespace RentMe.UserControls
             {
                 throw new ArgumentException("TextBox and Regex cannot be null");
             }
- 
+
             return !regex.IsMatch(textBox.Text);
         }
 
