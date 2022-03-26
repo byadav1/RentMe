@@ -321,7 +321,7 @@ namespace RentMe.DAL
                        " LNAME=@OldLName AND Sex=@OldSex AND " +
                        " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
                        " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
-                       " Address1=@OldAddress1 AND Address2=@OldAddress2 ";
+                       " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL)";
 
 
 

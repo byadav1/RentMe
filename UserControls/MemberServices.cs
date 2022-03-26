@@ -153,7 +153,7 @@ namespace RentMe.UserControls
                 {
                     this.statusMessage.Visible = true;
 
-                    this.statusMessage.Text = "Member inforamtion cannot be perfomed.SOmthinbg went wrong with the process or member data is updated at the backend";
+                    this.statusMessage.Text = "Member information cannot be perfomed.Something went wrong with the process or member data is updated at the backend";
                     this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
                 };
             }
