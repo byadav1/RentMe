@@ -1,6 +1,8 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -61,7 +63,7 @@ namespace RentMe.UserControls
         private void DisplayMemberDetails()
         {
             this.fnameTextBox.Text = this.memberSearchDetails.FName;
-                this.lnameTextBox.Text = this.memberSearchDetails.FName;
+             this.lnameTextBox.Text = this.memberSearchDetails.FName;
             this.phoneTextBox.Text = this.memberSearchDetails.Phone;
           // this.dobPicker.Text = this.memberSearchDetails.DOB.ToString("MM/dd/yyyy");
 
@@ -109,7 +111,79 @@ namespace RentMe.UserControls
         private void UpdateButtonClick(object sender, System.EventArgs e)
         {
 
+            try
+            {
+             //   this.ValidateFormFields();
+                this.ProcessUpdate();
+            }
+            catch (Exception ex)
+            {
+                this.errorMessage.Visible = true;
+                this.errorMessage.Text = ex.Message;
+            }
+           
         }
+
+        private void ProcessUpdate()
+        {
+
+            Member memberUpdateData =
+                new Member()
+                {
+                    MemberID=this.memberSearchDetails.MemberID,
+                    FName = this.fnameTextBox.Text,
+                    LName = this.lnameTextBox.Text,
+                    DOB = this.dobPicker.Value,
+                    Sex = this.sexComboBox.Text,
+                    Phone = this.phoneTextBox.Text,
+                    Address1 = this.address1TextBox.Text,
+                    Address2 = this.address2TextBox.Text,
+                    City = this.cityTextBox.Text,
+                    Zip = this.zipTextBox.Text,
+                    State = this.stateTextBox.Text
+                };
+            if (this.CheckUpdates(memberUpdateData))
+            {
+                if (this.membersController.UpdateMemberInformation(this.memberSearchDetails, memberUpdateData))
+                {
+                    this.errorMessage.Visible = true;
+                   
+                    this.errorMessage.Text = "Member information updated successfully";
+                    this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
+                };
+            }
+            else
+            {
+                this.errorMessage.Visible = true;
+                this.errorMessage.Text = "No Updates found!!";
+            }
+        }
+
+        private bool CheckUpdates(Member memberUpdateData)
+        {
+            List<Member> lstOld_MemberData = new List<Member>();
+            List<Member> lstNew_MemberData = new List<Member>();
+            bool isModified = false;
+            lstOld_MemberData.Add(this.memberSearchDetails);
+            lstNew_MemberData.Add(memberUpdateData);          
+            if (lstOld_MemberData.Count > 0 && lstNew_MemberData.Count > 0)
+            {
+                var result = lstNew_MemberData.Where(l2 =>
+                      lstOld_MemberData.Any(l1 => l2.MemberID == l1.MemberID
+                              && (l1.FName !=l2.FName || l1.LName != l2.LName ||
+                             l1.DOB != l2.DOB || 
+                              l1.Phone != l2.Phone ||
+                              l1.Sex != l2.Sex || l1.Address1 != l2.Address1 ||
+                              l1.Address2 != l2.Address2 || l1.State != l2.State ||
+                              l1.City != l2.City || l1.Zip != l2.Zip
+                              )));
+                isModified = result.Any();
+
+            }      
+
+            return isModified;
+        }
+
 
         /// <summary>
         /// Event handler for clear button click.
@@ -118,7 +192,13 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void DeleteButtonClick(object sender, System.EventArgs e)
         {
-
+           
+                if (this.membersController.DeleteMember(this.memberSearchDetails))
+                {
+                    this.errorMessage.Visible = true;
+                    this.errorMessage.Text = "Member deleted  successfully";
+                };
+            
         }
 
         /// <summary>

@@ -60,6 +60,21 @@ namespace RentMe.Controller
 
 
         /// <summary>
+        /// Update the member details from the DAL.
+        /// </summary>
+        /// <returns>List of product name</returns>
+        public bool DeleteMember(Member member)
+        {
+
+            if (member == null)
+            {
+                throw new ArgumentNullException("Delete cannot be performed ");
+            }
+            return this._memberDBSource.DeactivateMember(member);
+        }
+
+
+        /// <summary>
         /// Return true if member account exists
         /// based on search criteria.
         /// </summary>

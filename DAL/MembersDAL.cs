@@ -159,6 +159,7 @@ namespace RentMe.DAL
                         while (reader.Read())
                         {
                             memberDetails = new Member();
+                            memberDetails.MemberID = (int)reader["MemberID"];
                             memberDetails.FName = reader["Fname"].ToString();
                             memberDetails.LName = reader["Lname"].ToString();
                             memberDetails.DOB = (DateTime)reader["DateOFBirth"];
