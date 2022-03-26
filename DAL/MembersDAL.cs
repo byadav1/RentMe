@@ -186,28 +186,52 @@ namespace RentMe.DAL
         public bool UpdateMemberDetails(Member oldMember, Member newMember)
         {
             string selectStatement =
-                      " UPDATE MEMBERS SET " +
-                        " FNAME=@NewFName ," +
-                        " LNAME=@NewLName ," +
-                        " Sex=@NewSex ," +
-                        " DateOfBirth=@NewDob ," +
-                         " Phone=@NewPhone ," +
-                        " City=@NewCity ," +
-                        " zipcode=@NewZip ," +
-                        " State=@NewState," + " Address1=@NewAddress1 ," +
-                                            " Address2=@NewAddress2 " +
-                                            "Where MEMBERID=@OldMemberID";
+                  " UPDATE MEMBERS SET " +
+                       " FNAME=@NewFName , LNAME=@NewLName , " +
+                       " Sex=@NewSex , DateOfBirth=@NewDob , " +
+                        " Phone=@NewPhone ,  City=@NewCity , " +
+                       " zipcode=@NewZip , State=@NewState, " +
+                       " Address1=@NewAddress1 , Address2=@NewAddress2 " +
+                        "Where MEMBERID=@OldMemberID  AND FNAME=@OldFName AND " +
+                       " LNAME=@OldLName AND Sex=@OldSex AND " +
+                       " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
+                       " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
+                       " Address1=@OldAddress1 AND Address2=@OldAddress2 ";
+
+
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-
+                    // Old member details Mappings
                     selectCommand.Parameters.Add("@OldMemberID", SqlDbType.VarChar);
                     selectCommand.Parameters["@OldMemberID"].Value = oldMember.MemberID;
 
+                    selectCommand.Parameters.Add("@OldFName", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldLName", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldSex", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldDob", SqlDbType.DateTime);
+                    selectCommand.Parameters.Add("@OldPhone", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldCity", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldZip", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldState", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldAddress1", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldAddress2", SqlDbType.VarChar);
 
+                    selectCommand.Parameters["@OldFName"].Value = oldMember.FName;
+                    selectCommand.Parameters["@OldLName"].Value = oldMember.LName;
+                    selectCommand.Parameters["@OldSex"].Value = oldMember.Sex;
+                    selectCommand.Parameters["@OldDob"].Value = oldMember.DOB;
+                    selectCommand.Parameters["@OldPhone"].Value = oldMember.Phone;
+                    selectCommand.Parameters["@OldCity"].Value = oldMember.City;
+                    selectCommand.Parameters["@OldZip"].Value = oldMember.Zip;
+                    selectCommand.Parameters["@OldState"].Value = oldMember.State;
+                    selectCommand.Parameters["@OldAddress1"].Value = oldMember.Address1;
+                    selectCommand.Parameters["@OldAddress2"].Value = oldMember.Address2;
+
+                    // New member details Mappings
                     selectCommand.Parameters.Add("@NewFName", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewLName", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewSex", SqlDbType.VarChar);

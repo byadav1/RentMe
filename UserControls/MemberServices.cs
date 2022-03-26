@@ -63,10 +63,9 @@ namespace RentMe.UserControls
         private void DisplayMemberDetails()
         {
             this.fnameTextBox.Text = this.memberSearchDetails.FName;
-            this.lnameTextBox.Text = this.memberSearchDetails.FName;
+            this.lnameTextBox.Text = this.memberSearchDetails.LName;
             this.phoneTextBox.Text = this.memberSearchDetails.Phone;
-            // this.dobPicker.Text = this.memberSearchDetails.DOB.ToString("MM/dd/yyyy");
-
+            this.dobPicker.Text = this.memberSearchDetails.DOB.ToString("M/dd/yyyy");
             this.sexComboBox.Text = this.memberSearchDetails.Sex;
             this.address1TextBox.Text = this.memberSearchDetails.Address1;
             this.address2TextBox.Text = this.memberSearchDetails.Address2;
@@ -110,7 +109,7 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void UpdateButtonClick(object sender, System.EventArgs e)
         {
-
+            this.errorMessage.Text = "";
             try
             {
                 //   this.ValidateFormFields();
@@ -149,6 +148,13 @@ namespace RentMe.UserControls
                     this.errorMessage.Visible = true;
 
                     this.errorMessage.Text = "Member information updated successfully";
+                    this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
+                }
+                else
+                {
+                    this.errorMessage.Visible = true;
+
+                    this.errorMessage.Text = "Member inforamtion cannot be perfomed.SOmthinbg went wrong with the process or member data is updated at the backend";
                     this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
                 };
             }
