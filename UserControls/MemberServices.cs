@@ -1,8 +1,7 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -17,7 +16,6 @@ namespace RentMe.UserControls
     {
 
         private readonly MembersController membersController;
-        private Member memberSearchDetails;
 
         /// <summary>
         /// Initialize the control.
@@ -49,16 +47,14 @@ namespace RentMe.UserControls
             try
             {
                 Member member = this.CreateMemberFromSearch();
-                //  this.membersController.MemberSearchSuccessful(member);
-                this.memberSearchDetails = this.membersController.SearchMember(member);
-                this.DisplayMemberDetails();
+                this.membersController.MemberSearchSuccessful(member);
             }
-            catch (ArgumentException ae)
+            catch(ArgumentException ae)
             {
                 this.errorMessage.Visible = true;
                 this.errorMessage.Text = ae.Message;
             }
-
+            
         }
         private void DisplayMemberDetails()
         {
@@ -76,38 +72,21 @@ namespace RentMe.UserControls
             this.deleteButton.Enabled = true; ;
         }
         /// <summary>
-        /// Takes input from the search field
-        /// and returns a Member.
-        /// </summary>
-        /// <returns></returns>
-        private Member CreateMemberFromSearch()
-        {
-
-            Member member = new Member();
-            TextBox search = this.searchMemberTextBox;
-            if (Int32.TryParse(search.Text, out int memberID))
-            {
-                member.MemberID = memberID;
-            }
-            else if (this.InvalidInput(search, this.GenerateRegexForTextBox(this.phoneTextBox)))
-            {
-                member.Phone = search.Text;
-            }
-            else if (new Regex("/[[:alpha:]][[:space:]][[:alpha:]]/g").IsMatch(search.Text))
-            {
-                member.FName = search.Text.Substring(0, search.Text.IndexOf(" "));
-                member.LName = search.Text.Substring(search.Text.IndexOf(" " + 1));
-            }
-
-            return member;
-        }
-
-        /// <summary>
         /// Event handler for update button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void UpdateButtonClick(object sender, System.EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Event handler for delete button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteButtonClick(object sender, System.EventArgs e)
         {
             this.errorMessage.Text = "";
             try
@@ -192,32 +171,12 @@ namespace RentMe.UserControls
 
 
         /// <summary>
-        /// Event handler for clear button click.
+        /// Event handler for register member button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DeleteButtonClick(object sender, System.EventArgs e)
+        private void RegisterButtonClick(object sender, System.EventArgs e)
         {
-
-            try
-            {
-
-                if (this.membersController.DeleteMember(this.memberSearchDetails))
-                {
-                    this.errorMessage.Visible = true;
-                    this.errorMessage.Text = "Member deleted  successfully";
-                }
-                else
-                {
-                    this.errorMessage.Visible = true;
-                    this.errorMessage.Text = "Member deletion failed!!";
-                };
-            }
-            catch (Exception ex)
-            {
-                this.errorMessage.Visible = true;
-                this.errorMessage.Text = ex.Message;
-            }
 
         }
 
@@ -227,6 +186,15 @@ namespace RentMe.UserControls
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ClearButtonClick(object sender, System.EventArgs e)
+        {
+            this.ToggleFormButtons(false);
+            this.ClearFields();
+        }
+
+        /// <summary>
+        /// Clears the form fields.
+        /// </summary>
+        private void ClearFields()
         {
             void func(Control.ControlCollection controls)
             {
@@ -253,21 +221,91 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
-        /// Event handler for register member button click.
+        /// Takes input from the search field
+        /// and returns a Member.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RegisterButtonClick(object sender, System.EventArgs e)
+        /// <returns></returns>
+        private Member CreateMemberFromSearch()
         {
-            try
+            Member member = new Member();
+            TextBox search = this.searchMemberTextBox;
+            if (search.Text == "")
             {
-                this.ValidateFormFields();
+                throw new ArgumentException("Member search field cannot be empty");
             }
-            catch (Exception ex)
+            else if (new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$").IsMatch(search.Text))
             {
-                this.errorMessage.Visible = true;
-                this.errorMessage.Text = ex.Message;
+                member.Phone = search.Text;
+
             }
+            else if (new Regex("[a-zA-Z] [a-zA-Z]").IsMatch(search.Text))
+            {
+                member.FName = search.Text.Substring(0, search.Text.IndexOf(" "));
+                member.LName = search.Text.Substring(search.Text.IndexOf(" ") + 1);
+            }
+            else if (Int32.TryParse(search.Text, out int memberID))
+            {
+                member.MemberID = memberID;
+            }
+
+            return member;
+        }
+
+        /// <summary>
+        /// Creates a new Member using validated
+        /// form fields.
+        /// </summary>
+        /// <returns>Member object from fields</returns>
+        private Member CreateMemberFromFormFields()
+        {
+            this.ValidateFormFields();
+            Member member = new Member()
+            {
+                FName = this.fnameTextBox.Text,
+                LName = this.lnameTextBox.Text,
+                Sex = this.sexComboBox.GetItemText(this.sexComboBox.SelectedItem),
+                Phone = this.phoneTextBox.Text,
+                DOB = this.dobPicker.Value,
+                Address1 = this.address1TextBox.Text,
+                Address2 = this.address2TextBox.Text,
+                City = this.cityTextBox.Text,
+                State = this.stateTextBox.Text,
+                Zip = this.zipTextBox.Text
+            };
+            return member;
+        }
+
+        /// <summary>
+        /// Prompts the user to confirm
+        /// that they want to register a RentMe member.
+        /// </summary>
+        /// <param name="incident"></param>
+        private DialogResult ConfirmMemberRegistration(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            DialogResult result = MessageBox.Show("Are you sure you want to register new RentMe member:\n" + 
+                member.FName + " " + member.LName + "?",
+                "Confirm Member Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            return result;
+        }
+
+        /// <summary>
+        /// Set form fields to reflect Member information
+        /// </summary>
+        /// <param name="member"></param>
+        private void SetFields(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            this.fnameTextBox.Text = member.FName;
+            this.lnameTextBox.Text = member.LName;
+            this.sexComboBox.SelectedIndex = this.sexComboBox.FindStringExact(member.Sex);
+            this.phoneTextBox.Text = member.Phone;
+            this.dobPicker.Value = member.DOB;
+            this.address1TextBox.Text = member.Address1;
+            this.address2TextBox.Text = member.Address2;
+            this.cityTextBox.Text = member.City;
+            this.stateTextBox.Text = member.State;
+            this.zipTextBox.Text = member.Zip;
         }
 
         /// <summary>
@@ -277,7 +315,7 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void FormFieldChanged(object sender, System.EventArgs e)
         {
-            this.errorMessage.Visible = false;
+            this.statusMessage.Visible = false;
         }
 
         /// <summary>
@@ -293,7 +331,7 @@ namespace RentMe.UserControls
             else if (this.InvalidInput(this.phoneTextBox, this.GenerateRegexForTextBox(this.phoneTextBox)))
             {
                 throw new Exception("Invalid phone number.\n" +
-                    "Should use the format XXX-XXX-XXXX");
+                    "Should consist of numbers and be in XXX-XXX-XXXX format");
             }
             else if (this.InvalidInput(this.address1TextBox, this.GenerateRegexForTextBox(this.address1TextBox)))
             {
@@ -328,7 +366,7 @@ namespace RentMe.UserControls
             {
                 throw new ArgumentException("TextBox and Regex cannot be null");
             }
-
+ 
             return !regex.IsMatch(textBox.Text);
         }
 
@@ -349,31 +387,67 @@ namespace RentMe.UserControls
             switch (textBox.Name)
             {
                 case "fnameTextBox":
-                    regex = new Regex("/[[:alpha:]]/m");
+                    regex = new Regex("[a-zA-Z]");
                     break;
                 case "lnameTextBox":
-                    regex = new Regex("/[[:alpha:]]/m");
+                    regex = new Regex("[a-zA-Z]");
                     break;
                 case "phoneTextBox":
-                    regex = new Regex("^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$");
+                    regex = new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
                     break;
                 case "address1TextBox":
                     regex = new Regex("^[0-9a-zA-Z#&/. -]+$");
                     break;
                 case "cityTextBox":
-                    regex = new Regex("/[[:alpha:]]/m");
+                    regex = new Regex("[a-zA-Z]");
                     break;
                 case "stateTextBox":
                     regex = new Regex("^[a-zA-Z]{2}$");
                     break;
                 case "zipTextBox":
-                    regex = new Regex("^[0-9]{5}$");
+                    regex = new Regex("[0-9]{5}");
                     break;
                 default:
                     break;
             }
 
             return regex;
+        }
+
+        /// <summary>
+        /// Enables, disables buttons based on state of the form.
+        /// </summary>
+        private void ToggleFormButtons(bool enabled)
+        {
+            this.updateButton.Enabled = enabled;
+            this.deleteButton.Enabled = enabled;
+            this.registerButton.Enabled = !enabled;
+        }
+
+        /// <summary>
+        /// Updates the error message to reflect 
+        /// the status of the form.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="isError"></param>
+        private void UpdateStatusMessage(string message, bool isError)
+        {
+            if (string.IsNullOrEmpty(message))
+            {
+                throw new ArgumentException("Message cannot be null or empty");
+            }
+
+            if (isError)
+            {
+                this.statusMessage.ForeColor = Color.Red;
+            }
+            else
+            {
+                this.statusMessage.ForeColor = Color.Black;
+            }
+
+            this.statusMessage.Text = message;
+            this.statusMessage.Visible = true;
         }
     }
 }

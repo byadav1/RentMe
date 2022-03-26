@@ -8,7 +8,7 @@ namespace RentMe.Model
     public class Member
     {
         /// <summary>
-        /// Member attributes.
+        /// Member properties.
         /// </summary>
         public int MemberID { get; set; }
         public string FName { get; set; }

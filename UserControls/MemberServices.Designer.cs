@@ -29,7 +29,7 @@ namespace RentMe.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.errorMessage = new System.Windows.Forms.Label();
+            this.statusMessage = new System.Windows.Forms.Label();
             this.lnameTextBox = new System.Windows.Forms.TextBox();
             this.lnameLabel = new System.Windows.Forms.Label();
             this.registerMemberHeaderLabel = new System.Windows.Forms.Label();
@@ -66,20 +66,20 @@ namespace RentMe.UserControls
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // errorMessage
+            // statusMessage
             // 
-            this.errorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.errorMessage.AutoSize = true;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.errorMessage, 2);
-            this.errorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessage.ForeColor = System.Drawing.Color.Red;
-            this.errorMessage.Location = new System.Drawing.Point(240, 582);
-            this.errorMessage.Name = "errorMessage";
-            this.errorMessage.Size = new System.Drawing.Size(119, 24);
-            this.errorMessage.TabIndex = 23;
-            this.errorMessage.Text = "Invalid Fields";
-            this.errorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.errorMessage.Visible = false;
+            this.statusMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.statusMessage.AutoSize = true;
+            this.registrationTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
+            this.statusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusMessage.ForeColor = System.Drawing.Color.Red;
+            this.statusMessage.Location = new System.Drawing.Point(240, 582);
+            this.statusMessage.Name = "statusMessage";
+            this.statusMessage.Size = new System.Drawing.Size(119, 24);
+            this.statusMessage.TabIndex = 23;
+            this.statusMessage.Text = "Invalid Fields";
+            this.statusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.statusMessage.Visible = false;
             // 
             // lnameTextBox
             // 
@@ -394,7 +394,7 @@ namespace RentMe.UserControls
             this.registrationTableLayoutPanel.ColumnCount = 2;
             this.registrationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.registrationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.registrationTableLayoutPanel.Controls.Add(this.errorMessage, 0, 12);
+            this.registrationTableLayoutPanel.Controls.Add(this.statusMessage, 0, 12);
             this.registrationTableLayoutPanel.Controls.Add(this.lnameTextBox, 1, 3);
             this.registrationTableLayoutPanel.Controls.Add(this.lnameLabel, 0, 3);
             this.registrationTableLayoutPanel.Controls.Add(this.registerMemberHeaderLabel, 0, 0);
@@ -454,7 +454,7 @@ namespace RentMe.UserControls
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(594, 69);
             this.tableLayoutPanel1.TabIndex = 24;
             // 
@@ -464,7 +464,7 @@ namespace RentMe.UserControls
             this.searchMemberLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.searchMemberLabel, 2);
             this.searchMemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchMemberLabel.Location = new System.Drawing.Point(108, 37);
+            this.searchMemberLabel.Location = new System.Drawing.Point(108, 43);
             this.searchMemberLabel.Name = "searchMemberLabel";
             this.searchMemberLabel.Size = new System.Drawing.Size(378, 20);
             this.searchMemberLabel.TabIndex = 3;
@@ -473,9 +473,10 @@ namespace RentMe.UserControls
             // searchMemberTextBox
             // 
             this.searchMemberTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.searchMemberTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchMemberTextBox.Location = new System.Drawing.Point(88, 7);
             this.searchMemberTextBox.Name = "searchMemberTextBox";
-            this.searchMemberTextBox.Size = new System.Drawing.Size(314, 22);
+            this.searchMemberTextBox.Size = new System.Drawing.Size(314, 28);
             this.searchMemberTextBox.TabIndex = 0;
             this.searchMemberTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
@@ -483,7 +484,7 @@ namespace RentMe.UserControls
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(408, 3);
+            this.searchButton.Location = new System.Drawing.Point(408, 6);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(98, 31);
             this.searchButton.TabIndex = 2;
@@ -509,7 +510,7 @@ namespace RentMe.UserControls
 
         #endregion
 
-        private System.Windows.Forms.Label errorMessage;
+        private System.Windows.Forms.Label statusMessage;
         private System.Windows.Forms.TableLayoutPanel registrationTableLayoutPanel;
         private System.Windows.Forms.TextBox lnameTextBox;
         private System.Windows.Forms.Label lnameLabel;
