@@ -159,16 +159,17 @@ namespace RentMe.UserControls
             if (this.InvalidInput(this.fnameTextBox, this.GenerateRegexForTextBox(this.fnameTextBox)) ||
                 this.InvalidInput(this.lnameTextBox, this.GenerateRegexForTextBox(this.lnameTextBox)))
             {
-                throw new Exception("Name should consist of letters and not:\n be empty, include numbers, or special characters");
+                throw new Exception("Name should consist of letters and not:\n" + 
+                    "be empty, include numbers, or special characters");
             }
             else if (this.InvalidInput(this.phoneTextBox, this.GenerateRegexForTextBox(this.phoneTextBox)))
             {
-                throw new Exception("Invalid phone number.\n" +
+                throw new Exception("Invalid phone number:\n" +
                     "Should consist of numbers and be in XXX-XXX-XXXX format");
             }
             else if (this.InvalidInput(this.address1TextBox, this.GenerateRegexForTextBox(this.address1TextBox)))
             {
-                throw new Exception("Address 1 cannot be empty: " +
+                throw new Exception("Address 1 cannot be empty:\n" +
                     "special characters except / - . # & are prohibited");
             }
             else if (this.InvalidInput(this.cityTextBox, this.GenerateRegexForTextBox(this.cityTextBox)))
@@ -186,7 +187,7 @@ namespace RentMe.UserControls
             }
             else if (this.InvalidInput(this.usernameTextBox, this.GenerateRegexForTextBox(this.usernameTextBox)))
             {
-                throw new Exception("Username must be at least 8 characters: " +
+                throw new Exception("Username must be at least 8 characters:\n" +
                     "special characters except _ are prohibited");
             }
             else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox)))
@@ -218,7 +219,7 @@ namespace RentMe.UserControls
         /// the passed TextBox form field.
         /// </summary>
         /// <param name="textBox"></param>
-        /// <returns></returns>
+        /// <returns>Regex assigned to TextBox case</returns>
         private Regex GenerateRegexForTextBox(TextBox textBox)
         {
             if (textBox == null)
