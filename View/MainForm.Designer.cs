@@ -34,7 +34,7 @@ namespace RentMe.View
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.searchMemberTab = new System.Windows.Forms.TabPage();
-            this.memberServices1 = new RentMe.UserControls.MemberServices();
+            this.memberServices = new RentMe.UserControls.MemberServices();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.searchMemberTab.SuspendLayout();
@@ -96,7 +96,7 @@ namespace RentMe.View
             // 
             // searchMemberTab
             // 
-            this.searchMemberTab.Controls.Add(this.memberServices1);
+            this.searchMemberTab.Controls.Add(this.memberServices);
             this.searchMemberTab.Location = new System.Drawing.Point(4, 25);
             this.searchMemberTab.Name = "searchMemberTab";
             this.searchMemberTab.Padding = new System.Windows.Forms.Padding(3);
@@ -105,13 +105,13 @@ namespace RentMe.View
             this.searchMemberTab.Text = "Search Member";
             this.searchMemberTab.UseVisualStyleBackColor = true;
             // 
-            // memberServices1
+            // memberServices
             // 
-            this.memberServices1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberServices1.Location = new System.Drawing.Point(3, 3);
-            this.memberServices1.Name = "memberServices1";
-            this.memberServices1.Size = new System.Drawing.Size(558, 679);
-            this.memberServices1.TabIndex = 0;
+            this.memberServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberServices.Location = new System.Drawing.Point(3, 3);
+            this.memberServices.Name = "memberServices";
+            this.memberServices.Size = new System.Drawing.Size(558, 679);
+            this.memberServices.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -139,6 +139,6 @@ namespace RentMe.View
         private System.Windows.Forms.Label currentUserLabel;
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage searchMemberTab;
-        private UserControls.MemberServices memberServices1;
+        private UserControls.MemberServices memberServices;
     }
 }

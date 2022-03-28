@@ -32,7 +32,7 @@ namespace RentMe.UserControls
             this.statusMessage = new System.Windows.Forms.Label();
             this.lnameTextBox = new System.Windows.Forms.TextBox();
             this.lnameLabel = new System.Windows.Forms.Label();
-            this.registerMemberHeaderLabel = new System.Windows.Forms.Label();
+            this.memberServicesHeaderLabel = new System.Windows.Forms.Label();
             this.registrationButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
@@ -57,13 +57,13 @@ namespace RentMe.UserControls
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.registrationTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.searchMemberLabel = new System.Windows.Forms.Label();
             this.searchMemberTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.registrationButtonsTableLayoutPanel.SuspendLayout();
             this.registrationTableLayoutPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.searchTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusMessage
@@ -103,18 +103,18 @@ namespace RentMe.UserControls
             this.lnameLabel.TabIndex = 5;
             this.lnameLabel.Text = "Last Name:";
             // 
-            // registerMemberHeaderLabel
+            // memberServicesHeaderLabel
             // 
-            this.registerMemberHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.registerMemberHeaderLabel.AutoSize = true;
-            this.registerMemberHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.registerMemberHeaderLabel, 2);
-            this.registerMemberHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerMemberHeaderLabel.Location = new System.Drawing.Point(91, 26);
-            this.registerMemberHeaderLabel.Name = "registerMemberHeaderLabel";
-            this.registerMemberHeaderLabel.Size = new System.Drawing.Size(417, 60);
-            this.registerMemberHeaderLabel.TabIndex = 1;
-            this.registerMemberHeaderLabel.Text = "Member Services";
+            this.memberServicesHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.memberServicesHeaderLabel.AutoSize = true;
+            this.memberServicesHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.registrationTableLayoutPanel.SetColumnSpan(this.memberServicesHeaderLabel, 2);
+            this.memberServicesHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memberServicesHeaderLabel.Location = new System.Drawing.Point(91, 26);
+            this.memberServicesHeaderLabel.Name = "memberServicesHeaderLabel";
+            this.memberServicesHeaderLabel.Size = new System.Drawing.Size(417, 60);
+            this.memberServicesHeaderLabel.TabIndex = 1;
+            this.memberServicesHeaderLabel.Text = "Member Services";
             // 
             // registrationButtonsTableLayoutPanel
             // 
@@ -397,7 +397,7 @@ namespace RentMe.UserControls
             this.registrationTableLayoutPanel.Controls.Add(this.statusMessage, 0, 12);
             this.registrationTableLayoutPanel.Controls.Add(this.lnameTextBox, 1, 3);
             this.registrationTableLayoutPanel.Controls.Add(this.lnameLabel, 0, 3);
-            this.registrationTableLayoutPanel.Controls.Add(this.registerMemberHeaderLabel, 0, 0);
+            this.registrationTableLayoutPanel.Controls.Add(this.memberServicesHeaderLabel, 0, 0);
             this.registrationTableLayoutPanel.Controls.Add(this.registrationButtonsTableLayoutPanel, 0, 13);
             this.registrationTableLayoutPanel.Controls.Add(this.fnameLabel, 0, 2);
             this.registrationTableLayoutPanel.Controls.Add(this.fnameTextBox, 1, 2);
@@ -417,7 +417,7 @@ namespace RentMe.UserControls
             this.registrationTableLayoutPanel.Controls.Add(this.stateTextBox, 1, 10);
             this.registrationTableLayoutPanel.Controls.Add(this.zipTextBox, 1, 11);
             this.registrationTableLayoutPanel.Controls.Add(this.sexComboBox, 1, 4);
-            this.registrationTableLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.registrationTableLayoutPanel.Controls.Add(this.searchTableLayoutPanel, 0, 1);
             this.registrationTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.registrationTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.registrationTableLayoutPanel.Name = "registrationTableLayoutPanel";
@@ -439,31 +439,31 @@ namespace RentMe.UserControls
             this.registrationTableLayoutPanel.Size = new System.Drawing.Size(600, 750);
             this.registrationTableLayoutPanel.TabIndex = 1;
             // 
-            // tableLayoutPanel1
+            // searchTableLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.tableLayoutPanel1, 2);
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.35017F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.64983F));
-            this.tableLayoutPanel1.Controls.Add(this.searchMemberLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.searchMemberTextBox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.searchButton, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 115);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(594, 69);
-            this.tableLayoutPanel1.TabIndex = 24;
+            this.searchTableLayoutPanel.ColumnCount = 2;
+            this.registrationTableLayoutPanel.SetColumnSpan(this.searchTableLayoutPanel, 2);
+            this.searchTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.searchTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.searchTableLayoutPanel.Controls.Add(this.searchMemberLabel, 0, 1);
+            this.searchTableLayoutPanel.Controls.Add(this.searchMemberTextBox, 0, 0);
+            this.searchTableLayoutPanel.Controls.Add(this.searchButton, 1, 0);
+            this.searchTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchTableLayoutPanel.Location = new System.Drawing.Point(3, 115);
+            this.searchTableLayoutPanel.Name = "searchTableLayoutPanel";
+            this.searchTableLayoutPanel.RowCount = 2;
+            this.searchTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.searchTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.searchTableLayoutPanel.Size = new System.Drawing.Size(594, 69);
+            this.searchTableLayoutPanel.TabIndex = 24;
             // 
             // searchMemberLabel
             // 
             this.searchMemberLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.searchMemberLabel.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.searchMemberLabel, 2);
+            this.searchTableLayoutPanel.SetColumnSpan(this.searchMemberLabel, 2);
             this.searchMemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchMemberLabel.Location = new System.Drawing.Point(108, 43);
+            this.searchMemberLabel.Location = new System.Drawing.Point(108, 48);
             this.searchMemberLabel.Name = "searchMemberLabel";
             this.searchMemberLabel.Size = new System.Drawing.Size(378, 20);
             this.searchMemberLabel.TabIndex = 3;
@@ -473,7 +473,7 @@ namespace RentMe.UserControls
             // 
             this.searchMemberTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.searchMemberTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchMemberTextBox.Location = new System.Drawing.Point(88, 7);
+            this.searchMemberTextBox.Location = new System.Drawing.Point(98, 10);
             this.searchMemberTextBox.Name = "searchMemberTextBox";
             this.searchMemberTextBox.Size = new System.Drawing.Size(314, 28);
             this.searchMemberTextBox.TabIndex = 0;
@@ -483,9 +483,9 @@ namespace RentMe.UserControls
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(408, 6);
+            this.searchButton.Location = new System.Drawing.Point(418, 9);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(98, 31);
+            this.searchButton.Size = new System.Drawing.Size(100, 30);
             this.searchButton.TabIndex = 2;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -501,8 +501,8 @@ namespace RentMe.UserControls
             this.registrationButtonsTableLayoutPanel.ResumeLayout(false);
             this.registrationTableLayoutPanel.ResumeLayout(false);
             this.registrationTableLayoutPanel.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.searchTableLayoutPanel.ResumeLayout(false);
+            this.searchTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -513,7 +513,7 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TableLayoutPanel registrationTableLayoutPanel;
         private System.Windows.Forms.TextBox lnameTextBox;
         private System.Windows.Forms.Label lnameLabel;
-        private System.Windows.Forms.Label registerMemberHeaderLabel;
+        private System.Windows.Forms.Label memberServicesHeaderLabel;
         private System.Windows.Forms.TableLayoutPanel registrationButtonsTableLayoutPanel;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button clearButton;
@@ -536,7 +536,7 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.ComboBox sexComboBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel searchTableLayoutPanel;
         private System.Windows.Forms.TextBox searchMemberTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button deleteButton;

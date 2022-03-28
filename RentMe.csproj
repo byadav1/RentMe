@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,9 +54,16 @@
     <Compile Include="DAL\MembersDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
+    <Compile Include="UserControls\FurnitureRental.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FurnitureRental.Designer.cs">
+      <DependentUpon>FurnitureRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MemberServices.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,6 +93,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\FurnitureRental.resx">
+      <DependentUpon>FurnitureRental.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberServices.resx">
       <DependentUpon>MemberServices.cs</DependentUpon>
     </EmbeddedResource>
