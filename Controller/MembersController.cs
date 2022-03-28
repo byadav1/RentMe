@@ -43,7 +43,7 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Register and return a new RentMe Member.
+        /// Register a new RentMe Member.
         /// </summary>
         /// <param name="member"></param>
         public void RegisterNewMember(Member member)
