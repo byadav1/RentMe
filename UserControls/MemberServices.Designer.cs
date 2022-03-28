@@ -33,7 +33,7 @@ namespace RentMe.UserControls
             this.lnameTextBox = new System.Windows.Forms.TextBox();
             this.lnameLabel = new System.Windows.Forms.Label();
             this.memberServicesHeaderLabel = new System.Windows.Forms.Label();
-            this.registrationButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.memberServicesButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.registerButton = new System.Windows.Forms.Button();
@@ -56,21 +56,21 @@ namespace RentMe.UserControls
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
-            this.registrationTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.searchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.memberServicesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.searchMemberTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.searchMemberLabel = new System.Windows.Forms.Label();
             this.searchMemberTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.registrationButtonsTableLayoutPanel.SuspendLayout();
-            this.registrationTableLayoutPanel.SuspendLayout();
-            this.searchTableLayoutPanel.SuspendLayout();
+            this.memberServicesButtonsTableLayoutPanel.SuspendLayout();
+            this.memberServicesTableLayoutPanel.SuspendLayout();
+            this.searchMemberTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusMessage
             // 
             this.statusMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.statusMessage.AutoSize = true;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
+            this.memberServicesTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
             this.statusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMessage.ForeColor = System.Drawing.Color.Red;
             this.statusMessage.Location = new System.Drawing.Point(240, 582);
@@ -108,7 +108,7 @@ namespace RentMe.UserControls
             this.memberServicesHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.memberServicesHeaderLabel.AutoSize = true;
             this.memberServicesHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.memberServicesHeaderLabel, 2);
+            this.memberServicesTableLayoutPanel.SetColumnSpan(this.memberServicesHeaderLabel, 2);
             this.memberServicesHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberServicesHeaderLabel.Location = new System.Drawing.Point(91, 26);
             this.memberServicesHeaderLabel.Name = "memberServicesHeaderLabel";
@@ -116,25 +116,25 @@ namespace RentMe.UserControls
             this.memberServicesHeaderLabel.TabIndex = 1;
             this.memberServicesHeaderLabel.Text = "Member Services";
             // 
-            // registrationButtonsTableLayoutPanel
+            // memberServicesButtonsTableLayoutPanel
             // 
-            this.registrationButtonsTableLayoutPanel.ColumnCount = 4;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.registrationButtonsTableLayoutPanel, 3);
-            this.registrationButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.registrationButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.registrationButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.registrationButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.registrationButtonsTableLayoutPanel.Controls.Add(this.deleteButton, 0, 0);
-            this.registrationButtonsTableLayoutPanel.Controls.Add(this.updateButton, 0, 0);
-            this.registrationButtonsTableLayoutPanel.Controls.Add(this.registerButton, 3, 0);
-            this.registrationButtonsTableLayoutPanel.Controls.Add(this.clearButton, 2, 0);
-            this.registrationButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registrationButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 635);
-            this.registrationButtonsTableLayoutPanel.Name = "registrationButtonsTableLayoutPanel";
-            this.registrationButtonsTableLayoutPanel.RowCount = 1;
-            this.registrationButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.registrationButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 112);
-            this.registrationButtonsTableLayoutPanel.TabIndex = 11;
+            this.memberServicesButtonsTableLayoutPanel.ColumnCount = 4;
+            this.memberServicesTableLayoutPanel.SetColumnSpan(this.memberServicesButtonsTableLayoutPanel, 3);
+            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.deleteButton, 0, 0);
+            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.updateButton, 0, 0);
+            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.registerButton, 3, 0);
+            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.clearButton, 2, 0);
+            this.memberServicesButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 635);
+            this.memberServicesButtonsTableLayoutPanel.Name = "memberServicesButtonsTableLayoutPanel";
+            this.memberServicesButtonsTableLayoutPanel.RowCount = 1;
+            this.memberServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.memberServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 112);
+            this.memberServicesButtonsTableLayoutPanel.TabIndex = 11;
             // 
             // deleteButton
             // 
@@ -389,80 +389,79 @@ namespace RentMe.UserControls
             this.sexComboBox.TabIndex = 3;
             this.sexComboBox.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
-            // registrationTableLayoutPanel
+            // memberServicesTableLayoutPanel
             // 
-            this.registrationTableLayoutPanel.ColumnCount = 2;
-            this.registrationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.registrationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.registrationTableLayoutPanel.Controls.Add(this.statusMessage, 0, 12);
-            this.registrationTableLayoutPanel.Controls.Add(this.lnameTextBox, 1, 3);
-            this.registrationTableLayoutPanel.Controls.Add(this.lnameLabel, 0, 3);
-            this.registrationTableLayoutPanel.Controls.Add(this.memberServicesHeaderLabel, 0, 0);
-            this.registrationTableLayoutPanel.Controls.Add(this.registrationButtonsTableLayoutPanel, 0, 13);
-            this.registrationTableLayoutPanel.Controls.Add(this.fnameLabel, 0, 2);
-            this.registrationTableLayoutPanel.Controls.Add(this.fnameTextBox, 1, 2);
-            this.registrationTableLayoutPanel.Controls.Add(this.sexLabel, 0, 4);
-            this.registrationTableLayoutPanel.Controls.Add(this.phoneLabel, 0, 5);
-            this.registrationTableLayoutPanel.Controls.Add(this.dobLabel, 0, 6);
-            this.registrationTableLayoutPanel.Controls.Add(this.address1Label, 0, 7);
-            this.registrationTableLayoutPanel.Controls.Add(this.address2Label, 0, 8);
-            this.registrationTableLayoutPanel.Controls.Add(this.cityLabel, 0, 9);
-            this.registrationTableLayoutPanel.Controls.Add(this.stateLabel, 0, 10);
-            this.registrationTableLayoutPanel.Controls.Add(this.zipLabel, 0, 11);
-            this.registrationTableLayoutPanel.Controls.Add(this.phoneTextBox, 1, 5);
-            this.registrationTableLayoutPanel.Controls.Add(this.dobPicker, 1, 6);
-            this.registrationTableLayoutPanel.Controls.Add(this.address1TextBox, 1, 7);
-            this.registrationTableLayoutPanel.Controls.Add(this.address2TextBox, 1, 8);
-            this.registrationTableLayoutPanel.Controls.Add(this.cityTextBox, 1, 9);
-            this.registrationTableLayoutPanel.Controls.Add(this.stateTextBox, 1, 10);
-            this.registrationTableLayoutPanel.Controls.Add(this.zipTextBox, 1, 11);
-            this.registrationTableLayoutPanel.Controls.Add(this.sexComboBox, 1, 4);
-            this.registrationTableLayoutPanel.Controls.Add(this.searchTableLayoutPanel, 0, 1);
-            this.registrationTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registrationTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.registrationTableLayoutPanel.Name = "registrationTableLayoutPanel";
-            this.registrationTableLayoutPanel.RowCount = 14;
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.registrationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.registrationTableLayoutPanel.Size = new System.Drawing.Size(600, 750);
-            this.registrationTableLayoutPanel.TabIndex = 1;
+            this.memberServicesTableLayoutPanel.ColumnCount = 2;
+            this.memberServicesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.memberServicesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.memberServicesTableLayoutPanel.Controls.Add(this.statusMessage, 0, 12);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.lnameTextBox, 1, 3);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.lnameLabel, 0, 3);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.memberServicesHeaderLabel, 0, 0);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.memberServicesButtonsTableLayoutPanel, 0, 13);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.fnameLabel, 0, 2);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.fnameTextBox, 1, 2);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.sexLabel, 0, 4);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.phoneLabel, 0, 5);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.dobLabel, 0, 6);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.address1Label, 0, 7);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.address2Label, 0, 8);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.cityLabel, 0, 9);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.stateLabel, 0, 10);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.zipLabel, 0, 11);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.phoneTextBox, 1, 5);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.dobPicker, 1, 6);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.address1TextBox, 1, 7);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.address2TextBox, 1, 8);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.cityTextBox, 1, 9);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.stateTextBox, 1, 10);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.zipTextBox, 1, 11);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.sexComboBox, 1, 4);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.searchMemberTableLayoutPanel, 0, 1);
+            this.memberServicesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberServicesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.memberServicesTableLayoutPanel.Name = "memberServicesTableLayoutPanel";
+            this.memberServicesTableLayoutPanel.RowCount = 14;
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.memberServicesTableLayoutPanel.Size = new System.Drawing.Size(600, 750);
+            this.memberServicesTableLayoutPanel.TabIndex = 1;
             // 
-            // searchTableLayoutPanel
+            // searchMemberTableLayoutPanel
             // 
-            this.searchTableLayoutPanel.ColumnCount = 2;
-            this.registrationTableLayoutPanel.SetColumnSpan(this.searchTableLayoutPanel, 2);
-            this.searchTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.searchTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.searchTableLayoutPanel.Controls.Add(this.searchMemberLabel, 0, 1);
-            this.searchTableLayoutPanel.Controls.Add(this.searchMemberTextBox, 0, 0);
-            this.searchTableLayoutPanel.Controls.Add(this.searchButton, 1, 0);
-            this.searchTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchTableLayoutPanel.Location = new System.Drawing.Point(3, 115);
-            this.searchTableLayoutPanel.Name = "searchTableLayoutPanel";
-            this.searchTableLayoutPanel.RowCount = 2;
-            this.searchTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.searchTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.searchTableLayoutPanel.Size = new System.Drawing.Size(594, 69);
-            this.searchTableLayoutPanel.TabIndex = 24;
+            this.searchMemberTableLayoutPanel.ColumnCount = 2;
+            this.memberServicesTableLayoutPanel.SetColumnSpan(this.searchMemberTableLayoutPanel, 2);
+            this.searchMemberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.searchMemberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.searchMemberTableLayoutPanel.Controls.Add(this.searchMemberLabel, 0, 1);
+            this.searchMemberTableLayoutPanel.Controls.Add(this.searchMemberTextBox, 0, 0);
+            this.searchMemberTableLayoutPanel.Controls.Add(this.searchButton, 1, 0);
+            this.searchMemberTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchMemberTableLayoutPanel.Location = new System.Drawing.Point(3, 115);
+            this.searchMemberTableLayoutPanel.Name = "searchMemberTableLayoutPanel";
+            this.searchMemberTableLayoutPanel.RowCount = 2;
+            this.searchMemberTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.searchMemberTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.searchMemberTableLayoutPanel.Size = new System.Drawing.Size(594, 69);
+            this.searchMemberTableLayoutPanel.TabIndex = 24;
             // 
             // searchMemberLabel
             // 
             this.searchMemberLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.searchMemberLabel.AutoSize = true;
-            this.searchTableLayoutPanel.SetColumnSpan(this.searchMemberLabel, 2);
+            this.searchMemberTableLayoutPanel.SetColumnSpan(this.searchMemberLabel, 2);
             this.searchMemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchMemberLabel.Location = new System.Drawing.Point(108, 48);
             this.searchMemberLabel.Name = "searchMemberLabel";
@@ -496,14 +495,14 @@ namespace RentMe.UserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.registrationTableLayoutPanel);
+            this.Controls.Add(this.memberServicesTableLayoutPanel);
             this.Name = "MemberServices";
             this.Size = new System.Drawing.Size(600, 750);
-            this.registrationButtonsTableLayoutPanel.ResumeLayout(false);
-            this.registrationTableLayoutPanel.ResumeLayout(false);
-            this.registrationTableLayoutPanel.PerformLayout();
-            this.searchTableLayoutPanel.ResumeLayout(false);
-            this.searchTableLayoutPanel.PerformLayout();
+            this.memberServicesButtonsTableLayoutPanel.ResumeLayout(false);
+            this.memberServicesTableLayoutPanel.ResumeLayout(false);
+            this.memberServicesTableLayoutPanel.PerformLayout();
+            this.searchMemberTableLayoutPanel.ResumeLayout(false);
+            this.searchMemberTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -511,11 +510,11 @@ namespace RentMe.UserControls
         #endregion
 
         private System.Windows.Forms.Label statusMessage;
-        private System.Windows.Forms.TableLayoutPanel registrationTableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel memberServicesTableLayoutPanel;
         private System.Windows.Forms.TextBox lnameTextBox;
         private System.Windows.Forms.Label lnameLabel;
         private System.Windows.Forms.Label memberServicesHeaderLabel;
-        private System.Windows.Forms.TableLayoutPanel registrationButtonsTableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel memberServicesButtonsTableLayoutPanel;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button registerButton;
@@ -537,7 +536,7 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.ComboBox sexComboBox;
-        private System.Windows.Forms.TableLayoutPanel searchTableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel searchMemberTableLayoutPanel;
         private System.Windows.Forms.TextBox searchMemberTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button deleteButton;

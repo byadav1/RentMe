@@ -20,7 +20,6 @@ namespace RentMe.UserControls
     /// </summary>
     public partial class MemberServices : UserControl
     {
-
         private readonly MembersController membersController;
         private Member memberSearchDetails;
 
@@ -238,9 +237,9 @@ namespace RentMe.UserControls
                     this.ToggleFormButtons(true);
                 }
             }
-            catch (ArgumentException ae)
+            catch (Exception ex)
             {
-                this.UpdateStatusMessage(ae.Message, true);
+                this.UpdateStatusMessage(ex.Message, true);
             }
         }
 
@@ -390,7 +389,8 @@ namespace RentMe.UserControls
             if (this.InvalidInput(this.fnameTextBox, this.GenerateRegexForTextBox(this.fnameTextBox)) ||
                 this.InvalidInput(this.lnameTextBox, this.GenerateRegexForTextBox(this.lnameTextBox)))
             {
-                throw new Exception("Name should consist of letters and not:\n be empty, include numbers, or special characters");
+                throw new Exception("Name should consist of letters and not:\n" + 
+                    "be empty, include numbers, or special characters");
             }
             else if (this.InvalidInput(this.phoneTextBox, this.GenerateRegexForTextBox(this.phoneTextBox)))
             {
@@ -399,8 +399,8 @@ namespace RentMe.UserControls
             }
             else if (this.InvalidInput(this.address1TextBox, this.GenerateRegexForTextBox(this.address1TextBox)))
             {
-                throw new Exception("Address 1 cannot be empty: " +
-                    "special characters except - and . are prohibited");
+                throw new Exception("Address 1 cannot be empty:\n" +
+                    "special characters except / - . # & are prohibited");
             }
             else if (this.InvalidInput(this.cityTextBox, this.GenerateRegexForTextBox(this.cityTextBox)))
             {
@@ -451,10 +451,10 @@ namespace RentMe.UserControls
             switch (textBox.Name)
             {
                 case "fnameTextBox":
-                    regex = new Regex("[a-zA-Z]");
+                    regex = new Regex("^[a-zA-Z]+$");
                     break;
                 case "lnameTextBox":
-                    regex = new Regex("[a-zA-Z]");
+                    regex = new Regex("^[a-zA-Z]+$");
                     break;
                 case "phoneTextBox":
                     regex = new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
@@ -463,7 +463,7 @@ namespace RentMe.UserControls
                     regex = new Regex("^[0-9a-zA-Z#&/. -]+$");
                     break;
                 case "cityTextBox":
-                    regex = new Regex("[a-zA-Z]");
+                    regex = new Regex("^[a-zA-Z ]+$");
                     break;
                 case "stateTextBox":
                     regex = new Regex("^[a-zA-Z]{2}$");
