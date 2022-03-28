@@ -1,6 +1,7 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using RentMe.Validators;
+using System;
 
 namespace RentMe.Controller
 {
@@ -11,13 +12,67 @@ namespace RentMe.Controller
     /// </summary>
     public class MembersController
     {
+
+        private readonly MembersDAL _memberDBSource;
         /// <summary>
         /// 0-param constructor.
         /// </summary>
         public MembersController()
         {
-
+            this._memberDBSource = new MembersDAL();
         }
+
+        /// <summary>
+        /// Gets the member details from the DAL.
+        /// </summary>
+        /// <returns>List of product name</returns>
+        public Member SearchMember(Member memberSearch)
+        {
+
+            if (memberSearch==null)
+            {
+                throw new ArgumentNullException("Please enter member ID or Phone or Name to get the memeber details");
+            }
+
+            Member memberInformation = this._memberDBSource.GetMemberDetails(memberSearch);
+            if (memberInformation == null )
+            {
+                throw new ArgumentNullException("Member deatils not found. Please proceed with Registration");
+
+            }
+
+            return memberInformation;
+        }
+
+        /// <summary>
+        /// Update the member details from the DAL.
+        /// </summary>
+        /// <returns>List of product name</returns>
+        public bool UpdateMemberInformation(Member oldMember, Member newMember)
+        {
+
+            if (oldMember == null && newMember== null)
+            {
+                throw new ArgumentNullException("Update cannot be performed with no change in data");
+            }
+            return  this._memberDBSource.UpdateMemberDetails(oldMember, newMember);
+        }
+
+
+        /// <summary>
+        /// Update the member details from the DAL.
+        /// </summary>
+        /// <returns>List of product name</returns>
+        public bool DeleteMember(Member member)
+        {
+
+            if (member == null)
+            {
+                throw new ArgumentNullException("Delete cannot be performed ");
+            }
+            return this._memberDBSource.DeactivateMember(member);
+        }
+
 
         /// <summary>
         /// Return true if member account exists

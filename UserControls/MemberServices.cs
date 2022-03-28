@@ -1,10 +1,15 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
-using RentMe.Validators;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+
+using RentMe.Validators;
+
+using System.Drawing;
+
 
 namespace RentMe.UserControls
 {
@@ -17,6 +22,7 @@ namespace RentMe.UserControls
     {
 
         private readonly MembersController membersController;
+        private Member memberSearchDetails;
 
         /// <summary>
         /// Initialize the control.
@@ -47,20 +53,53 @@ namespace RentMe.UserControls
         {
             try
             {
-                Member member = this.CreateMemberFromSearch();
-                if (this.membersController.ValidMemberSearch(member))
+                this.memberSearchDetails = this.CreateMemberFromSearch();
+                if (this.membersController.ValidMemberSearch(this.memberSearchDetails))
                 {
-                    member = this.membersController.GetMemberFromSearch(member);                   
+                    this.memberSearchDetails = this.membersController.GetMemberFromSearch(this.memberSearchDetails);
                     this.ToggleFormButtons(true);
-                    this.SetFields(member);
+                    this.SetFields(this.memberSearchDetails);
                 }
             }
-            catch(ArgumentException ae)
-            {               
+            catch (ArgumentException ae)
+            {
                 this.UpdateStatusMessage(ae.Message, true);
                 this.ToggleFormButtons(false);
-            }        
+            }
+
+
+
+
+            // try
+            //{
+            //    Member member = this.CreateMemberFromSearch();
+            //    //  this.membersController.MemberSearchSuccessful(member);
+            //    this.memberSearchDetails = this.membersController.SearchMember(member);
+            //    this.DisplayMemberDetails();
+            // }
+           // catch (ArgumentException ae)
+            //{
+             //   this.statusMessage.Visible = true;
+            //    this.statusMessage.Text = ae.Message;
+           // }
+
         }
+        private void DisplayMemberDetails()
+        {
+            this.fnameTextBox.Text = this.memberSearchDetails.FName;
+            this.lnameTextBox.Text = this.memberSearchDetails.LName;
+            this.phoneTextBox.Text = this.memberSearchDetails.Phone;
+            this.dobPicker.Text = this.memberSearchDetails.DOB.ToString("M/dd/yyyy");
+            this.sexComboBox.Text = this.memberSearchDetails.Sex;
+            this.address1TextBox.Text = this.memberSearchDetails.Address1;
+            this.address2TextBox.Text = this.memberSearchDetails.Address2;
+            this.cityTextBox.Text = this.memberSearchDetails.City;
+            this.zipTextBox.Text = this.memberSearchDetails.Zip;
+            this.stateTextBox.Text = this.memberSearchDetails.State;
+            this.updateButton.Enabled = true; ;
+            this.deleteButton.Enabled = true; ;
+        }
+     
 
         /// <summary>
         /// Event handler for update button click.
@@ -69,16 +108,115 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void UpdateButtonClick(object sender, System.EventArgs e)
         {
+            this.statusMessage.Text = "";
+            try
+            {
+                //   this.ValidateFormFields();
+                this.ProcessUpdate();
+            }
+            catch (Exception ex)
+            {
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = ex.Message;
+            }
 
         }
 
+        private void ProcessUpdate()
+        {
+
+            Member memberUpdateData =
+                new Member()
+                {
+                    MemberID = this.memberSearchDetails.MemberID,
+                    FName = this.fnameTextBox.Text,
+                    LName = this.lnameTextBox.Text,
+                    DOB = this.dobPicker.Value,
+                    Sex = this.sexComboBox.Text,
+                    Phone = this.phoneTextBox.Text,
+                    Address1 = this.address1TextBox.Text,
+                    Address2 = this.address2TextBox.Text,
+                    City = this.cityTextBox.Text,
+                    Zip = this.zipTextBox.Text,
+                    State = this.stateTextBox.Text
+                };
+            if (this.CheckUpdates(memberUpdateData))
+            {
+                if (this.membersController.UpdateMemberInformation(this.memberSearchDetails, memberUpdateData))
+                {
+                    this.statusMessage.Visible = true;
+
+                    this.statusMessage.Text = "Member information updated successfully";
+                    this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
+                }
+                else
+                {
+                    this.statusMessage.Visible = true;
+
+                    this.statusMessage.Text = "Member information cannot be perfomed.Something went wrong with the process or member data is updated at the backend";
+                    this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
+                };
+            }
+            else
+            {
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = "No Updates found!!";
+            }
+        }
+
+        private bool CheckUpdates(Member memberUpdateData)
+        {
+            List<Member> lstOld_MemberData = new List<Member>();
+            List<Member> lstNew_MemberData = new List<Member>();
+            bool isModified = false;
+            lstOld_MemberData.Add(this.memberSearchDetails);
+            lstNew_MemberData.Add(memberUpdateData);
+            if (lstOld_MemberData.Count > 0 && lstNew_MemberData.Count > 0)
+            {
+                var result = lstNew_MemberData.Where(l2 =>
+                      lstOld_MemberData.Any(l1 => l2.MemberID == l1.MemberID
+                              && (l1.FName != l2.FName || l1.LName != l2.LName ||
+                             l1.DOB != l2.DOB ||
+                              l1.Phone != l2.Phone ||
+                              l1.Sex != l2.Sex || l1.Address1 != l2.Address1 ||
+                              l1.Address2 != l2.Address2 || l1.State != l2.State ||
+                              l1.City != l2.City || l1.Zip != l2.Zip
+                              )));
+                isModified = result.Any();
+
+            }
+
+            return isModified;
+        }
+
+
         /// <summary>
-        /// Event handler for delete button click.
+        /// Event handler for clear button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DeleteButtonClick(object sender, System.EventArgs e)
         {
+
+            try
+            {
+
+                if (this.membersController.DeleteMember(this.memberSearchDetails))
+                {
+                    this.statusMessage.Visible = true;
+                    this.statusMessage.Text = "Member deleted  successfully";
+                }
+                else
+                {
+                    this.statusMessage.Visible = true;
+                    this.statusMessage.Text = "Member deletion failed!!";
+                };
+            }
+            catch (Exception ex)
+            {
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = ex.Message;
+            }
 
         }
 
@@ -98,7 +236,7 @@ namespace RentMe.UserControls
                     UpdateStatusMessage("Member registration successfully!\n" +
                     "MemberID is " + member.MemberID, false);
                     this.ToggleFormButtons(true);
-                }              
+                }
             }
             catch (ArgumentException ae)
             {
@@ -209,7 +347,7 @@ namespace RentMe.UserControls
         private DialogResult ConfirmMemberRegistration(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
-            DialogResult result = MessageBox.Show("Are you sure you want to register new RentMe member:\n" + 
+            DialogResult result = MessageBox.Show("Are you sure you want to register new RentMe member:\n" +
                 member.FName + " " + member.LName + "?",
                 "Confirm Member Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             return result;
@@ -292,7 +430,7 @@ namespace RentMe.UserControls
             {
                 throw new ArgumentException("TextBox and Regex cannot be null");
             }
- 
+
             return !regex.IsMatch(textBox.Text);
         }
 
