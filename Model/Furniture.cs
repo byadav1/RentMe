@@ -8,13 +8,13 @@
         /// <summary>
         /// Furniture properties.
         /// </summary>
-        int FurnitureID { get; set; }
-        string Name { get; set; }
-        string Category { get; set; }
-        string Style { get; set; }
-        string Description { get; set; }
-        float DailyRentalRate { get; set; }
-        int Quantity { get; set; }
+        public int FurnitureID { get; set; }
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public string Style { get; set; }
+        public string Description { get; set; }
+        public float DailyRentalRate { get; set; }
+        public int Quantity { get; set; }
 
         public Furniture()
         {
