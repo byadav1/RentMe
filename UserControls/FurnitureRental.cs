@@ -16,5 +16,10 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
         }
+
+        private void FurnitureSearchButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
