@@ -17,4 +17,4 @@ namespace RentMe.Model.Validators
         }
     }
 }
-}
+

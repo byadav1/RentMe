@@ -381,6 +381,7 @@ namespace RentMe.UserControls
             this.statusMessage.Visible = false;
         }
 
+
         /// <summary>
         /// Validates the required form fields.
         /// </summary>
