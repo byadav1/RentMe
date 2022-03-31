@@ -275,5 +275,39 @@ namespace RentMe.DAL
                 }
             }
         }
+
+
+        /// <summary>
+        /// Deactivate an Employee 
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool DeactivateEmployee(Employee employee)
+        {
+            string selectStatement =
+                      " UPDATE Employees SET DELETE_FLAG='Y' Where EmployeeID=@ID";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+
+                    selectCommand.Parameters.AddWithValue("ID", employee.EmployeeID);
+                
+
+                    int resultCount = selectCommand.ExecuteNonQuery();
+                    if (resultCount > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
+
+        }
     }
 }

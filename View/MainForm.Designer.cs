@@ -34,13 +34,16 @@ namespace RentMe.View
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.searchMemberTab = new System.Windows.Forms.TabPage();
-            this.memberServices = new RentMe.UserControls.MemberServices();
             this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
+            this.employeeTabPage = new System.Windows.Forms.TabPage();
+            this.memberServices = new RentMe.UserControls.MemberServices();
+            this.employeeServices1 = new RentMe.UserControls.EmployeeServices();
             this.furnitureRental1 = new RentMe.UserControls.FurnitureRental();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.searchMemberTab.SuspendLayout();
             this.furnitureSearchTabPage.SuspendLayout();
+            this.employeeTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // servicesTableLayoutPanel
@@ -96,6 +99,7 @@ namespace RentMe.View
             // 
             this.servicesTableLayoutPanel.SetColumnSpan(this.mainTabControl, 3);
             this.mainTabControl.Controls.Add(this.searchMemberTab);
+            this.mainTabControl.Controls.Add(this.employeeTabPage);
             this.mainTabControl.Controls.Add(this.furnitureSearchTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -111,18 +115,10 @@ namespace RentMe.View
             this.searchMemberTab.Location = new System.Drawing.Point(4, 38);
             this.searchMemberTab.Name = "searchMemberTab";
             this.searchMemberTab.Padding = new System.Windows.Forms.Padding(3);
-            this.searchMemberTab.Size = new System.Drawing.Size(1178, 901);
+            this.searchMemberTab.Size = new System.Drawing.Size(1419, 901);
             this.searchMemberTab.TabIndex = 0;
             this.searchMemberTab.Text = "Search Member";
             this.searchMemberTab.UseVisualStyleBackColor = true;
-            // 
-            // memberServices
-            // 
-            this.memberServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberServices.Location = new System.Drawing.Point(3, 3);
-            this.memberServices.Name = "memberServices";
-            this.memberServices.Size = new System.Drawing.Size(1172, 895);
-            this.memberServices.TabIndex = 0;
             // 
             // furnitureSearchTabPage
             // 
@@ -135,10 +131,38 @@ namespace RentMe.View
             this.furnitureSearchTabPage.Text = "Search Furniture";
             this.furnitureSearchTabPage.UseVisualStyleBackColor = true;
             // 
+            // employeeTabPage
+            // 
+            this.employeeTabPage.Controls.Add(this.employeeServices1);
+            this.employeeTabPage.Location = new System.Drawing.Point(4, 38);
+            this.employeeTabPage.Name = "employeeTabPage";
+            this.employeeTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.employeeTabPage.Size = new System.Drawing.Size(1419, 901);
+            this.employeeTabPage.TabIndex = 2;
+            this.employeeTabPage.Text = "Employee Services";
+            this.employeeTabPage.UseVisualStyleBackColor = true;
+            // 
+            // memberServices
+            // 
+            this.memberServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberServices.Location = new System.Drawing.Point(3, 3);
+            this.memberServices.Name = "memberServices";
+            this.memberServices.Size = new System.Drawing.Size(1413, 895);
+            this.memberServices.TabIndex = 0;
+            // 
+            // employeeServices1
+            // 
+            this.employeeServices1.Location = new System.Drawing.Point(78, 23);
+            this.employeeServices1.Margin = new System.Windows.Forms.Padding(5);
+            this.employeeServices1.Name = "employeeServices1";
+            this.employeeServices1.Size = new System.Drawing.Size(1151, 856);
+            this.employeeServices1.TabIndex = 0;
+            this.employeeServices1.Load += new System.EventHandler(this.employeeServices1_Load);
+            // 
             // furnitureRental1
             // 
             this.furnitureRental1.Location = new System.Drawing.Point(7, 8);
-            this.furnitureRental1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.furnitureRental1.Margin = new System.Windows.Forms.Padding(5);
             this.furnitureRental1.Name = "furnitureRental1";
             this.furnitureRental1.Size = new System.Drawing.Size(1391, 785);
             this.furnitureRental1.TabIndex = 0;
@@ -159,6 +183,7 @@ namespace RentMe.View
             this.mainTabControl.ResumeLayout(false);
             this.searchMemberTab.ResumeLayout(false);
             this.furnitureSearchTabPage.ResumeLayout(false);
+            this.employeeTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -173,5 +198,7 @@ namespace RentMe.View
         private UserControls.MemberServices memberServices;
         private System.Windows.Forms.TabPage furnitureSearchTabPage;
         private UserControls.FurnitureRental furnitureRental1;
+        private System.Windows.Forms.TabPage employeeTabPage;
+        private UserControls.EmployeeServices employeeServices1;
     }
 }

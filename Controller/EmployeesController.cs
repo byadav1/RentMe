@@ -3,6 +3,7 @@
 using RentMe.DAL;
 using RentMe.Model;
 using RentMe.Validators;
+using System;
 
 namespace RentMe.Controller
 {
@@ -12,15 +13,18 @@ namespace RentMe.Controller
     /// and the EmployeesDAL.
     /// </summary>
     public class EmployeesController
-    { 
-
+    {
+        private readonly EmployeesDAL employee_DBresource;
         /// <summary>
         /// 0-param constructor.
         /// </summary>
         public EmployeesController()
         {
-           
+            this.employee_DBresource = new EmployeesDAL();
         }
+
+       
+        
 
         /// <summary>
         /// Return true if employee account exists.
@@ -64,6 +68,20 @@ namespace RentMe.Controller
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
             EmployeesDAL.RegisterNewEmployee(employee);
+        }
+
+        /// <summary>
+        /// Delete an employee  from the DAL.
+        /// </summary>
+        /// <returns>List of product name</returns>
+        public bool DeleteEmployee(Employee employee)
+        {
+
+            if (employee == null)
+            {
+                throw new ArgumentNullException("Delete cannot be performed ");
+            }
+            return this.employee_DBresource.DeactivateEmployee(employee);
         }
     }
 }

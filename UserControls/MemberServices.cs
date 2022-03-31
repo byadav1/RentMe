@@ -68,20 +68,6 @@ namespace RentMe.UserControls
 
 
 
-
-            // try
-            //{
-            //    Member member = this.CreateMemberFromSearch();
-            //    //  this.membersController.MemberSearchSuccessful(member);
-            //    this.memberSearchDetails = this.membersController.SearchMember(member);
-            //    this.DisplayMemberDetails();
-            // }
-           // catch (ArgumentException ae)
-            //{
-             //   this.statusMessage.Visible = true;
-            //    this.statusMessage.Text = ae.Message;
-           // }
-
         }
         private void DisplayMemberDetails()
         {
@@ -146,14 +132,14 @@ namespace RentMe.UserControls
                     this.statusMessage.Visible = true;
 
                     this.statusMessage.Text = "Member information updated successfully";
-                    this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
+                    this.memberSearchDetails = this.membersController.GetMemberFromSearch(memberUpdateData);
                 }
                 else
                 {
                     this.statusMessage.Visible = true;
 
                     this.statusMessage.Text = "Member information cannot be perfomed.Something went wrong with the process or member data is updated at the backend";
-                    this.memberSearchDetails = this.membersController.SearchMember(memberUpdateData);
+                  
                 };
             }
             else
@@ -189,35 +175,7 @@ namespace RentMe.UserControls
         }
 
 
-        /// <summary>
-        /// Event handler for clear button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DeleteButtonClick(object sender, System.EventArgs e)
-        {
-
-            try
-            {
-
-                if (this.membersController.DeleteMember(this.memberSearchDetails))
-                {
-                    this.statusMessage.Visible = true;
-                    this.statusMessage.Text = "Member deleted  successfully";
-                }
-                else
-                {
-                    this.statusMessage.Visible = true;
-                    this.statusMessage.Text = "Member deletion failed!!";
-                };
-            }
-            catch (Exception ex)
-            {
-                this.statusMessage.Visible = true;
-                this.statusMessage.Text = ex.Message;
-            }
-
-        }
+       
 
         /// <summary>
         /// Event handler for register member button click.

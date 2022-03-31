@@ -39,5 +39,10 @@ namespace RentMe.View
             this.Dispose();
             GC.Collect();
         }
+
+        private void employeeServices1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

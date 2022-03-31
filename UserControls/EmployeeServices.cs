@@ -16,6 +16,7 @@ namespace RentMe.UserControls
     public partial class EmployeeServices : UserControl
     {
         private readonly EmployeesController employeesController;
+        private Employee employee;
 
         /// <summary>
         /// Initialize the control.
@@ -46,12 +47,12 @@ namespace RentMe.UserControls
         {
             try
             {
-                Employee employee = this.CreateEmployeeFromSearch();
-                if (this.employeesController.ValidEmployeeSearch(employee))
+                this.employee = this.CreateEmployeeFromSearch();
+                if (this.employeesController.ValidEmployeeSearch(this.employee))
                 {
-                    employee = this.employeesController.GetEmployeeFromSearch(employee);
+                    this.employee = this.employeesController.GetEmployeeFromSearch(this.employee);
                     this.ToggleFormButtons(true);
-                    this.SetFields(employee);
+                    this.SetFields(this.employee);
                 }
             }
             catch (ArgumentException ae)
@@ -137,12 +138,12 @@ namespace RentMe.UserControls
                 State = this.stateTextBox.Text,
                 Zip = this.zipTextBox.Text,
                 Username = this.usernameTextBox.Text,
-                Password = this.passwordTextBox.Text               
+                Password = this.passwordTextBox.Text
             };
             if (this.isAdministratorCheckBox.Checked)
             {
                 employee.Type = "Admin";
-                }
+            }
             else
             {
                 employee.Type = "Regular";
@@ -159,7 +160,7 @@ namespace RentMe.UserControls
             if (this.InvalidInput(this.fnameTextBox, this.GenerateRegexForTextBox(this.fnameTextBox)) ||
                 this.InvalidInput(this.lnameTextBox, this.GenerateRegexForTextBox(this.lnameTextBox)))
             {
-                throw new Exception("Name should consist of letters and not:\n" + 
+                throw new Exception("Name should consist of letters and not:\n" +
                     "be empty, include numbers, or special characters");
             }
             else if (this.InvalidInput(this.phoneTextBox, this.GenerateRegexForTextBox(this.phoneTextBox)))
@@ -382,6 +383,36 @@ namespace RentMe.UserControls
         private void FormFieldChanged(object sender, System.EventArgs e)
         {
             this.statusMessage.Visible = false;
+        }
+
+        /// <summary>
+        /// Event handler for clear button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteButton_Click(object sender, System.EventArgs e)
+        {
+
+            try
+            {
+
+                if (this.employeesController.DeleteEmployee(this.employee))
+                {
+                    this.statusMessage.Visible = true;
+                    this.statusMessage.Text = "Employee deleted  successfully";
+                }
+                else
+                {
+                    this.statusMessage.Visible = true;
+                    this.statusMessage.Text = "Employee deletion failed!!";
+                };
+            }
+            catch (Exception ex)
+            {
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = ex.Message;
+            }
+
         }
     }
 }

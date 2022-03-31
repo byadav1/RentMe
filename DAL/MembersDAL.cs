@@ -233,76 +233,7 @@ namespace RentMe.DAL
         }
 
 
-        /// <summary>
-        /// Gets the Member Details based on the search parameter from database
-        /// </summary>
-        /// <returns>Member</returns>
-        public Member GetMemberDetails(Member member)
-        {
-            string selectStatement = "";
-
-            Member memberDetails = null;
-            if (member.MemberID > 0)
-            {
-                selectStatement = " SELECT * FROM Members where memberID= @ID";
-            }
-            else if (!string.IsNullOrEmpty(member.Phone))
-            {
-                selectStatement = " SELECT * FROM Members where phone= @memberPhone";
-            }
-            else if (!string.IsNullOrEmpty(member.FName) && !string.IsNullOrEmpty(member.LName))
-            {
-
-                selectStatement = " SELECT * FROM Members where fname= @fName and lname=@lName ";
-            }
-
-            using (SqlConnection connection = RentMeDBConnection.GetConnection())
-            {
-                connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-                    if (member.MemberID > 0)
-                    {
-                        selectCommand.Parameters.Add("@ID", SqlDbType.Int);
-                        selectCommand.Parameters["@ID"].Value = member.MemberID;
-                    }
-                    else if (!string.IsNullOrEmpty(member.Phone))
-                    {
-                        selectCommand.Parameters.Add("@memberPhone", SqlDbType.VarChar);
-                        selectCommand.Parameters["@memberPhone"].Value = member.Phone;
-                    }
-                    else if (!string.IsNullOrEmpty(member.FName) && !string.IsNullOrEmpty(member.LName))
-                    {
-                        selectCommand.Parameters.Add("@fname", SqlDbType.VarChar);
-                        selectCommand.Parameters["@fname"].Value = member.FName;
-
-                        selectCommand.Parameters.Add("@lname", SqlDbType.VarChar);
-                        selectCommand.Parameters["@lname"].Value = member.LName;
-                    }
-                    using (SqlDataReader reader = selectCommand.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            memberDetails = new Member();
-                            memberDetails.MemberID = (int)reader["MemberID"];
-                            memberDetails.FName = reader["Fname"].ToString();
-                            memberDetails.LName = reader["Lname"].ToString();
-                            memberDetails.DOB = (DateTime)reader["DateOFBirth"];
-                            memberDetails.Phone = reader["phone"].ToString(); ;
-                            memberDetails.Sex = reader["sex"].ToString(); ;
-                            memberDetails.Address1 = reader["Address1"].ToString();
-                            memberDetails.Address2 = reader["Address2"].ToString();
-                            memberDetails.City = reader["City"].ToString();
-                            memberDetails.State = reader["state"].ToString();
-                            memberDetails.Zip = reader["Zipcode"].ToString();
-
-                        }
-                    }
-                }
-            }
-            return memberDetails;
-        }
-
+        
 
         /// <summary>
         /// Updates the Member Details based on the search parameter from database
@@ -392,38 +323,7 @@ namespace RentMe.DAL
 
         }
 
-        /// <summary>
-        /// Deactivate the Member 
-        /// </summary>
-        /// <returns>bool</returns>
-        public bool DeactivateMember(Member member)
-        {
-            string selectStatement =
-                      " UPDATE MEMBERS SET DELETE_FLAG='Y' Where MEMBERID=@deleteMemberID";
-
-            using (SqlConnection connection = RentMeDBConnection.GetConnection())
-            {
-                connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-
-                    selectCommand.Parameters.Add("@deleteMemberID", SqlDbType.VarChar);
-                    selectCommand.Parameters["@deleteMemberID"].Value = member.MemberID;
-
-                    int resultCount = selectCommand.ExecuteNonQuery();
-                    if (resultCount > 0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                }
-            }
-
-        }
+        
     }
 }
 
