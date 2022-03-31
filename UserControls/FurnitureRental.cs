@@ -3,6 +3,7 @@ using RentMe.Controller;
 using RentMe.Model;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RentMe.UserControls
 {
@@ -48,7 +49,7 @@ namespace RentMe.UserControls
             else
             {
                 this.rentalStatusLabel.Visible = true;
-                this.rentalStatusLabel.Text = "Please enter FurnitureId or Style or category to search!!";
+                this.rentalStatusLabel.Text = "Please  enter FurnitureId or Style or category to search!!";
                 return false;
             }
             return true;
@@ -64,22 +65,37 @@ namespace RentMe.UserControls
             {
                 this.furnitureListView.Items.Clear();
                 ListViewItem listViewItem = null;
-                foreach (Furniture furnitureItem in this.furnitureController.GetFurnitureDetails(this.furnitureSearchDetails))
+                List<Furniture> furnitureSearchResults = this.furnitureController.GetFurnitureDetails(this.furnitureSearchDetails);
+             
+                if (furnitureSearchResults.Any())
                 {
+                    foreach (Furniture furnitureItem in furnitureSearchResults)
+                    {
 
-                    listViewItem = new ListViewItem(Convert.ToString( furnitureItem.FurnitureID), 0);
-                    listViewItem.SubItems.Add(furnitureItem.Name);
-                    listViewItem.SubItems.Add(furnitureItem.Description);
-                    listViewItem.SubItems.Add(furnitureItem.Category);
-                    listViewItem.SubItems.Add(furnitureItem.Style);
-                    listViewItem.SubItems.Add(Convert.ToString(furnitureItem.DailyRentalRate));
-                    listViewItem.SubItems.Add(Convert.ToString(furnitureItem.Quantity));
+                        listViewItem = new ListViewItem(Convert.ToString(furnitureItem.FurnitureID), 1);
+                       
+                        listViewItem.SubItems.Add(furnitureItem.Name);
+                        listViewItem.SubItems.Add(furnitureItem.Description);
+                        listViewItem.SubItems.Add(furnitureItem.Category);
+                        listViewItem.SubItems.Add(furnitureItem.Style);
+                        listViewItem.SubItems.Add(Convert.ToString(furnitureItem.DailyRentalRate));
+                        listViewItem.SubItems.Add(Convert.ToString(furnitureItem.Quantity));
 
-                    this.furnitureListView.Items.AddRange(new ListViewItem[] { listViewItem });
+                        this.furnitureListView.Items.AddRange(new ListViewItem[] { listViewItem });
+                        
 
+                    }
+                    furnitureListView.CheckBoxes = true;
+                    this.rentalStatusLabel.Visible = false;
+                    this.rentalStatusLabel.Text = "";
                 }
-                this.rentalStatusLabel.Visible = false;
-                this.rentalStatusLabel.Text = "";
+                else
+                {
+                    this.rentalStatusLabel.Visible = true;
+                    this.rentalStatusLabel.Text = "No furniture found for the entered value. Please enter the valid value";
+                }
+
+                
             }
             catch (Exception exe)
             {
@@ -106,10 +122,18 @@ namespace RentMe.UserControls
 
         private void FurnitureRental_Load(object sender, EventArgs e)
         {
+
+            this.furnitureIDTextBox.Enabled = false;
+            this.styleComboBox.Enabled = false;
+            this.categoryComboBox.Enabled = false;
+            
             this.LoadComboBox();
 
         }
-        private void LoadComboBox()
+
+
+
+            private void LoadComboBox()
         {
             this.categoryComboBox.DataSource = null; ;
             this.categoryList = this.furnitureController.GetFurnituresCategory();
@@ -150,12 +174,45 @@ namespace RentMe.UserControls
         {
 
             this.ToggleFormButtons();
+            this.stylerRadiobutton.Checked = false;
+            this.idRadioButton.Checked = false;
+            this.categoryRadioButton.Checked = false;
             this.ClearFields();
         }
 
-        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void StyleComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            e.Handled = true;
+        }
 
+        private void CategoryComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void IdRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ClearFields();
+            this.furnitureIDTextBox.Enabled = true;
+            this.styleComboBox.Enabled = false;
+            this.categoryComboBox.Enabled = false;
+            
+        }
+
+        private void CategoryRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ClearFields();
+            this.furnitureIDTextBox.Enabled = false;
+            this.styleComboBox.Enabled = false;
+            this.categoryComboBox.Enabled = true;
+        }
+
+        private void StylerRadiobutton_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ClearFields();
+            this.furnitureIDTextBox.Enabled = false;
+            this.styleComboBox.Enabled = true;
+            this.categoryComboBox.Enabled = false;
         }
     }
 }

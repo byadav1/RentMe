@@ -34,8 +34,8 @@ namespace RentMe.View
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.searchMemberTab = new System.Windows.Forms.TabPage();
-            this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
             this.memberServices = new RentMe.UserControls.MemberServices();
+            this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
             this.furnitureRental1 = new RentMe.UserControls.FurnitureRental();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
@@ -64,7 +64,7 @@ namespace RentMe.View
             this.servicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.servicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.servicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.servicesTableLayoutPanel.Size = new System.Drawing.Size(1192, 772);
+            this.servicesTableLayoutPanel.Size = new System.Drawing.Size(1192, 998);
             this.servicesTableLayoutPanel.TabIndex = 1;
             // 
             // logoutLink
@@ -72,7 +72,7 @@ namespace RentMe.View
             this.logoutLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logoutLink.AutoSize = true;
             this.logoutLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutLink.Location = new System.Drawing.Point(961, 7);
+            this.logoutLink.Location = new System.Drawing.Point(961, 12);
             this.logoutLink.Name = "logoutLink";
             this.logoutLink.Size = new System.Drawing.Size(68, 24);
             this.logoutLink.TabIndex = 10;
@@ -86,7 +86,7 @@ namespace RentMe.View
             this.currentUserLabel.AutoSize = true;
             this.servicesTableLayoutPanel.SetColumnSpan(this.currentUserLabel, 2);
             this.currentUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentUserLabel.Location = new System.Drawing.Point(3, 9);
+            this.currentUserLabel.Location = new System.Drawing.Point(3, 14);
             this.currentUserLabel.Name = "currentUserLabel";
             this.currentUserLabel.Size = new System.Drawing.Size(108, 20);
             this.currentUserLabel.TabIndex = 11;
@@ -98,10 +98,10 @@ namespace RentMe.View
             this.mainTabControl.Controls.Add(this.searchMemberTab);
             this.mainTabControl.Controls.Add(this.furnitureSearchTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTabControl.Location = new System.Drawing.Point(3, 41);
+            this.mainTabControl.Location = new System.Drawing.Point(3, 52);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1186, 728);
+            this.mainTabControl.Size = new System.Drawing.Size(1186, 943);
             this.mainTabControl.TabIndex = 12;
             // 
             // searchMemberTab
@@ -110,10 +110,18 @@ namespace RentMe.View
             this.searchMemberTab.Location = new System.Drawing.Point(4, 25);
             this.searchMemberTab.Name = "searchMemberTab";
             this.searchMemberTab.Padding = new System.Windows.Forms.Padding(3);
-            this.searchMemberTab.Size = new System.Drawing.Size(1428, 699);
+            this.searchMemberTab.Size = new System.Drawing.Size(1178, 699);
             this.searchMemberTab.TabIndex = 0;
             this.searchMemberTab.Text = "Search Member";
             this.searchMemberTab.UseVisualStyleBackColor = true;
+            // 
+            // memberServices
+            // 
+            this.memberServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberServices.Location = new System.Drawing.Point(3, 3);
+            this.memberServices.Name = "memberServices";
+            this.memberServices.Size = new System.Drawing.Size(1172, 693);
+            this.memberServices.TabIndex = 0;
             // 
             // furnitureSearchTabPage
             // 
@@ -121,31 +129,23 @@ namespace RentMe.View
             this.furnitureSearchTabPage.Location = new System.Drawing.Point(4, 25);
             this.furnitureSearchTabPage.Name = "furnitureSearchTabPage";
             this.furnitureSearchTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.furnitureSearchTabPage.Size = new System.Drawing.Size(1178, 699);
+            this.furnitureSearchTabPage.Size = new System.Drawing.Size(1178, 914);
             this.furnitureSearchTabPage.TabIndex = 1;
             this.furnitureSearchTabPage.Text = "Search Furniture";
             this.furnitureSearchTabPage.UseVisualStyleBackColor = true;
-            // 
-            // memberServices
-            // 
-            this.memberServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberServices.Location = new System.Drawing.Point(3, 3);
-            this.memberServices.Name = "memberServices";
-            this.memberServices.Size = new System.Drawing.Size(1422, 693);
-            this.memberServices.TabIndex = 0;
             // 
             // furnitureRental1
             // 
             this.furnitureRental1.Location = new System.Drawing.Point(24, 19);
             this.furnitureRental1.Name = "furnitureRental1";
-            this.furnitureRental1.Size = new System.Drawing.Size(1118, 636);
+            this.furnitureRental1.Size = new System.Drawing.Size(1118, 847);
             this.furnitureRental1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1192, 772);
+            this.ClientSize = new System.Drawing.Size(1192, 998);
             this.Controls.Add(this.servicesTableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainForm";
