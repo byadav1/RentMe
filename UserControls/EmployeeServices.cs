@@ -339,6 +339,7 @@ namespace RentMe.UserControls
             this.stateTextBox.Text = employee.State;
             this.zipTextBox.Text = employee.Zip;
             this.usernameTextBox.Text = employee.Username;
+            
         }
 
         /// <summary>
@@ -421,7 +422,7 @@ namespace RentMe.UserControls
             this.statusMessage.Text = "";
             try
             {
-               this.ValidateFormFields();
+              // this.ValidateFormFields();
                 this.ProcessUpdate();
             }
             catch (Exception ex)
@@ -434,7 +435,11 @@ namespace RentMe.UserControls
 
         private void ProcessUpdate()
         {
-
+            string employeeType = "Regular";
+            if (isAdministratorCheckBox.Checked)
+            {
+                employeeType = "Admin";
+            }
             Employee employeeUpdateData =
                 new Employee()
                 {
@@ -448,7 +453,9 @@ namespace RentMe.UserControls
                     Address2 = this.address2TextBox.Text,
                     City = this.cityTextBox.Text,
                     Zip = this.zipTextBox.Text,
-                    State = this.stateTextBox.Text
+                    State = this.stateTextBox.Text,
+                    Username=this.usernameTextBox.Text,
+                    Type= employeeType
                 };
             if (this.CheckUpdates(employeeUpdateData))
             {
@@ -488,7 +495,8 @@ namespace RentMe.UserControls
                               l1.Phone != l2.Phone ||
                               l1.Sex != l2.Sex || l1.Address1 != l2.Address1 ||
                               l1.Address2 != l2.Address2 || l1.State != l2.State ||
-                              l1.City != l2.City || l1.Zip != l2.Zip
+                              l1.City != l2.City || l1.Zip != l2.Zip || l1.Username != l2.Username 
+                              || l1.Type != l2.Type
                               )));
                 isModified = result.Any();
 

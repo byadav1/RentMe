@@ -127,6 +127,7 @@ namespace RentMe.DAL
                             employee.State = reader["State"].ToString();
                             employee.Zip = reader["ZipCode"].ToString();
                             employee.Username = reader["Username"].ToString();
+                            employee.Type = reader["Employee_type"].ToString();
                         }
                     }
                 }
@@ -375,12 +376,14 @@ namespace RentMe.DAL
                       " Sex=@NewSex , DateOfBirth=@NewDob , " +
                        " Phone=@NewPhone ,  City=@NewCity , " +
                       " zipcode=@NewZip , State=@NewState, " +
-                      " Address1=@NewAddress1 , Address2=@NewAddress2 " +
+                      " Address1=@NewAddress1 , Address2=@NewAddress2, " +
+                      "UserName=@newUser , EMPLOYEE_TYPE=@Newtype " +
                        "Where EmployeeID=@oldEmployeeID  AND FNAME=@OldFName AND " +
                       " LNAME=@OldLName AND Sex=@OldSex AND " +
                       " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
                       " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
-                      " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL)";
+                      " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL) AND " +
+                      "UserName=@Olduser AND EMPLOYEE_TYPE= @Oldtype";
 
 
 
@@ -403,6 +406,8 @@ namespace RentMe.DAL
                     selectCommand.Parameters.Add("@OldState", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@OldAddress1", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@OldAddress2", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldUser", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@Oldtype", SqlDbType.VarChar);
 
                     selectCommand.Parameters["@OldFName"].Value = oldEmployee.FName;
                     selectCommand.Parameters["@OldLName"].Value = oldEmployee.LName;
@@ -414,6 +419,8 @@ namespace RentMe.DAL
                     selectCommand.Parameters["@OldState"].Value = oldEmployee.State;
                     selectCommand.Parameters["@OldAddress1"].Value = oldEmployee.Address1;
                     selectCommand.Parameters["@OldAddress2"].Value = oldEmployee.Address2;
+                    selectCommand.Parameters["@OldUser"].Value = oldEmployee.Username;
+                    selectCommand.Parameters["@Oldtype"].Value = oldEmployee.Type;
 
                     // New Employee details Mappings
                     selectCommand.Parameters.Add("@NewFName", SqlDbType.VarChar);
@@ -426,6 +433,10 @@ namespace RentMe.DAL
                     selectCommand.Parameters.Add("@NewState", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewAddress1", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewAddress2", SqlDbType.VarChar);
+
+                    selectCommand.Parameters.Add("@NewUser", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@Newtype", SqlDbType.VarChar);
+
                     selectCommand.Parameters["@NewFName"].Value = newEmployee.FName;
                     selectCommand.Parameters["@NewLName"].Value = newEmployee.LName;
                     selectCommand.Parameters["@NewSex"].Value = newEmployee.Sex;
@@ -436,6 +447,8 @@ namespace RentMe.DAL
                     selectCommand.Parameters["@NewState"].Value = newEmployee.State;
                     selectCommand.Parameters["@NewAddress1"].Value = newEmployee.Address1;
                     selectCommand.Parameters["@NewAddress2"].Value = newEmployee.Address2;
+                    selectCommand.Parameters["@NewUser"].Value = newEmployee.Username;
+                    selectCommand.Parameters["@Newtype"].Value = newEmployee.Type;
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)
                     {

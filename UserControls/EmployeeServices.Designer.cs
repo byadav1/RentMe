@@ -478,7 +478,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(213, 234);
+            this.sexComboBox.Location = new System.Drawing.Point(213, 233);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
             this.sexComboBox.TabIndex = 3;
