@@ -87,6 +87,22 @@ namespace RentMe.Controller
         }
 
         /// <summary>
+        /// Deletes the employee.
+        /// </summary>
+        /// <param name="employee">The employee.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">Delete cannot be performed</exception>
+        public Employee GetCurrentEmployeeData(Employee employee)
+        {
+
+            if (employee == null)
+            {
+                throw new ArgumentNullException("Employee username cannot be null ");
+            }
+            return this.employee_DBresource.GetLoginEmployeeData(employee);
+        }
+
+        /// <summary>
         /// Updates the employee information.
         /// </summary>
         /// <param name="oldEmployee">The old employee.</param>

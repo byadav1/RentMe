@@ -1,4 +1,5 @@
 ﻿using RentMe.Controller;
+using RentMe.Model;
 using System;
 using System.Windows.Forms;
 
@@ -10,12 +11,22 @@ namespace RentMe.View
     /// </summary>
     public partial class MainForm : Form
     {
-        /// <summary>
-        /// Initializes MainForm.
-        /// </summary>
+        private Employee loginUser;
+        private  EmployeesController employeeController;
+
         public MainForm()
         {
             InitializeComponent();
+           
+        }
+        /// <summary>
+        /// Initializes MainForm with login user
+        /// </summary>
+        public MainForm(Employee currentLoginUser)
+        {
+            InitializeComponent();
+            this.loginUser = currentLoginUser;
+            this.employeeController = new EmployeesController();
         }
 
         /// <summary>
@@ -40,9 +51,21 @@ namespace RentMe.View
             GC.Collect();
         }
 
-        private void employeeServices1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
+            this.loginUser = this.employeeController.GetCurrentEmployeeData(this.loginUser);
+            if (this.loginUser !=null)
+            {
+                this.currentUserLabel.Text = "Welcome " + this.loginUser.FName + " " + this.loginUser.LName;
+                if (this.loginUser.Type == "Regular")
+                {
+                    this.mainTabControl.TabPages.Remove(this.employeeTabPage);
+                }
+            }          
+           
+
         }
+
     }
 }

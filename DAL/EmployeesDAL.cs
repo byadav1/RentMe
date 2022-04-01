@@ -135,6 +135,55 @@ namespace RentMe.DAL
             return employee;
         }
 
+
+
+        /// <summary>
+        /// Gets the login employee data.
+        /// </summary>
+        /// <param name="employee">The employee.</param>
+        /// <returns></returns>
+        public Employee GetLoginEmployeeData(Employee employee)
+        {
+            EmployeeValidator.ValidateEmployeeNotNull(employee);
+            string selectStatement = "SELECT * " +
+                                        "FROM Employees " +
+                                        "WHERE UserName=@user";
+           
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("user", employee.Username);            
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            employee.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                            employee.FName = reader["Fname"].ToString();
+                            employee.LName = reader["Lname"].ToString();
+                            employee.DOB = (DateTime)reader["DateOfBirth"];
+                            employee.Phone = reader["Phone"].ToString();
+                            employee.Sex = reader["Sex"].ToString();
+                            employee.Address1 = reader["Address1"].ToString();
+                            if (!reader.IsDBNull(8))
+                            {
+                                employee.Address2 = reader["Address2"].ToString();
+                            }
+                            employee.City = reader["City"].ToString();
+                            employee.State = reader["State"].ToString();
+                            employee.Zip = reader["ZipCode"].ToString();
+                            employee.Username = reader["Username"].ToString();
+                            employee.Type = reader["Employee_type"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return employee;
+        }
+
         /// <summary>
         /// Register and return a new RentMe Employee.
         /// </summary>

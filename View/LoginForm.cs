@@ -45,11 +45,12 @@ namespace RentMe
                 Employee employee = new Employee
                 {
                     Username = this.usernameTextBox.Text,
-                    Password = this.passwordTextBox.Text
+                    Password = this.passwordTextBox.Text,
+                    
                 };
                 if (ValidLogin(employee))
                 {
-                    new MainForm().Show();
+                    new MainForm(employee).Show();
                     this.Hide();
                 }
             }
