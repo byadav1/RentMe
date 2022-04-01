@@ -34,7 +34,6 @@ namespace RentMe.UserControls
             this.lnameLabel = new System.Windows.Forms.Label();
             this.memberServicesHeaderLabel = new System.Windows.Forms.Label();
             this.memberServicesButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.registerButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
@@ -118,16 +117,15 @@ namespace RentMe.UserControls
             // 
             // memberServicesButtonsTableLayoutPanel
             // 
-            this.memberServicesButtonsTableLayoutPanel.ColumnCount = 4;
+            this.memberServicesButtonsTableLayoutPanel.ColumnCount = 3;
             this.memberServicesTableLayoutPanel.SetColumnSpan(this.memberServicesButtonsTableLayoutPanel, 3);
-            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.deleteButton, 0, 0);
+            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.memberServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.updateButton, 0, 0);
-            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.registerButton, 3, 0);
-            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.clearButton, 2, 0);
+            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.registerButton, 2, 0);
+            this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.clearButton, 1, 0);
             this.memberServicesButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memberServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 635);
             this.memberServicesButtonsTableLayoutPanel.Name = "memberServicesButtonsTableLayoutPanel";
@@ -136,25 +134,12 @@ namespace RentMe.UserControls
             this.memberServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 112);
             this.memberServicesButtonsTableLayoutPanel.TabIndex = 11;
             // 
-            // deleteButton
-            // 
-            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deleteButton.Enabled = false;
-            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(162, 26);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(120, 60);
-            this.deleteButton.TabIndex = 15;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = true;
-           
-            // 
             // updateButton
             // 
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateButton.Enabled = false;
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(14, 26);
+            this.updateButton.Location = new System.Drawing.Point(38, 26);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(120, 60);
             this.updateButton.TabIndex = 12;
@@ -166,7 +151,7 @@ namespace RentMe.UserControls
             // 
             this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(459, 26);
+            this.registerButton.Location = new System.Drawing.Point(434, 26);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(120, 60);
             this.registerButton.TabIndex = 14;
@@ -178,7 +163,7 @@ namespace RentMe.UserControls
             // 
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(310, 26);
+            this.clearButton.Location = new System.Drawing.Point(235, 26);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(120, 60);
             this.clearButton.TabIndex = 13;
@@ -539,7 +524,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TableLayoutPanel searchMemberTableLayoutPanel;
         private System.Windows.Forms.TextBox searchMemberTextBox;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Label searchMemberLabel;
     }
 }

@@ -336,7 +336,7 @@ namespace RentMe.DAL
         public bool DeactivateEmployee(Employee employee)
         {
             string selectStatement =
-                      " UPDATE Employees SET DELETE_FLAG='Y' Where EmployeeID=@ID";
+                      " UPDATE Employees SET ACTIVE='N' Where EmployeeID=@ID";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {

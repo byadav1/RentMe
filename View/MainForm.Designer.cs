@@ -117,7 +117,7 @@ namespace RentMe.View
             this.searchMemberTab.Padding = new System.Windows.Forms.Padding(3);
             this.searchMemberTab.Size = new System.Drawing.Size(1419, 901);
             this.searchMemberTab.TabIndex = 0;
-            this.searchMemberTab.Text = "Search Member";
+            this.searchMemberTab.Text = "Member Services";
             this.searchMemberTab.UseVisualStyleBackColor = true;
             // 
             // memberServices

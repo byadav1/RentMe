@@ -430,7 +430,7 @@ namespace RentMe.UserControls
         private void ToggleFormButtons(bool enabled)
         {
             this.updateButton.Enabled = enabled;
-            this.deleteButton.Enabled = enabled;
+          
             this.registerButton.Enabled = !enabled;
         }
 
