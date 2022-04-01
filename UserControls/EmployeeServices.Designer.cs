@@ -179,6 +179,7 @@ namespace RentMe.UserControls
             this.updateButton.TabIndex = 14;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // registerButton
             // 
@@ -477,7 +478,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(213, 233);
+            this.sexComboBox.Location = new System.Drawing.Point(213, 234);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
             this.sexComboBox.TabIndex = 3;

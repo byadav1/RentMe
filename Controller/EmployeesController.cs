@@ -71,9 +71,11 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Delete an employee  from the DAL.
+        /// Deletes the employee.
         /// </summary>
-        /// <returns>List of product name</returns>
+        /// <param name="employee">The employee.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">Delete cannot be performed</exception>
         public bool DeleteEmployee(Employee employee)
         {
 
@@ -83,5 +85,23 @@ namespace RentMe.Controller
             }
             return this.employee_DBresource.DeactivateEmployee(employee);
         }
+
+        /// <summary>
+        /// Updates the employee information.
+        /// </summary>
+        /// <param name="oldEmployee">The old employee.</param>
+        /// <param name="newEmployee">The new employe.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">Update cannot be performed with no change in data</exception>
+        public bool UpdateEmployeeInformation(Employee oldEmployee, Employee newEmployee)
+        {
+
+            if (oldEmployee == null && newEmployee == null)
+            {
+                throw new ArgumentNullException("Update cannot be performed with no change in data");
+            }
+            return this.employee_DBresource.UpdateEmployeeDetails(oldEmployee, newEmployee);
+        }
+
     }
 }

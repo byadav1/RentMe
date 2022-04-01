@@ -1,10 +1,11 @@
 ﻿using RentMe.Model;
 using RentMe.Validators;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace RentMe.DAL
-{   
+{
     /// <summary>
     /// This class serves as the Data Access Layer
     /// for the cs6232-g3 DB Employees table.
@@ -154,34 +155,34 @@ namespace RentMe.DAL
                 {
                     try
                     {
-                    selectCommand.Parameters.AddWithValue("Username", employee.Username);
-                    selectCommand.Parameters.AddWithValue("Password", employee.Password);
-                    selectCommand.Parameters.AddWithValue("FName", employee.FName);
-                    selectCommand.Parameters.AddWithValue("LName", employee.LName);
-                    selectCommand.Parameters.AddWithValue("DOB", employee.DOB);
-                    selectCommand.Parameters.AddWithValue("Phone", employee.Phone);
-                    selectCommand.Parameters.AddWithValue("Sex", employee.Sex);
-                    selectCommand.Parameters.AddWithValue("Address1", employee.Address1);
-                    if (string.IsNullOrEmpty(employee.Address2))
-                    {
-                        selectCommand.Parameters.AddWithValue("Address2", DBNull.Value);
-                    }
-                    else
-                    {
-                        selectCommand.Parameters.AddWithValue("Address2", employee.Address2);
-                    }
-                    selectCommand.Parameters.AddWithValue("City", employee.City);
-                    selectCommand.Parameters.AddWithValue("State", employee.State);
-                    selectCommand.Parameters.AddWithValue("Zip", employee.Zip);
-                    selectCommand.Parameters.AddWithValue("Type", employee.Type);
-                    
-                    employee.EmployeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                        selectCommand.Parameters.AddWithValue("Username", employee.Username);
+                        selectCommand.Parameters.AddWithValue("Password", employee.Password);
+                        selectCommand.Parameters.AddWithValue("FName", employee.FName);
+                        selectCommand.Parameters.AddWithValue("LName", employee.LName);
+                        selectCommand.Parameters.AddWithValue("DOB", employee.DOB);
+                        selectCommand.Parameters.AddWithValue("Phone", employee.Phone);
+                        selectCommand.Parameters.AddWithValue("Sex", employee.Sex);
+                        selectCommand.Parameters.AddWithValue("Address1", employee.Address1);
+                        if (string.IsNullOrEmpty(employee.Address2))
+                        {
+                            selectCommand.Parameters.AddWithValue("Address2", DBNull.Value);
+                        }
+                        else
+                        {
+                            selectCommand.Parameters.AddWithValue("Address2", employee.Address2);
+                        }
+                        selectCommand.Parameters.AddWithValue("City", employee.City);
+                        selectCommand.Parameters.AddWithValue("State", employee.State);
+                        selectCommand.Parameters.AddWithValue("Zip", employee.Zip);
+                        selectCommand.Parameters.AddWithValue("Type", employee.Type);
+
+                        employee.EmployeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
                     }
                     catch (Exception)
                     {
                         throw new ArgumentException("An employee account with that username already exists");
                     }
-                    
+
                 }
             }
         }
@@ -278,9 +279,10 @@ namespace RentMe.DAL
 
 
         /// <summary>
-        /// Deactivate an Employee 
+        /// Deactivates the employee.
         /// </summary>
-        /// <returns>bool</returns>
+        /// <param name="employee">The employee.</param>
+        /// <returns></returns>
         public bool DeactivateEmployee(Employee employee)
         {
             string selectStatement =
@@ -293,7 +295,7 @@ namespace RentMe.DAL
                 {
 
                     selectCommand.Parameters.AddWithValue("ID", employee.EmployeeID);
-                
+
 
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)
@@ -307,6 +309,97 @@ namespace RentMe.DAL
 
                 }
             }
+
+        }
+
+        /// <summary>
+        /// Updates the employee details.
+        /// </summary>
+        /// <param name="oldEmployee">The old employee.</param>
+        /// <param name="newEmployee">The new employee.</param>
+        /// <returns>bool on succesdful or failed updates</returns>
+        public bool UpdateEmployeeDetails(Employee oldEmployee, Employee newEmployee)
+        {
+            string selectStatement =
+                 " UPDATE Employees SET " +
+                      " FNAME=@NewFName , LNAME=@NewLName , " +
+                      " Sex=@NewSex , DateOfBirth=@NewDob , " +
+                       " Phone=@NewPhone ,  City=@NewCity , " +
+                      " zipcode=@NewZip , State=@NewState, " +
+                      " Address1=@NewAddress1 , Address2=@NewAddress2 " +
+                       "Where EmployeeID=@oldEmployeeID  AND FNAME=@OldFName AND " +
+                      " LNAME=@OldLName AND Sex=@OldSex AND " +
+                      " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
+                      " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
+                      " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL)";
+
+
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    // Old Employee details Mappings
+                    selectCommand.Parameters.Add("@oldEmployeeID", SqlDbType.VarChar);
+                    selectCommand.Parameters["@oldEmployeeID"].Value = oldEmployee.EmployeeID;
+
+                    selectCommand.Parameters.Add("@OldFName", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldLName", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldSex", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldDob", SqlDbType.DateTime);
+                    selectCommand.Parameters.Add("@OldPhone", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldCity", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldZip", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldState", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldAddress1", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@OldAddress2", SqlDbType.VarChar);
+
+                    selectCommand.Parameters["@OldFName"].Value = oldEmployee.FName;
+                    selectCommand.Parameters["@OldLName"].Value = oldEmployee.LName;
+                    selectCommand.Parameters["@OldSex"].Value = oldEmployee.Sex;
+                    selectCommand.Parameters["@OldDob"].Value = oldEmployee.DOB;
+                    selectCommand.Parameters["@OldPhone"].Value = oldEmployee.Phone;
+                    selectCommand.Parameters["@OldCity"].Value = oldEmployee.City;
+                    selectCommand.Parameters["@OldZip"].Value = oldEmployee.Zip;
+                    selectCommand.Parameters["@OldState"].Value = oldEmployee.State;
+                    selectCommand.Parameters["@OldAddress1"].Value = oldEmployee.Address1;
+                    selectCommand.Parameters["@OldAddress2"].Value = oldEmployee.Address2;
+
+                    // New Employee details Mappings
+                    selectCommand.Parameters.Add("@NewFName", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@NewLName", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@NewSex", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@NewDob", SqlDbType.DateTime);
+                    selectCommand.Parameters.Add("@NewPhone", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@NewCity", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@NewZip", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@NewState", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@NewAddress1", SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@NewAddress2", SqlDbType.VarChar);
+                    selectCommand.Parameters["@NewFName"].Value = newEmployee.FName;
+                    selectCommand.Parameters["@NewLName"].Value = newEmployee.LName;
+                    selectCommand.Parameters["@NewSex"].Value = newEmployee.Sex;
+                    selectCommand.Parameters["@NewDob"].Value = newEmployee.DOB;
+                    selectCommand.Parameters["@NewPhone"].Value = newEmployee.Phone;
+                    selectCommand.Parameters["@NewCity"].Value = newEmployee.City;
+                    selectCommand.Parameters["@NewZip"].Value = newEmployee.Zip;
+                    selectCommand.Parameters["@NewState"].Value = newEmployee.State;
+                    selectCommand.Parameters["@NewAddress1"].Value = newEmployee.Address1;
+                    selectCommand.Parameters["@NewAddress2"].Value = newEmployee.Address2;
+                    int resultCount = selectCommand.ExecuteNonQuery();
+                    if (resultCount > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
+
 
         }
     }

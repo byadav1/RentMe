@@ -2,7 +2,9 @@
 using RentMe.Model;
 using RentMe.Validators;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -395,16 +397,15 @@ namespace RentMe.UserControls
 
             try
             {
-
                 if (this.employeesController.DeleteEmployee(this.employee))
                 {
-                    this.statusMessage.Visible = true;
-                    this.statusMessage.Text = "Employee deleted  successfully";
+
+                    this.UpdateStatusMessage("Employee deleted successfully", false);                   
                 }
                 else
                 {
-                    this.statusMessage.Visible = true;
-                    this.statusMessage.Text = "Employee deletion failed!!";
+                    this.UpdateStatusMessage("Employee deletion cannot be perfomed.Something went wrong with the process " +
+                        "or employee data is updated at the backendy", true);
                 };
             }
             catch (Exception ex)
@@ -414,5 +415,87 @@ namespace RentMe.UserControls
             }
 
         }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            this.statusMessage.Text = "";
+            try
+            {
+               this.ValidateFormFields();
+                this.ProcessUpdate();
+            }
+            catch (Exception ex)
+            {
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = ex.Message;
+            }
+        }
+
+
+        private void ProcessUpdate()
+        {
+
+            Employee employeeUpdateData =
+                new Employee()
+                {
+                    EmployeeID = this.employee.EmployeeID,
+                    FName = this.fnameTextBox.Text,
+                    LName = this.lnameTextBox.Text,
+                    DOB = this.dobPicker.Value,
+                    Sex = this.sexComboBox.Text,
+                    Phone = this.phoneTextBox.Text,
+                    Address1 = this.address1TextBox.Text,
+                    Address2 = this.address2TextBox.Text,
+                    City = this.cityTextBox.Text,
+                    Zip = this.zipTextBox.Text,
+                    State = this.stateTextBox.Text
+                };
+            if (this.CheckUpdates(employeeUpdateData))
+            {
+                if (this.employeesController.UpdateEmployeeInformation(this.employee, employeeUpdateData))
+                {
+              
+                    this.UpdateStatusMessage("Employee information updated successfully", false);
+                    this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
+                }
+                else
+                {
+                    this.UpdateStatusMessage("Employee information cannot be perfomed." +
+                        "Something went wrong with the process or employee data is updated at the backend", true);
+
+                };
+            }
+            else
+            {
+                this.UpdateStatusMessage("No changes done on employee data!!", true);
+               
+            }
+        }
+
+        private bool CheckUpdates(Employee employeeUpdateData)
+        {
+            List<Employee> lstOld_employeeData = new List<Employee>();
+            List<Employee> lstNew_employeeData = new List<Employee>();
+            bool isModified = false;
+            lstOld_employeeData.Add(this.employee);
+            lstNew_employeeData.Add(employeeUpdateData);
+            if (lstOld_employeeData.Count > 0 && lstNew_employeeData.Count > 0)
+            {
+                var result = lstNew_employeeData.Where(l2 =>
+                      lstOld_employeeData.Any(l1 => l2.EmployeeID == l1.EmployeeID
+                              && (l1.FName != l2.FName || l1.LName != l2.LName ||
+                             l1.DOB != l2.DOB ||
+                              l1.Phone != l2.Phone ||
+                              l1.Sex != l2.Sex || l1.Address1 != l2.Address1 ||
+                              l1.Address2 != l2.Address2 || l1.State != l2.State ||
+                              l1.City != l2.City || l1.Zip != l2.Zip
+                              )));
+                isModified = result.Any();
+
+            }
+
+            return isModified;
+        }
+
     }
 }

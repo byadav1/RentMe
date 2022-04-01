@@ -233,12 +233,14 @@ namespace RentMe.DAL
         }
 
 
-        
+
 
         /// <summary>
-        /// Updates the Member Details based on the search parameter from database
+        /// Updates the member details.
         /// </summary>
-        /// <returns>bool</returns>
+        /// <param name="oldMember">The old member.</param>
+        /// <param name="newMember">The new member.</param>
+        /// <returns>bool on succesdful or failed updates</returns>
         public bool UpdateMemberDetails(Member oldMember, Member newMember)
         {
             string selectStatement =
