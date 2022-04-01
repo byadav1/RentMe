@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-
 using RentMe.Validators;
-
 using System.Drawing;
 
 
@@ -65,25 +63,9 @@ namespace RentMe.UserControls
                 this.UpdateStatusMessage(ae.Message, true);
                 this.ToggleFormButtons(false);
             }
-
-
-
         }
-        private void DisplayMemberDetails()
-        {
-            this.fnameTextBox.Text = this.memberSearchDetails.FName;
-            this.lnameTextBox.Text = this.memberSearchDetails.LName;
-            this.phoneTextBox.Text = this.memberSearchDetails.Phone;
-            this.dobPicker.Text = this.memberSearchDetails.DOB.ToString("M/dd/yyyy");
-            this.sexComboBox.Text = this.memberSearchDetails.Sex;
-            this.address1TextBox.Text = this.memberSearchDetails.Address1;
-            this.address2TextBox.Text = this.memberSearchDetails.Address2;
-            this.cityTextBox.Text = this.memberSearchDetails.City;
-            this.zipTextBox.Text = this.memberSearchDetails.Zip;
-            this.stateTextBox.Text = this.memberSearchDetails.State;
-            this.updateButton.Enabled = true; ;
-            this.deleteButton.Enabled = true; ;
-        }
+
+       
      
 
         /// <summary>
@@ -96,7 +78,7 @@ namespace RentMe.UserControls
             this.statusMessage.Text = "";
             try
             {
-                //   this.ValidateFormFields();
+                this.ValidateFormFields();
                 this.ProcessUpdate();
             }
             catch (Exception ex)
@@ -107,6 +89,10 @@ namespace RentMe.UserControls
 
         }
 
+
+        /// <summary>
+        /// Processes the update.
+        /// </summary>
         private void ProcessUpdate()
         {
 
@@ -129,26 +115,28 @@ namespace RentMe.UserControls
             {
                 if (this.membersController.UpdateMemberInformation(this.memberSearchDetails, memberUpdateData))
                 {
-                    this.statusMessage.Visible = true;
-
-                    this.statusMessage.Text = "Member information updated successfully";
+                    this.UpdateStatusMessage("Member information updated successfully", false);
                     this.memberSearchDetails = this.membersController.GetMemberFromSearch(memberUpdateData);
                 }
                 else
                 {
-                    this.statusMessage.Visible = true;
 
-                    this.statusMessage.Text = "Member information cannot be perfomed.Something went wrong with the process or member data is updated at the backend";
-                  
+                    this.UpdateStatusMessage("Member information cannot be perfomed.Something went wrong "+
+                        "with the process or member data is updated at the backend", true);
+                    
                 };
             }
             else
             {
-                this.statusMessage.Visible = true;
-                this.statusMessage.Text = "No Updates found!!";
+                this.UpdateStatusMessage("No Changes made to the Member Data", true);
             }
         }
 
+        /// <summary>
+        /// Checks the updates.
+        /// </summary>
+        /// <param name="memberUpdateData">The member update data.</param>
+        /// <returns></returns>
         private bool CheckUpdates(Member memberUpdateData)
         {
             List<Member> lstOld_MemberData = new List<Member>();
@@ -170,7 +158,6 @@ namespace RentMe.UserControls
                 isModified = result.Any();
 
             }
-
             return isModified;
         }
 
