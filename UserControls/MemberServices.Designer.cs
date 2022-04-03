@@ -139,7 +139,7 @@ namespace RentMe.UserControls
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateButton.Enabled = false;
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(38, 26);
+            this.updateButton.Location = new System.Drawing.Point(39, 26);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(120, 60);
             this.updateButton.TabIndex = 12;
@@ -151,7 +151,7 @@ namespace RentMe.UserControls
             // 
             this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(434, 26);
+            this.registerButton.Location = new System.Drawing.Point(435, 26);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(120, 60);
             this.registerButton.TabIndex = 14;
@@ -163,7 +163,7 @@ namespace RentMe.UserControls
             // 
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(235, 26);
+            this.clearButton.Location = new System.Drawing.Point(237, 26);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(120, 60);
             this.clearButton.TabIndex = 13;

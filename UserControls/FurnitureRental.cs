@@ -7,6 +7,10 @@ using System.Linq;
 
 namespace RentMe.UserControls
 {
+    /// <summary>
+    /// User controller for FurnitureRental display user view and process user inputs
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class FurnitureRental : UserControl
     {
 
@@ -14,6 +18,10 @@ namespace RentMe.UserControls
         private Furniture furnitureSearchDetails;
         private List<string> categoryList;
         private List<string> styleList;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FurnitureRental"/> class.
+        /// </summary>
         public FurnitureRental()
         {
             InitializeComponent();
@@ -27,30 +35,38 @@ namespace RentMe.UserControls
             if (this.SetSearchValues()) {;
 
                 this.DisplayResults();
-                     };
+            };
         }
 
         private bool SetSearchValues()
         {
-            this.furnitureSearchDetails = new Furniture();
-            if (!string.IsNullOrEmpty(this.furnitureIDTextBox.Text))
+            try
             {
-                this.furnitureSearchDetails.FurnitureID = Convert.ToInt32(this.furnitureIDTextBox.Text);
-            }
-            else if (!string.IsNullOrEmpty(this.styleComboBox.Text))
-            {
-                this.furnitureSearchDetails.Style = this.styleComboBox.Text;
-            }
-            else if (!string.IsNullOrEmpty(this.categoryComboBox.Text))
-            {
+                this.furnitureSearchDetails = new Furniture();
+                if (!string.IsNullOrEmpty(this.furnitureIDTextBox.Text))
+                {
+                    this.furnitureSearchDetails.FurnitureID = Convert.ToInt32(this.furnitureIDTextBox.Text);
+                }
+                else if (!string.IsNullOrEmpty(this.styleComboBox.Text))
+                {
+                    this.furnitureSearchDetails.Style = this.styleComboBox.Text;
+                }
+                else if (!string.IsNullOrEmpty(this.categoryComboBox.Text))
+                {
 
-                this.furnitureSearchDetails.Category = this.categoryComboBox.Text;
+                    this.furnitureSearchDetails.Category = this.categoryComboBox.Text;
+                }
+                else
+                {
+                    this.rentalStatusLabel.Visible = true;
+                    this.rentalStatusLabel.Text = "Please  enter FurnitureId or Style or category to search!!";
+                    return false;
+                }
             }
-            else
+            catch (Exception exe)
             {
                 this.rentalStatusLabel.Visible = true;
-                this.rentalStatusLabel.Text = "Please  enter FurnitureId or Style or category to search!!";
-                return false;
+                this.rentalStatusLabel.Text = "Please ensure furniture ID is a valid number. "+ exe.Message;
             }
             return true;
 
@@ -72,17 +88,14 @@ namespace RentMe.UserControls
                     foreach (Furniture furnitureItem in furnitureSearchResults)
                     {
 
-                        listViewItem = new ListViewItem(Convert.ToString(furnitureItem.FurnitureID), 1);
-                       
+                        listViewItem = new ListViewItem(Convert.ToString(furnitureItem.FurnitureID), 1);                       
                         listViewItem.SubItems.Add(furnitureItem.Name);
                         listViewItem.SubItems.Add(furnitureItem.Description);
                         listViewItem.SubItems.Add(furnitureItem.Category);
                         listViewItem.SubItems.Add(furnitureItem.Style);
                         listViewItem.SubItems.Add(Convert.ToString(furnitureItem.DailyRentalRate));
                         listViewItem.SubItems.Add(Convert.ToString(furnitureItem.Quantity));
-
-                        this.furnitureListView.Items.AddRange(new ListViewItem[] { listViewItem });
-                        
+                        this.furnitureListView.Items.AddRange(new ListViewItem[] { listViewItem });                        
 
                     }
                     furnitureListView.CheckBoxes = true;
@@ -125,15 +138,28 @@ namespace RentMe.UserControls
 
             this.furnitureIDTextBox.Enabled = false;
             this.styleComboBox.Enabled = false;
-            this.categoryComboBox.Enabled = false;
-            
+            this.categoryComboBox.Enabled = false;            
             this.LoadComboBox();
 
         }
 
 
+        private void StyleComboBox_VisibleChanged(object sender, EventArgs e)
+        {
 
-            private void LoadComboBox()
+            this.styleComboBox.DataSource = this.styleList;
+            this.styleComboBox.Text ="";
+        }
+
+        private void CategoryComboBox_VisibleChanged(object sender, EventArgs e)
+        {
+
+            this.categoryComboBox.DataSource = this.categoryList;
+            this.categoryComboBox.Text = "";
+
+        }
+
+        private void LoadComboBox()
         {
             this.categoryComboBox.DataSource = null; ;
             this.categoryList = this.furnitureController.GetFurnituresCategory();

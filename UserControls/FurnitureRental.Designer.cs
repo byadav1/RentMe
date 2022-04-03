@@ -36,7 +36,6 @@ namespace RentMe.UserControls
             this.addToCartButton = new System.Windows.Forms.Button();
             this.orderDetailsButton = new System.Windows.Forms.Button();
             this.viewCartButton = new System.Windows.Forms.Button();
-            this.memberNameLabel = new System.Windows.Forms.Label();
             this.furnitureListView = new System.Windows.Forms.ListView();
             this.IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,11 +45,9 @@ namespace RentMe.UserControls
             this.rentalColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.quantityColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.searchOptionTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.clearButton = new System.Windows.Forms.Button();
             this.furnitureStyleLabel = new System.Windows.Forms.Label();
             this.styleComboBox = new System.Windows.Forms.ComboBox();
             this.furnitureSearchButton = new System.Windows.Forms.Button();
-            this.stylerRadiobutton = new System.Windows.Forms.RadioButton();
             this.categoryRadioButton = new System.Windows.Forms.RadioButton();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.furnitureCategoryLabel = new System.Windows.Forms.Label();
@@ -58,7 +55,10 @@ namespace RentMe.UserControls
             this.furnitureIDLabel = new System.Windows.Forms.Label();
             this.furnitureIDTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.stylerRadiobutton = new System.Windows.Forms.RadioButton();
             this.rentalStatusLabel = new System.Windows.Forms.Label();
+            this.memberNameLabel = new System.Windows.Forms.Label();
             this.furnitureRentalTableLayoutPanel.SuspendLayout();
             this.cartButtonsTableLayoutPanel.SuspendLayout();
             this.searchOptionTableLayout.SuspendLayout();
@@ -165,17 +165,6 @@ namespace RentMe.UserControls
             this.viewCartButton.Text = "View Cart";
             this.viewCartButton.UseVisualStyleBackColor = true;
             // 
-            // memberNameLabel
-            // 
-            this.memberNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.memberNameLabel.AutoSize = true;
-            this.memberNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memberNameLabel.Location = new System.Drawing.Point(3, 81);
-            this.memberNameLabel.Name = "memberNameLabel";
-            this.memberNameLabel.Size = new System.Drawing.Size(71, 24);
-            this.memberNameLabel.TabIndex = 4;
-            this.memberNameLabel.Text = "Name: ";
-            // 
             // furnitureListView
             // 
             this.furnitureListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -265,18 +254,6 @@ namespace RentMe.UserControls
             this.searchOptionTableLayout.Size = new System.Drawing.Size(1385, 123);
             this.searchOptionTableLayout.TabIndex = 7;
             // 
-            // clearButton
-            // 
-            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(1171, 3);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(91, 30);
-            this.clearButton.TabIndex = 8;
-            this.clearButton.Text = "Clear";
-            this.clearButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
             // furnitureStyleLabel
             // 
             this.furnitureStyleLabel.AutoSize = true;
@@ -296,6 +273,7 @@ namespace RentMe.UserControls
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(124, 33);
             this.styleComboBox.TabIndex = 10;
+            this.styleComboBox.VisibleChanged += new System.EventHandler(this.StyleComboBox_VisibleChanged);
             this.styleComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StyleComboBox_KeyPress);
             // 
             // furnitureSearchButton
@@ -309,19 +287,6 @@ namespace RentMe.UserControls
             this.furnitureSearchButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.furnitureSearchButton.UseVisualStyleBackColor = true;
             this.furnitureSearchButton.Click += new System.EventHandler(this.FurnitureSearchButton_Click);
-            // 
-            // stylerRadiobutton
-            // 
-            this.stylerRadiobutton.AutoSize = true;
-            this.stylerRadiobutton.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.stylerRadiobutton.Location = new System.Drawing.Point(717, 3);
-            this.stylerRadiobutton.Name = "stylerRadiobutton";
-            this.stylerRadiobutton.Size = new System.Drawing.Size(17, 16);
-            this.stylerRadiobutton.TabIndex = 11;
-            this.stylerRadiobutton.TabStop = true;
-            this.stylerRadiobutton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.stylerRadiobutton.UseVisualStyleBackColor = true;
-            this.stylerRadiobutton.CheckedChanged += new System.EventHandler(this.StylerRadiobutton_CheckedChanged);
             // 
             // categoryRadioButton
             // 
@@ -341,6 +306,7 @@ namespace RentMe.UserControls
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(129, 33);
             this.categoryComboBox.TabIndex = 9;
+            this.categoryComboBox.VisibleChanged += new System.EventHandler(this.CategoryComboBox_VisibleChanged);
             // 
             // furnitureCategoryLabel
             // 
@@ -396,6 +362,31 @@ namespace RentMe.UserControls
             this.label1.Text = "**Please  select an option to enter furniture ID or category or style to rent fur" +
     "niture";
             // 
+            // clearButton
+            // 
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(1171, 3);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(91, 30);
+            this.clearButton.TabIndex = 8;
+            this.clearButton.Text = "Clear";
+            this.clearButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // stylerRadiobutton
+            // 
+            this.stylerRadiobutton.AutoSize = true;
+            this.stylerRadiobutton.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.stylerRadiobutton.Location = new System.Drawing.Point(717, 3);
+            this.stylerRadiobutton.Name = "stylerRadiobutton";
+            this.stylerRadiobutton.Size = new System.Drawing.Size(17, 16);
+            this.stylerRadiobutton.TabIndex = 11;
+            this.stylerRadiobutton.TabStop = true;
+            this.stylerRadiobutton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.stylerRadiobutton.UseVisualStyleBackColor = true;
+            this.stylerRadiobutton.CheckedChanged += new System.EventHandler(this.StylerRadiobutton_CheckedChanged);
+            // 
             // rentalStatusLabel
             // 
             this.rentalStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -408,6 +399,17 @@ namespace RentMe.UserControls
             this.rentalStatusLabel.TabIndex = 3;
             this.rentalStatusLabel.Text = "Error";
             this.rentalStatusLabel.Visible = false;
+            // 
+            // memberNameLabel
+            // 
+            this.memberNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.memberNameLabel.AutoSize = true;
+            this.memberNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memberNameLabel.Location = new System.Drawing.Point(3, 81);
+            this.memberNameLabel.Name = "memberNameLabel";
+            this.memberNameLabel.Size = new System.Drawing.Size(71, 24);
+            this.memberNameLabel.TabIndex = 4;
+            this.memberNameLabel.Text = "Name: ";
             // 
             // FurnitureRental
             // 
