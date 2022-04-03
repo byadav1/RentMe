@@ -84,7 +84,7 @@ namespace RentMe.UserControls
             // 
             this.lnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameTextBox.Location = new System.Drawing.Point(213, 228);
+            this.lnameTextBox.Location = new System.Drawing.Point(243, 228);
             this.lnameTextBox.MaxLength = 50;
             this.lnameTextBox.Name = "lnameTextBox";
             this.lnameTextBox.Size = new System.Drawing.Size(212, 28);
@@ -96,7 +96,7 @@ namespace RentMe.UserControls
             this.lnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lnameLabel.AutoSize = true;
             this.lnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameLabel.Location = new System.Drawing.Point(103, 230);
+            this.lnameLabel.Location = new System.Drawing.Point(133, 230);
             this.lnameLabel.Name = "lnameLabel";
             this.lnameLabel.Size = new System.Drawing.Size(104, 24);
             this.lnameLabel.TabIndex = 5;
@@ -176,7 +176,7 @@ namespace RentMe.UserControls
             this.fnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.fnameLabel.AutoSize = true;
             this.fnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameLabel.Location = new System.Drawing.Point(101, 193);
+            this.fnameLabel.Location = new System.Drawing.Point(131, 193);
             this.fnameLabel.Name = "fnameLabel";
             this.fnameLabel.Size = new System.Drawing.Size(106, 24);
             this.fnameLabel.TabIndex = 3;
@@ -186,7 +186,7 @@ namespace RentMe.UserControls
             // 
             this.fnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.fnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameTextBox.Location = new System.Drawing.Point(213, 191);
+            this.fnameTextBox.Location = new System.Drawing.Point(243, 191);
             this.fnameTextBox.MaxLength = 50;
             this.fnameTextBox.Name = "fnameTextBox";
             this.fnameTextBox.Size = new System.Drawing.Size(212, 28);
@@ -198,7 +198,7 @@ namespace RentMe.UserControls
             this.sexLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.sexLabel.AutoSize = true;
             this.sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sexLabel.Location = new System.Drawing.Point(159, 267);
+            this.sexLabel.Location = new System.Drawing.Point(189, 267);
             this.sexLabel.Name = "sexLabel";
             this.sexLabel.Size = new System.Drawing.Size(48, 24);
             this.sexLabel.TabIndex = 6;
@@ -209,7 +209,7 @@ namespace RentMe.UserControls
             this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneLabel.Location = new System.Drawing.Point(136, 304);
+            this.phoneLabel.Location = new System.Drawing.Point(166, 304);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(71, 24);
             this.phoneLabel.TabIndex = 7;
@@ -220,7 +220,7 @@ namespace RentMe.UserControls
             this.dobLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dobLabel.AutoSize = true;
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobLabel.Location = new System.Drawing.Point(92, 341);
+            this.dobLabel.Location = new System.Drawing.Point(122, 341);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(115, 24);
             this.dobLabel.TabIndex = 8;
@@ -231,7 +231,7 @@ namespace RentMe.UserControls
             this.address1Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.address1Label.AutoSize = true;
             this.address1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1Label.Location = new System.Drawing.Point(107, 378);
+            this.address1Label.Location = new System.Drawing.Point(137, 378);
             this.address1Label.Name = "address1Label";
             this.address1Label.Size = new System.Drawing.Size(100, 24);
             this.address1Label.TabIndex = 9;
@@ -242,7 +242,7 @@ namespace RentMe.UserControls
             this.address2Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.address2Label.AutoSize = true;
             this.address2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2Label.Location = new System.Drawing.Point(107, 415);
+            this.address2Label.Location = new System.Drawing.Point(137, 415);
             this.address2Label.Name = "address2Label";
             this.address2Label.Size = new System.Drawing.Size(100, 24);
             this.address2Label.TabIndex = 10;
@@ -253,7 +253,7 @@ namespace RentMe.UserControls
             this.cityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.cityLabel.AutoSize = true;
             this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityLabel.Location = new System.Drawing.Point(162, 452);
+            this.cityLabel.Location = new System.Drawing.Point(192, 452);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(45, 24);
             this.cityLabel.TabIndex = 11;
@@ -264,7 +264,7 @@ namespace RentMe.UserControls
             this.stateLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.stateLabel.AutoSize = true;
             this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateLabel.Location = new System.Drawing.Point(151, 489);
+            this.stateLabel.Location = new System.Drawing.Point(181, 489);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(56, 24);
             this.stateLabel.TabIndex = 12;
@@ -275,7 +275,7 @@ namespace RentMe.UserControls
             this.zipLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.zipLabel.AutoSize = true;
             this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipLabel.Location = new System.Drawing.Point(165, 526);
+            this.zipLabel.Location = new System.Drawing.Point(195, 526);
             this.zipLabel.Name = "zipLabel";
             this.zipLabel.Size = new System.Drawing.Size(42, 24);
             this.zipLabel.TabIndex = 13;
@@ -285,7 +285,7 @@ namespace RentMe.UserControls
             // 
             this.phoneTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneTextBox.Location = new System.Drawing.Point(213, 302);
+            this.phoneTextBox.Location = new System.Drawing.Point(243, 302);
             this.phoneTextBox.MaxLength = 12;
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(212, 28);
@@ -297,7 +297,7 @@ namespace RentMe.UserControls
             this.dobPicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dobPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dobPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dobPicker.Location = new System.Drawing.Point(213, 339);
+            this.dobPicker.Location = new System.Drawing.Point(243, 339);
             this.dobPicker.Name = "dobPicker";
             this.dobPicker.Size = new System.Drawing.Size(212, 28);
             this.dobPicker.TabIndex = 5;
@@ -308,7 +308,7 @@ namespace RentMe.UserControls
             // 
             this.address1TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.address1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1TextBox.Location = new System.Drawing.Point(213, 376);
+            this.address1TextBox.Location = new System.Drawing.Point(243, 376);
             this.address1TextBox.MaxLength = 50;
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(212, 28);
@@ -319,7 +319,7 @@ namespace RentMe.UserControls
             // 
             this.address2TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.address2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2TextBox.Location = new System.Drawing.Point(213, 413);
+            this.address2TextBox.Location = new System.Drawing.Point(243, 413);
             this.address2TextBox.MaxLength = 50;
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(212, 28);
@@ -330,7 +330,7 @@ namespace RentMe.UserControls
             // 
             this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(213, 450);
+            this.cityTextBox.Location = new System.Drawing.Point(243, 450);
             this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);
@@ -341,7 +341,7 @@ namespace RentMe.UserControls
             // 
             this.stateTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.stateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateTextBox.Location = new System.Drawing.Point(213, 487);
+            this.stateTextBox.Location = new System.Drawing.Point(243, 487);
             this.stateTextBox.MaxLength = 2;
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(212, 28);
@@ -352,7 +352,7 @@ namespace RentMe.UserControls
             // 
             this.zipTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.zipTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipTextBox.Location = new System.Drawing.Point(213, 524);
+            this.zipTextBox.Location = new System.Drawing.Point(243, 524);
             this.zipTextBox.MaxLength = 5;
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(212, 28);
@@ -368,7 +368,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(213, 264);
+            this.sexComboBox.Location = new System.Drawing.Point(243, 264);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
             this.sexComboBox.TabIndex = 3;
@@ -377,8 +377,8 @@ namespace RentMe.UserControls
             // memberServicesTableLayoutPanel
             // 
             this.memberServicesTableLayoutPanel.ColumnCount = 2;
-            this.memberServicesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.memberServicesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.memberServicesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.memberServicesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.memberServicesTableLayoutPanel.Controls.Add(this.statusMessage, 0, 12);
             this.memberServicesTableLayoutPanel.Controls.Add(this.lnameTextBox, 1, 3);
             this.memberServicesTableLayoutPanel.Controls.Add(this.lnameLabel, 0, 3);
@@ -428,8 +428,8 @@ namespace RentMe.UserControls
             // 
             this.searchMemberTableLayoutPanel.ColumnCount = 2;
             this.memberServicesTableLayoutPanel.SetColumnSpan(this.searchMemberTableLayoutPanel, 2);
-            this.searchMemberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.searchMemberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.searchMemberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.searchMemberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.searchMemberTableLayoutPanel.Controls.Add(this.searchMemberLabel, 0, 1);
             this.searchMemberTableLayoutPanel.Controls.Add(this.searchMemberTextBox, 0, 0);
             this.searchMemberTableLayoutPanel.Controls.Add(this.searchButton, 1, 0);
@@ -458,9 +458,9 @@ namespace RentMe.UserControls
             // 
             this.searchMemberTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.searchMemberTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchMemberTextBox.Location = new System.Drawing.Point(98, 10);
+            this.searchMemberTextBox.Location = new System.Drawing.Point(83, 10);
             this.searchMemberTextBox.Name = "searchMemberTextBox";
-            this.searchMemberTextBox.Size = new System.Drawing.Size(314, 28);
+            this.searchMemberTextBox.Size = new System.Drawing.Size(270, 28);
             this.searchMemberTextBox.TabIndex = 0;
             this.searchMemberTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
@@ -468,7 +468,7 @@ namespace RentMe.UserControls
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(418, 9);
+            this.searchButton.Location = new System.Drawing.Point(359, 9);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(100, 30);
             this.searchButton.TabIndex = 2;

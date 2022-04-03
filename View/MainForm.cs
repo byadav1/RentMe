@@ -12,7 +12,7 @@ namespace RentMe.View
     public partial class MainForm : Form
     {
         private Employee loginUser;
-        private  EmployeesController employeeController;
+        private readonly EmployeesController employeeController;
 
         public MainForm()
         {
