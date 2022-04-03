@@ -482,7 +482,7 @@ namespace RentMe.UserControls
                     Address2 = this.address2TextBox.Text,
                     City = this.cityTextBox.Text,
                     Zip = this.zipTextBox.Text,
-                    State = this.stateTextBox.Text,
+                    State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)),
                     Username = this.usernameTextBox.Text,
                     Type = employeeType
                 };

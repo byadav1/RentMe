@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using RentMe.Validators;
 using System.Drawing;
 
 
@@ -113,7 +112,7 @@ namespace RentMe.UserControls
                     Address2 = this.address2TextBox.Text,
                     City = this.cityTextBox.Text,
                     Zip = this.zipTextBox.Text,
-                    State = this.stateTextBox.Text
+                    State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem))
                 };
             if (this.CheckUpdates(memberUpdateData))
             {
