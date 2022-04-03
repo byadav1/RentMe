@@ -57,7 +57,6 @@ namespace RentMe.UserControls
             this.address1TextBox = new System.Windows.Forms.TextBox();
             this.address2TextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
-            this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.searchEmployeeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -67,6 +66,7 @@ namespace RentMe.UserControls
             this.passwordLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.isAdministratorCheckBox = new System.Windows.Forms.CheckBox();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.employeeServicesButtonsTableLayoutPanel.SuspendLayout();
             this.employeeServicesTableLayoutPanel.SuspendLayout();
             this.searchEmployeeTableLayoutPanel.SuspendLayout();
@@ -318,12 +318,12 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.Controls.Add(this.address1TextBox, 1, 7);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.address2TextBox, 1, 8);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.cityTextBox, 1, 9);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.stateTextBox, 1, 10);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.zipTextBox, 1, 11);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.sexComboBox, 1, 4);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.searchEmployeeTableLayoutPanel, 0, 1);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.loginCredentialsTableLayoutPanel, 0, 12);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.isAdministratorCheckBox, 0, 13);
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.stateComboBox, 1, 10);
             this.employeeServicesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeServicesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.employeeServicesTableLayoutPanel.Name = "employeeServicesTableLayoutPanel";
@@ -446,17 +446,6 @@ namespace RentMe.UserControls
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);
             this.cityTextBox.TabIndex = 8;
             this.cityTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // stateTextBox
-            // 
-            this.stateTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.stateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateTextBox.Location = new System.Drawing.Point(243, 463);
-            this.stateTextBox.MaxLength = 2;
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(212, 28);
-            this.stateTextBox.TabIndex = 9;
-            this.stateTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // zipTextBox
             // 
@@ -582,6 +571,19 @@ namespace RentMe.UserControls
             this.isAdministratorCheckBox.UseVisualStyleBackColor = true;
             this.isAdministratorCheckBox.Click += new System.EventHandler(this.FormFieldChanged);
             // 
+            // stateComboBox
+            // 
+            this.stateComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.stateComboBox.DropDownHeight = 100;
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.IntegralHeight = false;
+            this.stateComboBox.Location = new System.Drawing.Point(213, 449);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(212, 30);
+            this.stateComboBox.TabIndex = 9;
+            // 
             // EmployeeServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -628,8 +630,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DateTimePicker dobPicker;
         private System.Windows.Forms.TextBox address1TextBox;
         private System.Windows.Forms.TextBox address2TextBox;
-        private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.ComboBox sexComboBox;
         private System.Windows.Forms.TableLayoutPanel searchEmployeeTableLayoutPanel;
@@ -641,5 +641,7 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.CheckBox isAdministratorCheckBox;
+        private System.Windows.Forms.TextBox cityTextBox;
+        private System.Windows.Forms.ComboBox stateComboBox;
     }
 }

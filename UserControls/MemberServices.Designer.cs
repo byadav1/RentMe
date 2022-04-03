@@ -51,8 +51,6 @@ namespace RentMe.UserControls
             this.dobPicker = new System.Windows.Forms.DateTimePicker();
             this.address1TextBox = new System.Windows.Forms.TextBox();
             this.address2TextBox = new System.Windows.Forms.TextBox();
-            this.cityTextBox = new System.Windows.Forms.TextBox();
-            this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.memberServicesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -60,6 +58,8 @@ namespace RentMe.UserControls
             this.searchMemberLabel = new System.Windows.Forms.Label();
             this.searchMemberTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
+            this.cityTextBox = new System.Windows.Forms.TextBox();
             this.memberServicesButtonsTableLayoutPanel.SuspendLayout();
             this.memberServicesTableLayoutPanel.SuspendLayout();
             this.searchMemberTableLayoutPanel.SuspendLayout();
@@ -326,28 +326,6 @@ namespace RentMe.UserControls
             this.address2TextBox.TabIndex = 7;
             this.address2TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
-            // cityTextBox
-            // 
-            this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(243, 450);
-            this.cityTextBox.MaxLength = 50;
-            this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(212, 28);
-            this.cityTextBox.TabIndex = 8;
-            this.cityTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // stateTextBox
-            // 
-            this.stateTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.stateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateTextBox.Location = new System.Drawing.Point(243, 487);
-            this.stateTextBox.MaxLength = 2;
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(212, 28);
-            this.stateTextBox.TabIndex = 9;
-            this.stateTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
             // zipTextBox
             // 
             this.zipTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -398,11 +376,11 @@ namespace RentMe.UserControls
             this.memberServicesTableLayoutPanel.Controls.Add(this.dobPicker, 1, 6);
             this.memberServicesTableLayoutPanel.Controls.Add(this.address1TextBox, 1, 7);
             this.memberServicesTableLayoutPanel.Controls.Add(this.address2TextBox, 1, 8);
-            this.memberServicesTableLayoutPanel.Controls.Add(this.cityTextBox, 1, 9);
-            this.memberServicesTableLayoutPanel.Controls.Add(this.stateTextBox, 1, 10);
             this.memberServicesTableLayoutPanel.Controls.Add(this.zipTextBox, 1, 11);
             this.memberServicesTableLayoutPanel.Controls.Add(this.sexComboBox, 1, 4);
             this.memberServicesTableLayoutPanel.Controls.Add(this.searchMemberTableLayoutPanel, 0, 1);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.stateComboBox, 1, 10);
+            this.memberServicesTableLayoutPanel.Controls.Add(this.cityTextBox, 1, 9);
             this.memberServicesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memberServicesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.memberServicesTableLayoutPanel.Name = "memberServicesTableLayoutPanel";
@@ -421,6 +399,7 @@ namespace RentMe.UserControls
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.memberServicesTableLayoutPanel.Size = new System.Drawing.Size(600, 750);
             this.memberServicesTableLayoutPanel.TabIndex = 1;
             // 
@@ -476,6 +455,29 @@ namespace RentMe.UserControls
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.SearchButtonClick);
             // 
+            // stateComboBox
+            // 
+            this.stateComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.stateComboBox.DropDownHeight = 100;
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.IntegralHeight = false;
+            this.stateComboBox.Location = new System.Drawing.Point(213, 486);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(212, 30);
+            this.stateComboBox.TabIndex = 9;
+            // 
+            // cityTextBox
+            // 
+            this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cityTextBox.Location = new System.Drawing.Point(213, 450);
+            this.cityTextBox.MaxLength = 50;
+            this.cityTextBox.Name = "cityTextBox";
+            this.cityTextBox.Size = new System.Drawing.Size(212, 28);
+            this.cityTextBox.TabIndex = 8;
+            // 
             // MemberServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -518,13 +520,13 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DateTimePicker dobPicker;
         private System.Windows.Forms.TextBox address1TextBox;
         private System.Windows.Forms.TextBox address2TextBox;
-        private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.ComboBox sexComboBox;
         private System.Windows.Forms.TableLayoutPanel searchMemberTableLayoutPanel;
         private System.Windows.Forms.TextBox searchMemberTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label searchMemberLabel;
+        private System.Windows.Forms.ComboBox stateComboBox;
+        private System.Windows.Forms.TextBox cityTextBox;
     }
 }
