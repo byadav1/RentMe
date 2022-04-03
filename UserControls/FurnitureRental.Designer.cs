@@ -247,9 +247,8 @@ namespace RentMe.UserControls
             // 
             this.styleComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.searchOptionTableLayout.SetColumnSpan(this.styleComboBox, 2);
-            this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(1160, 20);
+            this.styleComboBox.Location = new System.Drawing.Point(1160, 16);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(220, 33);
             this.styleComboBox.TabIndex = 10;
@@ -273,9 +272,8 @@ namespace RentMe.UserControls
             // 
             this.categoryComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.searchOptionTableLayout.SetColumnSpan(this.categoryComboBox, 2);
-            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(644, 20);
+            this.categoryComboBox.Location = new System.Drawing.Point(644, 16);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(220, 33);
             this.categoryComboBox.TabIndex = 9;
