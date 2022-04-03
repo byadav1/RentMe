@@ -144,7 +144,7 @@ namespace RentMe.View
             this.employeeServices1.Location = new System.Drawing.Point(78, 23);
             this.employeeServices1.Margin = new System.Windows.Forms.Padding(5);
             this.employeeServices1.Name = "employeeServices1";
-            this.employeeServices1.Size = new System.Drawing.Size(1151, 856);
+            this.employeeServices1.Size = new System.Drawing.Size(1151, 873);
             this.employeeServices1.TabIndex = 0;
             // 
             // furnitureSearchTabPage
