@@ -478,10 +478,10 @@ namespace RentMe.UserControls
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.IntegralHeight = false;
-            this.stateComboBox.Location = new System.Drawing.Point(213, 489);
+            this.stateComboBox.Location = new System.Drawing.Point(213, 486);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
-            this.stateComboBox.TabIndex = 25;
+            this.stateComboBox.TabIndex = 9;
             // 
             // cityTextBox
             // 
@@ -491,7 +491,7 @@ namespace RentMe.UserControls
             this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);
-            this.cityTextBox.TabIndex = 26;
+            this.cityTextBox.TabIndex = 8;
             // 
             // MemberServices
             // 

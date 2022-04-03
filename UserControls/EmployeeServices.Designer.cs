@@ -56,6 +56,7 @@ namespace RentMe.UserControls
             this.dobPicker = new System.Windows.Forms.DateTimePicker();
             this.address1TextBox = new System.Windows.Forms.TextBox();
             this.address2TextBox = new System.Windows.Forms.TextBox();
+            this.cityTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.searchEmployeeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -65,7 +66,6 @@ namespace RentMe.UserControls
             this.passwordLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.isAdministratorCheckBox = new System.Windows.Forms.CheckBox();
-            this.cityTextBox = new System.Windows.Forms.TextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.employeeServicesButtonsTableLayoutPanel.SuspendLayout();
             this.employeeServicesTableLayoutPanel.SuspendLayout();
@@ -434,6 +434,17 @@ namespace RentMe.UserControls
             this.address2TextBox.TabIndex = 7;
             this.address2TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
+            // cityTextBox
+            // 
+            this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cityTextBox.Location = new System.Drawing.Point(213, 413);
+            this.cityTextBox.MaxLength = 50;
+            this.cityTextBox.Name = "cityTextBox";
+            this.cityTextBox.Size = new System.Drawing.Size(212, 28);
+            this.cityTextBox.TabIndex = 8;
+            this.cityTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
+            // 
             // zipTextBox
             // 
             this.zipTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -558,17 +569,6 @@ namespace RentMe.UserControls
             this.isAdministratorCheckBox.UseVisualStyleBackColor = true;
             this.isAdministratorCheckBox.Click += new System.EventHandler(this.FormFieldChanged);
             // 
-            // cityTextBox
-            // 
-            this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(213, 413);
-            this.cityTextBox.MaxLength = 50;
-            this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(212, 28);
-            this.cityTextBox.TabIndex = 8;
-            this.cityTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
             // stateComboBox
             // 
             this.stateComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -577,10 +577,10 @@ namespace RentMe.UserControls
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.IntegralHeight = false;
-            this.stateComboBox.Location = new System.Drawing.Point(213, 452);
+            this.stateComboBox.Location = new System.Drawing.Point(213, 449);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
-            this.stateComboBox.TabIndex = 26;
+            this.stateComboBox.TabIndex = 9;
             // 
             // EmployeeServices
             // 

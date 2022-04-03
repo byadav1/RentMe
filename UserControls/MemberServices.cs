@@ -197,7 +197,7 @@ namespace RentMe.UserControls
                 Address1 = this.address1TextBox.Text,
                 Address2 = this.address2TextBox.Text,
                 City = this.cityTextBox.Text,
-                State = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem),
+                State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)),
                 Zip = this.zipTextBox.Text
             };
             return member;
@@ -232,7 +232,7 @@ namespace RentMe.UserControls
             this.address1TextBox.Text = member.Address1;
             this.address2TextBox.Text = member.Address2;
             this.cityTextBox.Text = member.City;
-            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(member.State);
+            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(new States().GetStateName(member.State));
             this.zipTextBox.Text = member.Zip;
         }
 

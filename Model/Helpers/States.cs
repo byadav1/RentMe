@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RentMe.Model.Helpers
 {
@@ -51,6 +53,33 @@ namespace RentMe.Model.Helpers
             }
 
             return stateNames;
+        }
+
+        /// <summary>
+        /// Get the key associated with stateName value.
+        /// </summary>
+        /// <param name="stateName"></param>
+        /// <returns></returns>
+        public string GetStateCharFormat(string stateName)
+        {
+            try
+            {
+                return this.statesList.FirstOrDefault(stateKey => stateKey.Value == stateName).Key;
+            }
+            catch(Exception)
+            {
+                return "Key does not exist for this state";
+            }           
+        }
+
+        /// <summary>
+        /// Get the value associated with stateAsChar key.
+        /// </summary>
+        /// <param name="stateAsChar"></param>
+        /// <returns></returns>
+        public string GetStateName(string stateAsChar)
+        {
+            return this.statesList[stateAsChar];
         }
 
         /// <summary>

@@ -137,7 +137,7 @@ namespace RentMe.UserControls
                 Address1 = this.address1TextBox.Text,
                 Address2 = this.address2TextBox.Text,
                 City = this.cityTextBox.Text,
-                State = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem),
+                State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)),
                 Zip = this.zipTextBox.Text,
                 Username = this.usernameTextBox.Text,
                 Password = this.passwordTextBox.Text               
@@ -329,7 +329,7 @@ namespace RentMe.UserControls
             this.address1TextBox.Text = employee.Address1;
             this.address2TextBox.Text = employee.Address2;
             this.cityTextBox.Text = employee.City;
-            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(employee.State);
+            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(new States().GetStateName(employee.State));
             this.zipTextBox.Text = employee.Zip;
             this.usernameTextBox.Text = employee.Username;
         }
