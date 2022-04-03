@@ -463,7 +463,7 @@ namespace RentMe.UserControls
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.IntegralHeight = false;
-            this.stateComboBox.Location = new System.Drawing.Point(213, 486);
+            this.stateComboBox.Location = new System.Drawing.Point(243, 486);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
             this.stateComboBox.TabIndex = 9;
@@ -472,7 +472,7 @@ namespace RentMe.UserControls
             // 
             this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(213, 450);
+            this.cityTextBox.Location = new System.Drawing.Point(243, 450);
             this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);

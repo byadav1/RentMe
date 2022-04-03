@@ -92,7 +92,7 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
             this.statusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMessage.ForeColor = System.Drawing.Color.Red;
-            this.statusMessage.Location = new System.Drawing.Point(240, 656);
+            this.statusMessage.Location = new System.Drawing.Point(240, 647);
             this.statusMessage.Name = "statusMessage";
             this.statusMessage.Size = new System.Drawing.Size(119, 24);
             this.statusMessage.TabIndex = 23;
@@ -148,11 +148,11 @@ namespace RentMe.UserControls
             this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.registerButton, 3, 0);
             this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.clearButton, 2, 0);
             this.employeeServicesButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeeServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 690);
+            this.employeeServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 689);
             this.employeeServicesButtonsTableLayoutPanel.Name = "employeeServicesButtonsTableLayoutPanel";
             this.employeeServicesButtonsTableLayoutPanel.RowCount = 1;
             this.employeeServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.employeeServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 77);
+            this.employeeServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 78);
             this.employeeServicesButtonsTableLayoutPanel.TabIndex = 11;
             // 
             // deleteButton
@@ -160,7 +160,7 @@ namespace RentMe.UserControls
             this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.deleteButton.Enabled = false;
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(162, 8);
+            this.deleteButton.Location = new System.Drawing.Point(162, 9);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(120, 60);
             this.deleteButton.TabIndex = 15;
@@ -173,7 +173,7 @@ namespace RentMe.UserControls
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateButton.Enabled = false;
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(14, 8);
+            this.updateButton.Location = new System.Drawing.Point(14, 9);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(120, 60);
             this.updateButton.TabIndex = 14;
@@ -185,7 +185,7 @@ namespace RentMe.UserControls
             // 
             this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(459, 8);
+            this.registerButton.Location = new System.Drawing.Point(459, 9);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(120, 60);
             this.registerButton.TabIndex = 17;
@@ -197,7 +197,7 @@ namespace RentMe.UserControls
             // 
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(310, 8);
+            this.clearButton.Location = new System.Drawing.Point(310, 9);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(120, 60);
             this.clearButton.TabIndex = 16;
@@ -340,9 +340,9 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.employeeServicesTableLayoutPanel.Size = new System.Drawing.Size(600, 770);
             this.employeeServicesTableLayoutPanel.TabIndex = 2;
@@ -467,7 +467,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(243, 233);
+            this.sexComboBox.Location = new System.Drawing.Point(243, 234);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
             this.sexComboBox.TabIndex = 3;
@@ -508,14 +508,14 @@ namespace RentMe.UserControls
             this.loginCredentialsTableLayoutPanel.Name = "loginCredentialsTableLayoutPanel";
             this.loginCredentialsTableLayoutPanel.RowCount = 1;
             this.loginCredentialsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.loginCredentialsTableLayoutPanel.Size = new System.Drawing.Size(594, 71);
+            this.loginCredentialsTableLayoutPanel.Size = new System.Drawing.Size(594, 55);
             this.loginCredentialsTableLayoutPanel.TabIndex = 25;
             // 
             // usernameTextBox
             // 
             this.usernameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(121, 21);
+            this.usernameTextBox.Location = new System.Drawing.Point(121, 13);
             this.usernameTextBox.MaxLength = 50;
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(170, 28);
@@ -526,7 +526,7 @@ namespace RentMe.UserControls
             // 
             this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(417, 21);
+            this.passwordTextBox.Location = new System.Drawing.Point(417, 13);
             this.passwordTextBox.MaxLength = 20;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
@@ -539,7 +539,7 @@ namespace RentMe.UserControls
             this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(314, 23);
+            this.passwordLabel.Location = new System.Drawing.Point(314, 15);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(97, 24);
             this.passwordLabel.TabIndex = 2;
@@ -550,7 +550,7 @@ namespace RentMe.UserControls
             this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(13, 23);
+            this.usernameLabel.Location = new System.Drawing.Point(13, 15);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(102, 24);
             this.usernameLabel.TabIndex = 3;
@@ -562,7 +562,7 @@ namespace RentMe.UserControls
             this.isAdministratorCheckBox.AutoSize = true;
             this.employeeServicesTableLayoutPanel.SetColumnSpan(this.isAdministratorCheckBox, 2);
             this.isAdministratorCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isAdministratorCheckBox.Location = new System.Drawing.Point(187, 616);
+            this.isAdministratorCheckBox.Location = new System.Drawing.Point(187, 600);
             this.isAdministratorCheckBox.Name = "isAdministratorCheckBox";
             this.isAdministratorCheckBox.Size = new System.Drawing.Size(225, 28);
             this.isAdministratorCheckBox.TabIndex = 13;
@@ -579,7 +579,7 @@ namespace RentMe.UserControls
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.IntegralHeight = false;
-            this.stateComboBox.Location = new System.Drawing.Point(213, 449);
+            this.stateComboBox.Location = new System.Drawing.Point(243, 461);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
             this.stateComboBox.TabIndex = 9;
