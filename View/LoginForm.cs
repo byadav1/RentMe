@@ -51,6 +51,7 @@ namespace RentMe
                 if (ValidLogin(employee))
                 {
                     new MainForm(employee).Show();
+                    this.passwordTextBox.Clear();
                     this.Hide();
                 }
             }

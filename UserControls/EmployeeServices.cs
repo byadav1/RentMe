@@ -189,7 +189,7 @@ namespace RentMe.UserControls
             }
             else if (this.InvalidInput(this.usernameTextBox, this.GenerateRegexForTextBox(this.usernameTextBox)))
             {
-                throw new Exception("Username must be at least 8 characters:\n" +
+                throw new Exception("Username must be at least 5 characters:\n" +
                     "special characters except _ are prohibited");
             }
             else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox)))
@@ -251,7 +251,7 @@ namespace RentMe.UserControls
                     regex = new Regex("^[0-9]{5}$");
                     break;
                 case "usernameTextBox":
-                    regex = new Regex("^[a-zA-Z0-9_]{8,50}$");
+                    regex = new Regex("^[a-zA-Z0-9_]{5,50}$");
                     break;
                 case "passwordTextBox":
                     regex = new Regex("^(?:(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@_\\-\\[\\]\\?]).*)[a-zA-Z0-9!@_\\[\\]\\?]{8,20}$");
@@ -335,6 +335,10 @@ namespace RentMe.UserControls
             this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(new States().GetStateName(employee.State));
             this.zipTextBox.Text = employee.Zip;
             this.usernameTextBox.Text = employee.Username;
+            if (employee.Type == "Admin")
+            {
+                this.isAdministratorCheckBox.Checked = true;
+            }
             
         }
 
