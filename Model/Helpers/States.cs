@@ -7,7 +7,7 @@ namespace RentMe.Model.Helpers
     /// </summary>
     public class States
     {
-        private List<KeyValuePair<string, string>> StatesList;
+        private Dictionary<string, string> statesList;
 
         public States()
         {
@@ -18,9 +18,39 @@ namespace RentMe.Model.Helpers
         /// Gets the list of states.
         /// </summary>
         /// <returns></returns>
-        public List<KeyValuePair<string, string>> GetStates()
+        public Dictionary<string, string> GetStatePairs()
         {
-            return this.StatesList;
+            return this.statesList;
+        }
+
+        /// <summary>
+        /// Gets statesList keys.
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetStateKeys()
+        {
+            List<string> stateKeys = new List<string>();
+            foreach (string key in this.statesList.Keys)
+            {
+                stateKeys.Add(key);
+            }
+
+            return stateKeys;
+        }
+
+        /// <summary>
+        /// Gets stateList values.
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetStateNames()
+        {
+            List<string> stateNames = new List<string>();
+            foreach (string state in this.statesList.Values)
+            {
+                stateNames.Add(state);
+            }
+
+            return stateNames;
         }
 
         /// <summary>
@@ -28,58 +58,60 @@ namespace RentMe.Model.Helpers
         /// </summary>
         private void InitializeStates()
         {
-            StatesList = new List<KeyValuePair<string, string>>(50);
-            StatesList.Add(new KeyValuePair<string, string>("AL", "Alabama"));
-            StatesList.Add(new KeyValuePair<string, string>("AK", "Alaska"));
-            StatesList.Add(new KeyValuePair<string, string>("AZ", "Arizona"));
-            StatesList.Add(new KeyValuePair<string, string>("AR", "Arkansas"));
-            StatesList.Add(new KeyValuePair<string, string>("CA", "California"));
-            StatesList.Add(new KeyValuePair<string, string>("CO", "Colorado"));
-            StatesList.Add(new KeyValuePair<string, string>("CT", "Connecticut"));
-            StatesList.Add(new KeyValuePair<string, string>("DE", "Delaware"));
-            StatesList.Add(new KeyValuePair<string, string>("DC", "District Of Columbia"));
-            StatesList.Add(new KeyValuePair<string, string>("FL", "Florida"));
-            StatesList.Add(new KeyValuePair<string, string>("GA", "Georgia"));
-            StatesList.Add(new KeyValuePair<string, string>("HI", "Hawaii"));
-            StatesList.Add(new KeyValuePair<string, string>("ID", "Idaho"));
-            StatesList.Add(new KeyValuePair<string, string>("IL", "Illinois"));
-            StatesList.Add(new KeyValuePair<string, string>("IN", "Indiana"));
-            StatesList.Add(new KeyValuePair<string, string>("IA", "Iowa"));
-            StatesList.Add(new KeyValuePair<string, string>("KS", "Kansas"));
-            StatesList.Add(new KeyValuePair<string, string>("KY", "Kentucky"));
-            StatesList.Add(new KeyValuePair<string, string>("LA", "Louisiana"));
-            StatesList.Add(new KeyValuePair<string, string>("ME", "Maine"));
-            StatesList.Add(new KeyValuePair<string, string>("MD", "Maryland"));
-            StatesList.Add(new KeyValuePair<string, string>("MA", "Massachusetts"));
-            StatesList.Add(new KeyValuePair<string, string>("MI", "Michigan"));
-            StatesList.Add(new KeyValuePair<string, string>("MN", "Minnesota"));
-            StatesList.Add(new KeyValuePair<string, string>("MS", "Mississippi"));
-            StatesList.Add(new KeyValuePair<string, string>("MO", "Missouri"));
-            StatesList.Add(new KeyValuePair<string, string>("MT", "Montana"));
-            StatesList.Add(new KeyValuePair<string, string>("NE", "Nebraska"));
-            StatesList.Add(new KeyValuePair<string, string>("NV", "Nevada"));
-            StatesList.Add(new KeyValuePair<string, string>("NH", "New Hampshire"));
-            StatesList.Add(new KeyValuePair<string, string>("NJ", "New Jersey"));
-            StatesList.Add(new KeyValuePair<string, string>("NM", "New Mexico"));
-            StatesList.Add(new KeyValuePair<string, string>("NY", "New York"));
-            StatesList.Add(new KeyValuePair<string, string>("NC", "North Carolina"));
-            StatesList.Add(new KeyValuePair<string, string>("ND", "North Dakota"));
-            StatesList.Add(new KeyValuePair<string, string>("OH", "Ohio"));
-            StatesList.Add(new KeyValuePair<string, string>("OK", "Oklahoma"));
-            StatesList.Add(new KeyValuePair<string, string>("OR", "Oregon"));
-            StatesList.Add(new KeyValuePair<string, string>("PA", "Pennsylvania"));
-            StatesList.Add(new KeyValuePair<string, string>("RI", "Rhode Island"));
-            StatesList.Add(new KeyValuePair<string, string>("SC", "South Carolina"));
-            StatesList.Add(new KeyValuePair<string, string>("SD", "South Dakota"));
-            StatesList.Add(new KeyValuePair<string, string>("TN", "Tennessee"));
-            StatesList.Add(new KeyValuePair<string, string>("TX", "Texas"));
-            StatesList.Add(new KeyValuePair<string, string>("UT", "Utah"));
-            StatesList.Add(new KeyValuePair<string, string>("VT", "Vermont"));
-            StatesList.Add(new KeyValuePair<string, string>("VA", "Virginia"));
-            StatesList.Add(new KeyValuePair<string, string>("WA", "Washington"));
-            StatesList.Add(new KeyValuePair<string, string>("WV", "West Virginia"));
-            StatesList.Add(new KeyValuePair<string, string>("WI", "Wisconsin"));
-            StatesList.Add(new KeyValuePair<string, string>("WY", "Wyoming"));
+            this.statesList = new Dictionary<string, string>(50)
+            {
+                { "AL", "Alabama" },
+                { "AK", "Alaska" },
+                { "AZ", "Arizona" },
+                { "AR", "Arkansas" },
+                { "CA", "California" },
+                { "CO", "Colorado" },
+                { "CT", "Connecticut" },
+                { "DE", "Delaware" },
+                { "DC", "District Of Columbia" },
+                { "FL", "Florida" },
+                { "GA", "Georgia" },
+                { "HI", "Hawaii" },
+                { "ID", "Idaho" },
+                { "IL", "Illinois" },
+                { "IN", "Indiana" },
+                { "IA", "Iowa" },
+                { "KS", "Kansas" },
+                { "KY", "Kentucky" },
+                { "LA", "Louisiana" },
+                { "ME", "Maine" },
+                { "MD", "Maryland" },
+                { "MA", "Massachusetts" },
+                { "MI", "Michigan" },
+                { "MN", "Minnesota" },
+                { "MS", "Mississippi" },
+                { "MO", "Missouri" },
+                { "MT", "Montana" },
+                { "NE", "Nebraska" },
+                { "NV", "Nevada" },
+                { "NH", "New Hampshire" },
+                { "NJ", "New Jersey" },
+                { "NM", "New Mexico" },
+                { "NY", "New York" },
+                { "NC", "North Carolina" },
+                { "ND", "North Dakota" },
+                { "OH", "Ohio" },
+                { "OK", "Oklahoma" },
+                { "OR", "Oregon" },
+                { "PA", "Pennsylvania" },
+                { "RI", "Rhode Island" },
+                { "SC", "South Carolina" },
+                { "SD", "South Dakota" },
+                { "TN", "Tennessee" },
+                { "TX", "Texas" },
+                { "UT", "Utah" },
+                { "VT", "Vermont" },
+                { "VA", "Virginia" },
+                { "WA", "Washington" },
+                { "WV", "West Virginia" },
+                { "WI", "Wisconsin" },
+                { "WY", "Wyoming" }
+            };
         }
     }
 }

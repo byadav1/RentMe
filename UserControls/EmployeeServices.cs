@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.Model.Helpers;
 using RentMe.Validators;
 using System;
 using System.Drawing;
@@ -34,6 +35,8 @@ namespace RentMe.UserControls
         private void InitializeControls()
         {
             this.sexComboBox.SelectedIndex = 0;
+            this.stateComboBox.DataSource = new States().GetStateNames();
+            this.stateComboBox.SelectedIndex = 0;
             this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
         }
 
@@ -134,7 +137,7 @@ namespace RentMe.UserControls
                 Address1 = this.address1TextBox.Text,
                 Address2 = this.address2TextBox.Text,
                 City = this.cityTextBox.Text,
-                State = this.stateTextBox.Text,
+                State = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem),
                 Zip = this.zipTextBox.Text,
                 Username = this.usernameTextBox.Text,
                 Password = this.passwordTextBox.Text               
@@ -176,10 +179,6 @@ namespace RentMe.UserControls
             {
                 throw new Exception("City should consist of letters and not:\n " +
                     "be empty, include numbers, or special characters");
-            }
-            else if (this.InvalidInput(this.stateTextBox, this.GenerateRegexForTextBox(this.stateTextBox)))
-            {
-                throw new Exception("State cannot be empty and must be two letters");
             }
             else if (this.InvalidInput(this.zipTextBox, this.GenerateRegexForTextBox(this.zipTextBox)))
             {
@@ -244,9 +243,6 @@ namespace RentMe.UserControls
                     break;
                 case "cityTextBox":
                     regex = new Regex("^[a-zA-Z ]+$");
-                    break;
-                case "stateTextBox":
-                    regex = new Regex("^[a-zA-Z]{2}$");
                     break;
                 case "zipTextBox":
                     regex = new Regex("^[0-9]{5}$");
@@ -333,7 +329,7 @@ namespace RentMe.UserControls
             this.address1TextBox.Text = employee.Address1;
             this.address2TextBox.Text = employee.Address2;
             this.cityTextBox.Text = employee.City;
-            this.stateTextBox.Text = employee.State;
+            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(employee.State);
             this.zipTextBox.Text = employee.Zip;
             this.usernameTextBox.Text = employee.Username;
         }
