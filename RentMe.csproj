@@ -55,6 +55,7 @@
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Furniture.cs" />
+    <Compile Include="Model\Helpers\States.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
