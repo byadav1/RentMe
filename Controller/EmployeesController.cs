@@ -1,6 +1,4 @@
-﻿
-
-using RentMe.DAL;
+﻿using RentMe.DAL;
 using RentMe.Model;
 using RentMe.Validators;
 using System;
@@ -14,16 +12,14 @@ namespace RentMe.Controller
     /// </summary>
     public class EmployeesController
     {
-        private readonly EmployeesDAL employee_DBresource;
+      
         /// <summary>
         /// 0-param constructor.
         /// </summary>
         public EmployeesController()
         {
-            this.employee_DBresource = new EmployeesDAL();
-        }
-
-       
+          
+        }    
         
 
         /// <summary>
@@ -71,7 +67,7 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Deletes the employee.
+        /// Deletes an employee.
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns></returns>
@@ -83,15 +79,15 @@ namespace RentMe.Controller
             {
                 throw new ArgumentNullException("Delete cannot be performed ");
             }
-            return this.employee_DBresource.DeactivateEmployee(employee);
+            return EmployeesDAL.DeactivateEmployee(employee);
         }
 
         /// <summary>
-        /// Deletes the employee.
+        /// Get the login employee data
         /// </summary>
         /// <param name="employee">The employee.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException">Delete cannot be performed</exception>
+        /// <returns>Employee</returns>
+        /// <exception cref="ArgumentNullException">Employee username cannot be null</exception>
         public Employee GetCurrentEmployeeData(Employee employee)
         {
 
@@ -99,7 +95,7 @@ namespace RentMe.Controller
             {
                 throw new ArgumentNullException("Employee username cannot be null ");
             }
-            return this.employee_DBresource.GetLoginEmployeeData(employee);
+            return EmployeesDAL.GetLoginEmployeeData(employee);
         }
 
         /// <summary>
@@ -114,9 +110,9 @@ namespace RentMe.Controller
 
             if (oldEmployee == null && newEmployee == null)
             {
-                throw new ArgumentNullException("Update cannot be performed with no change in data");
+                throw new ArgumentNullException("Update cannot be performed as there is no change in data");
             }
-            return this.employee_DBresource.UpdateEmployeeDetails(oldEmployee, newEmployee);
+            return EmployeesDAL.UpdateEmployeeDetails(oldEmployee, newEmployee);
         }
 
     }

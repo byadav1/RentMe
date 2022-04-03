@@ -398,15 +398,22 @@ namespace RentMe.UserControls
 
             try
             {
+                Employee employeeUpdateData = this.ReadData();
+                // check if there is an update with employee data
+                if (this.CheckUpdates(employeeUpdateData))
+                {
+                    this.UpdateStatusMessage("We see there is a change in data.Employee deletion cannot be perfomed." +
+                        "Please save your changes and then delete an employee", true);
+                    return;
+                }
+                //Delete operation
                 if (this.employeesController.DeleteEmployee(this.employee))
                 {
-
                     this.UpdateStatusMessage("Employee deleted successfully", false);                   
                 }
                 else
                 {
-                    this.UpdateStatusMessage("Employee deletion cannot be perfomed.Something went wrong with the process " +
-                        "or employee data is updated at the backendy", true);
+                    this.UpdateStatusMessage("Employee deletion failed at database transaction.", true);
                 };
             }
             catch (Exception ex)
@@ -422,7 +429,7 @@ namespace RentMe.UserControls
             this.statusMessage.Text = "";
             try
             {
-              // this.ValidateFormFields();
+               this.ValidateFormFields();
                 this.ProcessUpdate();
             }
             catch (Exception ex)
@@ -435,28 +442,7 @@ namespace RentMe.UserControls
 
         private void ProcessUpdate()
         {
-            string employeeType = "Regular";
-            if (isAdministratorCheckBox.Checked)
-            {
-                employeeType = "Admin";
-            }
-            Employee employeeUpdateData =
-                new Employee()
-                {
-                    EmployeeID = this.employee.EmployeeID,
-                    FName = this.fnameTextBox.Text,
-                    LName = this.lnameTextBox.Text,
-                    DOB = this.dobPicker.Value,
-                    Sex = this.sexComboBox.Text,
-                    Phone = this.phoneTextBox.Text,
-                    Address1 = this.address1TextBox.Text,
-                    Address2 = this.address2TextBox.Text,
-                    City = this.cityTextBox.Text,
-                    Zip = this.zipTextBox.Text,
-                    State = this.stateTextBox.Text,
-                    Username=this.usernameTextBox.Text,
-                    Type= employeeType
-                };
+            Employee employeeUpdateData =this.ReadData();
             if (this.CheckUpdates(employeeUpdateData))
             {
                 if (this.employeesController.UpdateEmployeeInformation(this.employee, employeeUpdateData))
@@ -479,6 +465,33 @@ namespace RentMe.UserControls
             }
         }
 
+        private Employee ReadData()
+        {
+
+            string employeeType = "Regular";
+            if (isAdministratorCheckBox.Checked)
+            {
+                employeeType = "Admin";
+            }
+            Employee employeeUpdateData =
+                new Employee()
+                {
+                    EmployeeID = this.employee.EmployeeID,
+                    FName = this.fnameTextBox.Text,
+                    LName = this.lnameTextBox.Text,
+                    DOB = this.dobPicker.Value,
+                    Sex = this.sexComboBox.Text,
+                    Phone = this.phoneTextBox.Text,
+                    Address1 = this.address1TextBox.Text,
+                    Address2 = this.address2TextBox.Text,
+                    City = this.cityTextBox.Text,
+                    Zip = this.zipTextBox.Text,
+                    State = this.stateTextBox.Text,
+                    Username = this.usernameTextBox.Text,
+                    Type = employeeType
+                };
+            return employeeUpdateData;
+        }
         private bool CheckUpdates(Employee employeeUpdateData)
         {
             List<Employee> lstOld_employeeData = new List<Employee>();

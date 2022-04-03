@@ -143,20 +143,20 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns></returns>
-        public Employee GetLoginEmployeeData(Employee employee)
+        public static Employee GetLoginEmployeeData(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
             string selectStatement = "SELECT * " +
                                         "FROM Employees " +
                                         "WHERE UserName=@user";
-           
+
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.AddWithValue("user", employee.Username);            
+                    selectCommand.Parameters.AddWithValue("user", employee.Username);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         while (reader.Read())
@@ -333,20 +333,16 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns></returns>
-        public bool DeactivateEmployee(Employee employee)
+        public static bool DeactivateEmployee(Employee employee)
         {
             string selectStatement =
                       " UPDATE Employees SET ACTIVE='N' Where EmployeeID=@ID";
-
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-
                     selectCommand.Parameters.AddWithValue("ID", employee.EmployeeID);
-
-
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)
                     {
@@ -367,8 +363,8 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="oldEmployee">The old employee.</param>
         /// <param name="newEmployee">The new employee.</param>
-        /// <returns>bool on succesdful or failed updates</returns>
-        public bool UpdateEmployeeDetails(Employee oldEmployee, Employee newEmployee)
+        /// <returns>bool on successful or failed updates</returns>
+        public static bool UpdateEmployeeDetails(Employee oldEmployee, Employee newEmployee)
         {
             string selectStatement =
                  " UPDATE Employees SET " +
@@ -384,8 +380,6 @@ namespace RentMe.DAL
                       " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
                       " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL) AND " +
                       "UserName=@Olduser AND EMPLOYEE_TYPE= @Oldtype";
-
-
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -458,11 +452,8 @@ namespace RentMe.DAL
                     {
                         return false;
                     }
-
                 }
             }
-
-
         }
     }
 }
