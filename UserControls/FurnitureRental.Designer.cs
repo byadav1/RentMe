@@ -419,6 +419,7 @@ namespace RentMe.UserControls
             this.Name = "FurnitureRental";
             this.Size = new System.Drawing.Size(1391, 785);
             this.Load += new System.EventHandler(this.FurnitureRental_Load);
+            this.VisibleChanged += new System.EventHandler(this.FurnitureRental_VisibleChanged);
             this.furnitureRentalTableLayoutPanel.ResumeLayout(false);
             this.furnitureRentalTableLayoutPanel.PerformLayout();
             this.cartButtonsTableLayoutPanel.ResumeLayout(false);

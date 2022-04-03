@@ -33,18 +33,7 @@ namespace RentMe.Controller
             {
                 throw new ArgumentException("The furniture cannot be null");
             }
-            else if (!(furniture.FurnitureID > 0) || string.IsNullOrEmpty(furniture.Style) || string.IsNullOrEmpty(furniture.Category))
-            {
-                throw new ArgumentException("Please check the value entered. Furniture ID should be greater than 0.");
-            }
-            else if (string.IsNullOrEmpty(furniture.Style) )
-            {
-                throw new ArgumentException("Please check the value entered. Furniture Style cannot be empty");
-            }
-            else if (string.IsNullOrEmpty(furniture.Category))
-            {
-                throw new ArgumentException("Please check the value entered. Furniture Category cannot be empty.");
-            }
+            
                 return this.furniture_DBresource.GetFurniture(furniture);
         }
 

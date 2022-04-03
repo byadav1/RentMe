@@ -459,5 +459,10 @@ namespace RentMe.UserControls
             this.statusMessage.Text = message;
             this.statusMessage.Visible = true;
         }
+
+        private void MemberServices_VisibleChanged(object sender, EventArgs e)
+        {
+            this.ClearFields();
+        }
     }
 }

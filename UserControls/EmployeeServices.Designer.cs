@@ -478,7 +478,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(213, 233);
+            this.sexComboBox.Location = new System.Drawing.Point(213, 234);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
             this.sexComboBox.TabIndex = 3;
@@ -589,6 +589,7 @@ namespace RentMe.UserControls
             this.Controls.Add(this.employeeServicesTableLayoutPanel);
             this.Name = "EmployeeServices";
             this.Size = new System.Drawing.Size(600, 770);
+            this.VisibleChanged += new System.EventHandler(this.EmployeeServices_VisibleChanged);
             this.employeeServicesButtonsTableLayoutPanel.ResumeLayout(false);
             this.employeeServicesTableLayoutPanel.ResumeLayout(false);
             this.employeeServicesTableLayoutPanel.PerformLayout();

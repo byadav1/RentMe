@@ -43,9 +43,9 @@ namespace RentMe.UserControls
             try
             {
                 this.furnitureSearchDetails = new Furniture();
-                if (!string.IsNullOrEmpty(this.furnitureIDTextBox.Text))
+                if (!string.IsNullOrEmpty(this.furnitureIDTextBox.Text) && Convert.ToInt32(this.furnitureIDTextBox.Text) > 0)
                 {
-                    this.furnitureSearchDetails.FurnitureID = Convert.ToInt32(this.furnitureIDTextBox.Text);
+                    this.furnitureSearchDetails.FurnitureID = Convert.ToInt32(this.furnitureIDTextBox.Text);                  
                 }
                 else if (!string.IsNullOrEmpty(this.styleComboBox.Text))
                 {
@@ -59,7 +59,7 @@ namespace RentMe.UserControls
                 else
                 {
                     this.rentalStatusLabel.Visible = true;
-                    this.rentalStatusLabel.Text = "Please  enter FurnitureId or Style or category to search!!";
+                    this.rentalStatusLabel.Text = "Please  enter FurnitureId or Style or category to search. Please ensure furniture ID is a valid number!!";
                     return false;
                 }
             }
@@ -239,6 +239,18 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Enabled = false;
             this.styleComboBox.Enabled = true;
             this.categoryComboBox.Enabled = false;
+        }
+
+        private void FurnitureRental_VisibleChanged(object sender, System.EventArgs e)
+        {
+            this.ClearFields();
+            this.furnitureIDTextBox.Enabled = false;
+            this.styleComboBox.Enabled = false;
+            this.categoryComboBox.Enabled = false;
+            this.stylerRadiobutton.Checked = false;
+            this.idRadioButton.Checked = false;
+            this.categoryRadioButton.Checked = false;
+            this.LoadComboBox();
         }
     }
 }

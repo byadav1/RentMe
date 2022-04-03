@@ -518,5 +518,9 @@ namespace RentMe.UserControls
             return isModified;
         }
 
+        private void EmployeeServices_VisibleChanged(object sender, EventArgs e)
+        {
+            this.ClearFields();
+        }
     }
 }
