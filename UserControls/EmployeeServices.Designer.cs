@@ -63,12 +63,12 @@ namespace RentMe.UserControls
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.searchEmployeeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.passwordLabel = new System.Windows.Forms.Label();
             this.checkBoxTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.isAdministratorCheckBox = new System.Windows.Forms.CheckBox();
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.activelLabel = new System.Windows.Forms.Label();
+            this.passwordButton = new System.Windows.Forms.Button();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.employeeServicesButtonsTableLayoutPanel.SuspendLayout();
             this.employeeServicesTableLayoutPanel.SuspendLayout();
             this.searchEmployeeTableLayoutPanel.SuspendLayout();
@@ -326,9 +326,9 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.Controls.Add(this.sexComboBox, 1, 4);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.searchEmployeeTableLayoutPanel, 0, 1);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.stateComboBox, 1, 10);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordTextBox, 1, 13);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordLabel, 0, 13);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.checkBoxTableLayoutPanel, 0, 14);
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordButton, 1, 13);
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordTextBox, 0, 13);
             this.employeeServicesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeServicesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.employeeServicesTableLayoutPanel.Name = "employeeServicesTableLayoutPanel";
@@ -532,28 +532,6 @@ namespace RentMe.UserControls
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
             this.stateComboBox.TabIndex = 9;
             // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(243, 563);
-            this.passwordTextBox.MaxLength = 20;
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(212, 28);
-            this.passwordTextBox.TabIndex = 12;
-            // 
-            // passwordLabel
-            // 
-            this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(140, 565);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(97, 24);
-            this.passwordLabel.TabIndex = 25;
-            this.passwordLabel.Text = "Password:";
-            // 
             // checkBoxTableLayoutPanel
             // 
             this.checkBoxTableLayoutPanel.AutoSize = true;
@@ -607,9 +585,31 @@ namespace RentMe.UserControls
             this.activelLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.activelLabel.Location = new System.Drawing.Point(399, 0);
             this.activelLabel.Name = "activelLabel";
-            this.activelLabel.Size = new System.Drawing.Size(24, 24);
+            this.activelLabel.Size = new System.Drawing.Size(0, 24);
             this.activelLabel.TabIndex = 16;
             this.activelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // passwordButton
+            // 
+            this.passwordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordButton.Location = new System.Drawing.Point(243, 561);
+            this.passwordButton.Name = "passwordButton";
+            this.passwordButton.Size = new System.Drawing.Size(220, 30);
+            this.passwordButton.TabIndex = 28;
+            this.passwordButton.Text = "Change Password";
+            this.passwordButton.UseVisualStyleBackColor = true;
+            this.passwordButton.Click += new System.EventHandler(this.PasswordButton_Click);
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox.Location = new System.Drawing.Point(3, 561);
+            this.passwordTextBox.MaxLength = 20;
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
+            this.passwordTextBox.Size = new System.Drawing.Size(234, 28);
+            this.passwordTextBox.TabIndex = 12;
             // 
             // EmployeeServices
             // 
@@ -667,10 +667,10 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TableLayoutPanel checkBoxTableLayoutPanel;
         private System.Windows.Forms.CheckBox isAdministratorCheckBox;
         private System.Windows.Forms.CheckBox activeCheckBox;
         private System.Windows.Forms.Label activelLabel;
+        private System.Windows.Forms.Button passwordButton;
     }
 }

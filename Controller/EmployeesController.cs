@@ -34,6 +34,17 @@ namespace RentMe.Controller
         }
 
         /// <summary>
+        /// Return true if employee password exists.
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        public bool Checkpassword(Employee employee,Employee updateEmployee)
+        {
+           
+            return EmployeesDAL.IsPasswordChange(employee, updateEmployee);
+        }
+
+        /// <summary>
         /// Return true if employee account exists
         /// based on search criteria.
         /// </summary>
@@ -113,6 +124,24 @@ namespace RentMe.Controller
                 throw new ArgumentNullException("Update cannot be performed as there is no change in data");
             }
             return EmployeesDAL.UpdateEmployeeDetails(oldEmployee, newEmployee);
+        }
+
+
+        /// <summary>
+        /// Updates the employee password.
+        /// </summary>
+        /// <param name="oldEmployee">The old employee.</param>
+        /// <param name="newEmployee">The new employee.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">Update cannot be performed as there is no change in data</exception>
+       public bool UpdateEmployeePassword(Employee oldEmployee, Employee newEmployee)
+        {
+
+            if (oldEmployee == null && newEmployee == null)
+            {
+                throw new ArgumentNullException("Update cannot be performed as there is no change in data");
+            }
+            return EmployeesDAL.UpdatePassword(oldEmployee, newEmployee);
         }
 
     }

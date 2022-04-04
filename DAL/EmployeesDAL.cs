@@ -387,14 +387,14 @@ namespace RentMe.DAL
                        " Phone=@NewPhone ,  City=@NewCity , " +
                       " zipcode=@NewZip , State=@NewState, " +
                       " Address1=@NewAddress1 , Address2=@NewAddress2, " +
-                      "UserName=@newUser , EMPLOYEE_TYPE=@Newtype " +
+                      "UserName=@newUser , EMPLOYEE_TYPE=@Newtype  " +
                        "Where EmployeeID=@oldEmployeeID  AND FNAME=@OldFName AND " +
                       " LNAME=@OldLName AND Sex=@OldSex AND " +
                       " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
                       " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
                       " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL) AND " +
                       "UserName=@Olduser AND EMPLOYEE_TYPE= @Oldtype";
-
+           
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -469,5 +469,64 @@ namespace RentMe.DAL
                 }
             }
         }
+        
+        public static bool IsPasswordChange(Employee oldEmployee, Employee newEmployee)
+        {
+          
+            string selectStatement =
+                  "select count(*) from employees e join accounts a on a.Username = e.Username " +
+                    "WHERE e.EmployeeID = @ID and a.username=@user AND a.Password = @changedPassword";
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("ID", oldEmployee.EmployeeID);
+                    selectCommand.Parameters.AddWithValue("user", oldEmployee.Username);
+                    selectCommand.Parameters.AddWithValue("changedPassword", newEmployee.Password);
+                    //No change in password
+                    return !Convert.ToBoolean(selectCommand.ExecuteScalar());
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Updates the password.
+        /// </summary>
+        /// <param name="oldEmployee">The old employee.</param>
+        /// <param name="newEmployee">The new employee.</param>
+        /// <returns></returns>
+        public static bool UpdatePassword(Employee oldEmployee, Employee newEmployee)
+        {
+
+            string selectStatement =
+                  "UPDATE Accounts  set Accounts.Password = @newPassword  from Employees e ,accounts a " +
+                    "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("oldEmployee", oldEmployee.EmployeeID);
+                    selectCommand.Parameters.AddWithValue("oldUser", oldEmployee.Username);
+                    selectCommand.Parameters.AddWithValue("newPassword", newEmployee.Password);
+
+
+                    int resultCount = selectCommand.ExecuteNonQuery();
+                    if (resultCount > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
+        }
+
+
     }
 }

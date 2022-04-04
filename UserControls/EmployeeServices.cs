@@ -354,6 +354,9 @@ namespace RentMe.UserControls
             this.DisableEmployeeData(this.employee.Active);
         }
 
+        /// <summary>
+        /// Disable all text fileds if employee is not an active employee
+        /// </summary>
         private void DisableEmployeeData(bool isEditable)
         {
             this.fnameTextBox.Enabled = isEditable;
@@ -370,9 +373,11 @@ namespace RentMe.UserControls
             this.activeCheckBox.Enabled = isEditable;
             this.updateButton.Enabled = isEditable;
             this.isAdministratorCheckBox.Enabled = isEditable;
-
-
         }
+
+        /// <summary>
+        ///Dipslay employee status
+        /// </summary>
         private void DisplayEmployeeActiveStatus()
         {
             if (employee.Active)
@@ -495,6 +500,7 @@ namespace RentMe.UserControls
             try
             {
                this.ValidateFormFields();
+               
                this.ProcessUpdate();
             }
             catch (Exception ex)
@@ -504,32 +510,47 @@ namespace RentMe.UserControls
             }
         }
 
-
+        /// <summary>
+        /// Perform Updates on Employe data
+        /// </summary>
         private void ProcessUpdate()
         {
-            Employee employeeUpdateData =this.ReadData();
-            if (this.CheckUpdates(employeeUpdateData))
+            try
             {
-                if (this.employeesController.UpdateEmployeeInformation(this.employee, employeeUpdateData))
+                Employee employeeUpdateData = this.ReadData();
+                if (this.CheckUpdates(employeeUpdateData))
                 {
-              
-                    this.UpdateStatusMessage("Employee information updated successfully", false);
-                    this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
+                    if (this.employeesController.UpdateEmployeeInformation(this.employee, employeeUpdateData))
+                    {
+
+                        this.UpdateStatusMessage("Employee information updated successfully", false);
+                        this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
+                    }
+                    else
+                    {
+                        this.UpdateStatusMessage("Employee information cannot be perfomed." +
+                            "Something went wrong with the process or employee data is updated at the backend", true);
+
+                    };
                 }
+
                 else
                 {
-                    this.UpdateStatusMessage("Employee information cannot be perfomed." +
-                        "Something went wrong with the process or employee data is updated at the backend", true);
+                    this.UpdateStatusMessage("No changes done on employee data!!", true);
 
-                };
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.UpdateStatusMessage("No changes done on employee data!!", true);
-               
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = ex.Message;
             }
         }
 
+        /// <summary>
+        /// Read change in data for an employeee
+        /// </summary>
+        /// <returns></returns>
         private Employee ReadData()
         {
 
@@ -553,11 +574,18 @@ namespace RentMe.UserControls
                     Zip = this.zipTextBox.Text,
                     State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)),
                     Username = this.usernameTextBox.Text,
-                    Type = employeeType
+                    Type = employeeType,
+                    Password = this.passwordTextBox.Text
                 };
             return employeeUpdateData;
         }
 
+
+        /// <summary>
+        /// Check if the any of the data has changed to update
+        /// </summary>
+        /// <param name="employeeUpdateData"></param>
+        /// <returns></returns>
         private bool CheckUpdates(Employee employeeUpdateData)
         {
             List<Employee> lstOld_employeeData = new List<Employee>();
@@ -580,8 +608,9 @@ namespace RentMe.UserControls
                               || l1.Type != l2.Type
                               )));
                 isModified = result.Any();
-
             }
+                   
+
 
             return isModified;
         }
@@ -605,5 +634,68 @@ namespace RentMe.UserControls
         {
             this.activeCheckBox.Checked = !this.activeCheckBox.Checked;
         }
+
+        /// <summary>
+        /// Password change event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PasswordButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Employee employeeUpdateData = this.ReadData();
+                if (this.CheckPasswordUpdate(employeeUpdateData))
+                {
+                    if (this.employeesController.UpdateEmployeePassword(this.employee, employeeUpdateData))
+                    {
+
+                        this.UpdateStatusMessage("Employee password updated successfully", false);
+                        this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
+                        this.passwordTextBox.Text = "";
+                        this.statusMessage.Visible = false;
+                        this.statusMessage.Text = "";
+                    }
+                    else
+                    {
+                        this.UpdateStatusMessage("Employee password update cannot be perfomed." +
+                            "Something went wrong with the process or employee data is updated at the backend", true);
+
+                    };
+                }
+
+                else
+                {
+                    this.UpdateStatusMessage("Password cannot be same as previous password.Please enter a new password!!", true);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                this.statusMessage.Visible = true;
+                this.statusMessage.Text = ex.Message;
+            }
+        }
+
+        /// <summary>
+        /// Check if passowrd changed from existing
+        /// </summary>
+        /// <param name="employeeUpdateData"></param>
+        /// <returns></returns>
+        private bool CheckPasswordUpdate(Employee employeeUpdateData)
+        {
+
+            if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox))
+                && (this.registerButton.Enabled
+                || this.registerButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
+            {
+                throw new Exception("Password must be between 8-20 characters: " +
+                    "must contain at least one Uppercase, Lowercase letter, one number, and valid special character ! @ _ - [ ] ?");
+            }
+
+            return this.employeesController.Checkpassword(this.employee, employeeUpdateData);
+
+        }
+
     }
 }
