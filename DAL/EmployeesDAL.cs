@@ -330,11 +330,11 @@ namespace RentMe.DAL
 
 
         /// <summary>
-        /// Deactivates the employee.
+        /// Deactivates  or activate employee.
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns></returns>
-        public static bool DeactivateORActiveEmployee(Employee employee)
+        public static bool DeactivateORActivateEmployee(Employee employee)
         {
             string selectStatement;
             int activeValue;
@@ -469,7 +469,15 @@ namespace RentMe.DAL
                 }
             }
         }
-        
+
+        /// <summary>
+        /// Determines whether [is password change] [the specified old employee].
+        /// </summary>
+        /// <param name="oldEmployee">The old employee.</param>
+        /// <param name="newEmployee">The new employee.</param>
+        /// <returns>
+        ///   <c>true</c> if [is password change] [the specified old employee]; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsPasswordChange(Employee oldEmployee, Employee newEmployee)
         {
           

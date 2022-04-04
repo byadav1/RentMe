@@ -52,6 +52,8 @@ namespace RentMe.UserControls
         {
             try
             {
+                this.statusMessage.Visible = false;
+                this.statusMessage.Text = "";
                 this.employee = this.CreateEmployeeFromSearch();
                 if (this.employeesController.ValidEmployeeSearch(this.employee))
                 {
@@ -373,6 +375,8 @@ namespace RentMe.UserControls
             this.activeCheckBox.Enabled = isEditable;
             this.updateButton.Enabled = isEditable;
             this.isAdministratorCheckBox.Enabled = isEditable;
+            this.passwordButton.Enabled = isEditable;
+            this.passwordTextBox.Enabled = isEditable;
         }
 
         /// <summary>
@@ -424,7 +428,7 @@ namespace RentMe.UserControls
             }
             else
             {
-                this.statusMessage.ForeColor = Color.Blue;
+                this.statusMessage.ForeColor = Color.Black;
             }
 
             this.statusMessage.Text = message;
@@ -644,6 +648,11 @@ namespace RentMe.UserControls
         {
             try
             {
+                if (string.IsNullOrEmpty(this.passwordTextBox.Text))
+                {
+                    this.UpdateStatusMessage("Please enter the valid passsword! ", true);
+                    return;
+                }
                 Employee employeeUpdateData = this.ReadData();
                 if (this.CheckPasswordUpdate(employeeUpdateData))
                 {
@@ -653,8 +662,7 @@ namespace RentMe.UserControls
                         this.UpdateStatusMessage("Employee password updated successfully", false);
                         this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
                         this.passwordTextBox.Text = "";
-                        this.statusMessage.Visible = false;
-                        this.statusMessage.Text = "";
+                        
                     }
                     else
                     {

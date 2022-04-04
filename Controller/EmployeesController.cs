@@ -90,7 +90,7 @@ namespace RentMe.Controller
             {
                 throw new ArgumentNullException("Delete or restore cannot be performed ");
             }
-            return EmployeesDAL.DeactivateORActiveEmployee(employee);
+            return EmployeesDAL.DeactivateORActivateEmployee(employee);
         }
 
         /// <summary>
