@@ -111,7 +111,7 @@ namespace RentMe.UserControls
             this.lnameTextBox.MaxLength = 50;
             this.lnameTextBox.Name = "lnameTextBox";
             this.lnameTextBox.Size = new System.Drawing.Size(212, 28);
-            this.lnameTextBox.TabIndex = 2;
+            this.lnameTextBox.TabIndex = 4;
             this.lnameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // lnameLabel
@@ -159,7 +159,7 @@ namespace RentMe.UserControls
             this.employeeServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.employeeServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.employeeServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 54);
-            this.employeeServicesButtonsTableLayoutPanel.TabIndex = 11;
+            this.employeeServicesButtonsTableLayoutPanel.TabIndex = 21;
             // 
             // updateLoginButton
             // 
@@ -169,7 +169,7 @@ namespace RentMe.UserControls
             this.updateLoginButton.Location = new System.Drawing.Point(240, 3);
             this.updateLoginButton.Name = "updateLoginButton";
             this.updateLoginButton.Size = new System.Drawing.Size(110, 48);
-            this.updateLoginButton.TabIndex = 16;
+            this.updateLoginButton.TabIndex = 20;
             this.updateLoginButton.Text = "Update Login";
             this.updateLoginButton.UseVisualStyleBackColor = true;
             this.updateLoginButton.Click += new System.EventHandler(this.UpdateLoginButtonClick);
@@ -181,7 +181,7 @@ namespace RentMe.UserControls
             this.addEmployeeButton.Location = new System.Drawing.Point(478, 3);
             this.addEmployeeButton.Name = "addEmployeeButton";
             this.addEmployeeButton.Size = new System.Drawing.Size(110, 48);
-            this.addEmployeeButton.TabIndex = 18;
+            this.addEmployeeButton.TabIndex = 22;
             this.addEmployeeButton.Text = "Add Employee";
             this.addEmployeeButton.UseVisualStyleBackColor = true;
             this.addEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButtonClick);
@@ -193,7 +193,7 @@ namespace RentMe.UserControls
             this.clearButton.Location = new System.Drawing.Point(358, 3);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(110, 48);
-            this.clearButton.TabIndex = 17;
+            this.clearButton.TabIndex = 21;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
@@ -206,7 +206,7 @@ namespace RentMe.UserControls
             this.toggleActiveButton.Location = new System.Drawing.Point(122, 3);
             this.toggleActiveButton.Name = "toggleActiveButton";
             this.toggleActiveButton.Size = new System.Drawing.Size(110, 48);
-            this.toggleActiveButton.TabIndex = 15;
+            this.toggleActiveButton.TabIndex = 19;
             this.toggleActiveButton.Text = "Mark Inactive";
             this.toggleActiveButton.UseVisualStyleBackColor = true;
             this.toggleActiveButton.Click += new System.EventHandler(this.ToggleActiveButtonClick);
@@ -219,7 +219,7 @@ namespace RentMe.UserControls
             this.updateProfileButton.Location = new System.Drawing.Point(4, 3);
             this.updateProfileButton.Name = "updateProfileButton";
             this.updateProfileButton.Size = new System.Drawing.Size(110, 48);
-            this.updateProfileButton.TabIndex = 14;
+            this.updateProfileButton.TabIndex = 18;
             this.updateProfileButton.Text = "Update Profile";
             this.updateProfileButton.UseVisualStyleBackColor = true;
             this.updateProfileButton.Click += new System.EventHandler(this.UpdateProfileButtonClick);
@@ -243,7 +243,7 @@ namespace RentMe.UserControls
             this.searchEmployeeTextBox.Location = new System.Drawing.Point(83, 7);
             this.searchEmployeeTextBox.Name = "searchEmployeeTextBox";
             this.searchEmployeeTextBox.Size = new System.Drawing.Size(270, 28);
-            this.searchEmployeeTextBox.TabIndex = 0;
+            this.searchEmployeeTextBox.TabIndex = 1;
             this.searchEmployeeTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // fnameLabel
@@ -265,7 +265,7 @@ namespace RentMe.UserControls
             this.fnameTextBox.MaxLength = 50;
             this.fnameTextBox.Name = "fnameTextBox";
             this.fnameTextBox.Size = new System.Drawing.Size(212, 28);
-            this.fnameTextBox.TabIndex = 1;
+            this.fnameTextBox.TabIndex = 3;
             this.fnameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // sexLabel
@@ -371,7 +371,7 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.employeeServicesTableLayoutPanel.Size = new System.Drawing.Size(600, 770);
-            this.employeeServicesTableLayoutPanel.TabIndex = 2;
+            this.employeeServicesTableLayoutPanel.TabIndex = 17;
             // 
             // usernameLabel
             // 
@@ -392,7 +392,7 @@ namespace RentMe.UserControls
             this.usernameTextBox.MaxLength = 50;
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(212, 28);
-            this.usernameTextBox.TabIndex = 11;
+            this.usernameTextBox.TabIndex = 13;
             // 
             // address2Label
             // 
@@ -446,7 +446,7 @@ namespace RentMe.UserControls
             this.phoneTextBox.MaxLength = 12;
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(212, 28);
-            this.phoneTextBox.TabIndex = 4;
+            this.phoneTextBox.TabIndex = 6;
             this.phoneTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // dobPicker
@@ -457,7 +457,7 @@ namespace RentMe.UserControls
             this.dobPicker.Location = new System.Drawing.Point(243, 288);
             this.dobPicker.Name = "dobPicker";
             this.dobPicker.Size = new System.Drawing.Size(212, 28);
-            this.dobPicker.TabIndex = 5;
+            this.dobPicker.TabIndex = 7;
             this.dobPicker.Value = new System.DateTime(2022, 3, 14, 0, 0, 0, 0);
             this.dobPicker.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
@@ -469,7 +469,7 @@ namespace RentMe.UserControls
             this.address1TextBox.MaxLength = 50;
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(212, 28);
-            this.address1TextBox.TabIndex = 6;
+            this.address1TextBox.TabIndex = 8;
             this.address1TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // address2TextBox
@@ -480,7 +480,7 @@ namespace RentMe.UserControls
             this.address2TextBox.MaxLength = 50;
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(212, 28);
-            this.address2TextBox.TabIndex = 7;
+            this.address2TextBox.TabIndex = 9;
             this.address2TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // cityTextBox
@@ -491,7 +491,8 @@ namespace RentMe.UserControls
             this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);
-            this.cityTextBox.TabIndex = 8;
+            this.cityTextBox.TabIndex = 10;
+            this.cityTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cityTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // zipTextBox
@@ -502,7 +503,7 @@ namespace RentMe.UserControls
             this.zipTextBox.MaxLength = 5;
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(212, 28);
-            this.zipTextBox.TabIndex = 10;
+            this.zipTextBox.TabIndex = 12;
             this.zipTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // sexComboBox
@@ -517,7 +518,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Location = new System.Drawing.Point(243, 213);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
-            this.sexComboBox.TabIndex = 3;
+            this.sexComboBox.TabIndex = 5;
             this.sexComboBox.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
             // searchEmployeeTableLayoutPanel
@@ -536,7 +537,7 @@ namespace RentMe.UserControls
             this.searchEmployeeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.searchEmployeeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.searchEmployeeTableLayoutPanel.Size = new System.Drawing.Size(594, 62);
-            this.searchEmployeeTableLayoutPanel.TabIndex = 24;
+            this.searchEmployeeTableLayoutPanel.TabIndex = 1;
             // 
             // stateComboBox
             // 
@@ -549,7 +550,7 @@ namespace RentMe.UserControls
             this.stateComboBox.Location = new System.Drawing.Point(243, 435);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
-            this.stateComboBox.TabIndex = 9;
+            this.stateComboBox.TabIndex = 11;
             // 
             // checkBoxTableLayoutPanel
             // 
@@ -566,7 +567,7 @@ namespace RentMe.UserControls
             this.checkBoxTableLayoutPanel.RowCount = 1;
             this.checkBoxTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.checkBoxTableLayoutPanel.Size = new System.Drawing.Size(594, 39);
-            this.checkBoxTableLayoutPanel.TabIndex = 27;
+            this.checkBoxTableLayoutPanel.TabIndex = 15;
             // 
             // isAdministratorCheckBox
             // 
@@ -576,7 +577,7 @@ namespace RentMe.UserControls
             this.isAdministratorCheckBox.Location = new System.Drawing.Point(69, 5);
             this.isAdministratorCheckBox.Name = "isAdministratorCheckBox";
             this.isAdministratorCheckBox.Size = new System.Drawing.Size(225, 28);
-            this.isAdministratorCheckBox.TabIndex = 13;
+            this.isAdministratorCheckBox.TabIndex = 15;
             this.isAdministratorCheckBox.Text = "Is this an administrator?";
             this.isAdministratorCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.isAdministratorCheckBox.UseVisualStyleBackColor = true;
@@ -589,7 +590,7 @@ namespace RentMe.UserControls
             this.activeCheckBox.Location = new System.Drawing.Point(300, 5);
             this.activeCheckBox.Name = "activeCheckBox";
             this.activeCheckBox.Size = new System.Drawing.Size(199, 28);
-            this.activeCheckBox.TabIndex = 15;
+            this.activeCheckBox.TabIndex = 16;
             this.activeCheckBox.TabStop = false;
             this.activeCheckBox.Text = "Employee is active?";
             this.activeCheckBox.UseVisualStyleBackColor = true;
@@ -615,7 +616,7 @@ namespace RentMe.UserControls
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(212, 28);
-            this.passwordTextBox.TabIndex = 12;
+            this.passwordTextBox.TabIndex = 14;
             // 
             // label1
             // 
