@@ -387,7 +387,8 @@ namespace RentMe.DAL
                        " Phone=@NewPhone ,  City=@NewCity , " +
                       " zipcode=@NewZip , State=@NewState, " +
                       " Address1=@NewAddress1 , Address2=@NewAddress2, " +
-                      "UserName=@newUser , EMPLOYEE_TYPE=@Newtype  " +
+                     // "UserName=@newUser , " +
+                      "EMPLOYEE_TYPE=@Newtype  " +
                        "Where EmployeeID=@oldEmployeeID  AND FNAME=@OldFName AND " +
                       " LNAME=@OldLName AND Sex=@OldSex AND " +
                       " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
@@ -427,7 +428,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters["@OldState"].Value = oldEmployee.State;
                     selectCommand.Parameters["@OldAddress1"].Value = oldEmployee.Address1;
                     selectCommand.Parameters["@OldAddress2"].Value = oldEmployee.Address2;
-                    selectCommand.Parameters["@OldUser"].Value = oldEmployee.Username;
+                   // selectCommand.Parameters["@OldUser"].Value = oldEmployee.Username;
                     selectCommand.Parameters["@Oldtype"].Value = oldEmployee.Type;
 
                     // New Employee details Mappings
@@ -455,7 +456,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters["@NewState"].Value = newEmployee.State;
                     selectCommand.Parameters["@NewAddress1"].Value = newEmployee.Address1;
                     selectCommand.Parameters["@NewAddress2"].Value = newEmployee.Address2;
-                    selectCommand.Parameters["@NewUser"].Value = newEmployee.Username;
+                  //  selectCommand.Parameters["@NewUser"].Value = newEmployee.Username;
                     selectCommand.Parameters["@Newtype"].Value = newEmployee.Type;
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)
@@ -480,8 +481,8 @@ namespace RentMe.DAL
         /// </returns>
         public static bool IsPasswordChange(Employee oldEmployee, Employee newEmployee)
         {
-          
-            string selectStatement =
+
+            string selectStatement=
                   "select count(*) from employees e join accounts a on a.Username = e.Username " +
                     "WHERE e.EmployeeID = @ID and a.username=@user AND a.Password = @changedPassword";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
@@ -505,11 +506,11 @@ namespace RentMe.DAL
         /// <param name="oldEmployee">The old employee.</param>
         /// <param name="newEmployee">The new employee.</param>
         /// <returns></returns>
-        public static bool UpdatePassword(Employee oldEmployee, Employee newEmployee)
+        public static bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
         {
 
             string selectStatement =
-                  "UPDATE Accounts  set Accounts.Password = @newPassword  from Employees e ,accounts a " +
+                  "UPDATE Accounts  set Accounts.Password = @newPassword , Accounts.username=@newUser from Employees e ,accounts a " +
                     "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -519,7 +520,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters.AddWithValue("oldEmployee", oldEmployee.EmployeeID);
                     selectCommand.Parameters.AddWithValue("oldUser", oldEmployee.Username);
                     selectCommand.Parameters.AddWithValue("newPassword", newEmployee.Password);
-
+                    selectCommand.Parameters.AddWithValue("newUser", newEmployee.Username);
 
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)

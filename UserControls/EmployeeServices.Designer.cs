@@ -49,7 +49,6 @@ namespace RentMe.UserControls
             this.address1Label = new System.Windows.Forms.Label();
             this.employeeServicesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
-            this.usernameLabel = new System.Windows.Forms.Label();
             this.address2Label = new System.Windows.Forms.Label();
             this.cityLabel = new System.Windows.Forms.Label();
             this.stateLabel = new System.Windows.Forms.Label();
@@ -67,8 +66,9 @@ namespace RentMe.UserControls
             this.isAdministratorCheckBox = new System.Windows.Forms.CheckBox();
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.activelLabel = new System.Windows.Forms.Label();
-            this.passwordButton = new System.Windows.Forms.Button();
+            this.userNamePasswordButton = new System.Windows.Forms.Button();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.employeeServicesButtonsTableLayoutPanel.SuspendLayout();
             this.employeeServicesTableLayoutPanel.SuspendLayout();
             this.searchEmployeeTableLayoutPanel.SuspendLayout();
@@ -304,7 +304,6 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.Controls.Add(this.statusMessage, 0, 15);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.lnameTextBox, 1, 3);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.lnameLabel, 0, 3);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.usernameLabel, 0, 12);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.employeeServicesHeaderLabel, 0, 0);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.employeeServicesButtonsTableLayoutPanel, 0, 16);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.fnameLabel, 0, 2);
@@ -327,8 +326,9 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.Controls.Add(this.searchEmployeeTableLayoutPanel, 0, 1);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.stateComboBox, 1, 10);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.checkBoxTableLayoutPanel, 0, 14);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordButton, 1, 13);
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.userNamePasswordButton, 1, 13);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordTextBox, 0, 13);
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.usernameLabel, 0, 12);
             this.employeeServicesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeServicesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.employeeServicesTableLayoutPanel.Name = "employeeServicesTableLayoutPanel";
@@ -363,17 +363,6 @@ namespace RentMe.UserControls
             this.usernameTextBox.Size = new System.Drawing.Size(212, 28);
             this.usernameTextBox.TabIndex = 11;
             this.usernameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // usernameLabel
-            // 
-            this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(135, 527);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(102, 24);
-            this.usernameLabel.TabIndex = 3;
-            this.usernameLabel.Text = "Username:";
             // 
             // address2Label
             // 
@@ -495,7 +484,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(243, 219);
+            this.sexComboBox.Location = new System.Drawing.Point(243, 220);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
             this.sexComboBox.TabIndex = 3;
@@ -527,7 +516,7 @@ namespace RentMe.UserControls
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.IntegralHeight = false;
-            this.stateComboBox.Location = new System.Drawing.Point(243, 447);
+            this.stateComboBox.Location = new System.Drawing.Point(243, 448);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
             this.stateComboBox.TabIndex = 9;
@@ -589,16 +578,15 @@ namespace RentMe.UserControls
             this.activelLabel.TabIndex = 16;
             this.activelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // passwordButton
+            // userNamePasswordButton
             // 
-            this.passwordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordButton.Location = new System.Drawing.Point(243, 561);
-            this.passwordButton.Name = "passwordButton";
-            this.passwordButton.Size = new System.Drawing.Size(220, 30);
-            this.passwordButton.TabIndex = 28;
-            this.passwordButton.Text = "Change Password";
-            this.passwordButton.UseVisualStyleBackColor = true;
-            this.passwordButton.Click += new System.EventHandler(this.PasswordButton_Click);
+            this.userNamePasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNamePasswordButton.Location = new System.Drawing.Point(243, 561);
+            this.userNamePasswordButton.Name = "userNamePasswordButton";
+            this.userNamePasswordButton.Size = new System.Drawing.Size(295, 30);
+            this.userNamePasswordButton.TabIndex = 28;
+            this.userNamePasswordButton.Text = "Change UserName/Password";
+            this.userNamePasswordButton.Click += new System.EventHandler(this.UserNamePasswordButton_Click);
             // 
             // passwordTextBox
             // 
@@ -610,6 +598,17 @@ namespace RentMe.UserControls
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(234, 28);
             this.passwordTextBox.TabIndex = 12;
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel.Location = new System.Drawing.Point(135, 527);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(102, 24);
+            this.usernameLabel.TabIndex = 3;
+            this.usernameLabel.Text = "Username:";
             // 
             // EmployeeServices
             // 
@@ -671,6 +670,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.CheckBox isAdministratorCheckBox;
         private System.Windows.Forms.CheckBox activeCheckBox;
         private System.Windows.Forms.Label activelLabel;
-        private System.Windows.Forms.Button passwordButton;
+        private System.Windows.Forms.Button userNamePasswordButton;
     }
 }

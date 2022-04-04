@@ -375,7 +375,7 @@ namespace RentMe.UserControls
             this.activeCheckBox.Enabled = isEditable;
             this.updateButton.Enabled = isEditable;
             this.isAdministratorCheckBox.Enabled = isEditable;
-            this.passwordButton.Enabled = isEditable;
+            this.userNamePasswordButton.Enabled = isEditable;
             this.passwordTextBox.Enabled = isEditable;
         }
 
@@ -608,7 +608,7 @@ namespace RentMe.UserControls
                               l1.Sex != l2.Sex || l1.Address1 != l2.Address1 ||
                               l1.Address2 != l2.Address2 || l1.State != l2.State ||
                               l1.City != l2.City || l1.Zip != l2.Zip
-                              || l1.Username != l2.Username 
+                              //|| l1.Username != l2.Username 
                               || l1.Type != l2.Type
                               )));
                 isModified = result.Any();
@@ -644,29 +644,29 @@ namespace RentMe.UserControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PasswordButton_Click(object sender, EventArgs e)
+        private void UserNamePasswordButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(this.passwordTextBox.Text))
+                if (string.IsNullOrEmpty(this.usernameTextBox.Text) && string.IsNullOrEmpty(this.passwordTextBox.Text))
                 {
-                    this.UpdateStatusMessage("Please enter the valid passsword! ", true);
+                    this.UpdateStatusMessage("Please enter the valid username or passsword! ", true);
                     return;
                 }
                 Employee employeeUpdateData = this.ReadData();
-                if (this.CheckPasswordUpdate(employeeUpdateData))
+                if (this.CheckPasswordOrUserNameUpdate(employeeUpdateData))
                 {
-                    if (this.employeesController.UpdateEmployeePassword(this.employee, employeeUpdateData))
+                    if (this.employeesController.UpdateEmployeeUserNameORPassword(this.employee, employeeUpdateData))
                     {
 
-                        this.UpdateStatusMessage("Employee password updated successfully", false);
+                        this.UpdateStatusMessage("Employee username/password updated successfully", false);
                         this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
                         this.passwordTextBox.Text = "";
                         
                     }
                     else
                     {
-                        this.UpdateStatusMessage("Employee password update cannot be perfomed." +
+                        this.UpdateStatusMessage("Employee username/password update cannot be perfomed." +
                             "Something went wrong with the process or employee data is updated at the backend", true);
 
                     };
@@ -674,7 +674,7 @@ namespace RentMe.UserControls
 
                 else
                 {
-                    this.UpdateStatusMessage("Password cannot be same as previous password.Please enter a new password!!", true);
+                    this.UpdateStatusMessage("username/Password cannot be same as previous password.Please enter a new password!!", true);
 
                 }
             }
@@ -690,20 +690,33 @@ namespace RentMe.UserControls
         /// </summary>
         /// <param name="employeeUpdateData"></param>
         /// <returns></returns>
-        private bool CheckPasswordUpdate(Employee employeeUpdateData)
+        private bool CheckPasswordOrUserNameUpdate(Employee employeeUpdateData)
         {
 
-            if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox))
+             if (this.InvalidInput(this.usernameTextBox, this.GenerateRegexForTextBox(this.usernameTextBox)))
+            {
+                throw new Exception("Username must be at least 5 characters:\n" +
+                    "special characters except _ are prohibited");
+            }
+           else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox))
                 && (this.registerButton.Enabled
                 || this.registerButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
             {
                 throw new Exception("Password must be between 8-20 characters: " +
                     "must contain at least one Uppercase, Lowercase letter, one number, and valid special character ! @ _ - [ ] ?");
             }
+           
+             if (!string.IsNullOrEmpty(employeeUpdateData.Password))
+            {
+                return this.employeesController.Checkpassword(this.employee, employeeUpdateData);
+            }
+            
+                return this.employee.Username != employeeUpdateData.Username;
+           
 
-            return this.employeesController.Checkpassword(this.employee, employeeUpdateData);
-
+           ;
         }
 
+        
     }
 }

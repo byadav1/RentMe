@@ -134,14 +134,14 @@ namespace RentMe.Controller
         /// <param name="newEmployee">The new employee.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">Update cannot be performed as there is no change in data</exception>
-       public bool UpdateEmployeePassword(Employee oldEmployee, Employee newEmployee)
+       public bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
         {
 
             if (oldEmployee == null && newEmployee == null)
             {
                 throw new ArgumentNullException("Update cannot be performed as there is no change in data");
             }
-            return EmployeesDAL.UpdatePassword(oldEmployee, newEmployee);
+            return EmployeesDAL.UpdateEmployeeUserNameORPassword(oldEmployee, newEmployee);
         }
 
     }
