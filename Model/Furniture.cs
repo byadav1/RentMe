@@ -15,11 +15,5 @@
         public string Description { get; set; }
         public float DailyRentalRate { get; set; }
         public int Quantity { get; set; }
-
-        public Furniture()
-        {
-
-        }
-
     }
 }

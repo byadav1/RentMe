@@ -27,13 +27,5 @@ namespace RentMe.Model
         public string Type { get; set; }
         public string Password { get; set; }
         public bool Active { get; set; }
-
-        /// <summary>
-        /// 0-param constructor.
-        /// </summary>
-        public Employee()
-        {
-
-        }
     }
 }

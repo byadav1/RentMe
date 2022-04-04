@@ -21,13 +21,5 @@ namespace RentMe.Model
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
-
-        /// <summary>
-        /// 0-param constructor.
-        /// </summary>
-        public Member()
-        {
-
-        }
     }
 }

@@ -25,7 +25,8 @@ namespace RentMe.DAL
                                         "JOIN Accounts a " +
                                         "ON e.AccountID = a.AccountID " +
                                         "WHERE a.Username = @Username " +
-                                        "AND a.Password = @Password";
+                                        "AND a.Password = @Password " +
+                                        "AND e.Active = 1";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
