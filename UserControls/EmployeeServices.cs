@@ -503,6 +503,7 @@ namespace RentMe.UserControls
         {
             try
             {
+                this.ValidateFormFields();
                 Employee employeeUpdateData = this.ReadData();
                 if (this.CheckUpdates(employeeUpdateData))
                 {
@@ -526,8 +527,8 @@ namespace RentMe.UserControls
             }
             catch (Exception ex)
             {
-                this.statusMessage.Visible = true;
-                this.statusMessage.Text = ex.Message;
+               
+                this.UpdateStatusMessage(ex.Message, true);
             }
         }
 
@@ -579,18 +580,23 @@ namespace RentMe.UserControls
             lstNew_employeeData.Add(employeeUpdateData);
             if (lstOld_employeeData.Count > 0 && lstNew_employeeData.Count > 0)
             {
+                
+
                 var result = lstNew_employeeData.Where(l2 =>
                       lstOld_employeeData.Any(l1 => l2.EmployeeID == l1.EmployeeID
-                              && (l1.FName != l2.FName || l1.LName != l2.LName 
-                              ||
+                              && ((!String.Equals(l1.FName, l2.FName, StringComparison.OrdinalIgnoreCase) ) ||
+                              (!String.Equals(l1.LName, l2.LName, StringComparison.OrdinalIgnoreCase)) ||                                                            
                              l1.DOB != l2.DOB ||
                               l1.Phone != l2.Phone ||
-                              l1.Sex != l2.Sex || l1.Address1 != l2.Address1 ||
-                              l1.Address2 != l2.Address2 || l1.State != l2.State ||
-                              l1.City != l2.City || l1.Zip != l2.Zip
-                              //|| l1.Username != l2.Username 
-                              || l1.Type != l2.Type
+                               (!String.Equals(l1.Sex, l2.Sex, StringComparison.OrdinalIgnoreCase)) ||
+                                (!String.Equals(l1.Address1, l2.Address1, StringComparison.OrdinalIgnoreCase)) ||
+                             (!String.Equals(l1.Address2, l2.Address2, StringComparison.OrdinalIgnoreCase)) ||
+                               (!String.Equals(l1.City, l2.City, StringComparison.OrdinalIgnoreCase)) ||
+                               l1.Zip != l2.Zip
+                              || (!String.Equals(l1.Type, l2.Type, StringComparison.OrdinalIgnoreCase))
                               )));
+
+                
                 isModified = result.Any();
             }
                    
@@ -651,7 +657,7 @@ namespace RentMe.UserControls
                 }
                 else
                 {
-                    this.UpdateStatusMessage("Username and password cannot be same as previous password.\nPlease enter a new password", true);
+                    this.UpdateStatusMessage("Password cannot be same as previous password.\nPlease enter a new password", true);
                 }
             }
             catch (Exception ex)
@@ -662,7 +668,7 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
-        /// Check if passowrd changed from existing
+        /// Check if passoword changed from existing
         /// </summary>
         /// <param name="employeeUpdateData"></param>
         /// <returns></returns>

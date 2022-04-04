@@ -58,19 +58,26 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void MainFormLoad(object sender, EventArgs e)
         {
-
-            this.loginUser = this.employeeController.GetCurrentEmployeeData(this.loginUser);
-            if (this.loginUser !=null)
+            try
             {
-                this.currentUserLabel.Text = "Welcome, " + this.loginUser.FName + " " + this.loginUser.LName + 
-                    "!\nUsername: " + this.loginUser.Username;
-                if (this.loginUser.Type == "Regular")
-                {
-                    this.mainTabControl.TabPages.Remove(this.employeeTabPage);
-                }
-            }          
-           
 
+                this.loginUser = this.employeeController.GetCurrentEmployeeData(this.loginUser);
+                if (this.loginUser != null)
+                {
+                    this.currentUserLabel.Text = "Welcome, " + this.loginUser.FName + " " + this.loginUser.LName +
+                        "!\nUsername: " + this.loginUser.Username;
+                    if (this.loginUser.Type == "Regular")
+                    {
+                        this.mainTabControl.TabPages.Remove(this.employeeTabPage);
+                    }
+                }
+
+            }
+            catch (Exception exe)
+            {
+                MessageBox.Show("Application load failed", "Error ocured: " + exe.Message,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

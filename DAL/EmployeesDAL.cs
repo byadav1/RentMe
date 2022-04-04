@@ -392,14 +392,14 @@ namespace RentMe.DAL
                        " Phone=@NewPhone ,  City=@NewCity , " +
                       " zipcode=@NewZip , State=@NewState, " +
                       " Address1=@NewAddress1 , Address2=@NewAddress2, " +
-                     // "UserName=@newUser , " +
+                     
                       "EMPLOYEE_TYPE=@Newtype  " +
                        "Where EmployeeID=@oldEmployeeID  AND FNAME=@OldFName AND " +
                       " LNAME=@OldLName AND Sex=@OldSex AND " +
                       " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
                       " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
                       " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL) AND " +
-                      "UserName=@Olduser AND EMPLOYEE_TYPE= @Oldtype";
+                      " EMPLOYEE_TYPE= @Oldtype";
            
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -420,7 +420,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters.Add("@OldState", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@OldAddress1", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@OldAddress2", SqlDbType.VarChar);
-                    selectCommand.Parameters.Add("@OldUser", SqlDbType.VarChar);
+                    
                     selectCommand.Parameters.Add("@Oldtype", SqlDbType.VarChar);
 
                     selectCommand.Parameters["@OldFName"].Value = oldEmployee.FName;
@@ -433,7 +433,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters["@OldState"].Value = oldEmployee.State;
                     selectCommand.Parameters["@OldAddress1"].Value = oldEmployee.Address1;
                     selectCommand.Parameters["@OldAddress2"].Value = oldEmployee.Address2;
-                   // selectCommand.Parameters["@OldUser"].Value = oldEmployee.Username;
+                   
                     selectCommand.Parameters["@Oldtype"].Value = oldEmployee.Type;
 
                     // New Employee details Mappings
@@ -448,7 +448,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters.Add("@NewAddress1", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewAddress2", SqlDbType.VarChar);
 
-                    selectCommand.Parameters.Add("@NewUser", SqlDbType.VarChar);
+                   
                     selectCommand.Parameters.Add("@Newtype", SqlDbType.VarChar);
 
                     selectCommand.Parameters["@NewFName"].Value = newEmployee.FName;
@@ -461,7 +461,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters["@NewState"].Value = newEmployee.State;
                     selectCommand.Parameters["@NewAddress1"].Value = newEmployee.Address1;
                     selectCommand.Parameters["@NewAddress2"].Value = newEmployee.Address2;
-                  //  selectCommand.Parameters["@NewUser"].Value = newEmployee.Username;
+                 
                     selectCommand.Parameters["@Newtype"].Value = newEmployee.Type;
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)
@@ -488,8 +488,8 @@ namespace RentMe.DAL
         {
 
             string selectStatement=
-                  "select count(*) from employees e join accounts a on a.Username = e.Username " +
-                    "WHERE e.EmployeeID = @ID and a.username=@user AND a.Password = @changedPassword";
+                  "select count(*) from employees e join accounts a on a.AccountID = e.AccountID " +
+                    "WHERE e.EmployeeID = @ID and a.username=@user AND a.Password <> @changedPassword";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -499,7 +499,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters.AddWithValue("user", oldEmployee.Username);
                     selectCommand.Parameters.AddWithValue("changedPassword", newEmployee.Password);
                     //No change in password
-                    return !Convert.ToBoolean(selectCommand.ExecuteScalar());
+                    return Convert.ToBoolean(selectCommand.ExecuteScalar());
                 }
             }
         }
@@ -513,10 +513,26 @@ namespace RentMe.DAL
         /// <returns></returns>
         public static bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
         {
+            string selectStatement = "";
+            if (!string.IsNullOrEmpty(newEmployee.Username ) && !string.IsNullOrEmpty(newEmployee.Password) && newEmployee.Username != oldEmployee.Username) {
+                selectStatement =
+                     "UPDATE Accounts  set Accounts.Password = @newPassword , Accounts.username=@newUser from Employees e ,accounts a " +
+                       "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
+            }
+            else if (!string.IsNullOrEmpty(newEmployee.Username) && newEmployee.Username != oldEmployee.Username) {
 
-            string selectStatement =
-                  "UPDATE Accounts  set Accounts.Password = @newPassword , Accounts.username=@newUser from Employees e ,accounts a " +
-                    "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
+                selectStatement =
+                    "UPDATE Accounts  set  Accounts.username=@newUser from Employees e ,accounts a " +
+                      "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
+            }
+            else if (!string.IsNullOrEmpty(newEmployee.Password))
+            {
+                selectStatement =
+                 "UPDATE Accounts  set Accounts.Password = @newPassword  from Employees e ,accounts a " +
+                   "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
+
+            }
+
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
