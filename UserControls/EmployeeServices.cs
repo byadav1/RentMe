@@ -101,11 +101,11 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
-        /// Event handler for register employee button click.
+        /// Event handler for Add Employee Button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RegisterButtonClick(object sender, EventArgs e)
+        private void AddEmployeeButtonClick(object sender, EventArgs e)
         {
             try
             {
@@ -195,8 +195,8 @@ namespace RentMe.UserControls
                     "special characters except _ are prohibited");
             }
             else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox)) 
-                && (this.registerButton.Enabled 
-                || this.registerButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
+                && (this.addEmployeeButton.Enabled 
+                || this.addEmployeeButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
             {
                 throw new Exception("Password must be between 8-20 characters: " +
                     "must contain at least one Uppercase, Lowercase letter, one number, and valid special character ! @ _ - [ ] ?");
@@ -373,9 +373,9 @@ namespace RentMe.UserControls
             this.zipTextBox.Enabled = isEditable;
             this.usernameTextBox.Enabled = isEditable;
             this.activeCheckBox.Enabled = isEditable;
-            this.updateButton.Enabled = isEditable;
+            this.updateProfileButton.Enabled = isEditable;
             this.isAdministratorCheckBox.Enabled = isEditable;
-            this.userNamePasswordButton.Enabled = isEditable;
+            this.updateLoginButton.Enabled = isEditable;
             this.passwordTextBox.Enabled = isEditable;
         }
 
@@ -388,14 +388,14 @@ namespace RentMe.UserControls
             {
                 this.activeCheckBox.Checked = true;
                 this.toggleActiveButton.Text = "Mark Inactive";
-                this.activelLabel.Text = "**Employee is an Active";
+                //this.activelLabel.Text = "**Employee is an Active";
                 
             }
             else
             {
                 this.activeCheckBox.Checked = false;
                 this.toggleActiveButton.Text = "Mark Active";
-                this.activelLabel.Text = "**Employee is not Active in the System!";
+                //this.activelLabel.Text = "**Employee is not Active in the System!";
             }
         }
 
@@ -404,9 +404,10 @@ namespace RentMe.UserControls
         /// </summary>
         private void ToggleFormButtons(bool enabled)
         {
-            this.updateButton.Enabled = enabled;
+            this.updateProfileButton.Enabled = enabled;
             this.toggleActiveButton.Enabled = enabled;
-            this.registerButton.Enabled = !enabled;
+            this.updateLoginButton.Enabled = enabled;
+            this.addEmployeeButton.Enabled = !enabled;
         }
 
         /// <summary>
@@ -458,7 +459,7 @@ namespace RentMe.UserControls
                 // check if there is an update with employee data
                 if (this.CheckUpdates(employeeUpdateData))
                 {
-                    this.UpdateStatusMessage("We see there is a change in data.Employee deletion cannot be perfomed." +
+                    this.UpdateStatusMessage("We see there is a change in the data. Employee active status cannot be updated.\n" +
                         "Please save your changes and then delete an employee", true);
                     return;
                 }
@@ -494,30 +495,11 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
-        /// Event handler for Update Button Click.
+        /// Event handler for Update Profile button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UpdateButtonClick(object sender, EventArgs e)
-        {
-            this.statusMessage.Text = "";
-            try
-            {
-               this.ValidateFormFields();
-               
-               this.ProcessUpdate();
-            }
-            catch (Exception ex)
-            {
-                this.statusMessage.Visible = true;
-                this.statusMessage.Text = ex.Message;
-            }
-        }
-
-        /// <summary>
-        /// Perform Updates on Employe data
-        /// </summary>
-        private void ProcessUpdate()
+        private void UpdateProfileButtonClick(object sender, EventArgs e)
         {
             try
             {
@@ -532,16 +514,14 @@ namespace RentMe.UserControls
                     }
                     else
                     {
-                        this.UpdateStatusMessage("Employee information cannot be perfomed." +
+                        this.UpdateStatusMessage("Employee information cannot be updated.\n" +
                             "Something went wrong with the process or employee data is updated at the backend", true);
-
                     };
                 }
 
                 else
                 {
-                    this.UpdateStatusMessage("No changes done on employee data!!", true);
-
+                    this.UpdateStatusMessage("No changes detected for employee profile", true);
                 }
             }
             catch (Exception ex)
@@ -644,7 +624,7 @@ namespace RentMe.UserControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UserNamePasswordButton_Click(object sender, EventArgs e)
+        private void UpdateLoginButtonClick(object sender, EventArgs e)
         {
             try
             {
@@ -659,23 +639,19 @@ namespace RentMe.UserControls
                     if (this.employeesController.UpdateEmployeeUserNameORPassword(this.employee, employeeUpdateData))
                     {
 
-                        this.UpdateStatusMessage("Employee username/password updated successfully", false);
+                        this.UpdateStatusMessage("Employee login updated successfully", false);
                         this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
-                        this.passwordTextBox.Text = "";
-                        
+                        this.passwordTextBox.Text = "";                        
                     }
                     else
                     {
-                        this.UpdateStatusMessage("Employee username/password update cannot be perfomed." +
+                        this.UpdateStatusMessage("Employee login update cannot be perfomed.\n" +
                             "Something went wrong with the process or employee data is updated at the backend", true);
-
                     };
                 }
-
                 else
                 {
-                    this.UpdateStatusMessage("username/Password cannot be same as previous password.Please enter a new password!!", true);
-
+                    this.UpdateStatusMessage("Username and password cannot be same as previous password.\nPlease enter a new password", true);
                 }
             }
             catch (Exception ex)
@@ -699,8 +675,8 @@ namespace RentMe.UserControls
                     "special characters except _ are prohibited");
             }
            else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox))
-                && (this.registerButton.Enabled
-                || this.registerButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
+                && (this.addEmployeeButton.Enabled
+                || this.addEmployeeButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
             {
                 throw new Exception("Password must be between 8-20 characters: " +
                     "must contain at least one Uppercase, Lowercase letter, one number, and valid special character ! @ _ - [ ] ?");
@@ -716,7 +692,5 @@ namespace RentMe.UserControls
 
            ;
         }
-
-        
     }
 }

@@ -35,10 +35,11 @@ namespace RentMe.UserControls
             this.lnameLabel = new System.Windows.Forms.Label();
             this.employeeServicesHeaderLabel = new System.Windows.Forms.Label();
             this.employeeServicesButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.toggleActiveButton = new System.Windows.Forms.Button();
-            this.updateButton = new System.Windows.Forms.Button();
-            this.registerButton = new System.Windows.Forms.Button();
+            this.updateLoginButton = new System.Windows.Forms.Button();
+            this.addEmployeeButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
+            this.toggleActiveButton = new System.Windows.Forms.Button();
+            this.updateProfileButton = new System.Windows.Forms.Button();
             this.searchEmployeeLabel = new System.Windows.Forms.Label();
             this.searchEmployeeTextBox = new System.Windows.Forms.TextBox();
             this.fnameLabel = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@ namespace RentMe.UserControls
             this.dobLabel = new System.Windows.Forms.Label();
             this.address1Label = new System.Windows.Forms.Label();
             this.employeeServicesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.address2Label = new System.Windows.Forms.Label();
             this.cityLabel = new System.Windows.Forms.Label();
@@ -65,10 +67,8 @@ namespace RentMe.UserControls
             this.checkBoxTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.isAdministratorCheckBox = new System.Windows.Forms.CheckBox();
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
-            this.activelLabel = new System.Windows.Forms.Label();
-            this.userNamePasswordButton = new System.Windows.Forms.Button();
+            this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.usernameLabel = new System.Windows.Forms.Label();
             this.employeeServicesButtonsTableLayoutPanel.SuspendLayout();
             this.employeeServicesTableLayoutPanel.SuspendLayout();
             this.searchEmployeeTableLayoutPanel.SuspendLayout();
@@ -139,73 +139,89 @@ namespace RentMe.UserControls
             // 
             // employeeServicesButtonsTableLayoutPanel
             // 
-            this.employeeServicesButtonsTableLayoutPanel.ColumnCount = 4;
+            this.employeeServicesButtonsTableLayoutPanel.ColumnCount = 5;
             this.employeeServicesTableLayoutPanel.SetColumnSpan(this.employeeServicesButtonsTableLayoutPanel, 3);
-            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.toggleActiveButton, 0, 0);
-            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.updateButton, 0, 0);
-            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.registerButton, 3, 0);
-            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.clearButton, 2, 0);
+            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.employeeServicesButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.updateLoginButton, 2, 0);
+            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.addEmployeeButton, 4, 0);
+            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.clearButton, 3, 0);
+            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.toggleActiveButton, 1, 0);
+            this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.updateProfileButton, 0, 0);
             this.employeeServicesButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 699);
             this.employeeServicesButtonsTableLayoutPanel.Name = "employeeServicesButtonsTableLayoutPanel";
             this.employeeServicesButtonsTableLayoutPanel.RowCount = 1;
             this.employeeServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.employeeServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.employeeServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 68);
             this.employeeServicesButtonsTableLayoutPanel.TabIndex = 11;
+            // 
+            // updateLoginButton
+            // 
+            this.updateLoginButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.updateLoginButton.Enabled = false;
+            this.updateLoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateLoginButton.Location = new System.Drawing.Point(240, 4);
+            this.updateLoginButton.Name = "updateLoginButton";
+            this.updateLoginButton.Size = new System.Drawing.Size(110, 60);
+            this.updateLoginButton.TabIndex = 16;
+            this.updateLoginButton.Text = "Update Login";
+            this.updateLoginButton.UseVisualStyleBackColor = true;
+            this.updateLoginButton.Click += new System.EventHandler(this.UpdateLoginButtonClick);
+            // 
+            // addEmployeeButton
+            // 
+            this.addEmployeeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addEmployeeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addEmployeeButton.Location = new System.Drawing.Point(478, 4);
+            this.addEmployeeButton.Name = "addEmployeeButton";
+            this.addEmployeeButton.Size = new System.Drawing.Size(110, 60);
+            this.addEmployeeButton.TabIndex = 18;
+            this.addEmployeeButton.Text = "Add Employee";
+            this.addEmployeeButton.UseVisualStyleBackColor = true;
+            this.addEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButtonClick);
+            // 
+            // clearButton
+            // 
+            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(358, 4);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(110, 60);
+            this.clearButton.TabIndex = 17;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
             // 
             // toggleActiveButton
             // 
             this.toggleActiveButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.toggleActiveButton.Enabled = false;
             this.toggleActiveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleActiveButton.Location = new System.Drawing.Point(162, 4);
+            this.toggleActiveButton.Location = new System.Drawing.Point(122, 4);
             this.toggleActiveButton.Name = "toggleActiveButton";
-            this.toggleActiveButton.Size = new System.Drawing.Size(120, 60);
+            this.toggleActiveButton.Size = new System.Drawing.Size(110, 60);
             this.toggleActiveButton.TabIndex = 15;
             this.toggleActiveButton.Text = "Mark Inactive";
             this.toggleActiveButton.UseVisualStyleBackColor = true;
             this.toggleActiveButton.Click += new System.EventHandler(this.ToggleActiveButtonClick);
             // 
-            // updateButton
+            // updateProfileButton
             // 
-            this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.updateButton.Enabled = false;
-            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(14, 4);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(120, 60);
-            this.updateButton.TabIndex = 14;
-            this.updateButton.Text = "Update";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.UpdateButtonClick);
-            // 
-            // registerButton
-            // 
-            this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(459, 4);
-            this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(120, 60);
-            this.registerButton.TabIndex = 17;
-            this.registerButton.Text = "Add Employee";
-            this.registerButton.UseVisualStyleBackColor = true;
-            this.registerButton.Click += new System.EventHandler(this.RegisterButtonClick);
-            // 
-            // clearButton
-            // 
-            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(310, 4);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(120, 60);
-            this.clearButton.TabIndex = 16;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
+            this.updateProfileButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.updateProfileButton.Enabled = false;
+            this.updateProfileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateProfileButton.Location = new System.Drawing.Point(4, 4);
+            this.updateProfileButton.Name = "updateProfileButton";
+            this.updateProfileButton.Size = new System.Drawing.Size(110, 60);
+            this.updateProfileButton.TabIndex = 14;
+            this.updateProfileButton.Text = "Update Profile";
+            this.updateProfileButton.UseVisualStyleBackColor = true;
+            this.updateProfileButton.Click += new System.EventHandler(this.UpdateProfileButtonClick);
             // 
             // searchEmployeeLabel
             // 
@@ -300,6 +316,7 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.ColumnCount = 2;
             this.employeeServicesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.employeeServicesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.usernameLabel, 0, 12);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.usernameTextBox, 1, 12);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.statusMessage, 0, 15);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.lnameTextBox, 1, 3);
@@ -326,32 +343,43 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.Controls.Add(this.searchEmployeeTableLayoutPanel, 0, 1);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.stateComboBox, 1, 10);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.checkBoxTableLayoutPanel, 0, 14);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.userNamePasswordButton, 1, 13);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordTextBox, 0, 13);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.usernameLabel, 0, 12);
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordLabel, 0, 13);
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordTextBox, 1, 13);
             this.employeeServicesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeServicesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.employeeServicesTableLayoutPanel.Name = "employeeServicesTableLayoutPanel";
             this.employeeServicesTableLayoutPanel.RowCount = 17;
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.103782F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.103782F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.057657F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.008496F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.080719F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.011329F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.115345F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.115345F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.064081F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000577F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000577F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.016128F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.089713F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.021504F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.employeeServicesTableLayoutPanel.Size = new System.Drawing.Size(600, 770);
             this.employeeServicesTableLayoutPanel.TabIndex = 2;
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel.Location = new System.Drawing.Point(135, 527);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(102, 24);
+            this.usernameLabel.TabIndex = 33;
+            this.usernameLabel.Text = "Username:";
             // 
             // usernameTextBox
             // 
@@ -362,7 +390,6 @@ namespace RentMe.UserControls
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(212, 28);
             this.usernameTextBox.TabIndex = 11;
-            this.usernameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // address2Label
             // 
@@ -484,7 +511,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(243, 220);
+            this.sexComboBox.Location = new System.Drawing.Point(243, 219);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
             this.sexComboBox.TabIndex = 3;
@@ -516,7 +543,7 @@ namespace RentMe.UserControls
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.IntegralHeight = false;
-            this.stateComboBox.Location = new System.Drawing.Point(243, 448);
+            this.stateComboBox.Location = new System.Drawing.Point(243, 447);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
             this.stateComboBox.TabIndex = 9;
@@ -524,14 +551,12 @@ namespace RentMe.UserControls
             // checkBoxTableLayoutPanel
             // 
             this.checkBoxTableLayoutPanel.AutoSize = true;
-            this.checkBoxTableLayoutPanel.ColumnCount = 3;
+            this.checkBoxTableLayoutPanel.ColumnCount = 2;
             this.employeeServicesTableLayoutPanel.SetColumnSpan(this.checkBoxTableLayoutPanel, 2);
             this.checkBoxTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34334F));
             this.checkBoxTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34334F));
-            this.checkBoxTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.31332F));
             this.checkBoxTableLayoutPanel.Controls.Add(this.isAdministratorCheckBox, 0, 0);
             this.checkBoxTableLayoutPanel.Controls.Add(this.activeCheckBox, 1, 0);
-            this.checkBoxTableLayoutPanel.Controls.Add(this.activelLabel, 2, 0);
             this.checkBoxTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxTableLayoutPanel.Location = new System.Drawing.Point(3, 599);
             this.checkBoxTableLayoutPanel.Name = "checkBoxTableLayoutPanel";
@@ -545,9 +570,9 @@ namespace RentMe.UserControls
             this.isAdministratorCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.isAdministratorCheckBox.AutoSize = true;
             this.isAdministratorCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isAdministratorCheckBox.Location = new System.Drawing.Point(3, 6);
+            this.isAdministratorCheckBox.Location = new System.Drawing.Point(69, 6);
             this.isAdministratorCheckBox.Name = "isAdministratorCheckBox";
-            this.isAdministratorCheckBox.Size = new System.Drawing.Size(192, 28);
+            this.isAdministratorCheckBox.Size = new System.Drawing.Size(225, 28);
             this.isAdministratorCheckBox.TabIndex = 13;
             this.isAdministratorCheckBox.Text = "Is this an administrator?";
             this.isAdministratorCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -558,57 +583,36 @@ namespace RentMe.UserControls
             this.activeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.activeCheckBox.AutoSize = true;
             this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeCheckBox.Location = new System.Drawing.Point(201, 6);
+            this.activeCheckBox.Location = new System.Drawing.Point(300, 6);
             this.activeCheckBox.Name = "activeCheckBox";
-            this.activeCheckBox.Size = new System.Drawing.Size(192, 28);
+            this.activeCheckBox.Size = new System.Drawing.Size(199, 28);
             this.activeCheckBox.TabIndex = 15;
             this.activeCheckBox.TabStop = false;
             this.activeCheckBox.Text = "Employee is active?";
             this.activeCheckBox.UseVisualStyleBackColor = true;
             this.activeCheckBox.Click += new System.EventHandler(this.ActiveCheckBoxCheckedChanged);
             // 
-            // activelLabel
+            // passwordLabel
             // 
-            this.activelLabel.AutoSize = true;
-            this.activelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activelLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.activelLabel.Location = new System.Drawing.Point(399, 0);
-            this.activelLabel.Name = "activelLabel";
-            this.activelLabel.Size = new System.Drawing.Size(0, 24);
-            this.activelLabel.TabIndex = 16;
-            this.activelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // userNamePasswordButton
-            // 
-            this.userNamePasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNamePasswordButton.Location = new System.Drawing.Point(243, 561);
-            this.userNamePasswordButton.Name = "userNamePasswordButton";
-            this.userNamePasswordButton.Size = new System.Drawing.Size(295, 30);
-            this.userNamePasswordButton.TabIndex = 28;
-            this.userNamePasswordButton.Text = "Change UserName/Password";
-            this.userNamePasswordButton.Click += new System.EventHandler(this.UserNamePasswordButton_Click);
+            this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Location = new System.Drawing.Point(140, 565);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(97, 24);
+            this.passwordLabel.TabIndex = 36;
+            this.passwordLabel.Text = "Password:";
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(3, 561);
+            this.passwordTextBox.Location = new System.Drawing.Point(243, 563);
             this.passwordTextBox.MaxLength = 20;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(234, 28);
+            this.passwordTextBox.Size = new System.Drawing.Size(212, 28);
             this.passwordTextBox.TabIndex = 12;
-            // 
-            // usernameLabel
-            // 
-            this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(135, 527);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(102, 24);
-            this.usernameLabel.TabIndex = 3;
-            this.usernameLabel.Text = "Username:";
             // 
             // EmployeeServices
             // 
@@ -639,8 +643,7 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Label employeeServicesHeaderLabel;
         private System.Windows.Forms.TableLayoutPanel employeeServicesButtonsTableLayoutPanel;
         private System.Windows.Forms.Button toggleActiveButton;
-        private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.Button registerButton;
+        private System.Windows.Forms.Button updateProfileButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label fnameLabel;
         private System.Windows.Forms.TextBox fnameTextBox;
@@ -661,15 +664,16 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TableLayoutPanel searchEmployeeTableLayoutPanel;
         private System.Windows.Forms.Label searchEmployeeLabel;
         private System.Windows.Forms.TextBox searchEmployeeTextBox;
-        private System.Windows.Forms.TextBox usernameTextBox;
-        private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.ComboBox stateComboBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.TableLayoutPanel checkBoxTableLayoutPanel;
         private System.Windows.Forms.CheckBox isAdministratorCheckBox;
         private System.Windows.Forms.CheckBox activeCheckBox;
-        private System.Windows.Forms.Label activelLabel;
-        private System.Windows.Forms.Button userNamePasswordButton;
+        private System.Windows.Forms.Button updateLoginButton;
+        private System.Windows.Forms.Button addEmployeeButton;
+        private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.TextBox passwordTextBox;
     }
 }
