@@ -492,7 +492,6 @@ namespace RentMe.UserControls
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);
             this.cityTextBox.TabIndex = 10;
-            this.cityTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cityTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // zipTextBox
@@ -637,6 +636,7 @@ namespace RentMe.UserControls
             this.Controls.Add(this.employeeServicesTableLayoutPanel);
             this.Name = "EmployeeServices";
             this.Size = new System.Drawing.Size(600, 770);
+            this.Load += new System.EventHandler(this.EmployeeServices_Load);
             this.VisibleChanged += new System.EventHandler(this.EmployeeServicesVisibleChanged);
             this.employeeServicesButtonsTableLayoutPanel.ResumeLayout(false);
             this.employeeServicesTableLayoutPanel.ResumeLayout(false);
