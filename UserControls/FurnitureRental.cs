@@ -26,7 +26,8 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this.furnitureController = new FurnitureController();
-            this.ToggleFormButtons();
+            this.ToggleFormButtons();          
+            this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void FurnitureSearchButton_Click(object sender, EventArgs e)
@@ -99,6 +100,8 @@ namespace RentMe.UserControls
 
                     }
                     furnitureListView.CheckBoxes = true;
+                    //this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                     this.rentalStatusLabel.Visible = false;
                     this.rentalStatusLabel.Text = "";
                 }

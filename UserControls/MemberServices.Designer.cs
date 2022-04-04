@@ -72,7 +72,7 @@ namespace RentMe.UserControls
             this.memberServicesTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
             this.statusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMessage.ForeColor = System.Drawing.Color.Red;
-            this.statusMessage.Location = new System.Drawing.Point(240, 582);
+            this.statusMessage.Location = new System.Drawing.Point(240, 608);
             this.statusMessage.Name = "statusMessage";
             this.statusMessage.Size = new System.Drawing.Size(119, 24);
             this.statusMessage.TabIndex = 23;
@@ -127,11 +127,11 @@ namespace RentMe.UserControls
             this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.registerButton, 2, 0);
             this.memberServicesButtonsTableLayoutPanel.Controls.Add(this.clearButton, 1, 0);
             this.memberServicesButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 635);
+            this.memberServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 687);
             this.memberServicesButtonsTableLayoutPanel.Name = "memberServicesButtonsTableLayoutPanel";
             this.memberServicesButtonsTableLayoutPanel.RowCount = 1;
             this.memberServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.memberServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 112);
+            this.memberServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 60);
             this.memberServicesButtonsTableLayoutPanel.TabIndex = 11;
             // 
             // updateButton
@@ -139,9 +139,9 @@ namespace RentMe.UserControls
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateButton.Enabled = false;
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(39, 26);
+            this.updateButton.Location = new System.Drawing.Point(39, 3);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(120, 60);
+            this.updateButton.Size = new System.Drawing.Size(120, 54);
             this.updateButton.TabIndex = 12;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -151,9 +151,9 @@ namespace RentMe.UserControls
             // 
             this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(435, 26);
+            this.registerButton.Location = new System.Drawing.Point(435, 3);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(120, 60);
+            this.registerButton.Size = new System.Drawing.Size(120, 54);
             this.registerButton.TabIndex = 14;
             this.registerButton.Text = "Register Member";
             this.registerButton.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@ namespace RentMe.UserControls
             // 
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(237, 26);
+            this.clearButton.Location = new System.Drawing.Point(237, 3);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(120, 60);
+            this.clearButton.Size = new System.Drawing.Size(120, 54);
             this.clearButton.TabIndex = 13;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -397,9 +397,8 @@ namespace RentMe.UserControls
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
+            this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.memberServicesTableLayoutPanel.Size = new System.Drawing.Size(600, 750);
             this.memberServicesTableLayoutPanel.TabIndex = 1;
             // 

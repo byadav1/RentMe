@@ -128,6 +128,7 @@ namespace RentMe.DAL
                             employee.Zip = reader["ZipCode"].ToString();
                             employee.Username = reader["Username"].ToString();
                             employee.Type = reader["Employee_type"].ToString();
+                            employee.Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"]));
                         }
                     }
                 }

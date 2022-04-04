@@ -51,13 +51,19 @@ namespace RentMe.View
             GC.Collect();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Event handler for form Load.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainFormLoad(object sender, EventArgs e)
         {
 
             this.loginUser = this.employeeController.GetCurrentEmployeeData(this.loginUser);
             if (this.loginUser !=null)
             {
-                this.currentUserLabel.Text = "Welcome " + this.loginUser.FName + " " + this.loginUser.LName;
+                this.currentUserLabel.Text = "Welcome, " + this.loginUser.FName + " " + this.loginUser.LName + 
+                    "!\nUsername: " + this.loginUser.Username;
                 if (this.loginUser.Type == "Regular")
                 {
                     this.mainTabControl.TabPages.Remove(this.employeeTabPage);

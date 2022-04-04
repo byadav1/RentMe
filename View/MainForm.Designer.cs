@@ -72,10 +72,11 @@ namespace RentMe.View
             // 
             // logoutLink
             // 
-            this.logoutLink.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.logoutLink.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.logoutLink.AutoSize = true;
             this.logoutLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutLink.Location = new System.Drawing.Point(1162, 12);
+            this.logoutLink.Location = new System.Drawing.Point(1355, 12);
+            this.logoutLink.Margin = new System.Windows.Forms.Padding(3, 0, 10, 0);
             this.logoutLink.Name = "logoutLink";
             this.logoutLink.Size = new System.Drawing.Size(68, 24);
             this.logoutLink.TabIndex = 10;
@@ -85,11 +86,10 @@ namespace RentMe.View
             // 
             // currentUserLabel
             // 
-            this.currentUserLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.currentUserLabel.AutoSize = true;
             this.servicesTableLayoutPanel.SetColumnSpan(this.currentUserLabel, 2);
             this.currentUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentUserLabel.Location = new System.Drawing.Point(3, 14);
+            this.currentUserLabel.Location = new System.Drawing.Point(3, 0);
             this.currentUserLabel.Name = "currentUserLabel";
             this.currentUserLabel.Size = new System.Drawing.Size(108, 20);
             this.currentUserLabel.TabIndex = 11;
@@ -177,9 +177,9 @@ namespace RentMe.View
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RentMe: Member Services";
+            this.Text = "RentMe: Services";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormClosedEventHandle);
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Load += new System.EventHandler(this.MainFormLoad);
             this.servicesTableLayoutPanel.ResumeLayout(false);
             this.servicesTableLayoutPanel.PerformLayout();
             this.mainTabControl.ResumeLayout(false);

@@ -192,7 +192,8 @@ namespace RentMe.UserControls
                 throw new Exception("Username must be at least 5 characters:\n" +
                     "special characters except _ are prohibited");
             }
-            else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox)))
+            else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox)) 
+                && this.registerButton.Enabled)
             {
                 throw new Exception("Password must be between 8-20 characters: " +
                     "must contain at least one Uppercase, Lowercase letter, one number, and valid special character ! @ _ - [ ] ?");
@@ -308,6 +309,10 @@ namespace RentMe.UserControls
                     {
                         (control as DateTimePicker).Value = (control as DateTimePicker).MaxDate;
                     }
+                    else if (control is CheckBox)
+                    {
+                        (control as CheckBox).Checked = false;
+                    }
                     else
                     {
                         func(control.Controls);
@@ -339,6 +344,18 @@ namespace RentMe.UserControls
             {
                 this.isAdministratorCheckBox.Checked = true;
             }
+            else
+            {
+                this.isAdministratorCheckBox.Checked = false;
+            }
+            if (employee.Active)
+            {
+                this.activeCheckBox.Checked = true;
+            }
+            else
+            {
+                this.activeCheckBox.Checked = false;
+            }
             
         }
 
@@ -348,7 +365,7 @@ namespace RentMe.UserControls
         private void ToggleFormButtons(bool enabled)
         {
             this.updateButton.Enabled = enabled;
-            this.deleteButton.Enabled = enabled;
+            this.toggleActiveButton.Enabled = enabled;
             this.registerButton.Enabled = !enabled;
         }
 
@@ -393,9 +410,8 @@ namespace RentMe.UserControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DeleteButton_Click(object sender, System.EventArgs e)
+        private void ToggleActiveButtonClick(object sender, System.EventArgs e)
         {
-
             try
             {
                 Employee employeeUpdateData = this.ReadData();
@@ -409,7 +425,8 @@ namespace RentMe.UserControls
                 //Delete operation
                 if (this.employeesController.DeleteEmployee(this.employee))
                 {
-                    this.UpdateStatusMessage("Employee deleted successfully", false);                   
+                    this.UpdateStatusMessage("Employee deleted successfully", false);
+                    this.toggleActiveButton.Text = "Mark Active";
                 }
                 else
                 {
@@ -424,13 +441,18 @@ namespace RentMe.UserControls
 
         }
 
-        private void UpdateButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Event handler for Update Button Click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdateButtonClick(object sender, EventArgs e)
         {
             this.statusMessage.Text = "";
             try
             {
                this.ValidateFormFields();
-                this.ProcessUpdate();
+               this.ProcessUpdate();
             }
             catch (Exception ex)
             {
@@ -492,6 +514,7 @@ namespace RentMe.UserControls
                 };
             return employeeUpdateData;
         }
+
         private bool CheckUpdates(Employee employeeUpdateData)
         {
             List<Employee> lstOld_employeeData = new List<Employee>();
@@ -518,9 +541,24 @@ namespace RentMe.UserControls
             return isModified;
         }
 
-        private void EmployeeServices_VisibleChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Event Handler for changing fields.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EmployeeServicesVisibleChanged(object sender, EventArgs e)
         {
             this.ClearFields();
+        }
+
+        /// <summary>
+        /// Event handler for changing Active CheckBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ActiveCheckBoxCheckedChanged(object sender, EventArgs e)
+        {
+            this.activeCheckBox.Checked = !this.activeCheckBox.Checked;
         }
     }
 }
