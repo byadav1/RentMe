@@ -23,7 +23,7 @@ namespace RentMe.DAL
             string selectStatement = "SELECT COUNT(e.EmployeeID) " +
                                         "FROM Employees e " +
                                         "JOIN Accounts a " +
-                                        "ON e.Username = a.Username " +
+                                        "ON e.AccountID = a.AccountID " +
                                         "WHERE a.Username = @Username " +
                                         "AND a.Password = @Password";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
@@ -148,8 +148,10 @@ namespace RentMe.DAL
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
             string selectStatement = "SELECT * " +
-                                        "FROM Employees " +
-                                        "WHERE UserName=@user";
+                                        "FROM Employees e " +
+                                        "JOIN Accounts a " +
+                                        "ON a.AccountID = e.AccountID " +
+                                        "WHERE a.Username = @Username";
 
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
@@ -157,7 +159,7 @@ namespace RentMe.DAL
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.AddWithValue("user", employee.Username);
+                    selectCommand.Parameters.AddWithValue("Username", employee.Username);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         while (reader.Read())
@@ -175,9 +177,10 @@ namespace RentMe.DAL
                             }
                             employee.City = reader["City"].ToString();
                             employee.State = reader["State"].ToString();
-                            employee.Zip = reader["ZipCode"].ToString();
-                            employee.Username = reader["Username"].ToString();
+                            employee.Zip = reader["ZipCode"].ToString();                          
                             employee.Type = reader["Employee_type"].ToString();
+                            employee.Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"]));
+                            employee.Username = reader["Username"].ToString();
                         }
                     }
                 }
