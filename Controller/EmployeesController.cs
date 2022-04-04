@@ -67,19 +67,19 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Deletes an employee.
+        /// Deletes  or restore employee.
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">Delete cannot be performed</exception>
-        public bool DeleteEmployee(Employee employee)
+        public bool DeleteOrRestoreEmployee(Employee employee)
         {
 
             if (employee == null)
             {
-                throw new ArgumentNullException("Delete cannot be performed ");
+                throw new ArgumentNullException("Delete or restore cannot be performed ");
             }
-            return EmployeesDAL.DeactivateEmployee(employee);
+            return EmployeesDAL.DeactivateORActiveEmployee(employee);
         }
 
         /// <summary>

@@ -349,17 +349,23 @@ namespace RentMe.UserControls
             {
                 this.isAdministratorCheckBox.Checked = false;
             }
+
+            this.DisplayEmployeeActiveStatus();
+        }
+
+        private void DisplayEmployeeActiveStatus()
+        {
             if (employee.Active)
             {
                 this.activeCheckBox.Checked = true;
                 this.toggleActiveButton.Text = "Mark Inactive";
+                
             }
             else
             {
                 this.activeCheckBox.Checked = false;
                 this.toggleActiveButton.Text = "Mark Active";
             }
-            
         }
 
         /// <summary>
@@ -425,10 +431,22 @@ namespace RentMe.UserControls
                         "Please save your changes and then delete an employee", true);
                     return;
                 }
+                string message;
                 //Delete operation
-                if (this.employeesController.DeleteEmployee(this.employee))
+                if (this.employee.Active)
                 {
-                    this.UpdateStatusMessage("Employee deleted successfully", false);                   
+                    message = "Employee deleted successfully  ";                
+                }
+                else 
+                {
+                    message = "Employee restored successfully  ";
+                }
+
+                if (this.employeesController.DeleteOrRestoreEmployee(this.employee))
+                {
+                    this.UpdateStatusMessage(message, false);
+                    this.employee = this.employeesController.GetEmployeeFromSearch(this.employee);
+                    this.DisplayEmployeeActiveStatus();
                 }
                 else
                 {
@@ -528,12 +546,14 @@ namespace RentMe.UserControls
             {
                 var result = lstNew_employeeData.Where(l2 =>
                       lstOld_employeeData.Any(l1 => l2.EmployeeID == l1.EmployeeID
-                              && (l1.FName != l2.FName || l1.LName != l2.LName ||
+                              && (l1.FName != l2.FName || l1.LName != l2.LName 
+                              ||
                              l1.DOB != l2.DOB ||
                               l1.Phone != l2.Phone ||
                               l1.Sex != l2.Sex || l1.Address1 != l2.Address1 ||
                               l1.Address2 != l2.Address2 || l1.State != l2.State ||
-                              l1.City != l2.City || l1.Zip != l2.Zip || l1.Username != l2.Username 
+                              l1.City != l2.City || l1.Zip != l2.Zip
+                              || l1.Username != l2.Username 
                               || l1.Type != l2.Type
                               )));
                 isModified = result.Any();

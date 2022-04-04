@@ -334,16 +334,29 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns></returns>
-        public static bool DeactivateEmployee(Employee employee)
+        public static bool DeactivateORActiveEmployee(Employee employee)
         {
-            string selectStatement =
-                      " UPDATE Employees SET ACTIVE='N' Where EmployeeID=@ID";
+            string selectStatement;
+            int activeValue;
+
+            if (employee.Active) {
+                selectStatement=" UPDATE Employees SET ACTIVE=0 Where EmployeeID=@ID and ACTIVE=@flag";
+                activeValue = 1;
+            }
+            else 
+            {
+                selectStatement = " UPDATE Employees SET ACTIVE= 1 Where EmployeeID=@ID and ACTIVE=@flag";
+                activeValue = 0;
+            }
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
+                    
+                    
                     selectCommand.Parameters.AddWithValue("ID", employee.EmployeeID);
+                    selectCommand.Parameters.AddWithValue("flag", activeValue);
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)
                     {
