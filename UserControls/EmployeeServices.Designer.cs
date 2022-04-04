@@ -68,6 +68,7 @@ namespace RentMe.UserControls
             this.checkBoxTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.isAdministratorCheckBox = new System.Windows.Forms.CheckBox();
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
+            this.activelLabel = new System.Windows.Forms.Label();
             this.employeeServicesButtonsTableLayoutPanel.SuspendLayout();
             this.employeeServicesTableLayoutPanel.SuspendLayout();
             this.searchEmployeeTableLayoutPanel.SuspendLayout();
@@ -555,17 +556,20 @@ namespace RentMe.UserControls
             // 
             // checkBoxTableLayoutPanel
             // 
-            this.checkBoxTableLayoutPanel.ColumnCount = 2;
+            this.checkBoxTableLayoutPanel.AutoSize = true;
+            this.checkBoxTableLayoutPanel.ColumnCount = 3;
             this.employeeServicesTableLayoutPanel.SetColumnSpan(this.checkBoxTableLayoutPanel, 2);
-            this.checkBoxTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.checkBoxTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.checkBoxTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34334F));
+            this.checkBoxTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34334F));
+            this.checkBoxTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.31332F));
             this.checkBoxTableLayoutPanel.Controls.Add(this.isAdministratorCheckBox, 0, 0);
             this.checkBoxTableLayoutPanel.Controls.Add(this.activeCheckBox, 1, 0);
+            this.checkBoxTableLayoutPanel.Controls.Add(this.activelLabel, 2, 0);
             this.checkBoxTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxTableLayoutPanel.Location = new System.Drawing.Point(3, 599);
             this.checkBoxTableLayoutPanel.Name = "checkBoxTableLayoutPanel";
             this.checkBoxTableLayoutPanel.RowCount = 1;
-            this.checkBoxTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.checkBoxTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.checkBoxTableLayoutPanel.Size = new System.Drawing.Size(594, 40);
             this.checkBoxTableLayoutPanel.TabIndex = 27;
             // 
@@ -574,9 +578,9 @@ namespace RentMe.UserControls
             this.isAdministratorCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.isAdministratorCheckBox.AutoSize = true;
             this.isAdministratorCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isAdministratorCheckBox.Location = new System.Drawing.Point(69, 6);
+            this.isAdministratorCheckBox.Location = new System.Drawing.Point(3, 6);
             this.isAdministratorCheckBox.Name = "isAdministratorCheckBox";
-            this.isAdministratorCheckBox.Size = new System.Drawing.Size(225, 28);
+            this.isAdministratorCheckBox.Size = new System.Drawing.Size(192, 28);
             this.isAdministratorCheckBox.TabIndex = 13;
             this.isAdministratorCheckBox.Text = "Is this an administrator?";
             this.isAdministratorCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -587,14 +591,25 @@ namespace RentMe.UserControls
             this.activeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.activeCheckBox.AutoSize = true;
             this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeCheckBox.Location = new System.Drawing.Point(300, 6);
+            this.activeCheckBox.Location = new System.Drawing.Point(201, 6);
             this.activeCheckBox.Name = "activeCheckBox";
-            this.activeCheckBox.Size = new System.Drawing.Size(199, 28);
+            this.activeCheckBox.Size = new System.Drawing.Size(192, 28);
             this.activeCheckBox.TabIndex = 15;
             this.activeCheckBox.TabStop = false;
             this.activeCheckBox.Text = "Employee is active?";
             this.activeCheckBox.UseVisualStyleBackColor = true;
             this.activeCheckBox.Click += new System.EventHandler(this.ActiveCheckBoxCheckedChanged);
+            // 
+            // activelLabel
+            // 
+            this.activelLabel.AutoSize = true;
+            this.activelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activelLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.activelLabel.Location = new System.Drawing.Point(399, 0);
+            this.activelLabel.Name = "activelLabel";
+            this.activelLabel.Size = new System.Drawing.Size(24, 24);
+            this.activelLabel.TabIndex = 16;
+            this.activelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EmployeeServices
             // 
@@ -656,5 +671,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TableLayoutPanel checkBoxTableLayoutPanel;
         private System.Windows.Forms.CheckBox isAdministratorCheckBox;
         private System.Windows.Forms.CheckBox activeCheckBox;
+        private System.Windows.Forms.Label activelLabel;
     }
 }

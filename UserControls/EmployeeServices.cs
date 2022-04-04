@@ -351,20 +351,42 @@ namespace RentMe.UserControls
             }
 
             this.DisplayEmployeeActiveStatus();
+            this.DisableEmployeeData(this.employee.Active);
         }
 
+        private void DisableEmployeeData(bool isEditable)
+        {
+            this.fnameTextBox.Enabled = isEditable;
+            this.lnameTextBox.Enabled = isEditable;
+            this.sexComboBox.Enabled = isEditable;
+            this.phoneTextBox.Enabled = isEditable;
+            this.dobPicker.Enabled = isEditable;
+            this.address1TextBox.Enabled = isEditable;
+            this.address2TextBox.Enabled = isEditable;
+            this.cityTextBox.Enabled = isEditable;
+            this.stateComboBox.Enabled = isEditable;
+            this.zipTextBox.Enabled = isEditable;
+            this.usernameTextBox.Enabled = isEditable;
+            this.activeCheckBox.Enabled = isEditable;
+            this.updateButton.Enabled = isEditable;
+            this.isAdministratorCheckBox.Enabled = isEditable;
+
+
+        }
         private void DisplayEmployeeActiveStatus()
         {
             if (employee.Active)
             {
                 this.activeCheckBox.Checked = true;
                 this.toggleActiveButton.Text = "Mark Inactive";
+                this.activelLabel.Text = "**Employee is an Active";
                 
             }
             else
             {
                 this.activeCheckBox.Checked = false;
                 this.toggleActiveButton.Text = "Mark Active";
+                this.activelLabel.Text = "**Employee is not Active in the System!";
             }
         }
 
@@ -397,7 +419,7 @@ namespace RentMe.UserControls
             }
             else
             {
-                this.statusMessage.ForeColor = Color.Black;
+                this.statusMessage.ForeColor = Color.Blue;
             }
 
             this.statusMessage.Text = message;
@@ -447,6 +469,7 @@ namespace RentMe.UserControls
                     this.UpdateStatusMessage(message, false);
                     this.employee = this.employeesController.GetEmployeeFromSearch(this.employee);
                     this.DisplayEmployeeActiveStatus();
+                    this.DisableEmployeeData(this.employee.Active);
                 }
                 else
                 {
