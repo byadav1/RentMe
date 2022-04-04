@@ -99,8 +99,7 @@ namespace RentMe.UserControls
                         this.furnitureListView.Items.AddRange(new ListViewItem[] { listViewItem });                        
 
                     }
-                    furnitureListView.CheckBoxes = true;
-                    //this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    furnitureListView.CheckBoxes = true;                   
                     this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                     this.rentalStatusLabel.Visible = false;
                     this.rentalStatusLabel.Text = "";

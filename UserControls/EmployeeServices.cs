@@ -193,7 +193,8 @@ namespace RentMe.UserControls
                     "special characters except _ are prohibited");
             }
             else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox)) 
-                && this.registerButton.Enabled)
+                && (this.registerButton.Enabled 
+                || this.registerButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
             {
                 throw new Exception("Password must be between 8-20 characters: " +
                     "must contain at least one Uppercase, Lowercase letter, one number, and valid special character ! @ _ - [ ] ?");
@@ -351,10 +352,12 @@ namespace RentMe.UserControls
             if (employee.Active)
             {
                 this.activeCheckBox.Checked = true;
+                this.toggleActiveButton.Text = "Mark Inactive";
             }
             else
             {
                 this.activeCheckBox.Checked = false;
+                this.toggleActiveButton.Text = "Mark Active";
             }
             
         }
@@ -425,8 +428,7 @@ namespace RentMe.UserControls
                 //Delete operation
                 if (this.employeesController.DeleteEmployee(this.employee))
                 {
-                    this.UpdateStatusMessage("Employee deleted successfully", false);
-                    this.toggleActiveButton.Text = "Mark Active";
+                    this.UpdateStatusMessage("Employee deleted successfully", false);                   
                 }
                 else
                 {
