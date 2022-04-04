@@ -503,8 +503,15 @@ namespace RentMe.UserControls
         {
             try
             {
-                this.ValidateFormFields();
                 Employee employeeUpdateData = this.ReadData();
+                //detect the change in username and passoerd field
+                if (this.CheckPasswordOrUserNameUpdate(employeeUpdateData))
+                {
+                    this.UpdateStatusMessage("Username and password has to be changed using Update Login", true);
+                    return;
+                }
+                this.ValidateFormFields();
+            
                 if (this.CheckUpdates(employeeUpdateData))
                 {
                     if (this.employeesController.UpdateEmployeeInformation(this.employee, employeeUpdateData))
@@ -634,12 +641,18 @@ namespace RentMe.UserControls
         {
             try
             {
+                Employee employeeUpdateData = this.ReadData();
+                if (this.CheckUpdates(employeeUpdateData))
+                {
+                    this.UpdateStatusMessage("We see changes in Employee profile data, Please update the employee profile data using Update Profile ! ", true);
+                    return;
+                }
                 if (string.IsNullOrEmpty(this.usernameTextBox.Text) && string.IsNullOrEmpty(this.passwordTextBox.Text))
                 {
                     this.UpdateStatusMessage("Please enter the valid username or passsword! ", true);
                     return;
                 }
-                Employee employeeUpdateData = this.ReadData();
+               
                 if (this.CheckPasswordOrUserNameUpdate(employeeUpdateData))
                 {
                     if (this.employeesController.UpdateEmployeeUserNameORPassword(this.employee, employeeUpdateData))
@@ -657,7 +670,7 @@ namespace RentMe.UserControls
                 }
                 else
                 {
-                    this.UpdateStatusMessage("Password cannot be same as previous password.\nPlease enter a new password", true);
+                    this.UpdateStatusMessage("No changes detected in employee username or password. Pleaes note Password cannot be same as previous password.", true);
                 }
             }
             catch (Exception ex)
