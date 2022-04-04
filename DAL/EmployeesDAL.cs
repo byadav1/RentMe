@@ -200,7 +200,7 @@ namespace RentMe.DAL
                                      "VALUES(@Username, @Password)" +
                                      "INSERT INTO Employees " +
                                      "VALUES(@FName, @LName, @DOB, @Phone, " +
-                                     "@Sex, @Address1, @Address2, @City, @State, @Zip, @Username, @Type, 1) " +
+                                     "@Sex, @Address1, @Address2, @City, @State, @Zip, (SELECT SCOPE_IDENTITY()), @Type, 1) " +
                                      "SELECT SCOPE_IDENTITY()";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
