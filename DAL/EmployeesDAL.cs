@@ -71,8 +71,10 @@ namespace RentMe.DAL
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
             string selectStatement = "SELECT * " +
-                                        "FROM Employees " +
-                                        "WHERE ";
+                                     "FROM Employees e " +
+                                     "JOIN Accounts a " +
+                                     "ON e.AccountID = a.AccountID " +
+                                     "WHERE ";
             if (EmployeeIDExists(employee))
             {
                 selectStatement += "EmployeeID = @EmployeeID";
