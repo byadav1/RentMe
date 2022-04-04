@@ -69,7 +69,7 @@ namespace RentMe.UserControls
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.updateLoginMessagelabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.employeeServicesButtonsTableLayoutPanel.SuspendLayout();
             this.employeeServicesTableLayoutPanel.SuspendLayout();
             this.searchEmployeeTableLayoutPanel.SuspendLayout();
@@ -80,10 +80,9 @@ namespace RentMe.UserControls
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(269, 5);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchButton.Location = new System.Drawing.Point(359, 6);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 24);
+            this.searchButton.Size = new System.Drawing.Size(100, 30);
             this.searchButton.TabIndex = 2;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -96,10 +95,9 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
             this.statusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMessage.ForeColor = System.Drawing.Color.Red;
-            this.statusMessage.Location = new System.Drawing.Point(179, 518);
-            this.statusMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.statusMessage.Location = new System.Drawing.Point(240, 639);
             this.statusMessage.Name = "statusMessage";
-            this.statusMessage.Size = new System.Drawing.Size(91, 18);
+            this.statusMessage.Size = new System.Drawing.Size(119, 24);
             this.statusMessage.TabIndex = 23;
             this.statusMessage.Text = "Invalid Fields";
             this.statusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,12 +107,11 @@ namespace RentMe.UserControls
             // 
             this.lnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameTextBox.Location = new System.Drawing.Point(182, 143);
-            this.lnameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lnameTextBox.Location = new System.Drawing.Point(243, 177);
             this.lnameTextBox.MaxLength = 50;
             this.lnameTextBox.Name = "lnameTextBox";
-            this.lnameTextBox.Size = new System.Drawing.Size(160, 24);
-            this.lnameTextBox.TabIndex = 2;
+            this.lnameTextBox.Size = new System.Drawing.Size(212, 28);
+            this.lnameTextBox.TabIndex = 4;
             this.lnameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // lnameLabel
@@ -122,10 +119,9 @@ namespace RentMe.UserControls
             this.lnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lnameLabel.AutoSize = true;
             this.lnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameLabel.Location = new System.Drawing.Point(94, 146);
-            this.lnameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lnameLabel.Location = new System.Drawing.Point(133, 179);
             this.lnameLabel.Name = "lnameLabel";
-            this.lnameLabel.Size = new System.Drawing.Size(84, 18);
+            this.lnameLabel.Size = new System.Drawing.Size(104, 24);
             this.lnameLabel.TabIndex = 5;
             this.lnameLabel.Text = "Last Name:";
             // 
@@ -136,10 +132,9 @@ namespace RentMe.UserControls
             this.employeeServicesHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.employeeServicesTableLayoutPanel.SetColumnSpan(this.employeeServicesHeaderLabel, 2);
             this.employeeServicesHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeServicesHeaderLabel.Location = new System.Drawing.Point(43, 3);
-            this.employeeServicesHeaderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.employeeServicesHeaderLabel.Location = new System.Drawing.Point(72, 4);
             this.employeeServicesHeaderLabel.Name = "employeeServicesHeaderLabel";
-            this.employeeServicesHeaderLabel.Size = new System.Drawing.Size(364, 48);
+            this.employeeServicesHeaderLabel.Size = new System.Drawing.Size(455, 60);
             this.employeeServicesHeaderLabel.TabIndex = 1;
             this.employeeServicesHeaderLabel.Text = "Employee Services";
             // 
@@ -158,25 +153,23 @@ namespace RentMe.UserControls
             this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.toggleActiveButton, 1, 0);
             this.employeeServicesButtonsTableLayoutPanel.Controls.Add(this.updateProfileButton, 0, 0);
             this.employeeServicesButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeeServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(2, 551);
-            this.employeeServicesButtonsTableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.employeeServicesButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 681);
             this.employeeServicesButtonsTableLayoutPanel.Name = "employeeServicesButtonsTableLayoutPanel";
             this.employeeServicesButtonsTableLayoutPanel.RowCount = 1;
             this.employeeServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.employeeServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.employeeServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(446, 44);
-            this.employeeServicesButtonsTableLayoutPanel.TabIndex = 11;
+            this.employeeServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.employeeServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 54);
+            this.employeeServicesButtonsTableLayoutPanel.TabIndex = 21;
             // 
             // updateLoginButton
             // 
             this.updateLoginButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateLoginButton.Enabled = false;
             this.updateLoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateLoginButton.Location = new System.Drawing.Point(181, 2);
-            this.updateLoginButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.updateLoginButton.Location = new System.Drawing.Point(240, 3);
             this.updateLoginButton.Name = "updateLoginButton";
-            this.updateLoginButton.Size = new System.Drawing.Size(82, 39);
-            this.updateLoginButton.TabIndex = 16;
+            this.updateLoginButton.Size = new System.Drawing.Size(110, 48);
+            this.updateLoginButton.TabIndex = 20;
             this.updateLoginButton.Text = "Update Login";
             this.updateLoginButton.UseVisualStyleBackColor = true;
             this.updateLoginButton.Click += new System.EventHandler(this.UpdateLoginButtonClick);
@@ -185,11 +178,10 @@ namespace RentMe.UserControls
             // 
             this.addEmployeeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addEmployeeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEmployeeButton.Location = new System.Drawing.Point(360, 2);
-            this.addEmployeeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addEmployeeButton.Location = new System.Drawing.Point(478, 3);
             this.addEmployeeButton.Name = "addEmployeeButton";
-            this.addEmployeeButton.Size = new System.Drawing.Size(82, 39);
-            this.addEmployeeButton.TabIndex = 18;
+            this.addEmployeeButton.Size = new System.Drawing.Size(110, 48);
+            this.addEmployeeButton.TabIndex = 22;
             this.addEmployeeButton.Text = "Add Employee";
             this.addEmployeeButton.UseVisualStyleBackColor = true;
             this.addEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButtonClick);
@@ -198,11 +190,10 @@ namespace RentMe.UserControls
             // 
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(270, 2);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearButton.Location = new System.Drawing.Point(358, 3);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(82, 39);
-            this.clearButton.TabIndex = 17;
+            this.clearButton.Size = new System.Drawing.Size(110, 48);
+            this.clearButton.TabIndex = 21;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
@@ -212,11 +203,10 @@ namespace RentMe.UserControls
             this.toggleActiveButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.toggleActiveButton.Enabled = false;
             this.toggleActiveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleActiveButton.Location = new System.Drawing.Point(92, 2);
-            this.toggleActiveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.toggleActiveButton.Location = new System.Drawing.Point(122, 3);
             this.toggleActiveButton.Name = "toggleActiveButton";
-            this.toggleActiveButton.Size = new System.Drawing.Size(82, 39);
-            this.toggleActiveButton.TabIndex = 15;
+            this.toggleActiveButton.Size = new System.Drawing.Size(110, 48);
+            this.toggleActiveButton.TabIndex = 19;
             this.toggleActiveButton.Text = "Mark Inactive";
             this.toggleActiveButton.UseVisualStyleBackColor = true;
             this.toggleActiveButton.Click += new System.EventHandler(this.ToggleActiveButtonClick);
@@ -226,11 +216,10 @@ namespace RentMe.UserControls
             this.updateProfileButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateProfileButton.Enabled = false;
             this.updateProfileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateProfileButton.Location = new System.Drawing.Point(3, 2);
-            this.updateProfileButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.updateProfileButton.Location = new System.Drawing.Point(4, 3);
             this.updateProfileButton.Name = "updateProfileButton";
-            this.updateProfileButton.Size = new System.Drawing.Size(82, 39);
-            this.updateProfileButton.TabIndex = 14;
+            this.updateProfileButton.Size = new System.Drawing.Size(110, 48);
+            this.updateProfileButton.TabIndex = 18;
             this.updateProfileButton.Text = "Update Profile";
             this.updateProfileButton.UseVisualStyleBackColor = true;
             this.updateProfileButton.Click += new System.EventHandler(this.UpdateProfileButtonClick);
@@ -241,10 +230,9 @@ namespace RentMe.UserControls
             this.searchEmployeeLabel.AutoSize = true;
             this.searchEmployeeTableLayoutPanel.SetColumnSpan(this.searchEmployeeLabel, 2);
             this.searchEmployeeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchEmployeeLabel.Location = new System.Drawing.Point(54, 35);
-            this.searchEmployeeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.searchEmployeeLabel.Location = new System.Drawing.Point(98, 43);
             this.searchEmployeeLabel.Name = "searchEmployeeLabel";
-            this.searchEmployeeLabel.Size = new System.Drawing.Size(338, 16);
+            this.searchEmployeeLabel.Size = new System.Drawing.Size(397, 19);
             this.searchEmployeeLabel.TabIndex = 3;
             this.searchEmployeeLabel.Text = "Search for an employee by their ID, Phone, or Name";
             // 
@@ -252,11 +240,10 @@ namespace RentMe.UserControls
             // 
             this.searchEmployeeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.searchEmployeeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchEmployeeTextBox.Location = new System.Drawing.Point(61, 5);
-            this.searchEmployeeTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchEmployeeTextBox.Location = new System.Drawing.Point(83, 7);
             this.searchEmployeeTextBox.Name = "searchEmployeeTextBox";
-            this.searchEmployeeTextBox.Size = new System.Drawing.Size(204, 24);
-            this.searchEmployeeTextBox.TabIndex = 0;
+            this.searchEmployeeTextBox.Size = new System.Drawing.Size(270, 28);
+            this.searchEmployeeTextBox.TabIndex = 1;
             this.searchEmployeeTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // fnameLabel
@@ -264,10 +251,9 @@ namespace RentMe.UserControls
             this.fnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.fnameLabel.AutoSize = true;
             this.fnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameLabel.Location = new System.Drawing.Point(93, 116);
-            this.fnameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.fnameLabel.Location = new System.Drawing.Point(131, 142);
             this.fnameLabel.Name = "fnameLabel";
-            this.fnameLabel.Size = new System.Drawing.Size(85, 18);
+            this.fnameLabel.Size = new System.Drawing.Size(106, 24);
             this.fnameLabel.TabIndex = 3;
             this.fnameLabel.Text = "First Name:";
             // 
@@ -275,12 +261,11 @@ namespace RentMe.UserControls
             // 
             this.fnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.fnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameTextBox.Location = new System.Drawing.Point(182, 113);
-            this.fnameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fnameTextBox.Location = new System.Drawing.Point(243, 140);
             this.fnameTextBox.MaxLength = 50;
             this.fnameTextBox.Name = "fnameTextBox";
-            this.fnameTextBox.Size = new System.Drawing.Size(160, 24);
-            this.fnameTextBox.TabIndex = 1;
+            this.fnameTextBox.Size = new System.Drawing.Size(212, 28);
+            this.fnameTextBox.TabIndex = 3;
             this.fnameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // sexLabel
@@ -288,10 +273,9 @@ namespace RentMe.UserControls
             this.sexLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.sexLabel.AutoSize = true;
             this.sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sexLabel.Location = new System.Drawing.Point(141, 176);
-            this.sexLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.sexLabel.Location = new System.Drawing.Point(189, 216);
             this.sexLabel.Name = "sexLabel";
-            this.sexLabel.Size = new System.Drawing.Size(37, 18);
+            this.sexLabel.Size = new System.Drawing.Size(48, 24);
             this.sexLabel.TabIndex = 6;
             this.sexLabel.Text = "Sex:";
             // 
@@ -300,10 +284,9 @@ namespace RentMe.UserControls
             this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneLabel.Location = new System.Drawing.Point(123, 206);
-            this.phoneLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.phoneLabel.Location = new System.Drawing.Point(166, 253);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(55, 18);
+            this.phoneLabel.Size = new System.Drawing.Size(71, 24);
             this.phoneLabel.TabIndex = 7;
             this.phoneLabel.Text = "Phone:";
             // 
@@ -312,10 +295,9 @@ namespace RentMe.UserControls
             this.dobLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dobLabel.AutoSize = true;
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobLabel.Location = new System.Drawing.Point(84, 236);
-            this.dobLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.dobLabel.Location = new System.Drawing.Point(122, 290);
             this.dobLabel.Name = "dobLabel";
-            this.dobLabel.Size = new System.Drawing.Size(94, 18);
+            this.dobLabel.Size = new System.Drawing.Size(115, 24);
             this.dobLabel.TabIndex = 8;
             this.dobLabel.Text = "Date of Birth:";
             // 
@@ -324,10 +306,9 @@ namespace RentMe.UserControls
             this.address1Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.address1Label.AutoSize = true;
             this.address1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1Label.Location = new System.Drawing.Point(100, 266);
-            this.address1Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.address1Label.Location = new System.Drawing.Point(137, 327);
             this.address1Label.Name = "address1Label";
-            this.address1Label.Size = new System.Drawing.Size(78, 18);
+            this.address1Label.Size = new System.Drawing.Size(100, 24);
             this.address1Label.TabIndex = 9;
             this.address1Label.Text = "Address 1:";
             // 
@@ -365,10 +346,9 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.Controls.Add(this.checkBoxTableLayoutPanel, 0, 14);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordLabel, 0, 13);
             this.employeeServicesTableLayoutPanel.Controls.Add(this.passwordTextBox, 1, 13);
-            this.employeeServicesTableLayoutPanel.Controls.Add(this.updateLoginMessagelabel, 0, 17);
+            this.employeeServicesTableLayoutPanel.Controls.Add(this.label1, 0, 17);
             this.employeeServicesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeServicesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.employeeServicesTableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.employeeServicesTableLayoutPanel.Name = "employeeServicesTableLayoutPanel";
             this.employeeServicesTableLayoutPanel.RowCount = 18;
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.115345F));
@@ -388,20 +368,19 @@ namespace RentMe.UserControls
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.016128F));
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.089713F));
             this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.021504F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.employeeServicesTableLayoutPanel.Size = new System.Drawing.Size(450, 626);
-            this.employeeServicesTableLayoutPanel.TabIndex = 2;
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.employeeServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.employeeServicesTableLayoutPanel.Size = new System.Drawing.Size(600, 770);
+            this.employeeServicesTableLayoutPanel.TabIndex = 17;
             // 
             // usernameLabel
             // 
             this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(97, 416);
-            this.usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.usernameLabel.Location = new System.Drawing.Point(135, 512);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(81, 18);
+            this.usernameLabel.Size = new System.Drawing.Size(102, 24);
             this.usernameLabel.TabIndex = 33;
             this.usernameLabel.Text = "Username:";
             // 
@@ -409,22 +388,20 @@ namespace RentMe.UserControls
             // 
             this.usernameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(182, 413);
-            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.usernameTextBox.Location = new System.Drawing.Point(243, 510);
             this.usernameTextBox.MaxLength = 50;
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(160, 24);
-            this.usernameTextBox.TabIndex = 11;
+            this.usernameTextBox.Size = new System.Drawing.Size(212, 28);
+            this.usernameTextBox.TabIndex = 13;
             // 
             // address2Label
             // 
             this.address2Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.address2Label.AutoSize = true;
             this.address2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2Label.Location = new System.Drawing.Point(100, 296);
-            this.address2Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.address2Label.Location = new System.Drawing.Point(137, 364);
             this.address2Label.Name = "address2Label";
-            this.address2Label.Size = new System.Drawing.Size(78, 18);
+            this.address2Label.Size = new System.Drawing.Size(100, 24);
             this.address2Label.TabIndex = 10;
             this.address2Label.Text = "Address 2:";
             // 
@@ -433,10 +410,9 @@ namespace RentMe.UserControls
             this.cityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.cityLabel.AutoSize = true;
             this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityLabel.Location = new System.Drawing.Point(141, 326);
-            this.cityLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.cityLabel.Location = new System.Drawing.Point(192, 401);
             this.cityLabel.Name = "cityLabel";
-            this.cityLabel.Size = new System.Drawing.Size(37, 18);
+            this.cityLabel.Size = new System.Drawing.Size(45, 24);
             this.cityLabel.TabIndex = 11;
             this.cityLabel.Text = "City:";
             // 
@@ -445,10 +421,9 @@ namespace RentMe.UserControls
             this.stateLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.stateLabel.AutoSize = true;
             this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateLabel.Location = new System.Drawing.Point(132, 356);
-            this.stateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.stateLabel.Location = new System.Drawing.Point(181, 438);
             this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(46, 18);
+            this.stateLabel.Size = new System.Drawing.Size(56, 24);
             this.stateLabel.TabIndex = 12;
             this.stateLabel.Text = "State:";
             // 
@@ -457,10 +432,9 @@ namespace RentMe.UserControls
             this.zipLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.zipLabel.AutoSize = true;
             this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipLabel.Location = new System.Drawing.Point(146, 386);
-            this.zipLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.zipLabel.Location = new System.Drawing.Point(195, 475);
             this.zipLabel.Name = "zipLabel";
-            this.zipLabel.Size = new System.Drawing.Size(32, 18);
+            this.zipLabel.Size = new System.Drawing.Size(42, 24);
             this.zipLabel.TabIndex = 13;
             this.zipLabel.Text = "Zip:";
             // 
@@ -468,12 +442,11 @@ namespace RentMe.UserControls
             // 
             this.phoneTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneTextBox.Location = new System.Drawing.Point(182, 203);
-            this.phoneTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.phoneTextBox.Location = new System.Drawing.Point(243, 251);
             this.phoneTextBox.MaxLength = 12;
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(160, 24);
-            this.phoneTextBox.TabIndex = 4;
+            this.phoneTextBox.Size = new System.Drawing.Size(212, 28);
+            this.phoneTextBox.TabIndex = 6;
             this.phoneTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // dobPicker
@@ -481,11 +454,10 @@ namespace RentMe.UserControls
             this.dobPicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dobPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dobPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dobPicker.Location = new System.Drawing.Point(182, 233);
-            this.dobPicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dobPicker.Location = new System.Drawing.Point(243, 288);
             this.dobPicker.Name = "dobPicker";
-            this.dobPicker.Size = new System.Drawing.Size(160, 24);
-            this.dobPicker.TabIndex = 5;
+            this.dobPicker.Size = new System.Drawing.Size(212, 28);
+            this.dobPicker.TabIndex = 7;
             this.dobPicker.Value = new System.DateTime(2022, 3, 14, 0, 0, 0, 0);
             this.dobPicker.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
@@ -493,48 +465,44 @@ namespace RentMe.UserControls
             // 
             this.address1TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.address1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1TextBox.Location = new System.Drawing.Point(182, 263);
-            this.address1TextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.address1TextBox.Location = new System.Drawing.Point(243, 325);
             this.address1TextBox.MaxLength = 50;
             this.address1TextBox.Name = "address1TextBox";
-            this.address1TextBox.Size = new System.Drawing.Size(160, 24);
-            this.address1TextBox.TabIndex = 6;
+            this.address1TextBox.Size = new System.Drawing.Size(212, 28);
+            this.address1TextBox.TabIndex = 8;
             this.address1TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // address2TextBox
             // 
             this.address2TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.address2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2TextBox.Location = new System.Drawing.Point(182, 293);
-            this.address2TextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.address2TextBox.Location = new System.Drawing.Point(243, 362);
             this.address2TextBox.MaxLength = 50;
             this.address2TextBox.Name = "address2TextBox";
-            this.address2TextBox.Size = new System.Drawing.Size(160, 24);
-            this.address2TextBox.TabIndex = 7;
+            this.address2TextBox.Size = new System.Drawing.Size(212, 28);
+            this.address2TextBox.TabIndex = 9;
             this.address2TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // cityTextBox
             // 
             this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(182, 323);
-            this.cityTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cityTextBox.Location = new System.Drawing.Point(243, 399);
             this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(160, 24);
-            this.cityTextBox.TabIndex = 8;
+            this.cityTextBox.Size = new System.Drawing.Size(212, 28);
+            this.cityTextBox.TabIndex = 10;
             this.cityTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // zipTextBox
             // 
             this.zipTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.zipTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipTextBox.Location = new System.Drawing.Point(182, 383);
-            this.zipTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zipTextBox.Location = new System.Drawing.Point(243, 473);
             this.zipTextBox.MaxLength = 5;
             this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new System.Drawing.Size(160, 24);
-            this.zipTextBox.TabIndex = 10;
+            this.zipTextBox.Size = new System.Drawing.Size(212, 28);
+            this.zipTextBox.TabIndex = 12;
             this.zipTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // sexComboBox
@@ -546,11 +514,10 @@ namespace RentMe.UserControls
             this.sexComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(182, 172);
-            this.sexComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sexComboBox.Location = new System.Drawing.Point(243, 213);
             this.sexComboBox.Name = "sexComboBox";
-            this.sexComboBox.Size = new System.Drawing.Size(160, 26);
-            this.sexComboBox.TabIndex = 3;
+            this.sexComboBox.Size = new System.Drawing.Size(212, 30);
+            this.sexComboBox.TabIndex = 5;
             this.sexComboBox.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
             // searchEmployeeTableLayoutPanel
@@ -563,14 +530,13 @@ namespace RentMe.UserControls
             this.searchEmployeeTableLayoutPanel.Controls.Add(this.searchEmployeeTextBox, 0, 0);
             this.searchEmployeeTableLayoutPanel.Controls.Add(this.searchButton, 1, 0);
             this.searchEmployeeTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchEmployeeTableLayoutPanel.Location = new System.Drawing.Point(2, 57);
-            this.searchEmployeeTableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchEmployeeTableLayoutPanel.Location = new System.Drawing.Point(3, 71);
             this.searchEmployeeTableLayoutPanel.Name = "searchEmployeeTableLayoutPanel";
             this.searchEmployeeTableLayoutPanel.RowCount = 2;
             this.searchEmployeeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.searchEmployeeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.searchEmployeeTableLayoutPanel.Size = new System.Drawing.Size(446, 51);
-            this.searchEmployeeTableLayoutPanel.TabIndex = 24;
+            this.searchEmployeeTableLayoutPanel.Size = new System.Drawing.Size(594, 62);
+            this.searchEmployeeTableLayoutPanel.TabIndex = 1;
             // 
             // stateComboBox
             // 
@@ -580,11 +546,10 @@ namespace RentMe.UserControls
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.IntegralHeight = false;
-            this.stateComboBox.Location = new System.Drawing.Point(182, 352);
-            this.stateComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.stateComboBox.Location = new System.Drawing.Point(243, 435);
             this.stateComboBox.Name = "stateComboBox";
-            this.stateComboBox.Size = new System.Drawing.Size(160, 26);
-            this.stateComboBox.TabIndex = 9;
+            this.stateComboBox.Size = new System.Drawing.Size(212, 30);
+            this.stateComboBox.TabIndex = 11;
             // 
             // checkBoxTableLayoutPanel
             // 
@@ -596,24 +561,22 @@ namespace RentMe.UserControls
             this.checkBoxTableLayoutPanel.Controls.Add(this.isAdministratorCheckBox, 0, 0);
             this.checkBoxTableLayoutPanel.Controls.Add(this.activeCheckBox, 1, 0);
             this.checkBoxTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxTableLayoutPanel.Location = new System.Drawing.Point(2, 472);
-            this.checkBoxTableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxTableLayoutPanel.Location = new System.Drawing.Point(3, 583);
             this.checkBoxTableLayoutPanel.Name = "checkBoxTableLayoutPanel";
             this.checkBoxTableLayoutPanel.RowCount = 1;
             this.checkBoxTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.checkBoxTableLayoutPanel.Size = new System.Drawing.Size(446, 32);
-            this.checkBoxTableLayoutPanel.TabIndex = 27;
+            this.checkBoxTableLayoutPanel.Size = new System.Drawing.Size(594, 39);
+            this.checkBoxTableLayoutPanel.TabIndex = 15;
             // 
             // isAdministratorCheckBox
             // 
             this.isAdministratorCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.isAdministratorCheckBox.AutoSize = true;
             this.isAdministratorCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isAdministratorCheckBox.Location = new System.Drawing.Point(38, 5);
-            this.isAdministratorCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isAdministratorCheckBox.Location = new System.Drawing.Point(69, 5);
             this.isAdministratorCheckBox.Name = "isAdministratorCheckBox";
-            this.isAdministratorCheckBox.Size = new System.Drawing.Size(183, 22);
-            this.isAdministratorCheckBox.TabIndex = 13;
+            this.isAdministratorCheckBox.Size = new System.Drawing.Size(225, 28);
+            this.isAdministratorCheckBox.TabIndex = 15;
             this.isAdministratorCheckBox.Text = "Is this an administrator?";
             this.isAdministratorCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.isAdministratorCheckBox.UseVisualStyleBackColor = true;
@@ -623,11 +586,10 @@ namespace RentMe.UserControls
             this.activeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.activeCheckBox.AutoSize = true;
             this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeCheckBox.Location = new System.Drawing.Point(225, 5);
-            this.activeCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.activeCheckBox.Location = new System.Drawing.Point(300, 5);
             this.activeCheckBox.Name = "activeCheckBox";
-            this.activeCheckBox.Size = new System.Drawing.Size(158, 22);
-            this.activeCheckBox.TabIndex = 15;
+            this.activeCheckBox.Size = new System.Drawing.Size(199, 28);
+            this.activeCheckBox.TabIndex = 16;
             this.activeCheckBox.TabStop = false;
             this.activeCheckBox.Text = "Employee is active?";
             this.activeCheckBox.UseVisualStyleBackColor = true;
@@ -638,10 +600,9 @@ namespace RentMe.UserControls
             this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(95, 446);
-            this.passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.passwordLabel.Location = new System.Drawing.Point(135, 549);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(83, 18);
+            this.passwordLabel.Size = new System.Drawing.Size(102, 24);
             this.passwordLabel.TabIndex = 36;
             this.passwordLabel.Text = "Password: ";
             // 
@@ -649,35 +610,33 @@ namespace RentMe.UserControls
             // 
             this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(182, 443);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordTextBox.Location = new System.Drawing.Point(243, 547);
             this.passwordTextBox.MaxLength = 20;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(160, 24);
-            this.passwordTextBox.TabIndex = 12;
+            this.passwordTextBox.Size = new System.Drawing.Size(212, 28);
+            this.passwordTextBox.TabIndex = 14;
             // 
-            // updateLoginMessagelabel
+            // label1
             // 
-            this.updateLoginMessagelabel.AutoSize = true;
-            this.employeeServicesTableLayoutPanel.SetColumnSpan(this.updateLoginMessagelabel, 2);
-            this.updateLoginMessagelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateLoginMessagelabel.Location = new System.Drawing.Point(2, 597);
-            this.updateLoginMessagelabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.updateLoginMessagelabel.Name = "updateLoginMessagelabel";
-            this.updateLoginMessagelabel.Size = new System.Drawing.Size(311, 13);
-            this.updateLoginMessagelabel.TabIndex = 37;
-            this.updateLoginMessagelabel.Text = "***Username and Password can be updated using update Login ";
-            this.updateLoginMessagelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.AutoSize = true;
+            this.employeeServicesTableLayoutPanel.SetColumnSpan(this.label1, 2);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 738);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(413, 17);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "***Username and Password can be updated using update Login ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EmployeeServices
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.employeeServicesTableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "EmployeeServices";
-            this.Size = new System.Drawing.Size(450, 626);
+            this.Size = new System.Drawing.Size(600, 770);
+            this.Load += new System.EventHandler(this.EmployeeServices_Load);
             this.VisibleChanged += new System.EventHandler(this.EmployeeServicesVisibleChanged);
             this.employeeServicesButtonsTableLayoutPanel.ResumeLayout(false);
             this.employeeServicesTableLayoutPanel.ResumeLayout(false);
@@ -732,6 +691,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Label updateLoginMessagelabel;
+        private System.Windows.Forms.Label label1;
     }
 }

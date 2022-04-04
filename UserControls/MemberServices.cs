@@ -460,5 +460,10 @@ namespace RentMe.UserControls
         {
             this.ClearFields();
         }
+
+        private void MemberServices_Load(object sender, EventArgs e)
+        {
+            this.searchMemberTextBox.Focus();
+        }
     }
 }

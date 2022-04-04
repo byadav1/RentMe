@@ -138,10 +138,12 @@ namespace RentMe.UserControls
         private void FurnitureRental_Load(object sender, EventArgs e)
         {
 
-            this.furnitureIDTextBox.Enabled = false;
+         
+           
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;            
             this.LoadComboBox();
+            this.furnitureIDTextBox.Focus();
 
         }
 
@@ -246,11 +248,11 @@ namespace RentMe.UserControls
         private void FurnitureRental_VisibleChanged(object sender, System.EventArgs e)
         {
             this.ClearFields();
-            this.furnitureIDTextBox.Enabled = false;
+            this.furnitureIDTextBox.Focus();
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;
             this.stylerRadiobutton.Checked = false;
-            this.idRadioButton.Checked = false;
+            this.idRadioButton.Checked = true;
             this.categoryRadioButton.Checked = false;
             this.LoadComboBox();
         }

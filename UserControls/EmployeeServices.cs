@@ -711,5 +711,10 @@ namespace RentMe.UserControls
 
            ;
         }
+
+        private void EmployeeServices_Load(object sender, EventArgs e)
+        {
+            this.searchEmployeeTextBox.Focus();
+        }
     }
 }

@@ -88,7 +88,7 @@ namespace RentMe.UserControls
             this.lnameTextBox.MaxLength = 50;
             this.lnameTextBox.Name = "lnameTextBox";
             this.lnameTextBox.Size = new System.Drawing.Size(212, 28);
-            this.lnameTextBox.TabIndex = 2;
+            this.lnameTextBox.TabIndex = 5;
             this.lnameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // lnameLabel
@@ -132,7 +132,7 @@ namespace RentMe.UserControls
             this.memberServicesButtonsTableLayoutPanel.RowCount = 1;
             this.memberServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.memberServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(594, 60);
-            this.memberServicesButtonsTableLayoutPanel.TabIndex = 11;
+            this.memberServicesButtonsTableLayoutPanel.TabIndex = 14;
             // 
             // updateButton
             // 
@@ -142,7 +142,7 @@ namespace RentMe.UserControls
             this.updateButton.Location = new System.Drawing.Point(39, 3);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(120, 54);
-            this.updateButton.TabIndex = 12;
+            this.updateButton.TabIndex = 15;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.UpdateButtonClick);
@@ -154,7 +154,7 @@ namespace RentMe.UserControls
             this.registerButton.Location = new System.Drawing.Point(435, 3);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(120, 54);
-            this.registerButton.TabIndex = 14;
+            this.registerButton.TabIndex = 17;
             this.registerButton.Text = "Register Member";
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.RegisterButtonClick);
@@ -166,7 +166,7 @@ namespace RentMe.UserControls
             this.clearButton.Location = new System.Drawing.Point(237, 3);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(120, 54);
-            this.clearButton.TabIndex = 13;
+            this.clearButton.TabIndex = 16;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
@@ -190,7 +190,7 @@ namespace RentMe.UserControls
             this.fnameTextBox.MaxLength = 50;
             this.fnameTextBox.Name = "fnameTextBox";
             this.fnameTextBox.Size = new System.Drawing.Size(212, 28);
-            this.fnameTextBox.TabIndex = 1;
+            this.fnameTextBox.TabIndex = 4;
             this.fnameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // sexLabel
@@ -289,7 +289,7 @@ namespace RentMe.UserControls
             this.phoneTextBox.MaxLength = 12;
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(212, 28);
-            this.phoneTextBox.TabIndex = 4;
+            this.phoneTextBox.TabIndex = 7;
             this.phoneTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // dobPicker
@@ -300,7 +300,7 @@ namespace RentMe.UserControls
             this.dobPicker.Location = new System.Drawing.Point(243, 339);
             this.dobPicker.Name = "dobPicker";
             this.dobPicker.Size = new System.Drawing.Size(212, 28);
-            this.dobPicker.TabIndex = 5;
+            this.dobPicker.TabIndex = 8;
             this.dobPicker.Value = new System.DateTime(2022, 3, 14, 0, 0, 0, 0);
             this.dobPicker.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
@@ -312,7 +312,7 @@ namespace RentMe.UserControls
             this.address1TextBox.MaxLength = 50;
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(212, 28);
-            this.address1TextBox.TabIndex = 6;
+            this.address1TextBox.TabIndex = 9;
             this.address1TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // address2TextBox
@@ -323,7 +323,7 @@ namespace RentMe.UserControls
             this.address2TextBox.MaxLength = 50;
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(212, 28);
-            this.address2TextBox.TabIndex = 7;
+            this.address2TextBox.TabIndex = 10;
             this.address2TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // zipTextBox
@@ -334,7 +334,7 @@ namespace RentMe.UserControls
             this.zipTextBox.MaxLength = 5;
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(212, 28);
-            this.zipTextBox.TabIndex = 10;
+            this.zipTextBox.TabIndex = 13;
             this.zipTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // sexComboBox
@@ -349,7 +349,7 @@ namespace RentMe.UserControls
             this.sexComboBox.Location = new System.Drawing.Point(243, 264);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(212, 30);
-            this.sexComboBox.TabIndex = 3;
+            this.sexComboBox.TabIndex = 6;
             this.sexComboBox.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
             // memberServicesTableLayoutPanel
@@ -418,7 +418,7 @@ namespace RentMe.UserControls
             this.searchMemberTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.searchMemberTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.searchMemberTableLayoutPanel.Size = new System.Drawing.Size(594, 69);
-            this.searchMemberTableLayoutPanel.TabIndex = 24;
+            this.searchMemberTableLayoutPanel.TabIndex = 1;
             // 
             // searchMemberLabel
             // 
@@ -439,7 +439,7 @@ namespace RentMe.UserControls
             this.searchMemberTextBox.Location = new System.Drawing.Point(83, 10);
             this.searchMemberTextBox.Name = "searchMemberTextBox";
             this.searchMemberTextBox.Size = new System.Drawing.Size(270, 28);
-            this.searchMemberTextBox.TabIndex = 0;
+            this.searchMemberTextBox.TabIndex = 2;
             this.searchMemberTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
             // searchButton
@@ -449,7 +449,7 @@ namespace RentMe.UserControls
             this.searchButton.Location = new System.Drawing.Point(359, 9);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(100, 30);
-            this.searchButton.TabIndex = 2;
+            this.searchButton.TabIndex = 3;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.SearchButtonClick);
@@ -465,7 +465,7 @@ namespace RentMe.UserControls
             this.stateComboBox.Location = new System.Drawing.Point(243, 486);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
-            this.stateComboBox.TabIndex = 9;
+            this.stateComboBox.TabIndex = 12;
             // 
             // cityTextBox
             // 
@@ -475,7 +475,7 @@ namespace RentMe.UserControls
             this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);
-            this.cityTextBox.TabIndex = 8;
+            this.cityTextBox.TabIndex = 11;
             // 
             // MemberServices
             // 
@@ -484,6 +484,7 @@ namespace RentMe.UserControls
             this.Controls.Add(this.memberServicesTableLayoutPanel);
             this.Name = "MemberServices";
             this.Size = new System.Drawing.Size(600, 750);
+            this.Load += new System.EventHandler(this.MemberServices_Load);
             this.VisibleChanged += new System.EventHandler(this.MemberServices_VisibleChanged);
             this.memberServicesButtonsTableLayoutPanel.ResumeLayout(false);
             this.memberServicesTableLayoutPanel.ResumeLayout(false);
