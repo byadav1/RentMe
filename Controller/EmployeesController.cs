@@ -13,14 +13,6 @@ namespace RentMe.Controller
     public class EmployeesController
     {
       
-        /// <summary>
-        /// 0-param constructor.
-        /// </summary>
-        public EmployeesController()
-        {
-          
-        }    
-        
 
         /// <summary>
         /// Return true if employee account exists.
