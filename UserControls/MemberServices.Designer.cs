@@ -484,8 +484,8 @@ namespace RentMe.UserControls
             this.Controls.Add(this.memberServicesTableLayoutPanel);
             this.Name = "MemberServices";
             this.Size = new System.Drawing.Size(600, 750);
-            this.Load += new System.EventHandler(this.MemberServices_Load);
-            this.VisibleChanged += new System.EventHandler(this.MemberServices_VisibleChanged);
+            this.Load += new System.EventHandler(this.MemberServicesLoad);
+            this.VisibleChanged += new System.EventHandler(this.MemberServicesVisibleChanged);
             this.memberServicesButtonsTableLayoutPanel.ResumeLayout(false);
             this.memberServicesTableLayoutPanel.ResumeLayout(false);
             this.memberServicesTableLayoutPanel.PerformLayout();

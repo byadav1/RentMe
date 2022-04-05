@@ -241,7 +241,7 @@ namespace RentMe.DAL
         /// <param name="oldMember">The old member.</param>
         /// <param name="newMember">The new member.</param>
         /// <returns>bool on succesdful or failed updates</returns>
-        public bool UpdateMemberDetails(Member oldMember, Member newMember)
+        public static bool UpdateMemberDetails(Member oldMember, Member newMember)
         {
             string selectStatement =
                   " UPDATE MEMBERS SET " +

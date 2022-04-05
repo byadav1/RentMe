@@ -66,6 +66,11 @@ namespace RentMe.UserControls
                 this.UpdateStatusMessage(ae.Message, true);
                 this.ToggleFormButtons(false);
             }
+            catch (Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
+                this.ToggleFormButtons(false);
+            }
         }
 
        
@@ -84,6 +89,11 @@ namespace RentMe.UserControls
                 this.ValidateFormFields();
                 this.ProcessUpdate();
             }
+            catch (ArgumentException ae)
+            {
+                this.UpdateStatusMessage(ae.Message, true);
+                this.ToggleFormButtons(false);
+            }
             catch (Exception ex)
             {
                 this.statusMessage.Visible = true;
@@ -92,13 +102,11 @@ namespace RentMe.UserControls
 
         }
 
-
         /// <summary>
         /// Processes the update.
         /// </summary>
         private void ProcessUpdate()
         {
-
             Member memberUpdateData =
                 new Member()
                 {
@@ -114,6 +122,7 @@ namespace RentMe.UserControls
                     Zip = this.zipTextBox.Text,
                     State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem))
                 };
+
             if (this.CheckUpdates(memberUpdateData))
             {
                 if (this.membersController.UpdateMemberInformation(this.memberSearchDetails, memberUpdateData))
@@ -123,10 +132,8 @@ namespace RentMe.UserControls
                 }
                 else
                 {
-
                     this.UpdateStatusMessage("Member information cannot be perfomed.Something went wrong "+
-                        "with the process or member data is updated at the backend", true);
-                    
+                        "with the process or member data is updated at the backend", true);                    
                 };
             }
             else
@@ -184,6 +191,10 @@ namespace RentMe.UserControls
                     "MemberID is " + member.MemberID, false);
                     this.ToggleFormButtons(true);
                 }
+            }
+            catch (ArgumentException ae)
+            {
+                this.UpdateStatusMessage(ae.Message, true);
             }
             catch (Exception ex)
             {
@@ -426,7 +437,6 @@ namespace RentMe.UserControls
         private void ToggleFormButtons(bool enabled)
         {
             this.updateButton.Enabled = enabled;
-          
             this.registerButton.Enabled = !enabled;
         }
 
@@ -456,12 +466,22 @@ namespace RentMe.UserControls
             this.statusMessage.Visible = true;
         }
 
-        private void MemberServices_VisibleChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Event handler for visible change.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MemberServicesVisibleChanged(object sender, EventArgs e)
         {
             this.ClearFields();
         }
 
-        private void MemberServices_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Event handler for UserControl Load event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MemberServicesLoad(object sender, EventArgs e)
         {
             this.searchMemberTextBox.Focus();
         }

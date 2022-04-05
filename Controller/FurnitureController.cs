@@ -1,6 +1,6 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
-using System;
+using RentMe.Model.Validators;
 using System.Collections.Generic;
 
 namespace RentMe.Controller
@@ -12,16 +12,6 @@ namespace RentMe.Controller
     /// </summary>
     public class FurnitureController
     {
-
-        private readonly FurnitureDAL furniture_DBresource;
-        /// <summary>
-        /// 0-param constructor.
-        /// </summary>
-        public FurnitureController()
-        {
-            this.furniture_DBresource = new FurnitureDAL();
-        }
-
         /// <summary>
         /// Return furniture using search input.
         /// </summary>
@@ -29,12 +19,8 @@ namespace RentMe.Controller
         /// <returns>Searched furniture</returns>
         public List<Furniture> GetFurnitureDetails(Furniture furniture)
         {
-            if (furniture == null)
-            {
-                throw new ArgumentException("The furniture cannot be null");
-            }
-            
-                return this.furniture_DBresource.GetFurniture(furniture);
+            FurnitureValidator.ValidateFurnitureNotNull(furniture);
+            return FurnitureDAL.GetFurniture(furniture);
         }
 
 
@@ -43,9 +29,8 @@ namespace RentMe.Controller
         /// </summary>      
         /// <returns>List of style</returns>
         public List<string> GetFurnituresStyle()
-        {
-           
-            return this.furniture_DBresource.GetFurnitureStyles();
+        {          
+            return FurnitureDAL.GetFurnitureStyles();
         }
 
         /// <summary>
@@ -54,8 +39,7 @@ namespace RentMe.Controller
         /// <returns>List of Category</returns>
         public List<string> GetFurnituresCategory()
         {
-
-            return this.furniture_DBresource.GetFurnitureCategories();
+            return FurnitureDAL.GetFurnitureCategories();
         }
     }
 }

@@ -32,7 +32,6 @@ namespace RentMe.UserControls
 
         private void FurnitureSearchButton_Click(object sender, EventArgs e)
         {
-
             if (this.SetSearchValues()) {;
 
                 this.DisplayResults();
@@ -136,31 +135,24 @@ namespace RentMe.UserControls
         }
 
         private void FurnitureRental_Load(object sender, EventArgs e)
-        {
-
-         
-           
+        {                    
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;            
             this.LoadComboBox();
             this.furnitureIDTextBox.Focus();
-
         }
 
 
         private void StyleComboBox_VisibleChanged(object sender, EventArgs e)
         {
-
             this.styleComboBox.DataSource = this.styleList;
             this.styleComboBox.Text ="";
         }
 
         private void CategoryComboBox_VisibleChanged(object sender, EventArgs e)
         {
-
             this.categoryComboBox.DataSource = this.categoryList;
             this.categoryComboBox.Text = "";
-
         }
 
         private void LoadComboBox()
@@ -176,7 +168,6 @@ namespace RentMe.UserControls
             this.styleList.Sort();
             this.styleComboBox.DataSource = this.styleList;
             this.styleComboBox.Text = "";
-
         }
 
 

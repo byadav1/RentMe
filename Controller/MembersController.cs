@@ -1,7 +1,6 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using RentMe.Validators;
-using System;
 
 namespace RentMe.Controller
 {
@@ -11,36 +10,17 @@ namespace RentMe.Controller
     /// and the MembersDAL.
     /// </summary>
     public class MembersController
-    {
-
-        private readonly MembersDAL _memberDBSource;
-        /// <summary>
-        /// 0-param constructor.
-        /// </summary>
-        public MembersController()
-        {
-            this._memberDBSource = new MembersDAL();
-        }
-
-       
-
+    {     
         /// <summary>
         /// Update the member details from the DAL.
         /// </summary>
         /// <returns>List of product name</returns>
         public bool UpdateMemberInformation(Member oldMember, Member newMember)
         {
-
-            if (oldMember == null && newMember== null)
-            {
-                throw new ArgumentNullException("Update cannot be performed with no change in data");
-            }
-            return  this._memberDBSource.UpdateMemberDetails(oldMember, newMember);
+            MemberValidator.ValidateMemberNotNull(oldMember);
+            MemberValidator.ValidateMemberNotNull(newMember);
+            return MembersDAL.UpdateMemberDetails(oldMember, newMember);
         }
-
-
-        
-
 
         /// <summary>
         /// Return true if member account exists
