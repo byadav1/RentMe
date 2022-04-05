@@ -132,7 +132,7 @@ namespace RentMe.UserControls
 
         }
 
-        private void FurnitureRental_Load(object sender, EventArgs e)
+        private void FurnitureRentalLoad(object sender, EventArgs e)
         {                    
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;            
@@ -141,7 +141,7 @@ namespace RentMe.UserControls
         }
 
 
-        private void StyleComboBox_VisibleChanged(object sender, EventArgs e)
+        private void StyleComboBoxVisibleChanged(object sender, EventArgs e)
         {
             this.styleComboBox.DataSource = this.styleList;
             this.styleComboBox.Text ="";
@@ -197,7 +197,7 @@ namespace RentMe.UserControls
             this.rentAllButton.Enabled = false;
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void ClearButtonClick(object sender, EventArgs e)
         {
 
             this.ToggleFormButtons();
@@ -207,17 +207,17 @@ namespace RentMe.UserControls
             this.ClearFields();
         }
 
-        private void StyleComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void StyleComboBoxKeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
-        private void CategoryComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void CategoryComboBoxKeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
-        private void IdRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void IdRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             this.ClearFields();
             this.furnitureIDTextBox.Enabled = true;
@@ -226,7 +226,7 @@ namespace RentMe.UserControls
             
         }
 
-        private void CategoryRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void CategoryRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             this.ClearFields();
             this.furnitureIDTextBox.Enabled = false;
@@ -234,7 +234,7 @@ namespace RentMe.UserControls
             this.categoryComboBox.Enabled = true;
         }
 
-        private void StylerRadiobutton_CheckedChanged(object sender, EventArgs e)
+        private void StylerRadiobuttonCheckedChanged(object sender, EventArgs e)
         {
             this.ClearFields();
             this.furnitureIDTextBox.Enabled = false;
@@ -242,7 +242,7 @@ namespace RentMe.UserControls
             this.categoryComboBox.Enabled = false;
         }
 
-        private void FurnitureRental_VisibleChanged(object sender, System.EventArgs e)
+        private void FurnitureRentalVisibleChanged(object sender, System.EventArgs e)
         {
             this.ClearFields();
             this.furnitureIDTextBox.Focus();

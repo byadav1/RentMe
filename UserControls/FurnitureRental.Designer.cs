@@ -252,8 +252,8 @@ namespace RentMe.UserControls
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(220, 33);
             this.styleComboBox.TabIndex = 7;
-            this.styleComboBox.VisibleChanged += new System.EventHandler(this.StyleComboBox_VisibleChanged);
-            this.styleComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StyleComboBox_KeyPress);
+            this.styleComboBox.VisibleChanged += new System.EventHandler(this.StyleComboBoxVisibleChanged);
+            this.styleComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StyleComboBoxKeyPress);
             // 
             // categoryRadioButton
             // 
@@ -266,7 +266,7 @@ namespace RentMe.UserControls
             this.categoryRadioButton.TabStop = true;
             this.categoryRadioButton.Text = "Furniture Category:";
             this.categoryRadioButton.UseVisualStyleBackColor = true;
-            this.categoryRadioButton.CheckedChanged += new System.EventHandler(this.CategoryRadioButton_CheckedChanged);
+            this.categoryRadioButton.CheckedChanged += new System.EventHandler(this.CategoryRadioButtonCheckedChanged);
             // 
             // categoryComboBox
             // 
@@ -291,7 +291,7 @@ namespace RentMe.UserControls
             this.idRadioButton.TabStop = true;
             this.idRadioButton.Text = "Furniture ID:";
             this.idRadioButton.UseVisualStyleBackColor = true;
-            this.idRadioButton.CheckedChanged += new System.EventHandler(this.IdRadioButton_CheckedChanged);
+            this.idRadioButton.CheckedChanged += new System.EventHandler(this.IdRadioButtonCheckedChanged);
             // 
             // furnitureIDTextBox
             // 
@@ -314,7 +314,7 @@ namespace RentMe.UserControls
             this.stylerRadiobutton.Text = "Furniture Style:";
             this.stylerRadiobutton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stylerRadiobutton.UseVisualStyleBackColor = true;
-            this.stylerRadiobutton.CheckedChanged += new System.EventHandler(this.StylerRadiobutton_CheckedChanged);
+            this.stylerRadiobutton.CheckedChanged += new System.EventHandler(this.StylerRadiobuttonCheckedChanged);
             // 
             // optionTipLabel
             // 
@@ -353,7 +353,7 @@ namespace RentMe.UserControls
             this.clearButton.TabIndex = 9;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
             // 
             // rentalStatusLabel
             // 
@@ -375,8 +375,8 @@ namespace RentMe.UserControls
             this.Controls.Add(this.furnitureRentalTableLayoutPanel);
             this.Name = "FurnitureRental";
             this.Size = new System.Drawing.Size(1391, 785);
-            this.Load += new System.EventHandler(this.FurnitureRental_Load);
-            this.VisibleChanged += new System.EventHandler(this.FurnitureRental_VisibleChanged);
+            this.Load += new System.EventHandler(this.FurnitureRentalLoad);
+            this.VisibleChanged += new System.EventHandler(this.FurnitureRentalVisibleChanged);
             this.furnitureRentalTableLayoutPanel.ResumeLayout(false);
             this.furnitureRentalTableLayoutPanel.PerformLayout();
             this.cartButtonsTableLayoutPanel.ResumeLayout(false);
