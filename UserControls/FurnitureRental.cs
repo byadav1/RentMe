@@ -108,8 +108,6 @@ namespace RentMe.UserControls
                     this.rentalStatusLabel.Visible = true;
                     this.rentalStatusLabel.Text = "No furniture found for the entered value. Please enter the valid value";
                 }
-
-                
             }
             catch (Exception ex)
             {
@@ -175,7 +173,7 @@ namespace RentMe.UserControls
             {
                 MessageBox.Show("Error occured on - Database transaction -" + ex.Message,
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }            
         }
 
 
