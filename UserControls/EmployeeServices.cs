@@ -67,6 +67,11 @@ namespace RentMe.UserControls
                 this.UpdateStatusMessage(ae.Message, true);
                 this.ToggleFormButtons(false);
             }
+            catch (Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
+                this.ToggleFormButtons(false);
+            }
         }
 
         /// <summary>
@@ -117,6 +122,10 @@ namespace RentMe.UserControls
                     "EmployeeID is " + employee.EmployeeID, false);
                     this.ToggleFormButtons(true);
                 }
+            }
+            catch (ArgumentException ae)
+            {
+                this.UpdateStatusMessage(ae.Message, true);
             }
             catch (Exception ex)
             {
@@ -387,15 +396,12 @@ namespace RentMe.UserControls
             if (employee.Active)
             {
                 this.activeCheckBox.Checked = true;
-                this.toggleActiveButton.Text = "Mark Inactive";
-                //this.activelLabel.Text = "**Employee is an Active";
-                
+                this.toggleActiveButton.Text = "Mark Inactive";                              
             }
             else
             {
                 this.activeCheckBox.Checked = false;
                 this.toggleActiveButton.Text = "Mark Active";
-                //this.activelLabel.Text = "**Employee is not Active in the System!";
             }
         }
 
@@ -467,11 +473,11 @@ namespace RentMe.UserControls
                 //Delete operation
                 if (this.employee.Active)
                 {
-                    message = "Employee deleted successfully  ";                
+                    message = "Employee deleted successfully";                
                 }
                 else 
                 {
-                    message = "Employee restored successfully  ";
+                    message = "Employee restored successfully";
                 }
 
                 if (this.employeesController.DeleteOrRestoreEmployee(this.employee))
@@ -486,12 +492,14 @@ namespace RentMe.UserControls
                     this.UpdateStatusMessage("Employee deletion failed at database transaction.", true);
                 };
             }
+            catch (ArgumentException ae)
+            {
+                this.UpdateStatusMessage(ae.Message, true);
+            }
             catch (Exception ex)
             {
-                this.statusMessage.Visible = true;
-                this.statusMessage.Text = ex.Message;
+                this.UpdateStatusMessage(ex.Message, true);
             }
-
         }
 
         /// <summary>
@@ -531,6 +539,10 @@ namespace RentMe.UserControls
                 {
                     this.UpdateStatusMessage("No changes detected for employee profile", true);
                 }
+            }
+            catch (ArgumentException ae)
+            {
+                this.UpdateStatusMessage(ae.Message, true);
             }
             catch (Exception ex)
             {
@@ -673,10 +685,13 @@ namespace RentMe.UserControls
                     this.UpdateStatusMessage("No changes detected in employee username or password. Pleaes note Password cannot be same as previous password.", true);
                 }
             }
+            catch (ArgumentException ae)
+            {
+                this.UpdateStatusMessage(ae.Message, true);
+            }
             catch (Exception ex)
             {
-                this.statusMessage.Visible = true;
-                this.statusMessage.Text = ex.Message;
+                this.UpdateStatusMessage(ex.Message, true);
             }
         }
 
@@ -687,7 +702,6 @@ namespace RentMe.UserControls
         /// <returns></returns>
         private bool CheckPasswordOrUserNameUpdate(Employee employeeUpdateData)
         {
-
              if (this.InvalidInput(this.usernameTextBox, this.GenerateRegexForTextBox(this.usernameTextBox)))
             {
                 throw new Exception("Username must be at least 5 characters:\n" +
@@ -706,12 +720,14 @@ namespace RentMe.UserControls
                 return this.employeesController.Checkpassword(this.employee, employeeUpdateData);
             }
             
-                return this.employee.Username != employeeUpdateData.Username;
-           
-
-           ;
+                return this.employee.Username != employeeUpdateData.Username;                     
         }
 
+        /// <summary>
+        /// Event handler for UserControl Load event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EmployeeServices_Load(object sender, EventArgs e)
         {
             this.searchEmployeeTextBox.Focus();

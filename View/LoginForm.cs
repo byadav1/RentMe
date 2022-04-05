@@ -48,7 +48,7 @@ namespace RentMe
                     Password = this.passwordTextBox.Text,
                     
                 };
-                if (ValidLogin(employee))
+                if (this.ValidLogin(employee))
                 {
                     new MainForm(employee).Show();
                     this.passwordTextBox.Clear();
@@ -59,6 +59,11 @@ namespace RentMe
             {
                 this.errorMessage.Visible = true;
                 this.errorMessage.Text = ae.Message;
+            }
+            catch (Exception ex)
+            {
+                this.errorMessage.Visible = true;
+                this.errorMessage.Text = ex.Message;
             }
         }
 

@@ -30,9 +30,8 @@ namespace RentMe.UserControls
             this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void FurnitureSearchButton_Click(object sender, EventArgs e)
+        private void FurnitureSearchButtonClick(object sender, EventArgs e)
         {
-
             if (this.SetSearchValues()) {;
 
                 this.DisplayResults();
@@ -112,9 +111,9 @@ namespace RentMe.UserControls
 
                 
             }
-            catch (Exception exe)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error occured on - Database transaction -" + exe.Message,
+                MessageBox.Show("Error occured on - Database transaction -" + ex.Message,
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -136,47 +135,47 @@ namespace RentMe.UserControls
         }
 
         private void FurnitureRental_Load(object sender, EventArgs e)
-        {
-
-         
-           
+        {                    
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;            
             this.LoadComboBox();
             this.furnitureIDTextBox.Focus();
-
         }
 
 
         private void StyleComboBox_VisibleChanged(object sender, EventArgs e)
         {
-
             this.styleComboBox.DataSource = this.styleList;
             this.styleComboBox.Text ="";
         }
 
-        private void CategoryComboBox_VisibleChanged(object sender, EventArgs e)
+        private void CategoryComboBoxVisibleChanged(object sender, EventArgs e)
         {
-
             this.categoryComboBox.DataSource = this.categoryList;
             this.categoryComboBox.Text = "";
-
         }
 
         private void LoadComboBox()
         {
-            this.categoryComboBox.DataSource = null; ;
-            this.categoryList = this.furnitureController.GetFurnituresCategory();
-            this.categoryList.Sort();
-            this.categoryComboBox.DataSource = this.categoryList;
-            this.categoryComboBox.Text = "";
+            try
+            {
+                this.categoryComboBox.DataSource = null; ;
+                this.categoryList = this.furnitureController.GetFurnituresCategory();
+                this.categoryList.Sort();
+                this.categoryComboBox.DataSource = this.categoryList;
+                this.categoryComboBox.Text = "";
 
-            this.styleComboBox.DataSource = null;
-            this.styleList = this.furnitureController.GetFurnituresStyle();
-            this.styleList.Sort();
-            this.styleComboBox.DataSource = this.styleList;
-            this.styleComboBox.Text = "";
-
+                this.styleComboBox.DataSource = null;
+                this.styleList = this.furnitureController.GetFurnituresStyle();
+                this.styleList.Sort();
+                this.styleComboBox.DataSource = this.styleList;
+                this.styleComboBox.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured on - Database transaction -" + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

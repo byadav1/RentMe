@@ -16,31 +16,34 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>
-        public List<Furniture> GetFurniture(Furniture furnitureSearh)
+        public static List<Furniture> GetFurniture(Furniture furnitureSearh)
         {
             FurnitureValidator.ValidateFurnitureNotNull(furnitureSearh);
             List<Furniture> furnitureList = new List<Furniture>();
             string selectStatement;
             if (furnitureSearh.FurnitureID > 0 && FurnitureIDExists(furnitureSearh))
             {
-                selectStatement = "SELECT F.*,C.NAME AS CATEGORY ,S.NAME AS STYLE " +
-                                        "FROM Furnitures F" +
-                                        " JOIN CATEGORIES C ON C.CATEGORYID = F.CATEGORYID " +
-                                    " JOIN STYLES S ON S.STYLEID=F.STYLEID" +
-                                        " WHERE F.FurnitureID = @ID";
+                selectStatement = "SELECT f.*, c.Name AS Category, s.Name AS Style " +
+                                  "FROM Furnitures f " +
+                                  "JOIN Categories c ON c.CategoryID = f.CategoryID " +
+                                  "JOIN Styles s ON s.StyleID = f.StyleID " +
+                                  "WHERE F.FurnitureID = @FurnitureID";
             }
             else if (!string.IsNullOrEmpty(furnitureSearh.Category) && FurnitureCategoryExists(furnitureSearh))
             {
-                selectStatement = "SELECT F.*,C.NAME AS CATEGORY ,S.NAME AS STYLE FROM Furnitures F " +
-                                    " JOIN CATEGORIES C ON C.CATEGORYID = F.CATEGORYID " +
-                                    " JOIN STYLES S ON S.STYLEID=F.STYLEID" +
-                                    " WHERE C.NAME =@Category";
+                selectStatement = "SELECT f.*, c.Name AS Category, s.Name AS Style " +
+                                  "FROM Furnitures f " +
+                                  "JOIN Categories c ON c.CategoryID = f.CategoryID " +
+                                  "JOIN Styles s ON s.StyleID = f.StyleID " +
+                                  "WHERE c.Name = @Category";
             }
             else if (!string.IsNullOrEmpty(furnitureSearh.Style) && FurnitureStyleExists(furnitureSearh))
             {
-                selectStatement = "SELECT F.*,C.NAME AS CATEGORY ,S.NAME AS STYLE FROM Furnitures F " +
-                                   " JOIN CATEGORIES C ON C.CATEGORYID = F.CATEGORYID " +
-                                  " JOIN STYLES S ON S.STYLEID = F.STYLEID WHERE S.NAME =@STYLE";
+                selectStatement = "SELECT f.*, c.Name AS Category, s.Name AS Style " +
+                                  "FROM Furnitures f " +
+                                  "JOIN Categories c ON c.CategoryID = f.CategoryID " +
+                                  "JOIN Styles s ON s.StyleID = f.StyleID " +
+                                  "WHERE s.Name = @Style";
             }
             else
             {
@@ -54,7 +57,7 @@ namespace RentMe.DAL
                 {
                     if (furnitureSearh.FurnitureID > 0 && FurnitureIDExists(furnitureSearh))
                     {
-                        selectCommand.Parameters.AddWithValue("ID", furnitureSearh.FurnitureID);
+                        selectCommand.Parameters.AddWithValue("FurnitureID", furnitureSearh.FurnitureID);
 
                     }
                     else if (!string.IsNullOrEmpty(furnitureSearh.Category) && FurnitureCategoryExists(furnitureSearh))
@@ -63,7 +66,7 @@ namespace RentMe.DAL
                     }
                     else if (!string.IsNullOrEmpty(furnitureSearh.Style) && FurnitureStyleExists(furnitureSearh))
                     {
-                        selectCommand.Parameters.AddWithValue("STYLE", furnitureSearh.Style);
+                        selectCommand.Parameters.AddWithValue("Style", furnitureSearh.Style);
                     }
                     Furniture furniturefound = null;
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
@@ -73,10 +76,10 @@ namespace RentMe.DAL
                             furniturefound = new Furniture
                             {
                                 FurnitureID = Convert.ToInt32(reader["FurnitureID"]),
-                                Category = reader["CATEGORY"].ToString(),
-                                Style = reader["STYLE"].ToString(),
-                                Description = reader["DESCRIPTION"].ToString(),
-                                Name = reader["NAME"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Style = reader["Style"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Name = reader["Name"].ToString(),
                                 DailyRentalRate = (float)Convert.ToDouble(reader["Daily_rental_rate"]),
                                 Quantity = Convert.ToInt32(reader["Quantity"])
                             };
@@ -99,14 +102,15 @@ namespace RentMe.DAL
         {
             FurnitureValidator.ValidateFurnitureNotNull(furnitureSearh);
             string selectStatement = "SELECT COUNT(*) " +
-                                        "FROM Furnitures " +
-                                        "WHERE FurnitureID = @ID";
+                                     "FROM Furnitures " +
+                                     "WHERE FurnitureID = @FurnitureID";
+
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.AddWithValue("ID", furnitureSearh.FurnitureID);
+                    selectCommand.Parameters.AddWithValue("FurnitureID", furnitureSearh.FurnitureID);
                     if (Convert.ToBoolean(selectCommand.ExecuteScalar()))
                     {
                         return true;
@@ -125,7 +129,9 @@ namespace RentMe.DAL
         private static bool FurnitureCategoryExists(Furniture furnitureSearh)
         {
             FurnitureValidator.ValidateFurnitureNotNull(furnitureSearh);
-            string selectStatement = "SELECT count(*) FROM CATEGORIES C WHERE C.NAME =@Category";
+            string selectStatement = "SELECT COUNT(*) " +
+                                     "FROM Categories c " +
+                                     "WHERE c.Name = @Category";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -151,14 +157,16 @@ namespace RentMe.DAL
         private static bool FurnitureStyleExists(Furniture furnitureSearh)
         {
             FurnitureValidator.ValidateFurnitureNotNull(furnitureSearh);
-            string selectStatement = "SELECT count(*) FROM STYLES S WHERE S.NAME =@STYLE";
+            string selectStatement = "SELECT COUNT(*) " +
+                                     "FROM Styles s " +
+                                     "WHERE s.Name = @Style";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.AddWithValue("style", furnitureSearh.Style);
+                    selectCommand.Parameters.AddWithValue("Style", furnitureSearh.Style);
                     if (Convert.ToBoolean(selectCommand.ExecuteScalar()))
                     {
                         return true;
@@ -174,11 +182,12 @@ namespace RentMe.DAL
         /// Gets the list of all style name from database
         /// </summary>
         /// <returns>furniture style list</returns>
-        public List<String> GetFurnitureStyles()
+        public static List<String> GetFurnitureStyles()
         {
             List<String> styleList = new List<String>();
             string selectStatement =
-                  " SELECT NAME FROM Styles ";
+                  "SELECT Name FROM Styles";
+
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -203,12 +212,11 @@ namespace RentMe.DAL
         /// Gets the list of all category name from database
         /// </summary>
         /// <returns>furniture category list</returns>
-        public List<String> GetFurnitureCategories()
+        public static List<String> GetFurnitureCategories()
         {
             List<String> categoryList = new List<String>();
-
             string selectStatement =
-                  " SELECT NAME FROM Categories ";
+                  "SELECT Name FROM Categories ";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -229,6 +237,5 @@ namespace RentMe.DAL
 
             return categoryList;
         }
-
     }
 }

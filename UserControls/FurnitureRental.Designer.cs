@@ -277,7 +277,7 @@ namespace RentMe.UserControls
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(220, 33);
             this.categoryComboBox.TabIndex = 5;
-            this.categoryComboBox.VisibleChanged += new System.EventHandler(this.CategoryComboBox_VisibleChanged);
+            this.categoryComboBox.VisibleChanged += new System.EventHandler(this.CategoryComboBoxVisibleChanged);
             // 
             // idRadioButton
             // 
@@ -341,7 +341,7 @@ namespace RentMe.UserControls
             this.furnitureSearchButton.TabIndex = 8;
             this.furnitureSearchButton.Text = "Search";
             this.furnitureSearchButton.UseVisualStyleBackColor = true;
-            this.furnitureSearchButton.Click += new System.EventHandler(this.FurnitureSearchButton_Click);
+            this.furnitureSearchButton.Click += new System.EventHandler(this.FurnitureSearchButtonClick);
             // 
             // clearButton
             // 
