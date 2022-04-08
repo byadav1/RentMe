@@ -206,11 +206,12 @@ namespace RentMe.DAL
                                      "@Sex, @Address1, @Address2, @City, @State, @Zip, (SELECT SCOPE_IDENTITY()), @Type, 1) " +
                                      "SELECT SCOPE_IDENTITY()";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
-            {
+            {                
                 connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(insertStatement, connection))
-                {
-                    try
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
+                {                    
+                    using (SqlCommand selectCommand = new SqlCommand(insertStatement, connection, transaction))
                     {
                         selectCommand.Parameters.AddWithValue("Username", employee.Username);
                         selectCommand.Parameters.AddWithValue("Password", employee.Password);
@@ -234,13 +235,14 @@ namespace RentMe.DAL
                         selectCommand.Parameters.AddWithValue("Type", employee.Type);
 
                         employee.EmployeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                        transaction.Commit();
                     }
-                    catch (Exception)
-                    {
-                        throw new ArgumentException("An employee account with that username already exists");
-                    }
-
                 }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw new ArgumentException("An employee account with that username already exists");
+                }                                
             }
         }
 
