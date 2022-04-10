@@ -15,9 +15,11 @@ namespace RentMe.UserControls
     {
 
         private readonly FurnitureController furnitureController;
+        private  MembersController memberController;
         private Furniture furnitureSearchDetails;
         private List<string> categoryList;
         private List<string> styleList;
+        private Member MemberRent;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FurnitureRental"/> class.
@@ -26,6 +28,7 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this.furnitureController = new FurnitureController();
+            this.memberController = new MembersController();
             this.ToggleFormButtons();          
             this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
@@ -36,6 +39,7 @@ namespace RentMe.UserControls
 
                 this.DisplayResults();
             };
+            
         }
 
         private bool SetSearchValues()
@@ -102,6 +106,8 @@ namespace RentMe.UserControls
                     this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                     this.rentalStatusLabel.Visible = false;
                     this.rentalStatusLabel.Text = "";
+                    this.memberIDRentTextBox.Enabled = true;
+                    this.memberSearchButton.Enabled = true;
                 }
                 else
                 {
@@ -129,6 +135,7 @@ namespace RentMe.UserControls
             this.furnitureListView.Items.Clear();
             this.rentalStatusLabel.Visible = false;
             this.rentalStatusLabel.Text = "";
+            this.memberIDRentTextBox.Text = "";
 
         }
 
@@ -223,7 +230,10 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Enabled = true;
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;
-            
+              this.memberIDRentTextBox.Enabled = false;
+            this.memberSearchButton.Enabled = false;
+           
+
         }
 
         private void CategoryRadioButtonCheckedChanged(object sender, EventArgs e)
@@ -232,6 +242,7 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Enabled = false;
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = true;
+           
         }
 
         private void StylerRadiobuttonCheckedChanged(object sender, EventArgs e)
@@ -240,6 +251,13 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Enabled = false;
             this.styleComboBox.Enabled = true;
             this.categoryComboBox.Enabled = false;
+            this.memberIDRentTextBox.Enabled = false;
+            this.memberSearchButton.Enabled = false;
+            this.memberIDRentTextBox.Enabled = false;
+            this.memberSearchButton.Enabled = false;
+            this.memberIDRentTextBox.Enabled = false;
+            this.memberSearchButton.Enabled = false;
+
         }
 
         private void FurnitureRentalVisibleChanged(object sender, System.EventArgs e)
@@ -251,7 +269,59 @@ namespace RentMe.UserControls
             this.stylerRadiobutton.Checked = false;
             this.idRadioButton.Checked = true;
             this.categoryRadioButton.Checked = false;
+            this.memberIDRentTextBox.Enabled = false;
+            this.memberSearchButton.Enabled = false;
             this.LoadComboBox();
         }
+
+
+        private void MemberSearchButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.rentalStatusLabel.Visible = false;
+                this.rentalStatusLabel.Text = "";
+
+                if (!int.TryParse(this.memberIDRentTextBox.Text, out int numericValue))
+                {
+                    this.rentalStatusLabel.Visible = true;
+                    this.rentalStatusLabel.Text = " Member Id should be a valid number, please enter the valid the Member Id";
+                    return;
+                }
+                Member memberSearch = new Member
+                {
+                    MemberID = Int32.Parse(this.memberIDRentTextBox.Text)
+                };
+                this.DisplayMemberDetails(memberSearch);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured on - Member ID search -" + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+        }
+        private void DisplayMemberDetails(Member memberSearch)
+        {
+            this.MemberRent = this.memberController.GetMemberFromSearch(memberSearch);
+            if (this.MemberRent == null)
+            {
+                throw new ArgumentException(" No member found with member ID + " + memberSearch.MemberID.ToString());
+              
+            }
+
+                this.memberIDLabel.Visible = true;
+                this.memberFirstName.Visible = true;
+                this.memberIDLabel.Text = "MemberId: " + this.MemberRent.MemberID.ToString();
+                this.memberFirstName.Text = "Name: " + this.MemberRent.FName + " " + this.MemberRent.LName;
+         
+            this.memberIDRentTextBox.Clear();
+           // this.memberIDRentTextBox.Enabled = false;
+           // this.memberSearchButton.Enabled = false;
+        }
+
+
     }
 }
