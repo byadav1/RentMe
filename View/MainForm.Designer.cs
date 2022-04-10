@@ -34,10 +34,10 @@ namespace RentMe.View
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.searchMemberTab = new System.Windows.Forms.TabPage();
-            this.memberServices = new RentMe.UserControls.MemberServices();
             this.employeeTabPage = new System.Windows.Forms.TabPage();
-            this.employeeServices = new RentMe.UserControls.EmployeeServices();
             this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
+            this.memberServices = new RentMe.UserControls.MemberServices();
+            this.employeeServices = new RentMe.UserControls.EmployeeServices();
             this.furnitureRental1 = new RentMe.UserControls.FurnitureRental();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
@@ -115,18 +115,10 @@ namespace RentMe.View
             this.searchMemberTab.Location = new System.Drawing.Point(4, 38);
             this.searchMemberTab.Name = "searchMemberTab";
             this.searchMemberTab.Padding = new System.Windows.Forms.Padding(3);
-            this.searchMemberTab.Size = new System.Drawing.Size(1419, 782);
+            this.searchMemberTab.Size = new System.Drawing.Size(1523, 590);
             this.searchMemberTab.TabIndex = 0;
             this.searchMemberTab.Text = "Member Services";
             this.searchMemberTab.UseVisualStyleBackColor = true;
-            // 
-            // memberServices
-            // 
-            this.memberServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberServices.Location = new System.Drawing.Point(3, 3);
-            this.memberServices.Name = "memberServices";
-            this.memberServices.Size = new System.Drawing.Size(1413, 776);
-            this.memberServices.TabIndex = 0;
             // 
             // employeeTabPage
             // 
@@ -134,19 +126,10 @@ namespace RentMe.View
             this.employeeTabPage.Location = new System.Drawing.Point(4, 38);
             this.employeeTabPage.Name = "employeeTabPage";
             this.employeeTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.employeeTabPage.Size = new System.Drawing.Size(1419, 782);
+            this.employeeTabPage.Size = new System.Drawing.Size(1523, 590);
             this.employeeTabPage.TabIndex = 2;
             this.employeeTabPage.Text = "Employee Services";
             this.employeeTabPage.UseVisualStyleBackColor = true;
-            // 
-            // employeeServices
-            // 
-            this.employeeServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeeServices.Location = new System.Drawing.Point(3, 3);
-            this.employeeServices.Margin = new System.Windows.Forms.Padding(5);
-            this.employeeServices.Name = "employeeServices";
-            this.employeeServices.Size = new System.Drawing.Size(1413, 776);
-            this.employeeServices.TabIndex = 0;
             // 
             // furnitureSearchTabPage
             // 
@@ -156,14 +139,31 @@ namespace RentMe.View
             this.furnitureSearchTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.furnitureSearchTabPage.Size = new System.Drawing.Size(1523, 590);
             this.furnitureSearchTabPage.TabIndex = 1;
-            this.furnitureSearchTabPage.Text = "Search Furniture";
+            this.furnitureSearchTabPage.Text = "Search/Rent Furniture";
             this.furnitureSearchTabPage.UseVisualStyleBackColor = true;
+            // 
+            // memberServices
+            // 
+            this.memberServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberServices.Location = new System.Drawing.Point(3, 3);
+            this.memberServices.Name = "memberServices";
+            this.memberServices.Size = new System.Drawing.Size(1517, 584);
+            this.memberServices.TabIndex = 0;
+            // 
+            // employeeServices
+            // 
+            this.employeeServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeeServices.Location = new System.Drawing.Point(3, 3);
+            this.employeeServices.Margin = new System.Windows.Forms.Padding(5);
+            this.employeeServices.Name = "employeeServices";
+            this.employeeServices.Size = new System.Drawing.Size(1517, 584);
+            this.employeeServices.TabIndex = 0;
             // 
             // furnitureRental1
             // 
             this.furnitureRental1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.furnitureRental1.Location = new System.Drawing.Point(3, 3);
-            this.furnitureRental1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.furnitureRental1.Margin = new System.Windows.Forms.Padding(5);
             this.furnitureRental1.Name = "furnitureRental1";
             this.furnitureRental1.Size = new System.Drawing.Size(1517, 584);
             this.furnitureRental1.TabIndex = 0;
