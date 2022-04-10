@@ -19,7 +19,9 @@ namespace RentMe.UserControls
     public partial class EmployeeServices : UserControl
     {
         private readonly EmployeesController employeesController;
-        private Employee employee;
+        private Employee employeeSearchDetails;
+        public bool IsUpdate { get; set; }
+        public Employee SearchedEmployee { get; set; }
 
         /// <summary>
         /// Initialize the control.
@@ -27,7 +29,7 @@ namespace RentMe.UserControls
         public EmployeeServices()
         {
             InitializeComponent();
-            this.InitializeControls();
+            this.InitializeControls(IsUpdate);
             this.employeesController = new EmployeesController();
         }
 
@@ -35,74 +37,22 @@ namespace RentMe.UserControls
         /// Initializes the default values
         /// for the form controls.
         /// </summary>
-        private void InitializeControls()
+        private void InitializeControls(bool isUpdate)
         {
-            this.sexComboBox.SelectedIndex = 0;
             this.stateComboBox.DataSource = new States().GetStateNames();
-            this.stateComboBox.SelectedIndex = 0;
-            this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
-        }
 
-        /// <summary>
-        /// Event handler for search button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SearchButtonClick(object sender, EventArgs e)
-        {
-            try
+            if (isUpdate)
             {
-                this.statusMessage.Visible = false;
-                this.statusMessage.Text = "";
-                this.employee = this.CreateEmployeeFromSearch();
-                if (this.employeesController.ValidEmployeeSearch(this.employee))
-                {
-                    this.employee = this.employeesController.GetEmployeeFromSearch(this.employee);
-                    this.ToggleFormButtons(true);
-                    this.SetFields(this.employee);
-                }
+                this.SetFields(this.employeeSearchDetails);
+                this.ToggleFormButtons(true);
             }
-            catch (ArgumentException ae)
+            else
             {
-                this.UpdateStatusMessage(ae.Message, true);
+                this.sexComboBox.SelectedIndex = 0;
+                this.stateComboBox.SelectedIndex = 0;
+                this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
                 this.ToggleFormButtons(false);
             }
-            catch (Exception ex)
-            {
-                this.UpdateStatusMessage(ex.Message, true);
-                this.ToggleFormButtons(false);
-            }
-        }
-
-        /// <summary>
-        /// Takes input from the search field
-        /// and returns a Member.
-        /// </summary>
-        /// <returns>Employee with assigned attributes</returns>
-        private Employee CreateEmployeeFromSearch()
-        {
-            Employee employee = new Employee();
-            TextBox search = this.searchEmployeeTextBox;
-            if (search.Text == "")
-            {
-                throw new ArgumentException("Employee search field cannot be empty");
-            }
-            else if (new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$").IsMatch(search.Text))
-            {
-                employee.Phone = search.Text;
-
-            }
-            else if (new Regex("[a-zA-Z] [a-zA-Z]").IsMatch(search.Text))
-            {
-                employee.FName = search.Text.Substring(0, search.Text.IndexOf(" "));
-                employee.LName = search.Text.Substring(search.Text.IndexOf(" ") + 1);
-            }
-            else if (Int32.TryParse(search.Text, out int employeeID))
-            {
-                employee.EmployeeID = employeeID;
-            }
-
-            return employee;
         }
 
         /// <summary>
@@ -297,7 +247,6 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void ClearButtonClick(object sender, EventArgs e)
         {
-            this.ToggleFormButtons(false);
             this.ClearFields();
         }
 
@@ -362,7 +311,7 @@ namespace RentMe.UserControls
             }
 
             this.DisplayEmployeeActiveStatus();
-            this.DisableEmployeeData(this.employee.Active);
+            this.DisableEmployeeData(this.employeeSearchDetails.Active);
         }
 
         /// <summary>
@@ -393,7 +342,7 @@ namespace RentMe.UserControls
         /// </summary>
         private void DisplayEmployeeActiveStatus()
         {
-            if (employee.Active)
+            if (employeeSearchDetails.Active)
             {
                 this.activeCheckBox.Checked = true;
                 this.toggleActiveButton.Text = "Mark Inactive";                              
@@ -471,7 +420,7 @@ namespace RentMe.UserControls
                 }
                 string message;
                 //Delete operation
-                if (this.employee.Active)
+                if (this.employeeSearchDetails.Active)
                 {
                     message = "Employee deleted successfully";                
                 }
@@ -480,12 +429,11 @@ namespace RentMe.UserControls
                     message = "Employee restored successfully";
                 }
 
-                if (this.employeesController.DeleteOrRestoreEmployee(this.employee))
+                if (this.employeesController.DeleteOrRestoreEmployee(this.employeeSearchDetails))
                 {
-                    this.UpdateStatusMessage(message, false);
-                    this.employee = this.employeesController.GetEmployeeFromSearch(this.employee);
+                    this.UpdateStatusMessage(message, false);                   
                     this.DisplayEmployeeActiveStatus();
-                    this.DisableEmployeeData(this.employee.Active);
+                    this.DisableEmployeeData(this.employeeSearchDetails.Active);
                 }
                 else
                 {
@@ -522,11 +470,10 @@ namespace RentMe.UserControls
             
                 if (this.CheckUpdates(employeeUpdateData))
                 {
-                    if (this.employeesController.UpdateEmployeeInformation(this.employee, employeeUpdateData))
+                    if (this.employeesController.UpdateEmployeeInformation(this.employeeSearchDetails, employeeUpdateData))
                     {
 
-                        this.UpdateStatusMessage("Employee information updated successfully", false);
-                        this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
+                        this.UpdateStatusMessage("Employee information updated successfully", false);                        
                     }
                     else
                     {
@@ -566,7 +513,7 @@ namespace RentMe.UserControls
             Employee employeeUpdateData =
                 new Employee()
                 {
-                    EmployeeID = this.employee.EmployeeID,
+                    EmployeeID = this.employeeSearchDetails.EmployeeID,
                     FName = this.fnameTextBox.Text,
                     LName = this.lnameTextBox.Text,
                     DOB = this.dobPicker.Value,
@@ -595,7 +542,7 @@ namespace RentMe.UserControls
             List<Employee> lstOld_employeeData = new List<Employee>();
             List<Employee> lstNew_employeeData = new List<Employee>();
             bool isModified = false;
-            lstOld_employeeData.Add(this.employee);
+            lstOld_employeeData.Add(this.employeeSearchDetails);
             lstNew_employeeData.Add(employeeUpdateData);
             if (lstOld_employeeData.Count > 0 && lstNew_employeeData.Count > 0)
             {
@@ -614,24 +561,11 @@ namespace RentMe.UserControls
                                l1.Zip != l2.Zip
                               || (!String.Equals(l1.Type, l2.Type, StringComparison.OrdinalIgnoreCase))
                               )));
-
                 
                 isModified = result.Any();
             }
-                   
-
-
+                  
             return isModified;
-        }
-
-        /// <summary>
-        /// Event Handler for changing fields.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EmployeeServicesVisibleChanged(object sender, EventArgs e)
-        {
-            this.ClearFields();
         }
 
         /// <summary>
@@ -667,11 +601,10 @@ namespace RentMe.UserControls
                
                 if (this.CheckPasswordOrUserNameUpdate(employeeUpdateData))
                 {
-                    if (this.employeesController.UpdateEmployeeUserNameORPassword(this.employee, employeeUpdateData))
+                    if (this.employeesController.UpdateEmployeeUserNameORPassword(this.employeeSearchDetails, employeeUpdateData))
                     {
 
                         this.UpdateStatusMessage("Employee login updated successfully", false);
-                        this.employee = this.employeesController.GetEmployeeFromSearch(employeeUpdateData);
                         this.passwordTextBox.Text = "";                        
                     }
                     else
@@ -717,10 +650,10 @@ namespace RentMe.UserControls
            
              if (!string.IsNullOrEmpty(employeeUpdateData.Password))
             {
-                return this.employeesController.Checkpassword(this.employee, employeeUpdateData);
+                return this.employeesController.Checkpassword(this.employeeSearchDetails, employeeUpdateData);
             }
             
-                return this.employee.Username != employeeUpdateData.Username;                     
+                return this.employeeSearchDetails.Username != employeeUpdateData.Username;                     
         }
 
         /// <summary>
@@ -728,9 +661,21 @@ namespace RentMe.UserControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EmployeeServices_Load(object sender, EventArgs e)
+        private void EmployeeServicesLoad(object sender, EventArgs e)
         {
-            this.searchEmployeeTextBox.Focus();
+            this.employeeSearchDetails = SearchedEmployee;
+            this.InitializeControls(IsUpdate);
+        }
+
+        /// <summary>
+        /// Event Handler for Close button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseButtonClick(object sender, EventArgs e)
+        {
+            ((Form)this.TopLevelControl).Close();
+            GC.Collect();
         }
     }
 }

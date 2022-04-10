@@ -1,6 +1,7 @@
 ﻿using RentMe.Model;
 using RentMe.Validators;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -12,6 +13,59 @@ namespace RentMe.DAL
     /// </summary>
     public class EmployeesDAL
     {
+        /// <summary>
+        /// Gets all RentMe Members from Members table.
+        /// </summary>
+        /// <returns>List of RentMe members</returns>
+        public static List<Employee> GetEmployees()
+        {
+            List<Employee> employees = new List<Employee>();
+            string selectStatement = "SELECT e.EmployeeID, e.Fname, e.Lname, e.DateOfBirth, e.Phone, " +
+                                     "e.Sex, e.Address1, e.Address2, e.City, e.State, e.ZipCode, a.Username, " +
+                                     "e.Employee_type, e.Active " +
+                                     "FROM Employees e " +
+                                     "JOIN Accounts a " +
+                                     "ON e.AccountID = a.AccountID";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Employee employee = new Employee
+                            {
+                                EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
+                                FName = reader["Fname"].ToString(),
+                                LName = reader["Lname"].ToString(),
+                                DOB = (DateTime)reader["DateOfBirth"],
+                                Phone = reader["Phone"].ToString(),
+                                Sex = reader["Sex"].ToString(),
+                                Address1 = reader["Address1"].ToString(),
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                Zip = reader["ZipCode"].ToString(),
+                                Username = reader["Username"].ToString(),
+                                Type = reader["Employee_type"].ToString(),
+                                Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"]))
+                        };
+                            if (!reader.IsDBNull(8))
+                            {
+                                employee.Address2 = reader["Address2"].ToString();
+                            }
+
+                            employees.Add(employee);
+                        }
+                    }
+                }
+            }
+
+            return employees;
+        }
+
         /// <summary>
         /// Return true if Employee account exists.
         /// </summary>
@@ -68,9 +122,10 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="employee"></param>
         /// <returns>Searched employee</returns>
-        public static Employee GetEmployeeFromSearch(Employee employee)
+        public static List<Employee> GetEmployeesFromSearch(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
+            List<Employee> employees = new List<Employee>();
             string selectStatement = "SELECT * " +
                                      "FROM Employees e " +
                                      "JOIN Accounts a " +
@@ -115,29 +170,34 @@ namespace RentMe.DAL
                     {
                         while (reader.Read())
                         {
-                            employee.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                            employee.FName = reader["Fname"].ToString();
-                            employee.LName = reader["Lname"].ToString();
-                            employee.DOB = (DateTime)reader["DateOfBirth"];
-                            employee.Phone = reader["Phone"].ToString();
-                            employee.Sex = reader["Sex"].ToString();
-                            employee.Address1 = reader["Address1"].ToString();
+                            employee = new Employee
+                            {
+                                EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
+                                FName = reader["Fname"].ToString(),
+                                LName = reader["Lname"].ToString(),
+                                DOB = (DateTime)reader["DateOfBirth"],
+                                Phone = reader["Phone"].ToString(),
+                                Sex = reader["Sex"].ToString(),
+                                Address1 = reader["Address1"].ToString(),
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                Zip = reader["ZipCode"].ToString(),
+                                Username = reader["Username"].ToString(),
+                                Type = reader["Employee_type"].ToString(),
+                                Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"])),
+                            };
                             if (!reader.IsDBNull(8))
                             {
                                 employee.Address2 = reader["Address2"].ToString();
                             }
-                            employee.City = reader["City"].ToString();
-                            employee.State = reader["State"].ToString();
-                            employee.Zip = reader["ZipCode"].ToString();
-                            employee.Username = reader["Username"].ToString();
-                            employee.Type = reader["Employee_type"].ToString();
-                            employee.Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"]));
-                        }
+
+                            employees.Add(employee);
+                            }
                     }
                 }
             }
 
-            return employee;
+            return employees;
         }
 
 

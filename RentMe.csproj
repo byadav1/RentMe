@@ -62,6 +62,12 @@
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\FurnitureValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
+    <Compile Include="UserControls\EmployeeSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EmployeeSearch.Designer.cs">
+      <DependentUpon>EmployeeSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EmployeeServices.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,11 +80,23 @@
     <Compile Include="UserControls\FurnitureRental.Designer.cs">
       <DependentUpon>FurnitureRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MemberSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberSearch.Designer.cs">
+      <DependentUpon>MemberSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MemberServices.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\MemberServices.Designer.cs">
       <DependentUpon>MemberServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeServicesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeServicesForm.Designer.cs">
+      <DependentUpon>EmployeeServicesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -94,6 +112,12 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MemberServicesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MemberServicesForm.Designer.cs">
+      <DependentUpon>MemberServicesForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -103,14 +127,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\EmployeeSearch.resx">
+      <DependentUpon>EmployeeSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EmployeeServices.resx">
       <DependentUpon>EmployeeServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FurnitureRental.resx">
       <DependentUpon>FurnitureRental.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberSearch.resx">
+      <DependentUpon>MemberSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberServices.resx">
       <DependentUpon>MemberServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeServicesForm.resx">
+      <DependentUpon>EmployeeServicesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -118,6 +151,12 @@
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MemberServicesForm.resx">
+      <DependentUpon>MemberServicesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\RentMe.Model.Employee.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

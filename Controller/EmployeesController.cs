@@ -2,6 +2,7 @@
 using RentMe.Model;
 using RentMe.Validators;
 using System;
+using System.Collections.Generic;
 
 namespace RentMe.Controller
 {
@@ -12,6 +13,15 @@ namespace RentMe.Controller
     /// </summary>
     public class EmployeesController
     {
+        /// <summary>
+        /// Gets all RentMe Employees from Employees table.
+        /// </summary>
+        /// <returns>List of RentMe members</returns>
+        public List<Employee> GetEmployees()
+        {
+            return EmployeesDAL.GetEmployees();
+        }
+
         /// <summary>
         /// Return true if employee account exists.
         /// </summary>
@@ -51,10 +61,10 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="employee"></param>
         /// <returns>Searched employee</returns>
-        public Employee GetEmployeeFromSearch(Employee employee)
+        public List<Employee> GetEmployeesFromSearch(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
-            return EmployeesDAL.GetEmployeeFromSearch(employee);
+            return EmployeesDAL.GetEmployeesFromSearch(employee);
         }
 
         /// <summary>

@@ -60,16 +60,20 @@ namespace RentMe.View
         {
             try
             {
-
                 this.loginUser = this.employeeController.GetCurrentEmployeeData(this.loginUser);
                 if (this.loginUser != null)
                 {
                     this.currentUserLabel.Text = "Welcome, " + this.loginUser.FName + " " + this.loginUser.LName +
-                        "!\nUsername: " + this.loginUser.Username;
-                    if (this.loginUser.Type == "Regular")
-                    {
-                        this.mainTabControl.TabPages.Remove(this.employeeTabPage);
-                    }
+                        "!\nUsername: " + this.loginUser.Username;                   
+                }
+                if (this.loginUser.Type == "Regular")
+                {
+                    this.mainTabControl.TabPages.Remove(this.searchEmployeeTabPage);
+                }
+                else
+                {
+                    this.mainTabControl.TabPages.Remove(this.searchMemberTabPage);
+                    this.mainTabControl.TabPages.Remove(this.furnitureSearchTabPage);
                 }
 
             }

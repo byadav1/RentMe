@@ -21,6 +21,8 @@ namespace RentMe.UserControls
     {
         private readonly MembersController membersController;
         private Member memberSearchDetails;
+        public bool IsUpdate { get; set; }
+        public Member SearchedMember { get; set; }
 
         /// <summary>
         /// Initialize the control.
@@ -28,53 +30,29 @@ namespace RentMe.UserControls
         public MemberServices()
         {
             InitializeComponent();
-            this.InitializeControls();
-            this.membersController = new MembersController();
+            this.membersController = new MembersController();                               
         }
 
         /// <summary>
         /// Initializes the default values
         /// for the form controls.
         /// </summary>
-        private void InitializeControls()
+        private void InitializeControls(bool isUpdate)
         {
-            this.sexComboBox.SelectedIndex = 0;
             this.stateComboBox.DataSource = new States().GetStateNames();
-            this.stateComboBox.SelectedIndex = 0;
-            this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
-        }
 
-        /// <summary>
-        /// Event handler for search button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SearchButtonClick(object sender, System.EventArgs e)
-        {
-            try
-            {
-                this.memberSearchDetails = this.CreateMemberFromSearch();
-                if (this.membersController.ValidMemberSearch(this.memberSearchDetails))
-                {
-                    this.memberSearchDetails = this.membersController.GetMemberFromSearch(this.memberSearchDetails);
-                    this.ToggleFormButtons(true);
-                    this.SetFields(this.memberSearchDetails);
-                }
-            }
-            catch (ArgumentException ae)
-            {
-                this.UpdateStatusMessage(ae.Message, true);
+            if (isUpdate)
+            {              
+                this.SetFields(this.memberSearchDetails);
                 this.ToggleFormButtons(false);
             }
-            catch (Exception ex)
+            else
             {
-                this.UpdateStatusMessage(ex.Message, true);
-                this.ToggleFormButtons(false);
-            }
-        }
-
-       
-     
+                this.sexComboBox.SelectedIndex = 0;              
+                this.stateComboBox.SelectedIndex = 0;
+                this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
+            }           
+        }            
 
         /// <summary>
         /// Event handler for update button click.
@@ -83,7 +61,6 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void UpdateButtonClick(object sender, System.EventArgs e)
         {
-            this.statusMessage.Text = "";
             try
             {
                 this.ValidateFormFields();
@@ -128,7 +105,6 @@ namespace RentMe.UserControls
                 if (this.membersController.UpdateMemberInformation(this.memberSearchDetails, memberUpdateData))
                 {
                     this.UpdateStatusMessage("Member information updated successfully", false);
-                    this.memberSearchDetails = this.membersController.GetMemberFromSearch(memberUpdateData);
                 }
                 else
                 {
@@ -169,10 +145,7 @@ namespace RentMe.UserControls
 
             }
             return isModified;
-        }
-
-
-       
+        }      
 
         /// <summary>
         /// Event handler for register member button click.
@@ -189,7 +162,7 @@ namespace RentMe.UserControls
                     this.membersController.RegisterNewMember(member);
                     UpdateStatusMessage("Member registration successfully!\n" +
                     "MemberID is " + member.MemberID, false);
-                    this.ToggleFormButtons(true);
+                    this.ToggleFormButtons(false);
                 }
             }
             catch (ArgumentException ae)
@@ -201,78 +174,7 @@ namespace RentMe.UserControls
                 this.UpdateStatusMessage(ex.Message, true);
             }
         }
-
-        /// <summary>
-        /// Event handler for clear button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ClearButtonClick(object sender, System.EventArgs e)
-        {
-            this.ToggleFormButtons(false);
-            this.ClearFields();
-        }
-
-        /// <summary>
-        /// Clears the form fields.
-        /// </summary>
-        private void ClearFields()
-        {
-            void func(Control.ControlCollection controls)
-            {
-                foreach (Control control in controls)
-                    if (control is TextBox)
-                    {
-                        (control as TextBox).Clear();
-                    }
-                    else if (control is ComboBox)
-                    {
-                        (control as ComboBox).SelectedIndex = 0;
-                    }
-                    else if (control is DateTimePicker)
-                    {
-                        (control as DateTimePicker).Value = (control as DateTimePicker).MaxDate;
-                    }
-                    else
-                    {
-                        func(control.Controls);
-                    }
-            }
-
-            func(Controls);
-        }
-
-        /// <summary>
-        /// Takes input from the search field
-        /// and returns a Member.
-        /// </summary>
-        /// <returns></returns>
-        private Member CreateMemberFromSearch()
-        {
-            Member member = new Member();
-            TextBox search = this.searchMemberTextBox;
-            if (search.Text == "")
-            {
-                throw new ArgumentException("Member search field cannot be empty");
-            }
-            else if (new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$").IsMatch(search.Text))
-            {
-                member.Phone = search.Text;
-
-            }
-            else if (new Regex("[a-zA-Z] [a-zA-Z]").IsMatch(search.Text))
-            {
-                member.FName = search.Text.Substring(0, search.Text.IndexOf(" "));
-                member.LName = search.Text.Substring(search.Text.IndexOf(" ") + 1);
-            }
-            else if (Int32.TryParse(search.Text, out int memberID))
-            {
-                member.MemberID = memberID;
-            }
-
-            return member;
-        }
-
+               
         /// <summary>
         /// Creates a new Member using validated
         /// form fields.
@@ -436,8 +338,8 @@ namespace RentMe.UserControls
         /// </summary>
         private void ToggleFormButtons(bool enabled)
         {
-            this.updateButton.Enabled = enabled;
-            this.registerButton.Enabled = !enabled;
+            this.updateButton.Enabled = !enabled;
+            this.registerButton.Enabled = enabled;
         }
 
         /// <summary>
@@ -467,23 +369,68 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
-        /// Event handler for visible change.
+        /// Clears the form fields.
+        /// </summary>
+        private void ClearFields()
+        {
+            void func(Control.ControlCollection controls)
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                    {
+                        (control as TextBox).Clear();
+                    }
+                    else if (control is ComboBox)
+                    {
+                        (control as ComboBox).SelectedIndex = 0;
+                    }
+                    else if (control is DateTimePicker)
+                    {
+                        (control as DateTimePicker).Value = (control as DateTimePicker).MaxDate;
+                    }
+                    else if (control is CheckBox)
+                    {
+                        (control as CheckBox).Checked = false;
+                    }
+                    else
+                    {
+                        func(control.Controls);
+                    }
+            }
+
+            func(Controls);
+        }
+
+        /// <summary>
+        /// Event Handler for Close button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MemberServicesVisibleChanged(object sender, EventArgs e)
+        private void CloseButtonClick(object sender, EventArgs e)
+        {
+            ((Form)this.TopLevelControl).Close();
+            GC.Collect();
+        }
+
+        /// <summary>
+        /// Event handler for Clear button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClearButtonClick(object sender, EventArgs e)
         {
             this.ClearFields();
         }
 
         /// <summary>
-        /// Event handler for UserControl Load event.
+        /// Event Handler for UserControl load event.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MemberServicesLoad(object sender, EventArgs e)
         {
-            this.searchMemberTextBox.Focus();
+            this.memberSearchDetails = SearchedMember;
+            this.InitializeControls(IsUpdate);
         }
     }
 }
