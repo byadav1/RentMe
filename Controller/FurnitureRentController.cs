@@ -24,6 +24,15 @@ namespace RentMe.Controller
 
         }
 
+
+        public List<RentFurniture> GetRentItem(Member rentMember)
+        {
+          
+               return  FurnitureRentalDAL.GetCartItems(rentMember);
+        }
+
     }
+
+    
 
 }

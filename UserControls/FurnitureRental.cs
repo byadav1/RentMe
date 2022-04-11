@@ -341,6 +341,8 @@ namespace RentMe.UserControls
             }
         }
 
+
+
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
 
@@ -367,13 +369,27 @@ namespace RentMe.UserControls
             if (this.rentFurnitureList.Any())
             {
                 this.rentController.AddFurnituresToRent(this.rentFurnitureList);
+                this.UpdateStatusMessage("Items added to the cart.",false);
+            
+                this.Reset();
             }
 
 
 
         }
 
-        private void RentAllButton_Click(object sender, EventArgs e)
+        private void Reset()
+        {
+            foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
+            {
+
+                row.Cells["addQuantity"].Value = "";
+                row.Cells["rentColumn"].Value = false;
+
+            }
+        }
+
+            private void RentAllButton_Click(object sender, EventArgs e)
         {
             string message = string.Empty;
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
@@ -383,5 +399,52 @@ namespace RentMe.UserControls
 
            
         }
+
+        /// <summary>
+        /// Updates the error message to reflect 
+        /// the status of the form.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="isError"></param>
+        private void UpdateStatusMessage(string message, bool isError)
+        {
+            if (string.IsNullOrEmpty(message))
+            {
+                throw new ArgumentException("Message cannot be null or empty");
+            }
+
+            if (isError)
+            {
+                this.rentalStatusLabel.ForeColor = Color.Red;
+            }
+            else
+            {
+                this.rentalStatusLabel.ForeColor = Color.Black;
+            }
+
+            this.rentalStatusLabel.Text = message;
+            this.rentalStatusLabel.Visible = true;
+        }
+
+        private void ViewCartLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (Form viewCartDialog = new View.ViewCartDialog(this.MemberRent))
+            {
+                DialogResult result = viewCartDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.Reset();
+                }
+
+                else if (result == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Cancelled the operation.Incident was not added");
+                }
+            }
+        }
+
+
     }
+
+    
 }

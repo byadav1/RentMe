@@ -396,6 +396,7 @@ namespace RentMe.UserControls
             this.viewCartLinkLabel.TabIndex = 17;
             this.viewCartLinkLabel.TabStop = true;
             this.viewCartLinkLabel.Text = "View Cart";
+            this.viewCartLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ViewCartLinkLabel_LinkClicked);
             // 
             // memberFirstName
             // 
