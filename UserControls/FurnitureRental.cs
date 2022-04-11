@@ -4,6 +4,7 @@ using RentMe.Model;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 
 namespace RentMe.UserControls
 {
@@ -21,6 +22,7 @@ namespace RentMe.UserControls
         private List<string> styleList;
         private Member MemberRent;
         private bool isMemberAvailable =false;
+        private List<FurnitureRental> rentFurnitureList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FurnitureRental"/> class.
@@ -84,68 +86,24 @@ namespace RentMe.UserControls
         {
             try
             {
-                //this.furnitureListView.Items.Clear();
-                //ListViewItem listViewItem = null;
-                //List<Furniture> furnitureSearchResults = this.furnitureController.GetFurnitureDetails(this.furnitureSearchDetails);
-                //this.furnitureListView.LabelEdit = true;
-                //if (furnitureSearchResults.Any())
-                //{
-                //    foreach (Furniture furnitureItem in furnitureSearchResults)
-                //    {
 
+                List<Furniture> furnitureSearchResults = this.furnitureController.GetFurnitureDetails(this.furnitureSearchDetails);
 
-                //        listViewItem = new ListViewItem(Convert.ToString(furnitureItem.FurnitureID), 1);                       
-                //        listViewItem.SubItems.Add(furnitureItem.Name);
-                //        listViewItem.SubItems.Add(furnitureItem.Description);
-                //        listViewItem.SubItems.Add(furnitureItem.Category);
-                //        listViewItem.SubItems.Add(furnitureItem.Style);
-                //        listViewItem.SubItems.Add(Convert.ToString(furnitureItem.DailyRentalRate));
-                //        listViewItem.SubItems.Add(Convert.ToString(furnitureItem.Quantity));
-
-
-                //        this.furnitureListView.Items.AddRange(new ListViewItem[] { listViewItem });                        
-
-                //    }
-
-                //    ComboBox c;
-                //    this.Controls.Add(c = new ComboBox());
-                //    c.Items.Add("Input");
-                //    c.Items.Add("Delay");
-                //    c.Items.Add("Message");
-                //    c.Items.Add("comment");
-
-                //    this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-                this.furnitureDateGridView.DataSource = this.furnitureController.GetFurnitureDetails(this.furnitureSearchDetails);
-                var col3 = new DataGridViewTextBoxColumn();
-                var col4 = new DataGridViewCheckBoxColumn();
-                col3.HeaderText = "Add Quantity";
-                col3.Name = "addQuantity";
-
-                col4.HeaderText = "Rent me";
-                col4.Name = "rentColumn";
-                //this.furnitureDateGridView.Columns[7].ReadOnly = false;
-                //this.furnitureDateGridView.Columns[8].ReadOnly = false;
-                this.furnitureDateGridView.Columns.AddRange(new DataGridViewColumn[] { col3, col4 });
-                foreach (DataGridViewColumn dc in this.furnitureDateGridView.Columns)
+                if (furnitureSearchResults.Any())
                 {
-                    if (!dc.Index.Equals(7) && !dc.Index.Equals(8))
-                    {
-                        dc.ReadOnly = true;
-                    }
-                   
-                }
 
-
-                this.rentalStatusLabel.Visible = false;
+                    this.furnitureDateGridView.DataSource = furnitureSearchResults;
+                    
+                    this.rentalStatusLabel.Visible = false;
                     this.rentalStatusLabel.Text = "";
                     this.memberIDRentTextBox.Enabled = true;
                     this.memberSearchButton.Enabled = true;
-               // }
-              //  else
-                //{
-                   // this.rentalStatusLabel.Visible = true;
-                   // this.rentalStatusLabel.Text = "No furniture found for the entered value. Please enter the valid value";
-               // }
+                }
+                else
+                {
+                    this.rentalStatusLabel.Visible = true;
+                    this.rentalStatusLabel.Text = "No furniture found for the entered value. Please enter the valid value";
+                }
             }
             catch (Exception ex)
             {
@@ -230,7 +188,7 @@ namespace RentMe.UserControls
         /// </summary>
         private void ToggleFormButtons()
         {
-            this.viewCartButton.Enabled = false;
+            this.viewCartLinkLabel.Enabled = false;
             this.orderDetailsButton.Enabled = false;
             this.addToCartButton.Enabled = false;
             this.rentAllButton.Enabled = false;
@@ -348,14 +306,68 @@ namespace RentMe.UserControls
                 this.memberFirstName.Visible = true;
                 this.memberIDLabel.Text = "MemberId: " + this.MemberRent.MemberID.ToString();
                 this.memberFirstName.Text = "Name: " + this.MemberRent.FName + " " + this.MemberRent.LName;
-            this.isMemberAvailable = true;
-            this.furnitureListView.CheckBoxes = true;
-            this.furnitureListView.MultiSelect = true;
-                        this.memberIDRentTextBox.Clear();
+                this.isMemberAvailable = true;
+                this.memberIDRentTextBox.Clear();
+            this.viewCartLinkLabel.Enabled = true;
+            this.rentAllButton.Enabled = true;
+            this.addToCartButton.Enabled = true;
+            this.EnableRenting();
            // this.memberIDRentTextBox.Enabled = false;
            // this.memberSearchButton.Enabled = false;
         }
 
+        private void EnableRenting()
+        {
+            if (isMemberAvailable) {
+                var col3 = new DataGridViewTextBoxColumn();
+                var col4 = new DataGridViewCheckBoxColumn();
+                col3.HeaderText = "Add Quantity";
+                col3.Name = "addQuantity";
+                col4.HeaderText = "Rent me";
+                col4.Name = "rentColumn";
+                this.furnitureDateGridView.Columns.AddRange(new DataGridViewColumn[] { col3, col4 });
+                foreach (DataGridViewColumn dc in this.furnitureDateGridView.Columns)
+                {
+                    MessageBox.Show("Selected Values" + dc.Name);
 
+                    if (!dc.Index.Equals(7) && !dc.Index.Equals(8))
+                    {
+                        dc.ReadOnly = true;
+                    }
+
+                }
+
+            }
+        }
+
+        private void AddToCartButton_Click(object sender, EventArgs e)
+        {
+
+            string message = string.Empty;
+            foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
+            {
+               
+                bool isSelected = Convert.ToBoolean(row.Cells["rentColumn"].Value);
+                if (isSelected)
+                {
+                    message += Environment.NewLine;
+                    message += row.Cells["Name"].Value.ToString();
+                }
+            }
+
+          
+
+        }
+
+        private void RentAllButton_Click(object sender, EventArgs e)
+        {
+            string message = string.Empty;
+            foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
+            {
+                row.Cells["rentColumn"].Value = true; ; 
+            }
+
+           
+        }
     }
 }
