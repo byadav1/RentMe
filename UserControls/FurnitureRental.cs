@@ -22,7 +22,7 @@ namespace RentMe.UserControls
         private List<string> styleList;
         private Member MemberRent;
         private bool isMemberAvailable =false;
-        private List<FurnitureRental> rentFurnitureList;
+        private List<RentFurniture> rentFurnitureList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FurnitureRental"/> class.
@@ -328,7 +328,7 @@ namespace RentMe.UserControls
                 this.furnitureDateGridView.Columns.AddRange(new DataGridViewColumn[] { col3, col4 });
                 foreach (DataGridViewColumn dc in this.furnitureDateGridView.Columns)
                 {
-                    MessageBox.Show("Selected Values" + dc.Name);
+                  
 
                     if (!dc.Index.Equals(7) && !dc.Index.Equals(8))
                     {
@@ -350,8 +350,12 @@ namespace RentMe.UserControls
                 bool isSelected = Convert.ToBoolean(row.Cells["rentColumn"].Value);
                 if (isSelected)
                 {
-                    message += Environment.NewLine;
-                    message += row.Cells["Name"].Value.ToString();
+                    MessageBox.Show("Selected Values" + row.Cells["FurnitureID"].Value);
+                    RentFurniture rentItem = new RentFurniture (
+                        
+                        Fur
+                        )
+
                 }
             }
 

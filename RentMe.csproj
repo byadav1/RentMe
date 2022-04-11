@@ -49,13 +49,16 @@
   <ItemGroup>
     <Compile Include="Controller\EmployeesController.cs" />
     <Compile Include="Controller\FormProvider.cs" />
+    <Compile Include="Controller\FurnitureRentController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\MembersController.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
+    <Compile Include="DAL\FurnitureRentalDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\MembersDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\RentFurniture.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Helpers\States.cs" />
     <Compile Include="Model\Member.cs" />
