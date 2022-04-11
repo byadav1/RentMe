@@ -28,8 +28,19 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this.employeesController = new EmployeesController();
+            this.RefreshDataGrid();
+        }
+
+        /// <summary>
+        /// Refreshes the DataGridView to display
+        /// all RentMe Employees.
+        /// </summary>
+        public void RefreshDataGrid()
+        {
             List<Employee> employees = this.employeesController.GetEmployees();
             this.DisplayEmployeesList(employees);
+            this.viewAllEmployeesButton.Enabled = false;
+            this.searchEmployeeTextBox.Clear();
         }
 
         /// <summary>
@@ -86,13 +97,9 @@ namespace RentMe.UserControls
                     Type = row.Cells["type"].Value.ToString(),
                     Active = Convert.ToBoolean(row.Cells["active"].Value.ToString())
                 };
-                if(!employee.Active)
-                {
-                    throw new ArgumentException("Cannot update an inactive employee");
-                }
 
                 Form owner = ((Form)this.TopLevelControl);
-                new EmployeeServicesForm(true, employee).Show(owner);
+                new EmployeeServicesDialog(true, employee).Show(owner);
                 owner.Hide();
             }
             catch (Exception ex)
@@ -110,7 +117,7 @@ namespace RentMe.UserControls
         private void RegisterButtonClick(object sender, EventArgs e)
         {
             Form owner = ((Form)this.TopLevelControl);
-            new EmployeeServicesForm(false, new Employee()).Show(owner);
+            new EmployeeServicesDialog(false, new Employee()).Show(owner);
             owner.Hide();
         }
 
@@ -121,10 +128,7 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void ViewAllEmployeesButtonClick(object sender, EventArgs e)
         {
-            List<Employee> employees = this.employeesController.GetEmployees();
-            this.DisplayEmployeesList(employees);
-            this.viewAllEmployeesButton.Enabled = false;
-            this.searchEmployeeTextBox.Clear();
+            this.RefreshDataGrid();
         }
 
         /// <summary>

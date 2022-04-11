@@ -405,16 +405,22 @@ namespace RentMe.DAL
         public static bool DeactivateORActivateEmployee(Employee employee)
         {
             string selectStatement;
-            int activeValue;
+            bool active;
 
             if (employee.Active) {
-                selectStatement=" UPDATE Employees SET ACTIVE=0 Where EmployeeID=@ID and ACTIVE=@flag";
-                activeValue = 1;
+                selectStatement= "UPDATE Employees " +
+                                 "SET ACTIVE = 0 " +
+                                 "WHERE EmployeeID = @ID " +
+                                 "AND ACTIVE = @flag";
+                active = false;
             }
             else 
             {
-                selectStatement = " UPDATE Employees SET ACTIVE= 1 Where EmployeeID=@ID and ACTIVE=@flag";
-                activeValue = 0;
+                selectStatement = "UPDATE Employees " +
+                                  "SET Active = 1 WHERE " +
+                                  "EmployeeID = @ID " +
+                                  "AND Active = @flag";
+                active = true;
             }
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -424,20 +430,18 @@ namespace RentMe.DAL
                     
                     
                     selectCommand.Parameters.AddWithValue("ID", employee.EmployeeID);
-                    selectCommand.Parameters.AddWithValue("flag", activeValue);
-                    int resultCount = selectCommand.ExecuteNonQuery();
-                    if (resultCount > 0)
+                    selectCommand.Parameters.AddWithValue("flag", employee.Active);
+                    if (selectCommand.ExecuteNonQuery() > 0)
                     {
+                        employee.Active = active;
                         return true;
                     }
                     else
                     {
-                        return false;
+                        throw new ArgumentException("Employee deletion failed at database transaction");
                     }
-
                 }
             }
-
         }
 
         /// <summary>

@@ -9,28 +9,28 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace RentMe.UserControls
+namespace RentMe.View
 {
     /// <summary>
-    /// This UserControl models a form
-    /// which will enable the update, deletion,
-    /// or registration of a RentMe employee
+    /// This Dialog serves as a services form
+    /// to view and update RentMe Employee information.
     /// </summary>
-    public partial class EmployeeServices : UserControl
+    public partial class EmployeeServicesDialog : Form
     {
         private readonly EmployeesController employeesController;
-        private Employee employeeSearchDetails;
-        public bool IsUpdate { get; set; }
-        public Employee SearchedEmployee { get; set; }
+        private readonly Employee employeeSearchDetails;
 
         /// <summary>
-        /// Initialize the control.
+        /// Initialize the form.
         /// </summary>
-        public EmployeeServices()
+        /// <param name="isUpdate"></param>
+        /// <param name="employee"></param>
+        public EmployeeServicesDialog(bool isUpdate, Employee employee)
         {
             InitializeComponent();
-            this.InitializeControls(IsUpdate);
             this.employeesController = new EmployeesController();
+            this.employeeSearchDetails = employee;
+            this.InitializeControls(isUpdate);
         }
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RentMe.UserControls
                 throw new Exception("Username must be at least 5 characters:\n" +
                     "special characters except _ are prohibited");
             }
-            else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox)) 
-                && (this.addEmployeeButton.Enabled 
+            else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox))
+                && (this.addEmployeeButton.Enabled
                 || this.addEmployeeButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
             {
                 throw new Exception("Password must be between 8-20 characters: " +
@@ -237,6 +237,20 @@ namespace RentMe.UserControls
             DialogResult result = MessageBox.Show("Are you sure you want to register new RentMe employee:\n" +
                 employee.FName + " " + employee.LName + "?",
                 "Confirm Employee Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            return result;
+        }
+
+        /// <summary>
+        /// Prompts the user to confirm
+        /// an update to an Employee's login credentials.
+        /// </summary>
+        /// <param name="incident"></param>
+        private DialogResult ConfirmUpdateEmployeeLogin(Employee employee)
+        {
+            EmployeeValidator.ValidateEmployeeNotNull(employee);
+            DialogResult result = MessageBox.Show("Are you sure you want to update login credentials for:\n" +
+                employee.FName + " " + employee.LName + "?",
+                "Confirm Employee Login Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             return result;
         }
 
@@ -335,6 +349,7 @@ namespace RentMe.UserControls
             this.isAdministratorCheckBox.Enabled = isEditable;
             this.updateLoginButton.Enabled = isEditable;
             this.passwordTextBox.Enabled = isEditable;
+            this.clearButton.Enabled = isEditable;
         }
 
         /// <summary>
@@ -345,7 +360,7 @@ namespace RentMe.UserControls
             if (employeeSearchDetails.Active)
             {
                 this.activeCheckBox.Checked = true;
-                this.toggleActiveButton.Text = "Mark Inactive";                              
+                this.toggleActiveButton.Text = "Mark Inactive";
             }
             else
             {
@@ -411,34 +426,30 @@ namespace RentMe.UserControls
             try
             {
                 Employee employeeUpdateData = this.ReadData();
-                // check if there is an update with employee data
+                // Check for change in Employees table before execution
                 if (this.CheckUpdates(employeeUpdateData))
                 {
                     this.UpdateStatusMessage("We see there is a change in the data. Employee active status cannot be updated.\n" +
                         "Please save your changes and then delete an employee", true);
                     return;
                 }
-                string message;
-                //Delete operation
-                if (this.employeeSearchDetails.Active)
-                {
-                    message = "Employee deleted successfully";                
-                }
-                else 
-                {
-                    message = "Employee restored successfully";
-                }
 
+                // Delete operation
+                string message;
                 if (this.employeesController.DeleteOrRestoreEmployee(this.employeeSearchDetails))
                 {
-                    this.UpdateStatusMessage(message, false);                   
+                    if (this.employeeSearchDetails.Active)
+                    {
+                        message = "Employee restored successfully";
+                    }
+                    else
+                    {
+                        message = "Employee deactivated successfully";
+                    }
+                    this.UpdateStatusMessage(message, false);
                     this.DisplayEmployeeActiveStatus();
                     this.DisableEmployeeData(this.employeeSearchDetails.Active);
-                }
-                else
-                {
-                    this.UpdateStatusMessage("Employee deletion failed at database transaction.", true);
-                };
+                }               
             }
             catch (ArgumentException ae)
             {
@@ -467,13 +478,13 @@ namespace RentMe.UserControls
                     return;
                 }
                 this.ValidateFormFields();
-            
+
                 if (this.CheckUpdates(employeeUpdateData))
                 {
                     if (this.employeesController.UpdateEmployeeInformation(this.employeeSearchDetails, employeeUpdateData))
                     {
 
-                        this.UpdateStatusMessage("Employee information updated successfully", false);                        
+                        this.UpdateStatusMessage("Employee information updated successfully", false);
                     }
                     else
                     {
@@ -493,7 +504,7 @@ namespace RentMe.UserControls
             }
             catch (Exception ex)
             {
-               
+
                 this.UpdateStatusMessage(ex.Message, true);
             }
         }
@@ -546,12 +557,12 @@ namespace RentMe.UserControls
             lstNew_employeeData.Add(employeeUpdateData);
             if (lstOld_employeeData.Count > 0 && lstNew_employeeData.Count > 0)
             {
-                
+
 
                 var result = lstNew_employeeData.Where(l2 =>
                       lstOld_employeeData.Any(l1 => l2.EmployeeID == l1.EmployeeID
-                              && ((!String.Equals(l1.FName, l2.FName, StringComparison.OrdinalIgnoreCase) ) ||
-                              (!String.Equals(l1.LName, l2.LName, StringComparison.OrdinalIgnoreCase)) ||                                                            
+                              && ((!String.Equals(l1.FName, l2.FName, StringComparison.OrdinalIgnoreCase)) ||
+                              (!String.Equals(l1.LName, l2.LName, StringComparison.OrdinalIgnoreCase)) ||
                              l1.DOB != l2.DOB ||
                               l1.Phone != l2.Phone ||
                                (!String.Equals(l1.Sex, l2.Sex, StringComparison.OrdinalIgnoreCase)) ||
@@ -561,10 +572,10 @@ namespace RentMe.UserControls
                                l1.Zip != l2.Zip
                               || (!String.Equals(l1.Type, l2.Type, StringComparison.OrdinalIgnoreCase))
                               )));
-                
+
                 isModified = result.Any();
             }
-                  
+
             return isModified;
         }
 
@@ -590,22 +601,21 @@ namespace RentMe.UserControls
                 Employee employeeUpdateData = this.ReadData();
                 if (this.CheckUpdates(employeeUpdateData))
                 {
-                    this.UpdateStatusMessage("We see changes in Employee profile data, Please update the employee profile data using Update Profile ! ", true);
+                    this.UpdateStatusMessage("We see changes in Employee profile data.\n Please update the employee profile data using Update Profile ", true);
                     return;
                 }
                 if (string.IsNullOrEmpty(this.usernameTextBox.Text) && string.IsNullOrEmpty(this.passwordTextBox.Text))
                 {
-                    this.UpdateStatusMessage("Please enter the valid username or passsword! ", true);
+                    this.UpdateStatusMessage("Please enter a valid username or passsword ", true);
                     return;
                 }
-               
-                if (this.CheckPasswordOrUserNameUpdate(employeeUpdateData))
+
+                if (this.CheckPasswordOrUserNameUpdate(employeeUpdateData) && this.ConfirmUpdateEmployeeLogin(employeeUpdateData) == DialogResult.OK)
                 {
                     if (this.employeesController.UpdateEmployeeUserNameORPassword(this.employeeSearchDetails, employeeUpdateData))
                     {
-
-                        this.UpdateStatusMessage("Employee login updated successfully", false);
-                        this.passwordTextBox.Text = "";                        
+                        this.passwordTextBox.Text = "";
+                        this.UpdateStatusMessage("Employee login updated successfully", false);                       
                     }
                     else
                     {
@@ -635,36 +645,25 @@ namespace RentMe.UserControls
         /// <returns></returns>
         private bool CheckPasswordOrUserNameUpdate(Employee employeeUpdateData)
         {
-             if (this.InvalidInput(this.usernameTextBox, this.GenerateRegexForTextBox(this.usernameTextBox)))
+            if (this.InvalidInput(this.usernameTextBox, this.GenerateRegexForTextBox(this.usernameTextBox)))
             {
                 throw new Exception("Username must be at least 5 characters:\n" +
                     "special characters except _ are prohibited");
             }
-           else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox))
-                && (this.addEmployeeButton.Enabled
-                || this.addEmployeeButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
+            else if (this.InvalidInput(this.passwordTextBox, this.GenerateRegexForTextBox(this.passwordTextBox))
+                 && (this.addEmployeeButton.Enabled
+                 || this.addEmployeeButton.Enabled == false && !String.IsNullOrWhiteSpace(this.passwordTextBox.Text)))
             {
                 throw new Exception("Password must be between 8-20 characters: " +
                     "must contain at least one Uppercase, Lowercase letter, one number, and valid special character ! @ _ - [ ] ?");
             }
-           
-             if (!string.IsNullOrEmpty(employeeUpdateData.Password))
+
+            if (!string.IsNullOrEmpty(employeeUpdateData.Password))
             {
                 return this.employeesController.Checkpassword(this.employeeSearchDetails, employeeUpdateData);
             }
-            
-                return this.employeeSearchDetails.Username != employeeUpdateData.Username;                     
-        }
 
-        /// <summary>
-        /// Event handler for UserControl Load event.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EmployeeServicesLoad(object sender, EventArgs e)
-        {
-            this.employeeSearchDetails = SearchedEmployee;
-            this.InitializeControls(IsUpdate);
+            return this.employeeSearchDetails.Username != employeeUpdateData.Username;
         }
 
         /// <summary>
@@ -674,8 +673,18 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void CloseButtonClick(object sender, EventArgs e)
         {
-            ((Form)this.TopLevelControl).Close();
+            this.Close();
             GC.Collect();
+        }
+
+        /// <summary>
+        /// Event Handler for Form close.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EmployeeServicesDialogFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Show();
         }
     }
 }

@@ -4,33 +4,33 @@ using RentMe.Model.Helpers;
 using RentMe.Validators;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Drawing;
 
-
-namespace RentMe.UserControls
+namespace RentMe.View
 {
     /// <summary>
-    /// This UserControl models a form
-    /// which will enable the update, deletion,
-    /// or registration of a RentMe member
+    /// This Dialog serves as a services form
+    /// to view and update RentMe Member information.
     /// </summary>
-    public partial class MemberServices : UserControl
+    public partial class MemberServicesDialog : Form
     {
         private readonly MembersController membersController;
-        private Member memberSearchDetails;
-        public bool IsUpdate { get; set; }
-        public Member SearchedMember { get; set; }
+        private readonly Member memberSearchDetails;
 
         /// <summary>
-        /// Initialize the control.
+        /// Initialize the form.
         /// </summary>
-        public MemberServices()
+        /// <param name="isUpdate"></param>
+        /// <param name="member"></param>
+        public MemberServicesDialog(bool isUpdate, Member member)
         {
             InitializeComponent();
-            this.membersController = new MembersController();                               
+            this.membersController = new MembersController();
+            this.memberSearchDetails = member;
+            this.InitializeControls(isUpdate);
         }
 
         /// <summary>
@@ -42,17 +42,17 @@ namespace RentMe.UserControls
             this.stateComboBox.DataSource = new States().GetStateNames();
 
             if (isUpdate)
-            {              
+            {
                 this.SetFields(this.memberSearchDetails);
                 this.ToggleFormButtons(false);
             }
             else
             {
-                this.sexComboBox.SelectedIndex = 0;              
+                this.sexComboBox.SelectedIndex = 0;
                 this.stateComboBox.SelectedIndex = 0;
                 this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
-            }           
-        }            
+            }
+        }
 
         /// <summary>
         /// Event handler for update button click.
@@ -73,10 +73,8 @@ namespace RentMe.UserControls
             }
             catch (Exception ex)
             {
-                this.statusMessage.Visible = true;
-                this.statusMessage.Text = ex.Message;
+                this.UpdateStatusMessage(ex.Message, true);
             }
-
         }
 
         /// <summary>
@@ -108,8 +106,8 @@ namespace RentMe.UserControls
                 }
                 else
                 {
-                    this.UpdateStatusMessage("Member information cannot be perfomed.Something went wrong "+
-                        "with the process or member data is updated at the backend", true);                    
+                    this.UpdateStatusMessage("Member information cannot be perfomed.Something went wrong " +
+                        "with the process or member data is updated at the backend", true);
                 };
             }
             else
@@ -142,10 +140,10 @@ namespace RentMe.UserControls
                               l1.City != l2.City || l1.Zip != l2.Zip
                               )));
                 isModified = result.Any();
-
             }
+
             return isModified;
-        }      
+        }
 
         /// <summary>
         /// Event handler for register member button click.
@@ -174,7 +172,7 @@ namespace RentMe.UserControls
                 this.UpdateStatusMessage(ex.Message, true);
             }
         }
-               
+
         /// <summary>
         /// Creates a new Member using validated
         /// form fields.
@@ -242,7 +240,6 @@ namespace RentMe.UserControls
             this.statusMessage.Visible = false;
         }
 
-
         /// <summary>
         /// Validates the required form fields.
         /// </summary>
@@ -251,7 +248,7 @@ namespace RentMe.UserControls
             if (this.InvalidInput(this.fnameTextBox, this.GenerateRegexForTextBox(this.fnameTextBox)) ||
                 this.InvalidInput(this.lnameTextBox, this.GenerateRegexForTextBox(this.lnameTextBox)))
             {
-                throw new Exception("Name should consist of letters and not:\n" + 
+                throw new Exception("Name should consist of letters and not:\n" +
                     "be empty, include numbers, or special characters");
             }
             else if (this.InvalidInput(this.phoneTextBox, this.GenerateRegexForTextBox(this.phoneTextBox)))
@@ -422,15 +419,9 @@ namespace RentMe.UserControls
             this.ClearFields();
         }
 
-        /// <summary>
-        /// Event Handler for UserControl load event.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MemberServicesLoad(object sender, EventArgs e)
+        private void ServicesFormFormClosed(object sender, FormClosedEventArgs e)
         {
-            this.memberSearchDetails = SearchedMember;
-            this.InitializeControls(IsUpdate);
+            this.Owner.Show();
         }
     }
 }

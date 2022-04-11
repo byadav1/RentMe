@@ -1,14 +1,14 @@
 ﻿
-namespace RentMe.UserControls
+namespace RentMe.View
 {
-    partial class MemberServices
+    partial class MemberServicesDialog
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,10 +21,10 @@ namespace RentMe.UserControls
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -38,6 +38,7 @@ namespace RentMe.UserControls
             this.updateButton = new System.Windows.Forms.Button();
             this.registerButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
+            this.memberServicesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.fnameLabel = new System.Windows.Forms.Label();
             this.fnameTextBox = new System.Windows.Forms.TextBox();
             this.sexLabel = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@ namespace RentMe.UserControls
             this.address2TextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
-            this.memberServicesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.memberServicesButtonsTableLayoutPanel.SuspendLayout();
@@ -68,7 +68,7 @@ namespace RentMe.UserControls
             this.memberServicesTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
             this.statusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMessage.ForeColor = System.Drawing.Color.Red;
-            this.statusMessage.Location = new System.Drawing.Point(315, 606);
+            this.statusMessage.Location = new System.Drawing.Point(331, 606);
             this.statusMessage.Name = "statusMessage";
             this.statusMessage.Size = new System.Drawing.Size(119, 24);
             this.statusMessage.TabIndex = 23;
@@ -80,7 +80,7 @@ namespace RentMe.UserControls
             // 
             this.lnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameTextBox.Location = new System.Drawing.Point(303, 165);
+            this.lnameTextBox.Location = new System.Drawing.Point(315, 165);
             this.lnameTextBox.MaxLength = 50;
             this.lnameTextBox.Name = "lnameTextBox";
             this.lnameTextBox.Size = new System.Drawing.Size(212, 28);
@@ -92,7 +92,7 @@ namespace RentMe.UserControls
             this.lnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lnameLabel.AutoSize = true;
             this.lnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameLabel.Location = new System.Drawing.Point(193, 167);
+            this.lnameLabel.Location = new System.Drawing.Point(205, 167);
             this.lnameLabel.Name = "lnameLabel";
             this.lnameLabel.Size = new System.Drawing.Size(104, 24);
             this.lnameLabel.TabIndex = 5;
@@ -105,7 +105,7 @@ namespace RentMe.UserControls
             this.memberServicesHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.memberServicesTableLayoutPanel.SetColumnSpan(this.memberServicesHeaderLabel, 2);
             this.memberServicesHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memberServicesHeaderLabel.Location = new System.Drawing.Point(166, 26);
+            this.memberServicesHeaderLabel.Location = new System.Drawing.Point(182, 26);
             this.memberServicesHeaderLabel.Name = "memberServicesHeaderLabel";
             this.memberServicesHeaderLabel.Size = new System.Drawing.Size(417, 60);
             this.memberServicesHeaderLabel.TabIndex = 1;
@@ -128,14 +128,14 @@ namespace RentMe.UserControls
             this.memberServicesButtonsTableLayoutPanel.Name = "memberServicesButtonsTableLayoutPanel";
             this.memberServicesButtonsTableLayoutPanel.RowCount = 1;
             this.memberServicesButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.memberServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(744, 70);
+            this.memberServicesButtonsTableLayoutPanel.Size = new System.Drawing.Size(776, 73);
             this.memberServicesButtonsTableLayoutPanel.TabIndex = 14;
             // 
             // clearButton
             // 
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(219, 5);
+            this.clearButton.Location = new System.Drawing.Point(231, 6);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(120, 60);
             this.clearButton.TabIndex = 18;
@@ -148,11 +148,11 @@ namespace RentMe.UserControls
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateButton.Enabled = false;
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(33, 5);
+            this.updateButton.Location = new System.Drawing.Point(37, 6);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(120, 60);
             this.updateButton.TabIndex = 15;
-            this.updateButton.Text = "Update";
+            this.updateButton.Text = "Update Profile";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.UpdateButtonClick);
             // 
@@ -160,7 +160,7 @@ namespace RentMe.UserControls
             // 
             this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(591, 5);
+            this.registerButton.Location = new System.Drawing.Point(619, 6);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(120, 60);
             this.registerButton.TabIndex = 17;
@@ -172,194 +172,13 @@ namespace RentMe.UserControls
             // 
             this.closeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.Location = new System.Drawing.Point(405, 5);
+            this.closeButton.Location = new System.Drawing.Point(425, 6);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(120, 60);
             this.closeButton.TabIndex = 16;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.CloseButtonClick);
-            // 
-            // fnameLabel
-            // 
-            this.fnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.fnameLabel.AutoSize = true;
-            this.fnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameLabel.Location = new System.Drawing.Point(191, 122);
-            this.fnameLabel.Name = "fnameLabel";
-            this.fnameLabel.Size = new System.Drawing.Size(106, 24);
-            this.fnameLabel.TabIndex = 3;
-            this.fnameLabel.Text = "First Name:";
-            // 
-            // fnameTextBox
-            // 
-            this.fnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.fnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameTextBox.Location = new System.Drawing.Point(303, 120);
-            this.fnameTextBox.MaxLength = 50;
-            this.fnameTextBox.Name = "fnameTextBox";
-            this.fnameTextBox.Size = new System.Drawing.Size(212, 28);
-            this.fnameTextBox.TabIndex = 4;
-            this.fnameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // sexLabel
-            // 
-            this.sexLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.sexLabel.AutoSize = true;
-            this.sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sexLabel.Location = new System.Drawing.Point(249, 212);
-            this.sexLabel.Name = "sexLabel";
-            this.sexLabel.Size = new System.Drawing.Size(48, 24);
-            this.sexLabel.TabIndex = 6;
-            this.sexLabel.Text = "Sex:";
-            // 
-            // phoneLabel
-            // 
-            this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneLabel.Location = new System.Drawing.Point(226, 257);
-            this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(71, 24);
-            this.phoneLabel.TabIndex = 7;
-            this.phoneLabel.Text = "Phone:";
-            // 
-            // dobLabel
-            // 
-            this.dobLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.dobLabel.AutoSize = true;
-            this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobLabel.Location = new System.Drawing.Point(182, 302);
-            this.dobLabel.Name = "dobLabel";
-            this.dobLabel.Size = new System.Drawing.Size(115, 24);
-            this.dobLabel.TabIndex = 8;
-            this.dobLabel.Text = "Date of Birth:";
-            // 
-            // address1Label
-            // 
-            this.address1Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.address1Label.AutoSize = true;
-            this.address1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1Label.Location = new System.Drawing.Point(197, 347);
-            this.address1Label.Name = "address1Label";
-            this.address1Label.Size = new System.Drawing.Size(100, 24);
-            this.address1Label.TabIndex = 9;
-            this.address1Label.Text = "Address 1:";
-            // 
-            // address2Label
-            // 
-            this.address2Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.address2Label.AutoSize = true;
-            this.address2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2Label.Location = new System.Drawing.Point(197, 392);
-            this.address2Label.Name = "address2Label";
-            this.address2Label.Size = new System.Drawing.Size(100, 24);
-            this.address2Label.TabIndex = 10;
-            this.address2Label.Text = "Address 2:";
-            // 
-            // cityLabel
-            // 
-            this.cityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.cityLabel.AutoSize = true;
-            this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityLabel.Location = new System.Drawing.Point(252, 437);
-            this.cityLabel.Name = "cityLabel";
-            this.cityLabel.Size = new System.Drawing.Size(45, 24);
-            this.cityLabel.TabIndex = 11;
-            this.cityLabel.Text = "City:";
-            // 
-            // stateLabel
-            // 
-            this.stateLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.stateLabel.AutoSize = true;
-            this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateLabel.Location = new System.Drawing.Point(241, 482);
-            this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(56, 24);
-            this.stateLabel.TabIndex = 12;
-            this.stateLabel.Text = "State:";
-            // 
-            // zipLabel
-            // 
-            this.zipLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.zipLabel.AutoSize = true;
-            this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipLabel.Location = new System.Drawing.Point(255, 527);
-            this.zipLabel.Name = "zipLabel";
-            this.zipLabel.Size = new System.Drawing.Size(42, 24);
-            this.zipLabel.TabIndex = 13;
-            this.zipLabel.Text = "Zip:";
-            // 
-            // phoneTextBox
-            // 
-            this.phoneTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneTextBox.Location = new System.Drawing.Point(303, 255);
-            this.phoneTextBox.MaxLength = 12;
-            this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(212, 28);
-            this.phoneTextBox.TabIndex = 7;
-            this.phoneTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // dobPicker
-            // 
-            this.dobPicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dobPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dobPicker.Location = new System.Drawing.Point(303, 300);
-            this.dobPicker.Name = "dobPicker";
-            this.dobPicker.Size = new System.Drawing.Size(212, 28);
-            this.dobPicker.TabIndex = 8;
-            this.dobPicker.Value = new System.DateTime(2022, 3, 14, 0, 0, 0, 0);
-            this.dobPicker.Enter += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // address1TextBox
-            // 
-            this.address1TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.address1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1TextBox.Location = new System.Drawing.Point(303, 345);
-            this.address1TextBox.MaxLength = 50;
-            this.address1TextBox.Name = "address1TextBox";
-            this.address1TextBox.Size = new System.Drawing.Size(212, 28);
-            this.address1TextBox.TabIndex = 9;
-            this.address1TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // address2TextBox
-            // 
-            this.address2TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.address2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2TextBox.Location = new System.Drawing.Point(303, 390);
-            this.address2TextBox.MaxLength = 50;
-            this.address2TextBox.Name = "address2TextBox";
-            this.address2TextBox.Size = new System.Drawing.Size(212, 28);
-            this.address2TextBox.TabIndex = 10;
-            this.address2TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // zipTextBox
-            // 
-            this.zipTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.zipTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipTextBox.Location = new System.Drawing.Point(303, 525);
-            this.zipTextBox.MaxLength = 5;
-            this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new System.Drawing.Size(212, 28);
-            this.zipTextBox.TabIndex = 13;
-            this.zipTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
-            // 
-            // sexComboBox
-            // 
-            this.sexComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sexComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sexComboBox.FormattingEnabled = true;
-            this.sexComboBox.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.sexComboBox.Location = new System.Drawing.Point(303, 209);
-            this.sexComboBox.Name = "sexComboBox";
-            this.sexComboBox.Size = new System.Drawing.Size(212, 30);
-            this.sexComboBox.TabIndex = 6;
-            this.sexComboBox.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
             // memberServicesTableLayoutPanel
             // 
@@ -406,8 +225,189 @@ namespace RentMe.UserControls
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.memberServicesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.memberServicesTableLayoutPanel.Size = new System.Drawing.Size(750, 750);
-            this.memberServicesTableLayoutPanel.TabIndex = 1;
+            this.memberServicesTableLayoutPanel.Size = new System.Drawing.Size(782, 753);
+            this.memberServicesTableLayoutPanel.TabIndex = 2;
+            // 
+            // fnameLabel
+            // 
+            this.fnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.fnameLabel.AutoSize = true;
+            this.fnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fnameLabel.Location = new System.Drawing.Point(203, 122);
+            this.fnameLabel.Name = "fnameLabel";
+            this.fnameLabel.Size = new System.Drawing.Size(106, 24);
+            this.fnameLabel.TabIndex = 3;
+            this.fnameLabel.Text = "First Name:";
+            // 
+            // fnameTextBox
+            // 
+            this.fnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fnameTextBox.Location = new System.Drawing.Point(315, 120);
+            this.fnameTextBox.MaxLength = 50;
+            this.fnameTextBox.Name = "fnameTextBox";
+            this.fnameTextBox.Size = new System.Drawing.Size(212, 28);
+            this.fnameTextBox.TabIndex = 4;
+            this.fnameTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
+            // 
+            // sexLabel
+            // 
+            this.sexLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.sexLabel.AutoSize = true;
+            this.sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sexLabel.Location = new System.Drawing.Point(261, 212);
+            this.sexLabel.Name = "sexLabel";
+            this.sexLabel.Size = new System.Drawing.Size(48, 24);
+            this.sexLabel.TabIndex = 6;
+            this.sexLabel.Text = "Sex:";
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.phoneLabel.AutoSize = true;
+            this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneLabel.Location = new System.Drawing.Point(238, 257);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(71, 24);
+            this.phoneLabel.TabIndex = 7;
+            this.phoneLabel.Text = "Phone:";
+            // 
+            // dobLabel
+            // 
+            this.dobLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.dobLabel.AutoSize = true;
+            this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dobLabel.Location = new System.Drawing.Point(194, 302);
+            this.dobLabel.Name = "dobLabel";
+            this.dobLabel.Size = new System.Drawing.Size(115, 24);
+            this.dobLabel.TabIndex = 8;
+            this.dobLabel.Text = "Date of Birth:";
+            // 
+            // address1Label
+            // 
+            this.address1Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.address1Label.AutoSize = true;
+            this.address1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.address1Label.Location = new System.Drawing.Point(209, 347);
+            this.address1Label.Name = "address1Label";
+            this.address1Label.Size = new System.Drawing.Size(100, 24);
+            this.address1Label.TabIndex = 9;
+            this.address1Label.Text = "Address 1:";
+            // 
+            // address2Label
+            // 
+            this.address2Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.address2Label.AutoSize = true;
+            this.address2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.address2Label.Location = new System.Drawing.Point(209, 392);
+            this.address2Label.Name = "address2Label";
+            this.address2Label.Size = new System.Drawing.Size(100, 24);
+            this.address2Label.TabIndex = 10;
+            this.address2Label.Text = "Address 2:";
+            // 
+            // cityLabel
+            // 
+            this.cityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.cityLabel.AutoSize = true;
+            this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cityLabel.Location = new System.Drawing.Point(264, 437);
+            this.cityLabel.Name = "cityLabel";
+            this.cityLabel.Size = new System.Drawing.Size(45, 24);
+            this.cityLabel.TabIndex = 11;
+            this.cityLabel.Text = "City:";
+            // 
+            // stateLabel
+            // 
+            this.stateLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.stateLabel.AutoSize = true;
+            this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stateLabel.Location = new System.Drawing.Point(253, 482);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(56, 24);
+            this.stateLabel.TabIndex = 12;
+            this.stateLabel.Text = "State:";
+            // 
+            // zipLabel
+            // 
+            this.zipLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.zipLabel.AutoSize = true;
+            this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zipLabel.Location = new System.Drawing.Point(267, 527);
+            this.zipLabel.Name = "zipLabel";
+            this.zipLabel.Size = new System.Drawing.Size(42, 24);
+            this.zipLabel.TabIndex = 13;
+            this.zipLabel.Text = "Zip:";
+            // 
+            // phoneTextBox
+            // 
+            this.phoneTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneTextBox.Location = new System.Drawing.Point(315, 255);
+            this.phoneTextBox.MaxLength = 12;
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(212, 28);
+            this.phoneTextBox.TabIndex = 7;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
+            // 
+            // dobPicker
+            // 
+            this.dobPicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dobPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dobPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dobPicker.Location = new System.Drawing.Point(315, 300);
+            this.dobPicker.Name = "dobPicker";
+            this.dobPicker.Size = new System.Drawing.Size(212, 28);
+            this.dobPicker.TabIndex = 8;
+            this.dobPicker.Value = new System.DateTime(2022, 3, 14, 0, 0, 0, 0);
+            this.dobPicker.Enter += new System.EventHandler(this.FormFieldChanged);
+            // 
+            // address1TextBox
+            // 
+            this.address1TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.address1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.address1TextBox.Location = new System.Drawing.Point(315, 345);
+            this.address1TextBox.MaxLength = 50;
+            this.address1TextBox.Name = "address1TextBox";
+            this.address1TextBox.Size = new System.Drawing.Size(212, 28);
+            this.address1TextBox.TabIndex = 9;
+            this.address1TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
+            // 
+            // address2TextBox
+            // 
+            this.address2TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.address2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.address2TextBox.Location = new System.Drawing.Point(315, 390);
+            this.address2TextBox.MaxLength = 50;
+            this.address2TextBox.Name = "address2TextBox";
+            this.address2TextBox.Size = new System.Drawing.Size(212, 28);
+            this.address2TextBox.TabIndex = 10;
+            this.address2TextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
+            // 
+            // zipTextBox
+            // 
+            this.zipTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.zipTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zipTextBox.Location = new System.Drawing.Point(315, 525);
+            this.zipTextBox.MaxLength = 5;
+            this.zipTextBox.Name = "zipTextBox";
+            this.zipTextBox.Size = new System.Drawing.Size(212, 28);
+            this.zipTextBox.TabIndex = 13;
+            this.zipTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
+            // 
+            // sexComboBox
+            // 
+            this.sexComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sexComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sexComboBox.FormattingEnabled = true;
+            this.sexComboBox.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.sexComboBox.Location = new System.Drawing.Point(315, 208);
+            this.sexComboBox.Name = "sexComboBox";
+            this.sexComboBox.Size = new System.Drawing.Size(212, 30);
+            this.sexComboBox.TabIndex = 6;
+            this.sexComboBox.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
             // stateComboBox
             // 
@@ -417,29 +417,33 @@ namespace RentMe.UserControls
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.IntegralHeight = false;
-            this.stateComboBox.Location = new System.Drawing.Point(303, 479);
+            this.stateComboBox.Location = new System.Drawing.Point(315, 478);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(212, 30);
             this.stateComboBox.TabIndex = 12;
+            this.stateComboBox.Enter += new System.EventHandler(this.FormFieldChanged);
             // 
             // cityTextBox
             // 
             this.cityTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(303, 435);
+            this.cityTextBox.Location = new System.Drawing.Point(315, 435);
             this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(212, 28);
             this.cityTextBox.TabIndex = 11;
+            this.cityTextBox.TextChanged += new System.EventHandler(this.FormFieldChanged);
             // 
-            // MemberServices
+            // MemberServicesDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(782, 753);
             this.Controls.Add(this.memberServicesTableLayoutPanel);
-            this.Name = "MemberServices";
-            this.Size = new System.Drawing.Size(750, 750);
-            this.Load += new System.EventHandler(this.MemberServicesLoad);
+            this.Name = "MemberServicesDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "RentMe: Services";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ServicesFormFormClosed);
             this.memberServicesButtonsTableLayoutPanel.ResumeLayout(false);
             this.memberServicesTableLayoutPanel.ResumeLayout(false);
             this.memberServicesTableLayoutPanel.PerformLayout();
@@ -455,8 +459,10 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Label lnameLabel;
         private System.Windows.Forms.Label memberServicesHeaderLabel;
         private System.Windows.Forms.TableLayoutPanel memberServicesButtonsTableLayoutPanel;
+        private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button registerButton;
+        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label fnameLabel;
         private System.Windows.Forms.TextBox fnameTextBox;
         private System.Windows.Forms.Label sexLabel;
@@ -475,7 +481,5 @@ namespace RentMe.UserControls
         private System.Windows.Forms.ComboBox sexComboBox;
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.Button clearButton;
     }
 }

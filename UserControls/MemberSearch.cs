@@ -33,6 +33,18 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
+        /// Refreshes the DataGridView to display
+        /// all RentMe Members.
+        /// </summary>
+        public void RefreshDataGrid()
+        {
+            List<Member> members = this.membersController.GetMembers();
+            this.DisplayMembersList(members);
+            this.viewAllMembersButton.Enabled = false;
+            this.searchMemberTextBox.Clear();
+        }
+
+        /// <summary>
         /// Event Handler for Search button click.
         /// </summary>
         /// <param name="sender"></param>
@@ -85,7 +97,7 @@ namespace RentMe.UserControls
                 };
           
                 Form owner = ((Form)this.TopLevelControl);
-                new MemberServicesForm(true, member).Show(owner);
+                new MemberServicesDialog(true, member).Show(owner);
                 owner.Hide();
             }
             catch (Exception ex)
@@ -103,7 +115,7 @@ namespace RentMe.UserControls
         private void RegisterButtonClick(object sender, EventArgs e)
         {
             Form owner = ((Form)this.TopLevelControl);
-            new MemberServicesForm(false, new Member()).Show(owner);
+            new MemberServicesDialog(false, new Member()).Show(owner);
             owner.Hide();
         }
 
@@ -114,10 +126,7 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void ViewAllMembersButtonClick(object sender, EventArgs e)
         {
-            List<Member> members = this.membersController.GetMembers();
-            this.DisplayMembersList(members);
-            this.viewAllMembersButton.Enabled = false;
-            this.searchMemberTextBox.Clear();
+            this.RefreshDataGrid();
         }
 
         /// <summary>

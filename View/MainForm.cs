@@ -84,5 +84,26 @@ namespace RentMe.View
             }
         }
 
+        /// <summary>
+        /// Event Handler for Tab Index changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainTabControlSelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (this.mainTabControl.SelectedTab.Text)
+            {
+                case "Search Member":
+                    this.memberSearch.RefreshDataGrid();
+                    break;
+                case "Search Employee":
+                    this.employeeSearch.RefreshDataGrid();
+                    break;
+                case "Search Furniture":
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
