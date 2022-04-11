@@ -22,6 +22,7 @@ namespace RentMe.UserControls
         private List<string> styleList;
         private Member MemberRent;
         private bool isMemberAvailable =false;
+        private FurnitureRentController rentController;
         private List<RentFurniture> rentFurnitureList;
 
         /// <summary>
@@ -32,6 +33,8 @@ namespace RentMe.UserControls
             InitializeComponent();
             this.furnitureController = new FurnitureController();
             this.memberController = new MembersController();
+            this.rentController = new FurnitureRentController();
+            this.rentFurnitureList = new List<RentFurniture>();
             this.ToggleFormButtons();          
             this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
@@ -312,8 +315,6 @@ namespace RentMe.UserControls
             this.rentAllButton.Enabled = true;
             this.addToCartButton.Enabled = true;
             this.EnableRenting();
-           // this.memberIDRentTextBox.Enabled = false;
-           // this.memberSearchButton.Enabled = false;
         }
 
         private void EnableRenting()
@@ -343,23 +344,32 @@ namespace RentMe.UserControls
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
 
-            string message = string.Empty;
+            this.rentFurnitureList = new List<RentFurniture>();
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
             {
-               
-                bool isSelected = Convert.ToBoolean(row.Cells["rentColumn"].Value);
-                if (isSelected)
-                {
-                    MessageBox.Show("Selected Values" + row.Cells["FurnitureID"].Value);
-                    RentFurniture rentItem = new RentFurniture (
-                        
-                        Fur
-                        )
-
-                }
+               bool isSelected = Convert.ToBoolean(row.Cells["rentColumn"].Value);
+                            
+                if (isSelected) {
+                    int result = Int32.Parse(row.Cells["addQuantity"].Value.ToString());
+                    if (result > 0) {
+                        MessageBox.Show("Selected Values" + row.Cells["FurnitureID"].Value + "  and " + result);
+                        RentFurniture rentItem = new RentFurniture();
+                        row.Cells["FurnitureID"].Value.ToString();
+                        rentItem.FurnitureID = Int32.Parse(row.Cells["FurnitureID"].Value.ToString());
+                        rentItem.FurnitureRentQuantity = result;
+                        rentItem.FurnitureRentMemberID = this.MemberRent.MemberID;
+                        rentItem.FurnitureRentEmployeeID = 1;
+                        this.rentFurnitureList.Add(rentItem);
+                    }
+                }              
             }
 
-          
+            if (this.rentFurnitureList.Any())
+            {
+                this.rentController.AddFurnituresToRent(this.rentFurnitureList);
+            }
+
+
 
         }
 
