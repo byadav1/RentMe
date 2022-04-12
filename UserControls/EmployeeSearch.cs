@@ -208,5 +208,22 @@ namespace RentMe.UserControls
             this.statusMessage.Text = message;
             this.statusMessage.Visible = true;
         }
+
+        /// <summary>
+        /// Event Handler for TextField text changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SearchEmployeeTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(this.searchEmployeeTextBox.Text))
+            {
+                this.searchButton.Enabled = false;
+            }
+            else
+            {
+                this.searchButton.Enabled = true;
+            }
+        }
     }
 }

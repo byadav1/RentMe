@@ -42,7 +42,6 @@ namespace RentMe.UserControls
             this.statusMessage = new System.Windows.Forms.Label();
             this.memberSearchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.employeeDataGridView = new System.Windows.Forms.DataGridView();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +56,7 @@ namespace RentMe.UserControls
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonsTableLayoutPanel.SuspendLayout();
             this.searchMemberTableLayoutPanel.SuspendLayout();
             this.memberSearchTableLayoutPanel.SuspendLayout();
@@ -167,13 +167,16 @@ namespace RentMe.UserControls
             this.searchEmployeeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.searchEmployeeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchEmployeeTextBox.Location = new System.Drawing.Point(349, 9);
+            this.searchEmployeeTextBox.MaxLength = 50;
             this.searchEmployeeTextBox.Name = "searchEmployeeTextBox";
             this.searchEmployeeTextBox.Size = new System.Drawing.Size(270, 28);
             this.searchEmployeeTextBox.TabIndex = 1;
+            this.searchEmployeeTextBox.TextChanged += new System.EventHandler(this.SearchEmployeeTextBoxTextChanged);
             // 
             // searchButton
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.searchButton.Enabled = false;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchButton.Location = new System.Drawing.Point(625, 8);
             this.searchButton.Name = "searchButton";
@@ -256,10 +259,6 @@ namespace RentMe.UserControls
             this.employeeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.employeeDataGridView.Size = new System.Drawing.Size(1074, 390);
             this.employeeDataGridView.TabIndex = 26;
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(RentMe.Model.Employee);
             // 
             // employeeID
             // 
@@ -386,6 +385,10 @@ namespace RentMe.UserControls
             this.active.Name = "active";
             this.active.ReadOnly = true;
             this.active.Width = 52;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(RentMe.Model.Employee);
             // 
             // EmployeeSearch
             // 

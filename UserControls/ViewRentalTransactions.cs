@@ -142,5 +142,22 @@ namespace RentMe.UserControls
             this.statusMessage.Text = message;
             this.statusMessage.Visible = true;
         }
+
+        /// <summary>
+        /// Event Handler for TextField text changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SearchRentalTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(this.searchRentalTextBox.Text))
+            {
+                this.searchRentalsButton.Enabled = false;
+            }
+            else
+            {
+                this.searchRentalsButton.Enabled = true;
+            }
+        }
     }
 }
