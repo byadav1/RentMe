@@ -1,6 +1,5 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
-using RentMe.Model.Helpers;
 using RentMe.Validators;
 using System;
 using System.Collections.Generic;
@@ -686,7 +685,7 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void CloseButtonClick(object sender, EventArgs e)
         {
-            this.Close();
+            this.DialogResult = DialogResult.OK;
             GC.Collect();
         }
 
@@ -697,7 +696,8 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void EmployeeServicesDialogFormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Owner.Show();
+            this.DialogResult = DialogResult.OK;
+            GC.Collect();
         }
     }
 }

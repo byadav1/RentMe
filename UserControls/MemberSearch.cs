@@ -94,10 +94,16 @@ namespace RentMe.UserControls
                     State = row.Cells["state"].Value.ToString(),
                     Zip = row.Cells["zip"].Value.ToString()
                 };
-          
+
+                Form employeeServicesDialog = new MemberServicesDialog(true, member);
                 Form owner = ((Form)this.TopLevelControl);
-                new MemberServicesDialog(true, member).Show(owner);
                 owner.Hide();
+                DialogResult result = employeeServicesDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    owner.Show();
+                    this.RefreshControl();
+                }
             }
             catch (Exception ex)
             {
@@ -113,9 +119,15 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void RegisterButtonClick(object sender, EventArgs e)
         {
+            Form employeeServicesDialog = new MemberServicesDialog(false, new Member());
             Form owner = ((Form)this.TopLevelControl);
-            new MemberServicesDialog(false, new Member()).Show(owner);
             owner.Hide();
+            DialogResult result = employeeServicesDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                owner.Show();
+                this.RefreshControl();
+            }
         }
 
         /// <summary>

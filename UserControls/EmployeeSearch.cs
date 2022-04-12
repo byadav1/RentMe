@@ -97,10 +97,16 @@ namespace RentMe.UserControls
                     Type = row.Cells["type"].Value.ToString(),
                     Active = Convert.ToBoolean(row.Cells["active"].Value.ToString())
                 };
-
+                
+                Form employeeServicesDialog = new EmployeeServicesDialog(true, employee);
                 Form owner = ((Form)this.TopLevelControl);
-                new EmployeeServicesDialog(true, employee).Show(owner);
                 owner.Hide();
+                DialogResult result = employeeServicesDialog.ShowDialog();              
+                if (result == DialogResult.OK)
+                {
+                    owner.Show();
+                    this.RefreshControl();                    
+                }
             }
             catch (Exception ex)
             {
@@ -117,8 +123,14 @@ namespace RentMe.UserControls
         private void RegisterButtonClick(object sender, EventArgs e)
         {
             Form owner = ((Form)this.TopLevelControl);
-            new EmployeeServicesDialog(false, new Employee()).Show(owner);
+            Form employeeServicesDialog = new EmployeeServicesDialog(false, new Employee());
             owner.Hide();
+            DialogResult result = employeeServicesDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                owner.Show();
+                this.RefreshControl();
+            }
         }
 
         /// <summary>
