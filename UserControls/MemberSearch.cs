@@ -28,8 +28,7 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this.membersController = new MembersController();
-            List<Member> members = this.membersController.GetMembers();
-            this.DisplayMembersList(members);
+            this.RefreshDataGrid();
         }
 
         /// <summary>

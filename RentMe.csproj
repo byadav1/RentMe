@@ -51,17 +51,21 @@
     <Compile Include="Controller\FormProvider.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\MembersController.cs" />
+    <Compile Include="Controller\RentalTransactionsController.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\MembersDAL.cs" />
+    <Compile Include="DAL\RentalTransactionsDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Helpers\States.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\FurnitureValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
+    <Compile Include="Model\Validators\RentalTransactionValidator.cs" />
     <Compile Include="UserControls\EmployeeSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -79,6 +83,12 @@
     </Compile>
     <Compile Include="UserControls\MemberSearch.Designer.cs">
       <DependentUpon>MemberSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewRentalTransactions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ViewRentalTransactions.Designer.cs">
+      <DependentUpon>ViewRentalTransactions.cs</DependentUpon>
     </Compile>
     <Compile Include="View\EmployeeServicesDialog.cs">
       <SubType>Form</SubType>
@@ -124,6 +134,9 @@
     <EmbeddedResource Include="UserControls\MemberSearch.resx">
       <DependentUpon>MemberSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ViewRentalTransactions.resx">
+      <DependentUpon>ViewRentalTransactions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeServicesDialog.resx">
       <DependentUpon>EmployeeServicesDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +152,7 @@
     <None Include="Properties\DataSources\RentMe.Model.Employee.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.RentalTransaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

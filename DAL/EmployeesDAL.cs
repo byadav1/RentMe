@@ -16,7 +16,7 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets all RentMe Members from Members table.
         /// </summary>
-        /// <returns>List of RentMe members</returns>
+        /// <returns>List of RentMe employees</returns>
         public static List<Employee> GetEmployees()
         {
             List<Employee> employees = new List<Employee>();

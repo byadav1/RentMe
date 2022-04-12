@@ -45,7 +45,7 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Return member using search input.
+        /// Return members using search input.
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>

@@ -74,6 +74,7 @@ namespace RentMe.View
                 {
                     this.mainTabControl.TabPages.Remove(this.searchMemberTabPage);
                     this.mainTabControl.TabPages.Remove(this.furnitureSearchTabPage);
+                    this.mainTabControl.TabPages.Remove(this.viewRentalTransactionsTabPage);
                 }
 
             }
@@ -100,6 +101,9 @@ namespace RentMe.View
                     this.employeeSearch.RefreshDataGrid();
                     break;
                 case "Search Furniture":
+                    break;
+                case "View Rentals":
+                    this.viewRentalTransactions.RefreshDataGrid();
                     break;
                 default:
                     break;
