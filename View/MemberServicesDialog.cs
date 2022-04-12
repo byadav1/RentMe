@@ -18,6 +18,7 @@ namespace RentMe.View
     public partial class MemberServicesDialog : Form
     {
         private readonly MembersController membersController;
+        private readonly StatesController statesController;
         private readonly Member memberSearchDetails;
 
         /// <summary>
@@ -29,6 +30,7 @@ namespace RentMe.View
         {
             InitializeComponent();
             this.membersController = new MembersController();
+            this.statesController = new StatesController();
             this.memberSearchDetails = member;
             this.InitializeControls(isUpdate);
         }
@@ -39,7 +41,7 @@ namespace RentMe.View
         /// </summary>
         private void InitializeControls(bool isUpdate)
         {
-            this.stateComboBox.DataSource = new States().GetStateNames();
+            this.stateComboBox.DataSource = this.statesController.GetStateNames();
 
             if (isUpdate)
             {
@@ -82,6 +84,10 @@ namespace RentMe.View
         /// </summary>
         private void ProcessUpdate()
         {
+            State state = new State
+            {
+                StateName = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)
+            };
             Member memberUpdateData =
                 new Member()
                 {
@@ -95,7 +101,7 @@ namespace RentMe.View
                     Address2 = this.address2TextBox.Text,
                     City = this.cityTextBox.Text,
                     Zip = this.zipTextBox.Text,
-                    State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem))
+                    State = this.statesController.GetStateCode(state).StateCode
                 };
 
             if (this.CheckUpdates(memberUpdateData))
@@ -181,6 +187,10 @@ namespace RentMe.View
         private Member CreateMemberFromFormFields()
         {
             this.ValidateFormFields();
+            State state = new State
+            {
+                StateName = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)
+            };
             Member member = new Member()
             {
                 FName = this.fnameTextBox.Text,
@@ -191,7 +201,7 @@ namespace RentMe.View
                 Address1 = this.address1TextBox.Text,
                 Address2 = this.address2TextBox.Text,
                 City = this.cityTextBox.Text,
-                State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)),
+                State = this.statesController.GetStateCode(state).StateCode,
                 Zip = this.zipTextBox.Text
             };
             return member;
@@ -218,6 +228,10 @@ namespace RentMe.View
         private void SetFields(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
+            State state = new State
+            {
+                StateCode = member.State
+            };
             this.fnameTextBox.Text = member.FName;
             this.lnameTextBox.Text = member.LName;
             this.sexComboBox.SelectedIndex = this.sexComboBox.FindStringExact(member.Sex);
@@ -226,7 +240,7 @@ namespace RentMe.View
             this.address1TextBox.Text = member.Address1;
             this.address2TextBox.Text = member.Address2;
             this.cityTextBox.Text = member.City;
-            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(new States().GetStateName(member.State));
+            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(this.statesController.GetStateName(state).StateName);
             this.zipTextBox.Text = member.Zip;
         }
 

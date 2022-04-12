@@ -18,7 +18,8 @@ namespace RentMe.View
     public partial class EmployeeServicesDialog : Form
     {
         private readonly EmployeesController employeesController;
-        private readonly Employee employeeSearchDetails;
+        private readonly StatesController statesController;
+        private readonly Employee employeeSearchDetails;      
 
         /// <summary>
         /// Initialize the form.
@@ -29,6 +30,7 @@ namespace RentMe.View
         {
             InitializeComponent();
             this.employeesController = new EmployeesController();
+            this.statesController = new StatesController();
             this.employeeSearchDetails = employee;
             this.InitializeControls(isUpdate);
         }
@@ -39,7 +41,7 @@ namespace RentMe.View
         /// </summary>
         private void InitializeControls(bool isUpdate)
         {
-            this.stateComboBox.DataSource = new States().GetStateNames();
+            this.stateComboBox.DataSource = this.statesController.GetStateNames();
 
             if (isUpdate)
             {
@@ -91,6 +93,10 @@ namespace RentMe.View
         private Employee CreateEmployeeFromFormFields()
         {
             this.ValidateFormFields();
+            State state = new State
+            {
+                StateName = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)
+            };
             Employee employee = new Employee()
             {
                 FName = this.fnameTextBox.Text,
@@ -101,7 +107,7 @@ namespace RentMe.View
                 Address1 = this.address1TextBox.Text,
                 Address2 = this.address2TextBox.Text,
                 City = this.cityTextBox.Text,
-                State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)),
+                State = this.statesController.GetStateCode(state).StateCode,
                 Zip = this.zipTextBox.Text,
                 Username = this.usernameTextBox.Text,
                 Password = this.passwordTextBox.Text
@@ -304,6 +310,10 @@ namespace RentMe.View
         private void SetFields(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
+            State state = new State
+            {
+                StateCode = employee.State
+            };
             this.fnameTextBox.Text = employee.FName;
             this.lnameTextBox.Text = employee.LName;
             this.sexComboBox.SelectedIndex = this.sexComboBox.FindStringExact(employee.Sex);
@@ -312,7 +322,7 @@ namespace RentMe.View
             this.address1TextBox.Text = employee.Address1;
             this.address2TextBox.Text = employee.Address2;
             this.cityTextBox.Text = employee.City;
-            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(new States().GetStateName(employee.State));
+            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(this.statesController.GetStateName(state).StateName);
             this.zipTextBox.Text = employee.Zip;
             this.usernameTextBox.Text = employee.Username;
             if (employee.Type == "Admin")
@@ -515,7 +525,10 @@ namespace RentMe.View
         /// <returns></returns>
         private Employee ReadData()
         {
-
+            State state = new State
+            {
+                StateName = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)
+            };
             string employeeType = "Regular";
             if (isAdministratorCheckBox.Checked)
             {
@@ -534,7 +547,7 @@ namespace RentMe.View
                     Address2 = this.address2TextBox.Text,
                     City = this.cityTextBox.Text,
                     Zip = this.zipTextBox.Text,
-                    State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)),
+                    State = this.statesController.GetStateCode(state).StateCode,
                     Username = this.usernameTextBox.Text,
                     Type = employeeType,
                     Password = this.passwordTextBox.Text
