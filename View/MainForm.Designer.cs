@@ -39,14 +39,14 @@ namespace RentMe.View
             this.employeeSearch = new RentMe.UserControls.EmployeeSearch();
             this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
             this.furnitureRental = new RentMe.UserControls.FurnitureRental();
-            this.viewRentalTransactionsTabPage = new System.Windows.Forms.TabPage();
-            this.viewRentalTransactions = new RentMe.UserControls.ViewRentalTransactions();
+            this.viewTransactionsTabPage = new System.Windows.Forms.TabPage();
+            this.viewTransactions = new RentMe.UserControls.ViewTransactions();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.searchMemberTabPage.SuspendLayout();
             this.searchEmployeeTabPage.SuspendLayout();
             this.furnitureSearchTabPage.SuspendLayout();
-            this.viewRentalTransactionsTabPage.SuspendLayout();
+            this.viewTransactionsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // servicesTableLayoutPanel
@@ -104,7 +104,7 @@ namespace RentMe.View
             this.mainTabControl.Controls.Add(this.searchMemberTabPage);
             this.mainTabControl.Controls.Add(this.searchEmployeeTabPage);
             this.mainTabControl.Controls.Add(this.furnitureSearchTabPage);
-            this.mainTabControl.Controls.Add(this.viewRentalTransactionsTabPage);
+            this.mainTabControl.Controls.Add(this.viewTransactionsTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainTabControl.Location = new System.Drawing.Point(3, 52);
@@ -173,25 +173,25 @@ namespace RentMe.View
             this.furnitureRental.Size = new System.Drawing.Size(1413, 895);
             this.furnitureRental.TabIndex = 0;
             // 
-            // viewRentalTransactionsTabPage
+            // viewTransactionsTabPage
             // 
-            this.viewRentalTransactionsTabPage.Controls.Add(this.viewRentalTransactions);
-            this.viewRentalTransactionsTabPage.Location = new System.Drawing.Point(4, 38);
-            this.viewRentalTransactionsTabPage.Name = "viewRentalTransactionsTabPage";
-            this.viewRentalTransactionsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.viewRentalTransactionsTabPage.Size = new System.Drawing.Size(1419, 901);
-            this.viewRentalTransactionsTabPage.TabIndex = 5;
-            this.viewRentalTransactionsTabPage.Text = "View Rentals";
-            this.viewRentalTransactionsTabPage.UseVisualStyleBackColor = true;
+            this.viewTransactionsTabPage.Controls.Add(this.viewTransactions);
+            this.viewTransactionsTabPage.Location = new System.Drawing.Point(4, 38);
+            this.viewTransactionsTabPage.Name = "viewTransactionsTabPage";
+            this.viewTransactionsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.viewTransactionsTabPage.Size = new System.Drawing.Size(1419, 901);
+            this.viewTransactionsTabPage.TabIndex = 5;
+            this.viewTransactionsTabPage.Text = "View Transactions";
+            this.viewTransactionsTabPage.UseVisualStyleBackColor = true;
             // 
-            // viewRentalTransactions
+            // viewTransactions
             // 
-            this.viewRentalTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewRentalTransactions.Location = new System.Drawing.Point(3, 3);
-            this.viewRentalTransactions.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.viewRentalTransactions.Name = "viewRentalTransactions";
-            this.viewRentalTransactions.Size = new System.Drawing.Size(1413, 895);
-            this.viewRentalTransactions.TabIndex = 0;
+            this.viewTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewTransactions.Location = new System.Drawing.Point(3, 3);
+            this.viewTransactions.Margin = new System.Windows.Forms.Padding(5);
+            this.viewTransactions.Name = "viewTransactions";
+            this.viewTransactions.Size = new System.Drawing.Size(1413, 895);
+            this.viewTransactions.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -211,7 +211,7 @@ namespace RentMe.View
             this.searchMemberTabPage.ResumeLayout(false);
             this.searchEmployeeTabPage.ResumeLayout(false);
             this.furnitureSearchTabPage.ResumeLayout(false);
-            this.viewRentalTransactionsTabPage.ResumeLayout(false);
+            this.viewTransactionsTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -228,7 +228,7 @@ namespace RentMe.View
         private UserControls.MemberSearch memberSearch;
         private System.Windows.Forms.TabPage searchEmployeeTabPage;
         private UserControls.EmployeeSearch employeeSearch;
-        private System.Windows.Forms.TabPage viewRentalTransactionsTabPage;
-        private UserControls.ViewRentalTransactions viewRentalTransactions;
+        private System.Windows.Forms.TabPage viewTransactionsTabPage;
+        private UserControls.ViewTransactions viewTransactions;
     }
 }

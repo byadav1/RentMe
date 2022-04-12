@@ -7,29 +7,31 @@ using System.Windows.Forms;
 
 namespace RentMe.UserControls
 {
-    public partial class ViewRentalTransactions : UserControl
+    public partial class ViewTransactions : UserControl
     {
-        private readonly RentalTransactionsController rentalTransactionsController;
-        private List<RentalTransaction> rentalTransactionSearchResults;
+        private readonly TransactionsController transactionController;
+        private List<Transaction> rentalTransactionSearchResults;
 
-        public ViewRentalTransactions()
+        public ViewTransactions()
         {
             InitializeComponent();
-            this.rentalTransactionsController = new RentalTransactionsController();
-            this.RefreshDataGrid();
+            this.transactionController = new TransactionsController();
+            this.RefreshControl();
         }
 
         /// <summary>
         /// Refreshes the DataGridView to display
         /// all RentMe Rental Transactions.
         /// </summary>
-        public void RefreshDataGrid()
+        public void RefreshControl()
         {
-            List<RentalTransaction> rentals = this.rentalTransactionsController.GetRentalTransactions();
+            List<Transaction> rentals = this.transactionController.GetRentalTransactions();
             this.DisplayRentalsList(rentals);
-            this.viewAllRentalsButton.Enabled = false;
-            this.searchRentalTextBox.Clear();
+            this.viewAllTransactionsButton.Enabled = false;
+            this.searchTextBox.Clear();
             this.searchByComboBox.SelectedIndex = 0;
+            this.activeRentalsCheckBox.Checked = false;
+
         }
 
         /// <summary>
@@ -41,12 +43,13 @@ namespace RentMe.UserControls
         {
             try
             {
-                RentalTransaction rentalTransaction = this.CreateRentalTransactionFromSearch();
-                if (this.rentalTransactionsController.ValidTransactionSearch(rentalTransaction))
+                Transaction rentalTransaction = this.CreateRentalTransactionFromSearch();
+                if (this.transactionController.ValidTransactionSearch(rentalTransaction))
                 {
-                    this.rentalTransactionSearchResults = this.rentalTransactionsController.GetRentalTransactionsFromSearch(rentalTransaction);
-                    this.DisplayRentalsList(this.rentalTransactionSearchResults);
-                    this.viewAllRentalsButton.Enabled = true;
+                    this.rentalTransactionSearchResults = this.transactionController
+                        .GetTransactionsFromSearch(rentalTransaction, this.activeRentalsCheckBox.Checked);
+                    this.DisplayRentalsList(this.rentalTransactionSearchResults);                    
+                    this.viewAllTransactionsButton.Enabled = true;
                 }
             }
             catch(Exception ex)
@@ -59,10 +62,10 @@ namespace RentMe.UserControls
         /// Creates RentalTransaction object based on search input.
         /// </summary>
         /// <returns>RentalTransaction</returns>
-        private RentalTransaction CreateRentalTransactionFromSearch()
+        private Transaction CreateRentalTransactionFromSearch()
         {
-            RentalTransaction rental = new RentalTransaction();
-            string search = this.searchRentalTextBox.Text;
+            Transaction rental = new Transaction();
+            string search = this.searchTextBox.Text;
   
             if (String.IsNullOrEmpty(search) || !Int32.TryParse(search, out int ID))
             {
@@ -94,13 +97,13 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void ViewAllButtonClick(object sender, System.EventArgs e)
         {
-            this.RefreshDataGrid();
+            this.RefreshControl();
         }
 
         /// <summary>
         /// Display all RentMe rental transactions.
         /// </summary>
-        private void DisplayRentalsList(List<RentalTransaction> rentals)
+        private void DisplayRentalsList(List<Transaction> rentals)
         {
             if (rentals == null)
             {
@@ -108,12 +111,12 @@ namespace RentMe.UserControls
             }
             if (rentals.Count < 1)
             {
-                throw new ArgumentException("No RentMe rental transactions exist");
+                throw new ArgumentException("No transaction results found");
             }
             else
             {
-                this.rentalTransactionBindingSource.Clear();
-                this.rentalTransactionBindingSource.DataSource = rentals;
+                this.transactionBindingSource.Clear();
+                this.transactionBindingSource.DataSource = rentals;
             }
         }
 
@@ -150,13 +153,13 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void SearchRentalTextBoxTextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(this.searchRentalTextBox.Text))
+            if (String.IsNullOrWhiteSpace(this.searchTextBox.Text))
             {
-                this.searchRentalsButton.Enabled = false;
+                this.searchButton.Enabled = false;
             }
             else
             {
-                this.searchRentalsButton.Enabled = true;
+                this.searchButton.Enabled = true;
             }
         }
     }

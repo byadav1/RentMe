@@ -28,14 +28,14 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this.membersController = new MembersController();
-            this.RefreshDataGrid();
+            this.RefreshControl();
         }
 
         /// <summary>
         /// Refreshes the DataGridView to display
         /// all RentMe Members.
         /// </summary>
-        public void RefreshDataGrid()
+        public void RefreshControl()
         {
             List<Member> members = this.membersController.GetMembers();
             this.DisplayMembersList(members);
@@ -125,7 +125,7 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void ViewAllMembersButtonClick(object sender, EventArgs e)
         {
-            this.RefreshDataGrid();
+            this.RefreshControl();
         }
 
         /// <summary>
