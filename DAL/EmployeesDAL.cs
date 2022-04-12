@@ -200,8 +200,6 @@ namespace RentMe.DAL
             return employees;
         }
 
-
-
         /// <summary>
         /// Gets the login employee data.
         /// </summary>
@@ -395,7 +393,6 @@ namespace RentMe.DAL
                 }
             }
         }
-
 
         /// <summary>
         /// Deactivates  or activate employee.
@@ -619,11 +616,8 @@ namespace RentMe.DAL
                     {
                         return false;
                     }
-
                 }
             }
         }
-
-
     }
 }

@@ -286,9 +286,6 @@ namespace RentMe.DAL
             }
         }
 
-
-
-
         /// <summary>
         /// Updates the member details.
         /// </summary>
@@ -373,13 +370,9 @@ namespace RentMe.DAL
                     {
                         return false;
                     }
-
                 }
             }
-
-        }
-
-        
+        }        
     }
 }
 

@@ -9,9 +9,19 @@ namespace RentMe.UserControls
 {
     public partial class ViewTransactions : UserControl
     {
+        /// <summary>
+        /// This UserControl models a search form where
+        /// the user will be able to view the
+        /// RentMe Transaction history. They will be able to 
+        /// search by an ID of either the Transaction, Employee,
+        /// or Member. A filter for active rentals can also be applied.
+        /// </summary>
         private readonly TransactionsController transactionController;
         private List<Transaction> rentalTransactionSearchResults;
 
+        /// <summary>
+        /// Initialize the UserControl.
+        /// </summary>
         public ViewTransactions()
         {
             InitializeComponent();
