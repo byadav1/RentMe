@@ -12,6 +12,8 @@ namespace RentMe.DAL
     /// </summary>
     public class EmployeesDAL
     {
+
+
         /// <summary>
         /// Return true if Employee account exists.
         /// </summary>

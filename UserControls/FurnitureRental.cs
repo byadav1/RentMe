@@ -22,6 +22,8 @@ namespace RentMe.UserControls
         private List<string> styleList;
         private Member MemberRent;
         private bool isMemberAvailable =false;
+        private RentCartController cartController;
+
         private FurnitureRentController rentController;
         private List<RentFurniture> rentFurnitureList;
 
@@ -34,9 +36,10 @@ namespace RentMe.UserControls
             this.furnitureController = new FurnitureController();
             this.memberController = new MembersController();
             this.rentController = new FurnitureRentController();
+            this.cartController = new RentCartController();
             this.rentFurnitureList = new List<RentFurniture>();
             this.ToggleFormButtons();          
-            this.furnitureListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+           
         }
 
         private void FurnitureSearchButtonClick(object sender, EventArgs e)
@@ -69,7 +72,8 @@ namespace RentMe.UserControls
                 else
                 {
                     this.rentalStatusLabel.Visible = true;
-                    this.rentalStatusLabel.Text = "Please  enter FurnitureId or Style or category to search. Please ensure furniture ID is a valid number!!";
+                    this.rentalStatusLabel.Text = "Please  enter FurnitureId or Style or category to search. " +
+                        "Please ensure furniture ID is a valid number!!";
                     return false;
                 }
             }
@@ -95,8 +99,7 @@ namespace RentMe.UserControls
                 if (furnitureSearchResults.Any())
                 {
 
-                    this.furnitureDateGridView.DataSource = furnitureSearchResults;
-                    
+                    this.furnitureDateGridView.DataSource = furnitureSearchResults;                    
                     this.rentalStatusLabel.Visible = false;
                     this.rentalStatusLabel.Text = "";
                     this.memberIDRentTextBox.Enabled = true;
@@ -125,7 +128,7 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Text = "";
             this.categoryComboBox.Text = "";
             this.styleComboBox.Text = "";
-            this.furnitureListView.Items.Clear();
+          
             this.rentalStatusLabel.Visible = false;
             this.rentalStatusLabel.Text = "";
             this.memberIDRentTextBox.Text = "";
@@ -135,7 +138,8 @@ namespace RentMe.UserControls
         private void FurnitureRentalLoad(object sender, EventArgs e)
         {                    
             this.styleComboBox.Enabled = false;
-            this.categoryComboBox.Enabled = false;            
+            this.categoryComboBox.Enabled = false;  
+           
             this.LoadComboBox();
             this.furnitureIDTextBox.Focus();
         }
@@ -162,7 +166,6 @@ namespace RentMe.UserControls
                 this.categoryList.Sort();
                 this.categoryComboBox.DataSource = this.categoryList;
                 this.categoryComboBox.Text = "";
-
                 this.styleComboBox.DataSource = null;
                 this.styleList = this.furnitureController.GetFurnituresStyle();
                 this.styleList.Sort();
@@ -192,7 +195,7 @@ namespace RentMe.UserControls
         private void ToggleFormButtons()
         {
             this.viewCartLinkLabel.Enabled = false;
-            this.orderDetailsButton.Enabled = false;
+           
             this.addToCartButton.Enabled = false;
             this.rentAllButton.Enabled = false;
         }
@@ -223,7 +226,7 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Enabled = true;
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;
-              this.memberIDRentTextBox.Enabled = false;
+            this.memberIDRentTextBox.Enabled = false;
             this.memberSearchButton.Enabled = false;
            
 
@@ -274,7 +277,6 @@ namespace RentMe.UserControls
             {
                 this.rentalStatusLabel.Visible = false;
                 this.rentalStatusLabel.Text = "";
-
                 if (!int.TryParse(this.memberIDRentTextBox.Text, out int numericValue))
                 {
                     this.rentalStatusLabel.Visible = true;
@@ -292,10 +294,8 @@ namespace RentMe.UserControls
                 MessageBox.Show("Error occured on - Member ID search -" + ex.Message,
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
         }
+
         private void DisplayMemberDetails(Member memberSearch)
         {
             this.MemberRent = this.memberController.GetMemberFromSearch(memberSearch);
@@ -311,10 +311,10 @@ namespace RentMe.UserControls
                 this.memberFirstName.Text = "Name: " + this.MemberRent.FName + " " + this.MemberRent.LName;
                 this.isMemberAvailable = true;
                 this.memberIDRentTextBox.Clear();
-            this.viewCartLinkLabel.Enabled = true;
-            this.rentAllButton.Enabled = true;
-            this.addToCartButton.Enabled = true;
-            this.EnableRenting();
+                this.viewCartLinkLabel.Enabled = true;
+                this.rentAllButton.Enabled = true;
+                this.addToCartButton.Enabled = true;
+                this.EnableRenting();
         }
 
         private void EnableRenting()
@@ -329,9 +329,7 @@ namespace RentMe.UserControls
                 this.furnitureDateGridView.Columns.AddRange(new DataGridViewColumn[] { col3, col4 });
                 foreach (DataGridViewColumn dc in this.furnitureDateGridView.Columns)
                 {
-                  
-
-                    if (!dc.Index.Equals(7) && !dc.Index.Equals(8))
+                   if (!dc.Index.Equals(7) && !dc.Index.Equals(8))
                     {
                         dc.ReadOnly = true;
                     }
@@ -356,9 +354,11 @@ namespace RentMe.UserControls
                     if (result > 0) {
                         MessageBox.Show("Selected Values" + row.Cells["FurnitureID"].Value + "  and " + result);
                         RentFurniture rentItem = new RentFurniture();
-                        row.Cells["FurnitureID"].Value.ToString();
+                       
                         rentItem.FurnitureID = Int32.Parse(row.Cells["FurnitureID"].Value.ToString());
                         rentItem.FurnitureRentQuantity = result;
+                        rentItem.RentalAmount = float.Parse(row.Cells["DailyRentalRate"].Value.ToString()) ;
+                        rentItem.TotalItemRentalAmount = float.Parse(row.Cells["DailyRentalRate"].Value.ToString()) * rentItem.FurnitureRentQuantity;
                         rentItem.FurnitureRentMemberID = this.MemberRent.MemberID;
                         rentItem.FurnitureRentEmployeeID = 1;
                         this.rentFurnitureList.Add(rentItem);
@@ -368,14 +368,10 @@ namespace RentMe.UserControls
 
             if (this.rentFurnitureList.Any())
             {
-                this.rentController.AddFurnituresToRent(this.rentFurnitureList);
-                this.UpdateStatusMessage("Items added to the cart.",false);
-            
+               this.cartController.AddFurnituresToRent (this.rentFurnitureList);
+                this.UpdateStatusMessage("Items added to the cart.",false);            
                 this.Reset();
             }
-
-
-
         }
 
         private void Reset()

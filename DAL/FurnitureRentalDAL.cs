@@ -12,6 +12,9 @@ namespace RentMe.DAL
     /// </summary>
     public class FurnitureRentalDAL
     {
+        private static List<RentFurniture> _rentCartItems = new List<RentFurniture>();
+
+
         public static void AddRentalItems(List<RentFurniture> itemList)
         {
             int count = 1;

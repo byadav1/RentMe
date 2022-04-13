@@ -21,7 +21,11 @@ namespace RentMe.Model
         public string Style { get; set; }
         public string Description { get; set; }
         public float RentalAmount { get; set; }
-        
+
+        public float TotalItemRentalAmount { get; set; }
+
+        public float TotalCartCalculatedAmount { get; set; }
+
 
     }
 }

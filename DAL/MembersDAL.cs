@@ -56,7 +56,7 @@ namespace RentMe.DAL
             }
             else
             {
-                throw new ArgumentException("Must search a member by their ID, Phone, or Name");
+                throw new ArgumentException("No member found with the provided input");
             }
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
