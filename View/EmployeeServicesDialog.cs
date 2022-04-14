@@ -27,6 +27,7 @@ namespace RentMe.View
         /// <param name="employee"></param>
         public EmployeeServicesDialog(bool isUpdate, Employee employee)
         {
+            EmployeeValidator.ValidateEmployeeNotNull(employee);
             InitializeComponent();
             this.employeesController = new EmployeesController();
             this.statesController = new StatesController();

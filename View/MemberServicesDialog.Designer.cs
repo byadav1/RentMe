@@ -442,7 +442,7 @@ namespace RentMe.View
             this.Controls.Add(this.memberServicesTableLayoutPanel);
             this.Name = "MemberServicesDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RentMe: Services";
+            this.Text = "RentMe: Member Services";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ServicesFormFormClosed);
             this.memberServicesButtonsTableLayoutPanel.ResumeLayout(false);
             this.memberServicesTableLayoutPanel.ResumeLayout(false);

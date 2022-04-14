@@ -27,6 +27,7 @@ namespace RentMe.View
         /// <param name="member"></param>
         public MemberServicesDialog(bool isUpdate, Member member)
         {
+            MemberValidator.ValidateMemberNotNull(member);
             InitializeComponent();
             this.membersController = new MembersController();
             this.statesController = new StatesController();
@@ -331,7 +332,7 @@ namespace RentMe.View
                     regex = new Regex("^[0-9a-zA-Z#&/. -]+$");
                     break;
                 case "cityTextBox":
-                    regex = new Regex("^[a-zA-Z ]+$");
+                    regex = new Regex("^[a-zA-Z]+$");
                     break;
                 case "zipTextBox":
                     regex = new Regex("[0-9]{5}");

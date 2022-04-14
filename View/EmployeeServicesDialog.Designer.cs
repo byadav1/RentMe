@@ -581,7 +581,7 @@ namespace RentMe.View
             this.Controls.Add(this.employeeServicesTableLayoutPanel);
             this.Name = "EmployeeServicesDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RentMe: Services";
+            this.Text = "RentMe: Employee Services";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeServicesDialogFormClosed);
             this.employeeServicesButtonsTableLayoutPanel.ResumeLayout(false);
             this.employeeServicesTableLayoutPanel.ResumeLayout(false);

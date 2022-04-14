@@ -20,5 +20,6 @@ namespace RentMe.Model
         public DateTime RentalDate { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime ReturnDate { get; set; }
+        public float RentalCharge { get; set; }
     }
 }
