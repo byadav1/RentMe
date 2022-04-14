@@ -16,9 +16,18 @@ namespace RentMe.Controller
         /// Gets all Transactions from RentalTransactions table.
         /// </summary>
         /// <returns>List of Transactions</returns>
-        public List<Transaction> GetRentalTransactions()
+        public List<Transaction> GetTransactions()
         {
             return TransactionsDAL.GetTransactions();
+        }
+
+        /// <summary>
+        /// Gets all active Transactions from RentalTransactions table.
+        /// </summary>
+        /// <returns>List of active transactions</returns>
+        public List<Transaction> GetActiveTransactions()
+        {
+            return TransactionsDAL.GetActiveTransactions();
         }
 
         /// <summary>

@@ -20,7 +20,8 @@ namespace RentMe.DAL
         {          
             List<Transaction> transactions = new List<Transaction>();
             string selectStatement = "SELECT rt.TransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
-                                     "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, rtrn.ReturnDate " +
+                                     "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, " +
+                                     "rtrn.ReturnDate, (f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
                                      "FROM RentalTransactions rt " +
                                      "JOIN RentedItems ri " +
                                      "ON rt.TransactionID = ri.RentalTransactionID " +
@@ -53,7 +54,64 @@ namespace RentMe.DAL
                                 Quantity = Convert.ToInt32(reader["Quantity"]),
                                 RentalDate = (DateTime)reader["RentDate"],
                                 DueDate = (DateTime)reader["DueDate"],
-                                ReturnDate = (DateTime)reader["ReturnDate"]
+                                ReturnDate = (DateTime)reader["ReturnDate"],
+                                RentalCharge = decimal.Round(Convert.ToDecimal(reader["RentalCharge"].ToString()), 2, MidpointRounding.AwayFromZero)
+                            };
+
+                            transactions.Add(transaction);
+                        }
+                    }
+                }
+            }
+
+            return transactions;
+        }
+
+        /// <summary>
+        /// Gets all active Transactions from RentalTransactions table.
+        /// </summary>
+        /// <returns>List of active transactions</returns>
+        public static List<Transaction> GetActiveTransactions()
+        {
+            List<Transaction> transactions = new List<Transaction>();
+            string selectStatement = "SELECT rt.TransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
+                                     "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, " +
+                                     "rtrn.ReturnDate, (f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
+                                     "FROM RentalTransactions rt " +
+                                     "JOIN RentedItems ri " +
+                                     "ON rt.TransactionID = ri.RentalTransactionID " +
+                                     "JOIN ReturnTransaction rtrn " +
+                                     "ON rt.TransactionID = rtrn.TransactionID " +
+                                     "JOIN Furnitures f " +
+                                     "ON ri.FurnitureID = f.FurnitureID " +
+                                     "JOIN Categories c " +
+                                     "ON f.CategoryID = c.CategoryID " +
+                                     "JOIN Styles s " +
+                                     "ON f.StyleID = s.StyleID " +
+                                     "WHERE rtrn.ReturnDate IS NULL";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {                   
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Transaction transaction = new Transaction
+                            {
+                                TransactionID = Convert.ToInt32(reader["TransactionID"]),
+                                EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
+                                MemberID = Convert.ToInt32(reader["MemberID"]),
+                                FurnitureName = reader["Furniture"].ToString(),
+                                FurnitureCategory = reader["Category"].ToString(),
+                                FurnitureStyle = reader["Style"].ToString(),
+                                Quantity = Convert.ToInt32(reader["Quantity"]),
+                                RentalDate = (DateTime)reader["RentDate"],
+                                DueDate = (DateTime)reader["DueDate"],
+                                ReturnDate = (DateTime)reader["ReturnDate"],
+                                RentalCharge = decimal.Round(Convert.ToDecimal(reader["RentalCharge"].ToString()), 2, MidpointRounding.AwayFromZero)
                             };
 
                             transactions.Add(transaction);
@@ -95,7 +153,8 @@ namespace RentMe.DAL
             TransactionValidator.ValidateTransactionNotNull(transaction);           
             List<Transaction> transactions = new List<Transaction>();
             string selectStatement = "SELECT rt.TransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
-                                     "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, rtrn.ReturnDate " +
+                                     "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, " +
+                                     "rtrn.ReturnDate, (f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
                                      "FROM RentalTransactions rt " +
                                      "JOIN RentedItems ri " +
                                      "ON rt.TransactionID = ri.RentalTransactionID " +
@@ -162,7 +221,8 @@ namespace RentMe.DAL
                                 Quantity = Convert.ToInt32(reader["Quantity"]),
                                 RentalDate = (DateTime)reader["RentDate"],
                                 DueDate = (DateTime)reader["DueDate"],
-                                ReturnDate = (DateTime)reader["ReturnDate"]
+                                ReturnDate = (DateTime)reader["ReturnDate"],
+                                RentalCharge = decimal.Round(Convert.ToDecimal(reader["RentalCharge"].ToString()), 2, MidpointRounding.AwayFromZero)
                             };
 
                             transactions.Add(transaction);

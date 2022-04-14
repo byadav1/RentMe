@@ -8,8 +8,8 @@ namespace RentMe.Model
     public class Transaction
     {
         /// <summary>
-        /// Rental attributes.
-        /// </summary>
+        /// Transaction attributes.
+        /// </summary>        
         public int TransactionID { get; set; }
         public int EmployeeID { get; set; }
         public int MemberID { get; set; }
@@ -20,6 +20,6 @@ namespace RentMe.Model
         public DateTime RentalDate { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime ReturnDate { get; set; }
-        public float RentalCharge { get; set; }
+        public decimal RentalCharge { get; set; }
     }
 }

@@ -145,9 +145,9 @@ namespace RentMe.View
         /// </summary>
         /// <param name="receipt"></param>
         /// <returns></returns>
-        private float GetTotal(List<ReceiptItem> receipt)
+        private decimal GetTotal(List<ReceiptItem> receipt)
         {
-            float total = 0;
+            decimal total = 0;
             foreach (ReceiptItem item in receipt)
             {
                 ReceiptItemValidator.ValidateReceiptItemNotNull(item);

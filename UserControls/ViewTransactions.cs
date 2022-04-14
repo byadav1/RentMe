@@ -35,9 +35,10 @@ namespace RentMe.UserControls
         /// </summary>
         public void RefreshControl()
         {
-            List<Transaction> rentals = this.transactionController.GetRentalTransactions();
+            List<Transaction> rentals = this.transactionController.GetTransactions();
             this.DisplayRentalsList(rentals);
             this.viewAllTransactionsButton.Enabled = false;
+            this.viewActiveTransactionsButton.Enabled = true;
             this.searchTextBox.Clear();
             this.searchByComboBox.SelectedIndex = 0;
             this.activeRentalsCheckBox.Checked = false;
@@ -60,6 +61,7 @@ namespace RentMe.UserControls
                         .GetTransactionsFromSearch(rentalTransaction, this.activeRentalsCheckBox.Checked);
                     this.DisplayRentalsList(this.rentalTransactionSearchResults);                    
                     this.viewAllTransactionsButton.Enabled = true;
+                    this.viewActiveTransactionsButton.Enabled = true;
                 }
             }
             catch(Exception ex)
@@ -108,6 +110,29 @@ namespace RentMe.UserControls
         private void ViewAllButtonClick(object sender, System.EventArgs e)
         {
             this.RefreshControl();
+        }
+
+        /// <summary>
+        /// Event Handler for View All Active button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ViewActiveTransactionsButtonClick(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Transaction> rentals = this.transactionController.GetActiveTransactions();
+                this.DisplayRentalsList(rentals);
+                this.viewAllTransactionsButton.Enabled = true;
+                this.viewActiveTransactionsButton.Enabled = false;
+                this.searchTextBox.Clear();
+                this.searchByComboBox.SelectedIndex = 0;
+                this.activeRentalsCheckBox.Checked = true;
+            }
+            catch(Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
+            }           
         }
 
         /// <summary>

@@ -4,6 +4,9 @@ namespace RentMe.Model
 {
     public class ReceiptItem
     {
+        /// <summary>
+        /// ReceiptItem attributes.
+        /// </summary>
         public int FurnitureID { get; set; }
         public string Description { get; set; }
         public DateTime RentalDate { get; set; }
@@ -12,7 +15,7 @@ namespace RentMe.Model
         public int Quantity { get; set; }
         public float DailyRate { get; set; }
         public int NumberOfDays { get; set; }
-        public float LateFee { get; set; }
-        public float SubTotal { get; set; }
+        public decimal LateFee { get; set; }
+        public decimal SubTotal { get; set; }
     }
 }
