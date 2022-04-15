@@ -364,43 +364,44 @@ namespace RentMe.UserControls
 
             this.rentalStatusLabel.Visible = false;
             this.rentFurnitureList = new List<RentFurniture>();
-          
+           
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
             {
-               bool isSelected = Convert.ToBoolean(row.Cells["Rentme"].Value);
+                
+               bool isSelected = Convert.ToBoolean(row.Cells[9].Value);
                             
                 if (isSelected) {
-                    if (string.IsNullOrEmpty((string)row.Cells["AddQuantity"].Value))
+                    if (string.IsNullOrEmpty((string)row.Cells[7].Value))
                     {
                         this.UpdateStatusMessage("Please enter the Quantity to rent", true); ;
-                        row.Cells["addQuantity"].Style.BackColor = System.Drawing.Color.Red;
+                        row.Cells[7].Style.BackColor = System.Drawing.Color.Red;
                         return;
 
                     }
-                    else if (string.IsNullOrEmpty((string)row.Cells["DueDate"].Value))
+                    else if (string.IsNullOrEmpty((string)row.Cells[8].Value))
                     {
-                        row.Cells["daysColumn"].Style.BackColor = System.Drawing.Color.Red;
+                        row.Cells[8].Style.BackColor = System.Drawing.Color.Red;
                         this.UpdateStatusMessage("Please enter the due date to rent", true); ;
                         return;
                     }
                     else
                     {
-                        int result = Int32.Parse(row.Cells["addQuantity"].Value.ToString());
+                        int result = Int32.Parse(row.Cells[7].Value.ToString());
                         if (result > 0)
                         {
                           
                             RentFurniture rentItem = new RentFurniture
                             {
-                                FurnitureID = int.Parse(row.Cells["FurnitureID"].Value.ToString()),
+                                FurnitureID = int.Parse(row.Cells[0].Value.ToString()),
                                 FurnitureRentQuantity = result,
-                                RentalAmount = float.Parse(row.Cells["DailyRentalRate"].Value.ToString())
+                                RentalAmount = float.Parse(row.Cells[8].Value.ToString())
                             };
-                            rentItem.TotalItemRentalAmount = float.Parse(row.Cells["DailyRentalRate"].Value.ToString()) * rentItem.FurnitureRentQuantity;
+                            rentItem.TotalItemRentalAmount = float.Parse(row.Cells[8].Value.ToString()) * rentItem.FurnitureRentQuantity;
                             rentItem.FurnitureRentMemberID = this.MemberRent.MemberID;
-                            rentItem.Name = row.Cells["Name"].Value.ToString();
-                            rentItem.Description = row.Cells["Description"].Value.ToString();
-                            rentItem.Category = row.Cells["Category"].Value.ToString();
-                            rentItem.Style = row.Cells["Style"].Value.ToString();
+                            rentItem.Name = row.Cells[1].Value.ToString();
+                            rentItem.Description = row.Cells[2].Value.ToString();
+                            rentItem.Category = row.Cells[3].Value.ToString();
+                            rentItem.Style = row.Cells[4].Value.ToString();
                             rentItem.FurnitureRentEmployeeID = 1;
                             this.rentFurnitureList.Add(rentItem);
                         }
@@ -424,9 +425,9 @@ namespace RentMe.UserControls
         {
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
             {
-                 row.Cells["addQuantity"].Value = "";
-                row.Cells["rentColumn"].Value = false;
-                row.Cells["daysColumn"].Value = "";
+                 row.Cells[7].Value = "";
+                row.Cells[9].Value = false;
+                row.Cells[8].Value = "";
             }
         }
 
@@ -435,7 +436,7 @@ namespace RentMe.UserControls
          
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
             {
-                row.Cells["rentColumn"].Value = true; ; 
+                row.Cells[9].Value = true; ; 
             }
 
            
