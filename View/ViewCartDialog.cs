@@ -28,6 +28,8 @@ namespace RentMe.View
         private void ViewCartDialog_Load(object sender, EventArgs e)
         {
            this.DisplayRentData();
+
+           
         }
 
         private void DisplayRentData()
@@ -37,7 +39,7 @@ namespace RentMe.View
                 this.rentFurnitureBindingSource.DataSource = null;
                 this.rentFurnitureBindingSource.Clear();
                 this.cartList = this.cartController.GetRentItem();
-                
+
                 if (this.cartList.Any())
                 {
                     this.rentFurnitureBindingSource.DataSource = this.cartList.Select(o => new
@@ -48,13 +50,16 @@ namespace RentMe.View
                         o.Category,
                         o.Style,
                         o.RentalAmount,
-                       o.DueDate,o.FurnitureRentQuantity,
-                        o.TotalItemRentalAmount
+                        o.DueDate,
+                           o.TotalItemRentalAmount,
+                       o.FurnitureRentQuantity
                     }).ToList();
-
-
                     this.CalculateTotal();
+
                 }
+
+
+
                 else
                 {
                     this.submitOrderButton.Enabled = false;
@@ -126,6 +131,36 @@ namespace RentMe.View
             else if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "UpdateItem")
             {
 
+                //   RentFurniture newRentFurniture= (RentFurniture)this.rentFurnitureBindingSource.Current;
+                // 
+                //      this.cartList[cartDataGrideView.CurrentCell.RowIndex] = newRentFurniture;
+
+                RentFurniture rentFurniture = this.cartList.ElementAt(cartDataGrideView.CurrentCell.RowIndex);
+                int rowIndex = e.RowIndex; 
+                DataGridViewRow row = this.cartDataGrideView.Rows[rowIndex];
+                MessageBox.Show(row.Cells[9].Value.ToString());
+                rentFurniture.FurnitureRentQuantity = Int32.Parse(row.Cells[9].Value.ToString());
+                this.cartList[cartDataGrideView.CurrentCell.RowIndex] = rentFurniture;
+             
+                //this.rentFurnitureBindingSource.DataSource = this.cartList.Select(o => new
+                //{
+                //    o.FurnitureID,
+                //    o.Name,
+                //    o.Description,
+                //    o.Category,
+                //    o.Style,
+                //    o.RentalAmount,
+                //    o.DueDate,
+                //    o.TotalItemRentalAmount,
+                //    o.FurnitureRentQuantity
+                //}).ToList();
+                this.CalculateTotal();
+
+            }
+            else if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "FurnitureRentQuantity")
+            {
+               
+                this.cartDataGrideView.Columns[8].ReadOnly = false;
             }
         }
 
