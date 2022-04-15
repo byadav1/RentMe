@@ -328,7 +328,8 @@ namespace RentMe.UserControls
             if (isMemberAvailable) {
 
                 if (this.furnitureDateGridView.Columns.Contains("addQuantity") &&
-                    this.furnitureDateGridView.Columns.Contains("daysColumn") && this.furnitureDateGridView.Columns.Contains("rentColumn"))
+                    this.furnitureDateGridView.Columns.Contains("daysColumn") && 
+                    this.furnitureDateGridView.Columns.Contains("rentColumn"))
                 {
                     return;
                 }
@@ -519,11 +520,6 @@ namespace RentMe.UserControls
             }
         }
 
-        private void FurnitureDateGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           this.furnitureDateGridView.DefaultCellStyle.BackColor = Color.Gold;
-
-        }
     }
 
     

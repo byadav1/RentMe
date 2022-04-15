@@ -98,7 +98,6 @@ namespace RentMe.UserControls
             this.furnitureDateGridView.RowTemplate.Height = 24;
             this.furnitureDateGridView.Size = new System.Drawing.Size(1385, 331);
             this.furnitureDateGridView.TabIndex = 10;
-            this.furnitureDateGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FurnitureDateGridView_CellContentClick);
             // 
             // furnitureRentalHeaderLabel
             // 
