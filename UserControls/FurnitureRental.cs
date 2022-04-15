@@ -357,45 +357,6 @@ namespace RentMe.UserControls
             }
         }
 
-        private void ValidateRentQuantity()
-        {
-            int columnIndex = 7; // quantity column , zero based index
-            foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
-            {
-                int quantity;
-             
-                if (!string.IsNullOrEmpty(row.Cells[columnIndex].Value.ToString()) && int.TryParse(row.Cells[columnIndex].Value.ToString(), out quantity))
-                {
-                    if (quantity <= 0)
-                        row.Cells[columnIndex].Style.BackColor = System.Drawing.Color.Red;
-                    this.UpdateStatusMessage("Quantity cannot zero", true); ;
-                }
-                else
-                {
-                    this.UpdateStatusMessage("Please enter the Quantity to rent", true); ;
-                }
-            }
-        }
-
-        private void ValidateRentDueDate()
-        {
-            int columnIndex = 8; // quantity column , zero based index
-            foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
-            {
-                int days;
-
-                if (!string.IsNullOrEmpty(row.Cells[columnIndex].Value.ToString()) && int.TryParse(row.Cells[columnIndex].Value.ToString(), out days))
-                {
-                    if (days <= 0)
-                        row.Cells[columnIndex].Style.BackColor = System.Drawing.Color.Red;
-                    this.UpdateStatusMessage("Days cannot zero", true); ;
-                }
-                else
-                {
-                    this.UpdateStatusMessage("Please enter the number of days to rent", true); ;
-                }
-            }
-        }
 
 
 
