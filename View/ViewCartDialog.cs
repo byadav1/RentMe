@@ -34,11 +34,13 @@ namespace RentMe.View
         {
             try
             {
-                this.cartDataGrideView.DataSource = null;
+                this.rentFurnitureBindingSource.DataSource = null;
+                this.rentFurnitureBindingSource.Clear();
                 this.cartList = this.cartController.GetRentItem();
+                
                 if (this.cartList.Any())
                 {
-                    this.cartDataGrideView.DataSource = this.cartList.Select(o => new
+                    this.rentFurnitureBindingSource.DataSource = this.cartList.Select(o => new
                     {
                         o.FurnitureID,
                         o.Name,
@@ -49,12 +51,9 @@ namespace RentMe.View
                        o.DueDate,o.FurnitureRentQuantity,
                         o.TotalItemRentalAmount
                     }).ToList();
-                 
 
-                    var totalAmountToPay = this.cartList.Sum(cart => cart.TotalItemRentalAmount);
-                    this.amountLabel.Text = "$" + totalAmountToPay;
-                    this.submitOrderButton.Enabled = true;
-                    this.emptyCartButton.Enabled = true;
+
+                    this.CalculateTotal();
                 }
                 else
                 {
@@ -68,6 +67,13 @@ namespace RentMe.View
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+        private void CalculateTotal()
+        {
+            var totalAmountToPay = this.cartList.Sum(cart => cart.TotalItemRentalAmount);
+            this.amountLabel.Text = "$" + totalAmountToPay;
+            this.submitOrderButton.Enabled = true;
+            this.emptyCartButton.Enabled = true;
         }
 
         private void SubmitOrderButton_Click(object sender, EventArgs e)
@@ -107,9 +113,21 @@ namespace RentMe.View
 
         }
 
-        private void cartDataGrideView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CartDataGrideView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.cartDataGrideView.Columns[e.ColumnIndex].Name== "DeleteItem")
+            {
 
+                if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    this.cartList.RemoveAt(cartDataGrideView.CurrentCell.RowIndex);
+                    this.rentFurnitureBindingSource.RemoveCurrent();
+                this.CalculateTotal();
+            }
+            else if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "UpdateItem")
+            {
+
+            }
         }
+
     }
 }

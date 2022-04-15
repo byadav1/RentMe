@@ -39,18 +39,18 @@ namespace RentMe.View
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.emptyCartButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.rentFurnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.UpdateItem = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteItem = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.totalItemRentalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.furnitureRentQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dueDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dueDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureRentQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalItemRentalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentFurnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cartDataGrideView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -82,7 +82,7 @@ namespace RentMe.View
             this.cartDataGrideView.RowTemplate.Height = 24;
             this.cartDataGrideView.Size = new System.Drawing.Size(1261, 189);
             this.cartDataGrideView.TabIndex = 0;
-            this.cartDataGrideView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cartDataGrideView_CellContentClick);
+            this.cartDataGrideView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CartDataGrideView_CellContentClick);
             // 
             // rentAmountlabel
             // 
@@ -98,7 +98,7 @@ namespace RentMe.View
             // 
             this.amountLabel.AutoSize = true;
             this.amountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amountLabel.Location = new System.Drawing.Point(385, 0);
+            this.amountLabel.Location = new System.Drawing.Point(384, 0);
             this.amountLabel.Name = "amountLabel";
             this.amountLabel.Size = new System.Drawing.Size(61, 25);
             this.amountLabel.TabIndex = 2;
@@ -108,7 +108,7 @@ namespace RentMe.View
             // 
             this.cancelCartButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelCartButton.Location = new System.Drawing.Point(789, 3);
+            this.cancelCartButton.Location = new System.Drawing.Point(787, 3);
             this.cancelCartButton.Name = "cancelCartButton";
             this.cancelCartButton.Size = new System.Drawing.Size(124, 39);
             this.cancelCartButton.TabIndex = 3;
@@ -119,7 +119,7 @@ namespace RentMe.View
             // 
             this.submitOrderButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.submitOrderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitOrderButton.Location = new System.Drawing.Point(512, 3);
+            this.submitOrderButton.Location = new System.Drawing.Point(511, 3);
             this.submitOrderButton.Name = "submitOrderButton";
             this.submitOrderButton.Size = new System.Drawing.Size(189, 39);
             this.submitOrderButton.TabIndex = 4;
@@ -135,7 +135,6 @@ namespace RentMe.View
             this.button1.TabIndex = 6;
             this.button1.Text = "Remove Items";
             this.button1.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -154,7 +153,7 @@ namespace RentMe.View
             // emptyCartButton
             // 
             this.emptyCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emptyCartButton.Location = new System.Drawing.Point(1020, 3);
+            this.emptyCartButton.Location = new System.Drawing.Point(1017, 3);
             this.emptyCartButton.Name = "emptyCartButton";
             this.emptyCartButton.Size = new System.Drawing.Size(210, 39);
             this.emptyCartButton.TabIndex = 5;
@@ -169,7 +168,7 @@ namespace RentMe.View
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.23697F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.71386F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
             this.tableLayoutPanel2.Controls.Add(this.emptyCartButton, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.rentAmountlabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.amountLabel, 1, 0);
@@ -181,11 +180,6 @@ namespace RentMe.View
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1252, 58);
             this.tableLayoutPanel2.TabIndex = 6;
-            // 
-            // rentFurnitureBindingSource
-            // 
-            this.rentFurnitureBindingSource.DataSource = typeof(RentMe.Model.RentFurniture);
-            // 
             // UpdateItem
             // 
             this.UpdateItem.HeaderText = "Update";
@@ -206,61 +200,13 @@ namespace RentMe.View
             this.DeleteItem.UseColumnTextForButtonValue = true;
             this.DeleteItem.Width = 78;
             // 
-            // totalItemRentalAmountDataGridViewTextBoxColumn
+            // furnitureIDDataGridViewTextBoxColumn
             // 
-            this.totalItemRentalAmountDataGridViewTextBoxColumn.DataPropertyName = "TotalItemRentalAmount";
-            this.totalItemRentalAmountDataGridViewTextBoxColumn.HeaderText = "TotalItemRentalAmount";
-            this.totalItemRentalAmountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.totalItemRentalAmountDataGridViewTextBoxColumn.Name = "totalItemRentalAmountDataGridViewTextBoxColumn";
-            this.totalItemRentalAmountDataGridViewTextBoxColumn.Width = 184;
-            // 
-            // furnitureRentQuantityDataGridViewTextBoxColumn
-            // 
-            this.furnitureRentQuantityDataGridViewTextBoxColumn.DataPropertyName = "FurnitureRentQuantity";
-            this.furnitureRentQuantityDataGridViewTextBoxColumn.HeaderText = "FurnitureRentQuantity";
-            this.furnitureRentQuantityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.furnitureRentQuantityDataGridViewTextBoxColumn.Name = "furnitureRentQuantityDataGridViewTextBoxColumn";
-            this.furnitureRentQuantityDataGridViewTextBoxColumn.Width = 177;
-            // 
-            // dueDateDataGridViewTextBoxColumn
-            // 
-            this.dueDateDataGridViewTextBoxColumn.DataPropertyName = "DueDate";
-            this.dueDateDataGridViewTextBoxColumn.HeaderText = "DueDate";
-            this.dueDateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dueDateDataGridViewTextBoxColumn.Name = "dueDateDataGridViewTextBoxColumn";
-            this.dueDateDataGridViewTextBoxColumn.Width = 93;
-            // 
-            // rentalAmountDataGridViewTextBoxColumn
-            // 
-            this.rentalAmountDataGridViewTextBoxColumn.DataPropertyName = "RentalAmount";
-            this.rentalAmountDataGridViewTextBoxColumn.HeaderText = "RentalAmount";
-            this.rentalAmountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.rentalAmountDataGridViewTextBoxColumn.Name = "rentalAmountDataGridViewTextBoxColumn";
-            this.rentalAmountDataGridViewTextBoxColumn.Width = 126;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.Width = 108;
-            // 
-            // styleDataGridViewTextBoxColumn
-            // 
-            this.styleDataGridViewTextBoxColumn.DataPropertyName = "Style";
-            this.styleDataGridViewTextBoxColumn.HeaderText = "Style";
-            this.styleDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.styleDataGridViewTextBoxColumn.Name = "styleDataGridViewTextBoxColumn";
-            this.styleDataGridViewTextBoxColumn.Width = 68;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.Width = 94;
+            this.furnitureIDDataGridViewTextBoxColumn.DataPropertyName = "FurnitureID";
+            this.furnitureIDDataGridViewTextBoxColumn.HeaderText = "FurnitureID";
+            this.furnitureIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.furnitureIDDataGridViewTextBoxColumn.Name = "furnitureIDDataGridViewTextBoxColumn";
+            this.furnitureIDDataGridViewTextBoxColumn.Width = 107;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -270,13 +216,65 @@ namespace RentMe.View
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.Width = 74;
             // 
-            // furnitureIDDataGridViewTextBoxColumn
+            // categoryDataGridViewTextBoxColumn
             // 
-            this.furnitureIDDataGridViewTextBoxColumn.DataPropertyName = "FurnitureID";
-            this.furnitureIDDataGridViewTextBoxColumn.HeaderText = "FurnitureID";
-            this.furnitureIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.furnitureIDDataGridViewTextBoxColumn.Name = "furnitureIDDataGridViewTextBoxColumn";
-            this.furnitureIDDataGridViewTextBoxColumn.Width = 107;
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.Width = 94;
+            // 
+            // styleDataGridViewTextBoxColumn
+            // 
+            this.styleDataGridViewTextBoxColumn.DataPropertyName = "Style";
+            this.styleDataGridViewTextBoxColumn.HeaderText = "Style";
+            this.styleDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.styleDataGridViewTextBoxColumn.Name = "styleDataGridViewTextBoxColumn";
+            this.styleDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.Width = 108;
+            // 
+            // rentalAmountDataGridViewTextBoxColumn
+            // 
+            this.rentalAmountDataGridViewTextBoxColumn.DataPropertyName = "RentalAmount";
+            this.rentalAmountDataGridViewTextBoxColumn.HeaderText = "RentalAmount";
+            this.rentalAmountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.rentalAmountDataGridViewTextBoxColumn.Name = "rentalAmountDataGridViewTextBoxColumn";
+            this.rentalAmountDataGridViewTextBoxColumn.Width = 126;
+            // 
+            // dueDateDataGridViewTextBoxColumn
+            // 
+            this.dueDateDataGridViewTextBoxColumn.DataPropertyName = "DueDate";
+            this.dueDateDataGridViewTextBoxColumn.HeaderText = "DueDate";
+            this.dueDateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dueDateDataGridViewTextBoxColumn.Name = "dueDateDataGridViewTextBoxColumn";
+            this.dueDateDataGridViewTextBoxColumn.Width = 93;
+            // 
+            // furnitureRentQuantityDataGridViewTextBoxColumn
+            // 
+            this.furnitureRentQuantityDataGridViewTextBoxColumn.DataPropertyName = "FurnitureRentQuantity";
+            this.furnitureRentQuantityDataGridViewTextBoxColumn.HeaderText = "FurnitureRentQuantity";
+            this.furnitureRentQuantityDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.furnitureRentQuantityDataGridViewTextBoxColumn.Name = "furnitureRentQuantityDataGridViewTextBoxColumn";
+            this.furnitureRentQuantityDataGridViewTextBoxColumn.Width = 177;
+            // 
+            // totalItemRentalAmountDataGridViewTextBoxColumn
+            // 
+            this.totalItemRentalAmountDataGridViewTextBoxColumn.DataPropertyName = "TotalItemRentalAmount";
+            this.totalItemRentalAmountDataGridViewTextBoxColumn.HeaderText = "TotalItemRentalAmount";
+            this.totalItemRentalAmountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.totalItemRentalAmountDataGridViewTextBoxColumn.Name = "totalItemRentalAmountDataGridViewTextBoxColumn";
+            this.totalItemRentalAmountDataGridViewTextBoxColumn.Width = 184;
+            // 
+            // rentFurnitureBindingSource
+            // 
+            this.rentFurnitureBindingSource.DataSource = typeof(RentMe.Model.RentFurniture);
             // 
             // ViewCartDialog
             // 

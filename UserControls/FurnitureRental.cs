@@ -387,7 +387,7 @@ namespace RentMe.UserControls
                         int result = Int32.Parse(row.Cells["addQuantity"].Value.ToString());
                         if (result > 0)
                         {
-                            MessageBox.Show("Selected Values" + row.Cells["FurnitureID"].Value + "  and " + result);
+                          
                             RentFurniture rentItem = new RentFurniture
                             {
                                 FurnitureID = int.Parse(row.Cells["FurnitureID"].Value.ToString()),
