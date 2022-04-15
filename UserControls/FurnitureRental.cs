@@ -155,7 +155,9 @@ namespace RentMe.UserControls
         {                    
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;
-            this.furnitureDateGridView.Enabled = false;
+            this.furnitureDateGridView.Columns[7].Visible = false;
+            this.furnitureDateGridView.Columns[8].Visible = false;
+            this.furnitureDateGridView.Columns[9].Visible = false;
             this.furnitureDateGridView.ReadOnly = true;
             this.LoadComboBox();
             this.furnitureIDTextBox.Focus();
@@ -321,7 +323,6 @@ namespace RentMe.UserControls
                 throw new ArgumentException(" No member found with member ID + " + memberSearch.MemberID.ToString());
               
             }
-
                 this.memberIDLabel.Visible = true;
                 this.memberFirstName.Visible = true;
                 this.memberIDLabel.Text = "MemberId: " + this.MemberRent.MemberID.ToString();
@@ -337,6 +338,7 @@ namespace RentMe.UserControls
         private void EnableRenting()
         {
             this.furnitureDateGridView.ReadOnly = false;
+           
             if (isMemberAvailable) {
 
                 foreach (DataGridViewColumn dc in this.furnitureDateGridView.Columns)
@@ -344,16 +346,32 @@ namespace RentMe.UserControls
                    if (!dc.Index.Equals(7) && !dc.Index.Equals(8) && !dc.Index.Equals(9))
                     {
                         dc.ReadOnly = true;
+                     
                     }
                    else
                     {
                         dc.ReadOnly = false;
+                        dc.DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
+                        dc.DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
                     }
 
                 }
-                
+
+                this.SetUpDataGridView();
+
 
             }
+        }
+
+        private void SetUpDataGridView()
+        {
+            this.furnitureDateGridView.Columns[7].Visible = true;
+            this.furnitureDateGridView.Columns[8].Visible = true;
+            this.furnitureDateGridView.Columns[9].Visible = true;
+            this.furnitureDateGridView.EnableHeadersVisualStyles = false;
+            this.furnitureDateGridView.Columns[7].HeaderCell.Style.ForeColor = Color.Blue;
+           this.furnitureDateGridView.Columns[9].HeaderCell.Style.ForeColor = Color.Blue;
+            this.furnitureDateGridView.Columns[8].HeaderCell.Style.ForeColor = Color.Blue;
         }
 
 
@@ -364,27 +382,46 @@ namespace RentMe.UserControls
 
             this.rentalStatusLabel.Visible = false;
             this.rentFurnitureList = new List<RentFurniture>();
-           
+            string message="";
+            int itemCount = 0;
+            bool itemMissing = false;
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
             {
-                
-               bool isSelected = Convert.ToBoolean(row.Cells[9].Value);
-                            
-                if (isSelected) {
-                    if (string.IsNullOrEmpty((string)row.Cells[7].Value))
+                row.Cells[7].Style.BackColor = Color.White;
+                row.Cells[8].Style.BackColor = Color.White; ;
+                row.Cells[9].Style.BackColor = Color.White;
+
+              
+              
+                if (Convert.ToBoolean(row.Cells[9].Value)) {
+                    itemCount = 1;
+                    if (string.IsNullOrEmpty((string)row.Cells[7].Value) && string.IsNullOrEmpty((string)row.Cells[8].Value))
                     {
-                        this.UpdateStatusMessage("Please enter the Quantity to rent", true); ;
-                        row.Cells[7].Style.BackColor = System.Drawing.Color.Red;
-                        return;
+                        message= "Please enter the Quantity  and return date to rent";
+                        row.Cells[7].Style.BackColor = Color.Red;
+                        row.Cells[8].Style.BackColor = Color.Red;
+                        this.rentFurnitureList.Clear();
+                        itemMissing = true;
 
                     }
+                    else if (string.IsNullOrEmpty((string)row.Cells[7].Value))
+                    {
+                        message = "Please enter the Quantity to rent";
+                        row.Cells[7].Style.BackColor = Color.Red;
+                        this.rentFurnitureList.Clear();
+                        itemMissing = true;
+                    }
+
                     else if (string.IsNullOrEmpty((string)row.Cells[8].Value))
                     {
-                        row.Cells[8].Style.BackColor = System.Drawing.Color.Red;
-                        this.UpdateStatusMessage("Please enter the due date to rent", true); ;
-                        return;
+                        message = "Please enter the Due date to rent";
+                        row.Cells[8].Style.BackColor = Color.Red;
+                        this.rentFurnitureList.Clear();
+                        itemMissing = true;
+
+
                     }
-                    else
+                    else if (!itemMissing) 
                     {
                         int result = Int32.Parse(row.Cells[7].Value.ToString());
                         if (result > 0)
@@ -408,17 +445,23 @@ namespace RentMe.UserControls
                     }
                 }              
             }
+            if (itemCount ==0 )
+            {
+                message = "Please enter the items to rent";
+            }
 
             if (this.rentFurnitureList.Any())
             {
-               this.cartController.AddFurnituresToRent (this.rentFurnitureList);
-                this.UpdateStatusMessage("Items added to the cart.",false);            
+                this.cartController.AddFurnituresToRent(this.rentFurnitureList);
+                this.UpdateStatusMessage("Items added to the cart.", false);
                 this.Reset();
             }
             else
             {
-                this.UpdateStatusMessage("Please select the Items to rent.", true);
+
+                this.UpdateStatusMessage(message, true);
             }
+            
         }
 
         private void Reset()
@@ -483,6 +526,11 @@ namespace RentMe.UserControls
             }
         }
 
+        private void FurnitureDateGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.furnitureDateGridView.DefaultCellStyle.BackColor = Color.White;
+
+        }
     }
 
     
