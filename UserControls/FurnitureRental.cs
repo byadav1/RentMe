@@ -323,8 +323,6 @@ namespace RentMe.UserControls
         private void EnableRenting()
         {
 
-          //  this.furnitureDateGridView.DataSource = null;
-           // this.furnitureDateGridView.DataSource = this.furnitureSearchResults;
             if (isMemberAvailable) {
 
                 if (this.furnitureDateGridView.Columns.Contains("addQuantity") &&
@@ -397,6 +395,10 @@ namespace RentMe.UserControls
                             };
                             rentItem.TotalItemRentalAmount = float.Parse(row.Cells["DailyRentalRate"].Value.ToString()) * rentItem.FurnitureRentQuantity;
                             rentItem.FurnitureRentMemberID = this.MemberRent.MemberID;
+                            rentItem.Name = row.Cells["Name"].Value.ToString();
+                            rentItem.Description = row.Cells["Description"].Value.ToString();
+                            rentItem.Category = row.Cells["Category"].Value.ToString();
+                            rentItem.Style = row.Cells["Style"].Value.ToString();
                             rentItem.FurnitureRentEmployeeID = 1;
                             this.rentFurnitureList.Add(rentItem);
                         }
@@ -429,7 +431,7 @@ namespace RentMe.UserControls
 
             private void RentAllButton_Click(object sender, EventArgs e)
         {
-            string message = string.Empty;
+         
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
             {
                 row.Cells["rentColumn"].Value = true; ; 

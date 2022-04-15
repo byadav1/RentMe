@@ -31,7 +31,7 @@ namespace RentMe.View
         {
             this.cartDataGrideView = new System.Windows.Forms.DataGridView();
             this.rentAmountlabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.amountLabel = new System.Windows.Forms.Label();
             this.cancelCartButton = new System.Windows.Forms.Button();
             this.submitOrderButton = new System.Windows.Forms.Button();
             this.emptyCartButton = new System.Windows.Forms.Button();
@@ -58,15 +58,15 @@ namespace RentMe.View
             this.rentAmountlabel.TabIndex = 1;
             this.rentAmountlabel.Text = "Total Amount to Pay- ";
             // 
-            // label1
+            // amountLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(259, 366);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "$0.00";
+            this.amountLabel.AutoSize = true;
+            this.amountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amountLabel.Location = new System.Drawing.Point(259, 366);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(61, 25);
+            this.amountLabel.TabIndex = 2;
+            this.amountLabel.Text = "$0.00";
             // 
             // cancelCartButton
             // 
@@ -106,7 +106,7 @@ namespace RentMe.View
             this.Controls.Add(this.emptyCartButton);
             this.Controls.Add(this.submitOrderButton);
             this.Controls.Add(this.cancelCartButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.amountLabel);
             this.Controls.Add(this.rentAmountlabel);
             this.Controls.Add(this.cartDataGrideView);
             this.Name = "ViewCartDialog";
@@ -122,7 +122,7 @@ namespace RentMe.View
 
         private System.Windows.Forms.DataGridView cartDataGrideView;
         private System.Windows.Forms.Label rentAmountlabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label amountLabel;
         private System.Windows.Forms.Button cancelCartButton;
         private System.Windows.Forms.Button submitOrderButton;
         private System.Windows.Forms.Button emptyCartButton;

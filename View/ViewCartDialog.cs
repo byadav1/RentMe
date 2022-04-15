@@ -30,15 +30,16 @@ namespace RentMe.View
         {
             this.cartDataGrideView.DataSource = null;
             List<RentFurniture> cartList = this.cartController.GetRentItem();
-            // this.cartDataGrideView.DataSource = this.cartController.GetRentItem();
-
+           
             this.cartDataGrideView.DataSource = cartList.Select(o => new
-            { FurnitureID = o.FurnitureID, Description = o.Description,
-            Category = o.Category,                Style = o.Style,
+            {
+                o.FurnitureID, o.Name, o.Description, o.Category, o.Style,
             rentPerItem=o.RentalAmount , Quantity= o.FurnitureRentQuantity
-
-
+            ,   Amount = o.TotalItemRentalAmount
             }).ToList();
+
+            var totalAmountToPay = cartList.Sum(cart => cart.TotalItemRentalAmount);
+            this.amountLabel.Text = "$" + totalAmountToPay;
 
         }
 
