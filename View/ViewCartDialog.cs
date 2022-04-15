@@ -157,11 +157,7 @@ namespace RentMe.View
                 this.CalculateTotal();
 
             }
-            else if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "FurnitureRentQuantity")
-            {
-               
-                this.cartDataGrideView.Columns[8].ReadOnly = false;
-            }
+         
         }
 
     }

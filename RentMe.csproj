@@ -132,6 +132,7 @@
     <EmbeddedResource Include="View\ViewCartDialog.resx">
       <DependentUpon>ViewCartDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.RentFurniture.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
