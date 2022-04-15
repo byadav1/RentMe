@@ -361,6 +361,7 @@ namespace RentMe.UserControls
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
 
+            this.rentalStatusLabel.Visible = false;
             this.rentFurnitureList = new List<RentFurniture>();
           
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
@@ -422,10 +423,9 @@ namespace RentMe.UserControls
         {
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
             {
-
-                row.Cells["addQuantity"].Value = "";
+                 row.Cells["addQuantity"].Value = "";
                 row.Cells["rentColumn"].Value = false;
-
+                row.Cells["daysColumn"].Value = "";
             }
         }
 
@@ -459,7 +459,7 @@ namespace RentMe.UserControls
             }
             else
             {
-                this.rentalStatusLabel.ForeColor = Color.Black;
+                this.rentalStatusLabel.ForeColor = Color.Green;
             }
 
             this.rentalStatusLabel.Text = message;
@@ -474,12 +474,10 @@ namespace RentMe.UserControls
                 if (result == DialogResult.OK)
                 {
                     this.Reset();
+                    this.UpdateStatusMessage("Your Rent Order submitted Sucessfully",false);
                 }
 
-                else if (result == DialogResult.Cancel)
-                {
-                    MessageBox.Show("Cancelled the operation.Incident was not added");
-                }
+               
             }
         }
 

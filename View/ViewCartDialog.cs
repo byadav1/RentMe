@@ -12,37 +12,104 @@ namespace RentMe.View
     {
 
         private RentCartController cartController;
+        private FurnitureRentController rentController;
+        private List<RentFurniture> cartList;
         private Member rentMember;
         
         public ViewCartDialog(Member member)
         {
             InitializeComponent();
             this.rentMember = member;
+            this.cartController = new RentCartController();
+            this.rentController = new FurnitureRentController();
+            _ = new List<RentFurniture>();
         }
 
         private void ViewCartDialog_Load(object sender, EventArgs e)
         {
-            this.cartController = new RentCartController();
-            this.DisplayRentData();
+           this.DisplayRentData();
         }
 
         private void DisplayRentData()
         {
-            this.cartDataGrideView.DataSource = null;
-            List<RentFurniture> cartList = this.cartController.GetRentItem();
-           
-            this.cartDataGrideView.DataSource = cartList.Select(o => new
+            try
             {
-                o.FurnitureID, o.Name, o.Description, o.Category, o.Style,
-            rentPerItem=o.RentalAmount , Quantity= o.FurnitureRentQuantity
-            ,   Amount = o.TotalItemRentalAmount
-            }).ToList();
+                this.cartDataGrideView.DataSource = null;
+                this.cartList = this.cartController.GetRentItem();
+                if (this.cartList.Any())
+                {
+                    this.cartDataGrideView.DataSource = this.cartList.Select(o => new
+                    {
+                        o.FurnitureID,
+                        o.Name,
+                        o.Description,
+                        o.Category,
+                        o.Style,
+                        o.RentalAmount,
+                       o.DueDate,o.FurnitureRentQuantity,
+                        o.TotalItemRentalAmount
+                    }).ToList();
+                 
 
-            var totalAmountToPay = cartList.Sum(cart => cart.TotalItemRentalAmount);
-            this.amountLabel.Text = "$" + totalAmountToPay;
+                    var totalAmountToPay = this.cartList.Sum(cart => cart.TotalItemRentalAmount);
+                    this.amountLabel.Text = "$" + totalAmountToPay;
+                    this.submitOrderButton.Enabled = true;
+                    this.emptyCartButton.Enabled = true;
+                }
+                else
+                {
+                    this.submitOrderButton.Enabled = false;
+                    this.emptyCartButton.Enabled = false;
+                }
+               
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Error occured on - Displaying the cart items -" + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
+        private void SubmitOrderButton_Click(object sender, EventArgs e)
+        {
 
+            if (!this.cartList.Any())
+            {
+                return;
+            }
+            var result = MessageBox.Show("Are you sure want to Submit the Furniture Rental ", "Order submitting",
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question);
+
+          
+            if (result == DialogResult.Yes)
+            {
+                this.rentController.AddFurnituresToRent(this.cartList);
+                this.cartList.Clear();
+            }
+            else
+            {
+                this.Show();
+            }
+           
+        }
+
+        private void EmptyCartButton_Click(object sender, EventArgs e)
+        {
+            if (this.cartList.Any())
+            {
+                this.cartList.Clear();
+                this.cartDataGrideView.DataSource = null;
+                this.submitOrderButton.Enabled = false;
+                this.amountLabel.Text="$0.00";
+                  
+            }
+
+        }
+
+        private void cartDataGrideView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
