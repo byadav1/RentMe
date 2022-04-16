@@ -160,7 +160,33 @@ namespace RentMe.UserControls
             {
                 this.employeeBindingSource.Clear();
                 this.employeeBindingSource.DataSource = employees;
+                this.DecorateDataGridView();
                 this.updateButton.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Configures the appearance of Employees DataGridView.
+        /// </summary>
+        private void DecorateDataGridView()
+        {
+            foreach (DataGridViewRow row in this.employeeDataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["active"].Value))
+                {
+                    if (string.Equals(row.Cells["type"].Value.ToString(), "Admin"))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.PowderBlue;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                    }
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.PaleVioletRed;
+                }
             }
         }
 

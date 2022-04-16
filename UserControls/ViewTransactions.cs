@@ -221,9 +221,28 @@ namespace RentMe.UserControls
                 throw new ArgumentException("No transaction results found");
             }
             else
-            {
+            {              
                 this.transactionBindingSource.Clear();
                 this.transactionBindingSource.DataSource = rentals;
+                this.DecorateDataGridView();
+            }
+        }
+
+        /// <summary>
+        /// Configures the appearance of Transactions DataGridView.
+        /// </summary>
+        private void DecorateDataGridView()
+        {
+            foreach (DataGridViewRow row in this.transactionDataGridView.Rows)
+            {               
+                if (string.Equals(row.Cells["TransactionType"].Value.ToString(), "Rental"))
+                {
+                    row.DefaultCellStyle.BackColor = Color.PowderBlue;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.PaleGreen;
+                }
             }
         }
 
