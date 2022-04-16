@@ -1,49 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using RentMe.Controller;
 using System.Windows.Forms;
 using RentMe.Model;
 using System.Linq;
-using System.Drawing;
-
 namespace RentMe.View
 {
     public partial class ViewCartDialog : Form
     {
 
-        private RentCartController cartController;
-        private FurnitureRentController rentController;
+        private readonly RentCartController _cartController;
+        private readonly FurnitureRentController rentController;
         private List<RentFurniture> cartList;
-        private Member rentMember;
+     
 
-        public ViewCartDialog(Member member)
+        public ViewCartDialog()
         {
             InitializeComponent();
-            this.rentMember = member;
-            this.cartController = new RentCartController();
+            this._cartController = new RentCartController();
             this.rentController = new FurnitureRentController();
             _ = new List<RentFurniture>();
         }
 
         private void ViewCartDialog_Load(object sender, EventArgs e)
         {
-            this.cartDataGrideView.ReadOnly = false;
+           
             this.DisplayRentData();
-            foreach (DataGridViewColumn dc in this.cartDataGrideView.Columns)
-            {
-                if (!dc.Index.Equals(7) && !dc.Index.Equals(8))
-                {
-                    dc.ReadOnly = true;
-                }
-                else
-                {
-                    dc.ReadOnly = false;
-                    dc.DefaultCellStyle.ForeColor = Color.Blue;
-                    dc.DefaultCellStyle.ForeColor = Color.Blue;
-                }
-
-            }
+           
         }
 
         private void DisplayRentData()
@@ -52,7 +35,7 @@ namespace RentMe.View
             {
                 this.rentFurnitureBindingSource.DataSource = null;
                 this.rentFurnitureBindingSource.Clear();
-                this.cartList = this.cartController.GetRentItem();
+                this.cartList = this._cartController.GetRentItem();
 
                 if (this.cartList.Any())
                 {
@@ -120,7 +103,7 @@ namespace RentMe.View
             if (this.cartList.Any())
             {
                 this.cartList.Clear();
-                this.cartDataGrideView.DataSource = null;
+               
                 this.submitOrderButton.Enabled = false;
                 this.amountLabel.Text = "$0.00";
 
@@ -142,5 +125,5 @@ namespace RentMe.View
 
     }
 
-}
+
 }

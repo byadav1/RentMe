@@ -21,17 +21,14 @@ namespace RentMe.DAL
 
             if (_rentCartItems==null)
             {
-                _rentCartItems = new List<RentFurniture>();
-                _rentCartItems = itemList;
+                _rentCartItems = new List<RentFurniture>();              
             }
             else if (_rentCartItems.Any())
             {
                 _rentCartItems.AddRange(itemList); ;
                 return;
             }
-           
-
-
+            _rentCartItems = itemList;
         }
        
         public static List<RentFurniture> GetCartItems()

@@ -14,7 +14,7 @@ namespace RentMe.DAL
     public class EmployeesDAL
     {
 
-
+        private static Employee _loginEmployee;
         /// <summary>
         /// Gets all RentMe Members from Members table.
         /// </summary>
@@ -203,11 +203,11 @@ namespace RentMe.DAL
         }
 
         /// <summary>
-        /// Gets the login employee data.
+        /// Sets the login employee data.
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns></returns>
-        public static Employee GetLoginEmployeeData(Employee employee)
+        public static void SetLoginEmployeeData(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
             string selectStatement = "SELECT * " +
@@ -248,8 +248,21 @@ namespace RentMe.DAL
                     }
                 }
             }
+            _loginEmployee = employee;
 
-            return employee;
+          
+        }
+
+        /// <summary>
+        /// Gets the login employee data.
+        /// </summary>
+        /// <param name="employee">The employee.</param>
+        /// <returns></returns>
+        public static Employee GetLoginEmployeeData()
+        {
+            return _loginEmployee;
+
+
         }
 
         /// <summary>

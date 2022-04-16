@@ -25,8 +25,10 @@ namespace RentMe.View
         public MainForm(Employee currentLoginUser)
         {
             InitializeComponent();
-            this.loginUser = currentLoginUser;
+         
             this.employeeController = new EmployeesController();
+           
+            this.employeeController.LoginCurrentEmployeeData(currentLoginUser);
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace RentMe.View
         {
             try
             {
-                this.loginUser = this.employeeController.GetCurrentEmployeeData(this.loginUser);
+                this.loginUser = this.employeeController.GetLoginEmployeeData();
                 if (this.loginUser != null)
                 {
                     this.currentUserLabel.Text = "Welcome, " + this.loginUser.FName + " " + this.loginUser.LName +

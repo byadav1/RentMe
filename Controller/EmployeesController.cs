@@ -93,19 +93,32 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Get the login employee data
+        /// Sets the login employee data
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns>Employee</returns>
         /// <exception cref="ArgumentNullException">Employee username cannot be null</exception>
-        public Employee GetCurrentEmployeeData(Employee employee)
+        public void LoginCurrentEmployeeData(Employee employee)
         {
             if (employee == null)
             {
                 throw new ArgumentNullException("Employee username cannot be null ");
             }
+            EmployeesDAL.SetLoginEmployeeData(employee);
+           
+        }
 
-            return EmployeesDAL.GetLoginEmployeeData(employee);
+        /// <summary>
+        /// Get the login employee data
+        /// </summary>
+        /// <param name="employee">The employee.</param>
+        /// <returns>Employee</returns>
+        /// <exception cref="ArgumentNullException">Employee username cannot be null</exception>
+        public Employee GetLoginEmployeeData()
+        {
+            
+            return EmployeesDAL.GetLoginEmployeeData();
+
         }
 
         /// <summary>

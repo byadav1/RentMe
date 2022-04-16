@@ -301,8 +301,15 @@ namespace RentMe.UserControls
                 Member memberRental = this.CreateMemberFromSearch();
                 if (this.memberController.ValidMemberSearch(memberRental))
                 {
-                    this.MemberRent = this.memberController.GetMemberFromSearch(memberRental);
-                    this.DisplayMemberDetails();
+                    List <Member> memberFoundList = this.memberController.GetMembersFromSearch(memberRental);
+                    if (!memberFoundList.Any() || memberFoundList.Count >1)
+                    {
+                        this.UpdateStatusMessage("No member found or multipl member found.", true);
+                    } else {
+                        this.MemberRent = memberFoundList[0];
+
+                        this.DisplayMemberDetails();
+                    }
                 }
             }
             catch (ArgumentException ae)
@@ -329,20 +336,17 @@ namespace RentMe.UserControls
             {
                 throw new ArgumentException("Member search field cannot be empty");
             }
-            else if (new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$").IsMatch(search.Text))
+            else if (!string.IsNullOrEmpty(search.Text) && Convert.ToInt32(search.Text) > 0)
             {
-                member.Phone = search.Text;
-
+                member.MemberID = Convert.ToInt32(search.Text); 
             }
-            else if (new Regex("[a-zA-Z] [a-zA-Z]").IsMatch(search.Text))
+            else 
             {
-                member.FName = search.Text.Substring(0, search.Text.IndexOf(" "));
-                member.LName = search.Text.Substring(search.Text.IndexOf(" ") + 1);
+                throw new ArgumentException("Member ID should be a valid number");
             }
-            else if (Int32.TryParse(search.Text, out int memberID))
-            {
-                member.MemberID = memberID;
-            }
+         
+               
+          
 
             return member;
         }
@@ -551,7 +555,7 @@ namespace RentMe.UserControls
 
         private void ViewCartLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using (Form viewCartDialog = new View.ViewCartDialog(this.MemberRent))
+            using (Form viewCartDialog = new View.ViewCartDialog())
             {
                 DialogResult result = viewCartDialog.ShowDialog();
                 if (result == DialogResult.OK)
