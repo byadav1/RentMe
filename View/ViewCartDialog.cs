@@ -103,7 +103,8 @@ namespace RentMe.View
             if (this.cartList.Any())
             {
                 this.cartList.Clear();
-               
+                this.rentFurnitureBindingSource.DataSource = null;
+                this.cartDataGrideView.DataSource = null;
                 this.submitOrderButton.Enabled = false;
                 this.amountLabel.Text = "$0.00";
 
