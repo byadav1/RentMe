@@ -20,7 +20,7 @@ namespace RentMe.View
         /// <param name="receipt"></param>
         /// <param name="memberName"></param>
         /// <param name="isRental"></param>
-        public ReceiptDialog(List<ReceiptItem> receipt, string memberName , bool isRental)
+        public ReceiptDialog(List<ReceiptItem> receipt, string memberName, bool isRental)
         {
             this.ValidateReceipt(receipt);
             this.ValidateMemberName(memberName);

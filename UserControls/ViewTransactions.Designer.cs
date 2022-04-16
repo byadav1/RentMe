@@ -32,19 +32,22 @@ namespace RentMe.UserControls
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.viewTransactionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.viewActiveTransactionsButton = new System.Windows.Forms.Button();
             this.transactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchTransactionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.searchByComboBox = new System.Windows.Forms.ComboBox();
-            this.activeRentalsCheckBox = new System.Windows.Forms.CheckBox();
             this.searchMemberLabel = new System.Windows.Forms.Label();
+            this.searchByComboBox = new System.Windows.Forms.ComboBox();
+            this.filterResultsComboBox = new System.Windows.Forms.ComboBox();
             this.viewTransactionsHeaderLabel = new System.Windows.Forms.Label();
             this.statusMessage = new System.Windows.Forms.Label();
+            this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.viewRentalsButton = new System.Windows.Forms.Button();
             this.viewAllTransactionsButton = new System.Windows.Forms.Button();
+            this.viewReturnsButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +61,7 @@ namespace RentMe.UserControls
             this.viewTransactionsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).BeginInit();
             this.searchTransactionsTableLayoutPanel.SuspendLayout();
+            this.buttonsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,12 +70,11 @@ namespace RentMe.UserControls
             this.viewTransactionsTableLayoutPanel.ColumnCount = 2;
             this.viewTransactionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.viewTransactionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.viewTransactionsTableLayoutPanel.Controls.Add(this.viewActiveTransactionsButton, 0, 4);
             this.viewTransactionsTableLayoutPanel.Controls.Add(this.transactionDataGridView, 0, 2);
             this.viewTransactionsTableLayoutPanel.Controls.Add(this.searchTransactionsTableLayoutPanel, 0, 1);
             this.viewTransactionsTableLayoutPanel.Controls.Add(this.viewTransactionsHeaderLabel, 0, 0);
             this.viewTransactionsTableLayoutPanel.Controls.Add(this.statusMessage, 0, 3);
-            this.viewTransactionsTableLayoutPanel.Controls.Add(this.viewAllTransactionsButton, 1, 4);
+            this.viewTransactionsTableLayoutPanel.Controls.Add(this.buttonsTableLayoutPanel, 0, 4);
             this.viewTransactionsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewTransactionsTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.viewTransactionsTableLayoutPanel.Name = "viewTransactionsTableLayoutPanel";
@@ -85,18 +88,6 @@ namespace RentMe.UserControls
             this.viewTransactionsTableLayoutPanel.Size = new System.Drawing.Size(1080, 725);
             this.viewTransactionsTableLayoutPanel.TabIndex = 0;
             // 
-            // viewActiveTransactionsButton
-            // 
-            this.viewActiveTransactionsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.viewActiveTransactionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewActiveTransactionsButton.Location = new System.Drawing.Point(210, 657);
-            this.viewActiveTransactionsButton.Name = "viewActiveTransactionsButton";
-            this.viewActiveTransactionsButton.Size = new System.Drawing.Size(120, 60);
-            this.viewActiveTransactionsButton.TabIndex = 27;
-            this.viewActiveTransactionsButton.Text = "View All Active";
-            this.viewActiveTransactionsButton.UseVisualStyleBackColor = true;
-            this.viewActiveTransactionsButton.Click += new System.EventHandler(this.ViewActiveTransactionsButtonClick);
-            // 
             // transactionDataGridView
             // 
             this.transactionDataGridView.AllowUserToAddRows = false;
@@ -105,6 +96,7 @@ namespace RentMe.UserControls
             this.transactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.transactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.transactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TransactionType,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -129,6 +121,15 @@ namespace RentMe.UserControls
             this.transactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.transactionDataGridView.Size = new System.Drawing.Size(1074, 392);
             this.transactionDataGridView.TabIndex = 26;
+            // 
+            // TransactionType
+            // 
+            this.TransactionType.DataPropertyName = "TransactionType";
+            this.TransactionType.HeaderText = "Type";
+            this.TransactionType.MinimumWidth = 6;
+            this.TransactionType.Name = "TransactionType";
+            this.TransactionType.ReadOnly = true;
+            this.TransactionType.Width = 69;
             // 
             // ReturnDate
             // 
@@ -163,9 +164,9 @@ namespace RentMe.UserControls
             this.searchTransactionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.searchTransactionsTableLayoutPanel.Controls.Add(this.searchButton, 4, 0);
             this.searchTransactionsTableLayoutPanel.Controls.Add(this.searchTextBox, 3, 0);
-            this.searchTransactionsTableLayoutPanel.Controls.Add(this.searchByComboBox, 2, 0);
-            this.searchTransactionsTableLayoutPanel.Controls.Add(this.activeRentalsCheckBox, 1, 0);
             this.searchTransactionsTableLayoutPanel.Controls.Add(this.searchMemberLabel, 1, 1);
+            this.searchTransactionsTableLayoutPanel.Controls.Add(this.searchByComboBox, 1, 0);
+            this.searchTransactionsTableLayoutPanel.Controls.Add(this.filterResultsComboBox, 2, 0);
             this.searchTransactionsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchTransactionsTableLayoutPanel.Location = new System.Drawing.Point(3, 111);
             this.searchTransactionsTableLayoutPanel.Name = "searchTransactionsTableLayoutPanel";
@@ -199,33 +200,6 @@ namespace RentMe.UserControls
             this.searchTextBox.TabIndex = 1;
             this.searchTextBox.TextChanged += new System.EventHandler(this.SearchRentalTextBoxTextChanged);
             // 
-            // searchByComboBox
-            // 
-            this.searchByComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.searchByComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.searchByComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchByComboBox.FormattingEnabled = true;
-            this.searchByComboBox.Items.AddRange(new object[] {
-            "TransactionID",
-            "EmployeeID",
-            "MemberID"});
-            this.searchByComboBox.Location = new System.Drawing.Point(382, 7);
-            this.searchByComboBox.Name = "searchByComboBox";
-            this.searchByComboBox.Size = new System.Drawing.Size(200, 30);
-            this.searchByComboBox.TabIndex = 4;
-            // 
-            // activeRentalsCheckBox
-            // 
-            this.activeRentalsCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.activeRentalsCheckBox.AutoSize = true;
-            this.activeRentalsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeRentalsCheckBox.Location = new System.Drawing.Point(171, 9);
-            this.activeRentalsCheckBox.Name = "activeRentalsCheckBox";
-            this.activeRentalsCheckBox.Size = new System.Drawing.Size(194, 28);
-            this.activeRentalsCheckBox.TabIndex = 5;
-            this.activeRentalsCheckBox.Text = "Only Active Rentals";
-            this.activeRentalsCheckBox.UseVisualStyleBackColor = true;
-            // 
             // searchMemberLabel
             // 
             this.searchMemberLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -237,6 +211,38 @@ namespace RentMe.UserControls
             this.searchMemberLabel.Size = new System.Drawing.Size(430, 20);
             this.searchMemberLabel.TabIndex = 3;
             this.searchMemberLabel.Text = "Search by ID of either transaction, employee, or member";
+            // 
+            // searchByComboBox
+            // 
+            this.searchByComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.searchByComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchByComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchByComboBox.FormattingEnabled = true;
+            this.searchByComboBox.Items.AddRange(new object[] {
+            "TransactionID",
+            "EmployeeID",
+            "MemberID"});
+            this.searchByComboBox.Location = new System.Drawing.Point(168, 7);
+            this.searchByComboBox.Name = "searchByComboBox";
+            this.searchByComboBox.Size = new System.Drawing.Size(200, 30);
+            this.searchByComboBox.TabIndex = 4;
+            this.searchByComboBox.Enter += new System.EventHandler(this.FilterResultsComboBoxEnter);
+            // 
+            // filterResultsComboBox
+            // 
+            this.filterResultsComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.filterResultsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filterResultsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterResultsComboBox.FormattingEnabled = true;
+            this.filterResultsComboBox.Items.AddRange(new object[] {
+            "All Transactions",
+            "Rentals",
+            "Returns"});
+            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 8);
+            this.filterResultsComboBox.Name = "filterResultsComboBox";
+            this.filterResultsComboBox.Size = new System.Drawing.Size(200, 30);
+            this.filterResultsComboBox.TabIndex = 6;
+            this.filterResultsComboBox.Enter += new System.EventHandler(this.FilterResultsComboBoxEnter);
             // 
             // viewTransactionsHeaderLabel
             // 
@@ -267,17 +273,59 @@ namespace RentMe.UserControls
             this.statusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.statusMessage.Visible = false;
             // 
+            // buttonsTableLayoutPanel
+            // 
+            this.buttonsTableLayoutPanel.ColumnCount = 3;
+            this.viewTransactionsTableLayoutPanel.SetColumnSpan(this.buttonsTableLayoutPanel, 2);
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.buttonsTableLayoutPanel.Controls.Add(this.viewRentalsButton, 0, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.viewAllTransactionsButton, 1, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.viewReturnsButton, 2, 0);
+            this.buttonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonsTableLayoutPanel.Location = new System.Drawing.Point(3, 653);
+            this.buttonsTableLayoutPanel.Name = "buttonsTableLayoutPanel";
+            this.buttonsTableLayoutPanel.RowCount = 1;
+            this.buttonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.buttonsTableLayoutPanel.Size = new System.Drawing.Size(1074, 69);
+            this.buttonsTableLayoutPanel.TabIndex = 27;
+            // 
+            // viewRentalsButton
+            // 
+            this.viewRentalsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.viewRentalsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewRentalsButton.Location = new System.Drawing.Point(117, 4);
+            this.viewRentalsButton.Name = "viewRentalsButton";
+            this.viewRentalsButton.Size = new System.Drawing.Size(120, 60);
+            this.viewRentalsButton.TabIndex = 29;
+            this.viewRentalsButton.Text = "View Rentals";
+            this.viewRentalsButton.UseVisualStyleBackColor = true;
+            this.viewRentalsButton.Click += new System.EventHandler(this.ViewRentalsButtonClick);
+            // 
             // viewAllTransactionsButton
             // 
             this.viewAllTransactionsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.viewAllTransactionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewAllTransactionsButton.Location = new System.Drawing.Point(750, 657);
+            this.viewAllTransactionsButton.Location = new System.Drawing.Point(476, 4);
             this.viewAllTransactionsButton.Name = "viewAllTransactionsButton";
             this.viewAllTransactionsButton.Size = new System.Drawing.Size(120, 60);
-            this.viewAllTransactionsButton.TabIndex = 26;
+            this.viewAllTransactionsButton.TabIndex = 28;
             this.viewAllTransactionsButton.Text = "View All";
             this.viewAllTransactionsButton.UseVisualStyleBackColor = true;
             this.viewAllTransactionsButton.Click += new System.EventHandler(this.ViewAllButtonClick);
+            // 
+            // viewReturnsButton
+            // 
+            this.viewReturnsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.viewReturnsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewReturnsButton.Location = new System.Drawing.Point(836, 4);
+            this.viewReturnsButton.Name = "viewReturnsButton";
+            this.viewReturnsButton.Size = new System.Drawing.Size(120, 60);
+            this.viewReturnsButton.TabIndex = 30;
+            this.viewReturnsButton.Text = "View Returns";
+            this.viewReturnsButton.UseVisualStyleBackColor = true;
+            this.viewReturnsButton.Click += new System.EventHandler(this.ViewReturnsButtonClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -376,6 +424,7 @@ namespace RentMe.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).EndInit();
             this.searchTransactionsTableLayoutPanel.ResumeLayout(false);
             this.searchTransactionsTableLayoutPanel.PerformLayout();
+            this.buttonsTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -390,11 +439,10 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label viewTransactionsHeaderLabel;
         private System.Windows.Forms.Label statusMessage;
-        private System.Windows.Forms.Button viewAllTransactionsButton;
         private System.Windows.Forms.ComboBox searchByComboBox;
         private System.Windows.Forms.DataGridView transactionDataGridView;
         private System.Windows.Forms.BindingSource transactionBindingSource;
-        private System.Windows.Forms.CheckBox activeRentalsCheckBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -406,6 +454,10 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReturnDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalCharge;
-        private System.Windows.Forms.Button viewActiveTransactionsButton;
+        private System.Windows.Forms.TableLayoutPanel buttonsTableLayoutPanel;
+        private System.Windows.Forms.Button viewRentalsButton;
+        private System.Windows.Forms.Button viewAllTransactionsButton;
+        private System.Windows.Forms.Button viewReturnsButton;
+        private System.Windows.Forms.ComboBox filterResultsComboBox;
     }
 }

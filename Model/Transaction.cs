@@ -10,6 +10,7 @@ namespace RentMe.Model
         /// <summary>
         /// Transaction attributes.
         /// </summary>        
+        public string TransactionType { get; set; }
         public int TransactionID { get; set; }
         public int EmployeeID { get; set; }
         public int MemberID { get; set; }

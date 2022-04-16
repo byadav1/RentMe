@@ -22,6 +22,24 @@ namespace RentMe.Controller
         }
 
         /// <summary>
+        /// Gets all RentMe Rental Transactions.
+        /// </summary>
+        /// <returns>List of RentMe Rental Transactions</returns>
+        public List<Transaction> GetRentalTransactions()
+        {
+            return TransactionsDAL.GetRentalTransactions();
+        }
+
+        /// <summary>
+        /// Gets all RentMe Return Transactions.
+        /// </summary>
+        /// <returns>List of RentMe Return Transactions</returns>
+        public List<Transaction> GetReturnTransactions()
+        {
+            return TransactionsDAL.GetReturnTransactions();
+        }
+
+        /// <summary>
         /// Gets all active Transactions from RentalTransactions table.
         /// </summary>
         /// <returns>List of active transactions</returns>
@@ -48,10 +66,34 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="transaction"></param>
         /// <returns>Transaction list</returns>
-        public List<Transaction> GetTransactionsFromSearch(Transaction transaction, bool getActiveTransactions)
+        public List<Transaction> GetTransactionsFromSearch(Transaction transaction)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
-            return TransactionsDAL.GetTransactionsFromSearch(transaction, getActiveTransactions);
+            return TransactionsDAL.GetTransactionsFromSearch(transaction);
+        }
+
+        /// <summary>
+        /// Returns Transaction rentals list
+        /// based on search input.
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns>Transaction rentals list</returns>
+        public List<Transaction> GetRentalsFromSearch(Transaction transaction)
+        {
+            TransactionValidator.ValidateTransactionNotNull(transaction);
+            return TransactionsDAL.GetRentalsFromSearch(transaction);
+        }
+
+        /// <summary>
+        /// Returns Transaction returns list
+        /// based on search input.
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns>Transaction returns list</returns>
+        public List<Transaction> GetReturnsFromSearch(Transaction transaction)
+        {
+            TransactionValidator.ValidateTransactionNotNull(transaction);
+            return TransactionsDAL.GetReturnsFromSearch(transaction);
         }
     }
 }

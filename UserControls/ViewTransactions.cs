@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.Model.Validators;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,7 +18,7 @@ namespace RentMe.UserControls
         /// or Member. A filter for active rentals can also be applied.
         /// </summary>
         private readonly TransactionsController transactionController;
-        private List<Transaction> rentalTransactionSearchResults;
+        private List<Transaction> transactionSearchResults;
 
         /// <summary>
         /// Initialize the UserControl.
@@ -35,14 +36,20 @@ namespace RentMe.UserControls
         /// </summary>
         public void RefreshControl()
         {
-            List<Transaction> rentals = this.transactionController.GetTransactions();
-            this.DisplayRentalsList(rentals);
-            this.viewAllTransactionsButton.Enabled = false;
-            this.viewActiveTransactionsButton.Enabled = true;
-            this.searchTextBox.Clear();
-            this.searchByComboBox.SelectedIndex = 0;
-            this.activeRentalsCheckBox.Checked = false;
-
+            try
+            {
+                List<Transaction> rentals = this.transactionController.GetTransactions();
+                this.DisplayRentalsList(rentals);
+                this.viewAllTransactionsButton.Enabled = false;
+                this.viewRentalsButton.Enabled = true;
+                this.searchTextBox.Clear();
+                this.searchByComboBox.SelectedIndex = 0;
+                this.filterResultsComboBox.SelectedIndex = 0;
+            }
+             catch(Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
+            }       
         }
 
         /// <summary>
@@ -54,14 +61,13 @@ namespace RentMe.UserControls
         {
             try
             {
-                Transaction rentalTransaction = this.CreateRentalTransactionFromSearch();
-                if (this.transactionController.ValidTransactionSearch(rentalTransaction))
+                Transaction transaction = this.CreateRentalTransactionFromSearch();
+                if (this.transactionController.ValidTransactionSearch(transaction))
                 {
-                    this.rentalTransactionSearchResults = this.transactionController
-                        .GetTransactionsFromSearch(rentalTransaction, this.activeRentalsCheckBox.Checked);
-                    this.DisplayRentalsList(this.rentalTransactionSearchResults);                    
+                    this.SearchTransactions(transaction);
+                    this.DisplayRentalsList(this.transactionSearchResults);                    
                     this.viewAllTransactionsButton.Enabled = true;
-                    this.viewActiveTransactionsButton.Enabled = true;
+                    this.viewRentalsButton.Enabled = true;
                 }
             }
             catch(Exception ex)
@@ -103,6 +109,32 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
+        /// Searches based on selected filter.
+        /// </summary>
+        /// <param name="transaction"></param>
+        private void SearchTransactions(Transaction transaction)
+        {
+            TransactionValidator.ValidateTransactionNotNull(transaction);
+            switch (this.filterResultsComboBox.SelectedItem)
+            {
+                case "All Transactions":
+                    this.transactionSearchResults = this.transactionController
+                .GetTransactionsFromSearch(transaction);
+                    break;
+                case "Rentals":
+                    this.transactionSearchResults = this.transactionController
+                .GetRentalsFromSearch(transaction);
+                    break;
+                case "Returns":
+                    this.transactionSearchResults = this.transactionController
+                .GetReturnsFromSearch(transaction);
+                    break;
+                default:
+                    break;
+            }            
+        }
+
+        /// <summary>
         /// Event Handler for View All button click.
         /// </summary>
         /// <param name="sender"></param>
@@ -111,6 +143,56 @@ namespace RentMe.UserControls
         {
             this.RefreshControl();
         }
+
+        /// <summary>
+        /// Event Handler for View Rentals button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ViewRentalsButtonClick(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Transaction> rentals = this.transactionController.GetRentalTransactions();
+                this.DisplayRentalsList(rentals);
+                this.viewAllTransactionsButton.Enabled = true;
+                this.viewRentalsButton.Enabled = false;
+                this.viewReturnsButton.Enabled = true;
+                this.searchTextBox.Clear();
+                this.searchByComboBox.SelectedIndex = 0;
+                this.filterResultsComboBox.SelectedIndex = 0;                
+            }
+            catch(Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
+            }
+        }
+
+        /// <summary>
+        /// Event Handler for View Returns button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ViewReturnsButtonClick(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Transaction> rentals = this.transactionController.GetReturnTransactions();
+                this.DisplayRentalsList(rentals);
+                this.viewAllTransactionsButton.Enabled = true;
+                this.viewRentalsButton.Enabled = true;
+                this.viewReturnsButton.Enabled = false;
+                this.searchTextBox.Clear();
+                this.searchByComboBox.SelectedIndex = 0;
+                this.filterResultsComboBox.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
+            }          
+        }
+
+        
 
         /// <summary>
         /// Event Handler for View All Active button click.
@@ -124,10 +206,10 @@ namespace RentMe.UserControls
                 List<Transaction> rentals = this.transactionController.GetActiveTransactions();
                 this.DisplayRentalsList(rentals);
                 this.viewAllTransactionsButton.Enabled = true;
-                this.viewActiveTransactionsButton.Enabled = false;
+                this.viewRentalsButton.Enabled = false;
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
-                this.activeRentalsCheckBox.Checked = true;
+                this.filterResultsComboBox.SelectedIndex = 0;
             }
             catch(Exception ex)
             {
@@ -188,6 +270,7 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void SearchRentalTextBoxTextChanged(object sender, EventArgs e)
         {
+            this.statusMessage.Visible = false;
             if (String.IsNullOrWhiteSpace(this.searchTextBox.Text))
             {
                 this.searchButton.Enabled = false;
@@ -196,6 +279,16 @@ namespace RentMe.UserControls
             {
                 this.searchButton.Enabled = true;
             }
+        }
+
+        /// <summary>
+        /// Event Handler for ComboBox enter.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FilterResultsComboBoxEnter(object sender, EventArgs e)
+        {
+            this.statusMessage.Visible = false;
         }
     }
 }
