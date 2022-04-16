@@ -1,6 +1,7 @@
 ﻿using RentMe.Model;
 using RentMe.Validators;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -12,6 +13,53 @@ namespace RentMe.DAL
     /// </summary>
     public class MembersDAL
     {
+        /// <summary>
+        /// Gets all RentMe Members from Members table.
+        /// </summary>
+        /// <returns>List of RentMe members</returns>
+        public static List<Member> GetMembers()
+        {
+            List<Member> members = new List<Member>();
+            string selectStatement = "SELECT MemberID, Fname, Lname, DateOfBirth, Phone, " +
+                                     "Sex, Address1, Address2, City, State, ZipCode " +
+                                     "FROM Members";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member
+                            {
+                                MemberID = Convert.ToInt32(reader["MemberID"]),
+                                FName = reader["Fname"].ToString(),
+                                LName = reader["Lname"].ToString(),
+                                DOB = (DateTime)reader["DateOfBirth"],
+                                Phone = reader["Phone"].ToString(),
+                                Sex = reader["Sex"].ToString(),
+                                Address1 = reader["Address1"].ToString(),                              
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                Zip = reader["ZipCode"].ToString()
+                            };
+                            if (!reader.IsDBNull(8))
+                            {
+                                member.Address2 = reader["Address2"].ToString();
+                            }
+
+                            members.Add(member);
+                        }
+                    }
+                }
+            }
+
+            return members;
+        }
+
         /// <summary>
         /// Return true if Member matches search criteria
         /// MemberID, Phone, or Full Name.
@@ -36,9 +84,10 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>
-        public static Member GetMemberFromSearch(Member member)
+        public static List<Member> GetMembersFromSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
+            List<Member> members = new List<Member>();
             string selectStatement = "SELECT * " +
                                         "FROM Members " +
                                         "WHERE ";
@@ -81,26 +130,31 @@ namespace RentMe.DAL
                     {
                         while (reader.Read())
                         {
-                            member.MemberID = Convert.ToInt32(reader["MemberID"]);
-                            member.FName = reader["Fname"].ToString();
-                            member.LName = reader["Lname"].ToString();
-                            member.DOB = (DateTime)reader["DateOfBirth"];
-                            member.Phone = reader["Phone"].ToString();
-                            member.Sex = reader["Sex"].ToString();
-                            member.Address1 = reader["Address1"].ToString();
+                            member = new Member
+                            {
+                                MemberID = Convert.ToInt32(reader["MemberID"]),
+                                FName = reader["Fname"].ToString(),
+                                LName = reader["Lname"].ToString(),
+                                DOB = (DateTime)reader["DateOfBirth"],
+                                Phone = reader["Phone"].ToString(),
+                                Sex = reader["Sex"].ToString(),
+                                Address1 = reader["Address1"].ToString(),
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                Zip = reader["ZipCode"].ToString()
+                            };
                             if (!reader.IsDBNull(8))
                             {
                                 member.Address2 = reader["Address2"].ToString();
                             }
-                            member.City = reader["City"].ToString();
-                            member.State = reader["State"].ToString();
-                            member.Zip = reader["ZipCode"].ToString();
+
+                            members.Add(member);
                         }
                     }
                 }
             }
 
-            return member;
+            return members;
         }
 
         /// <summary>
@@ -232,9 +286,6 @@ namespace RentMe.DAL
             }
         }
 
-
-
-
         /// <summary>
         /// Updates the member details.
         /// </summary>
@@ -319,13 +370,9 @@ namespace RentMe.DAL
                     {
                         return false;
                     }
-
                 }
             }
-
-        }
-
-        
+        }        
     }
 }
 

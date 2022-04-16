@@ -1,6 +1,4 @@
-﻿using RentMe.View;
-
-namespace RentMe.Controller
+﻿namespace RentMe.Controller
 {
     /// <summary>
     /// This class serves as an accessor

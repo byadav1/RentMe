@@ -1,6 +1,7 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using RentMe.Validators;
+using System.Collections.Generic;
 
 namespace RentMe.Controller
 {
@@ -10,7 +11,16 @@ namespace RentMe.Controller
     /// and the MembersDAL.
     /// </summary>
     public class MembersController
-    {     
+    {
+        /// <summary>
+        /// Gets all RentMe Members from Members table.
+        /// </summary>
+        /// <returns>List of RentMe members</returns>
+        public List<Member> GetMembers()
+        {
+            return MembersDAL.GetMembers();
+        }
+
         /// <summary>
         /// Update the member details from the DAL.
         /// </summary>
@@ -35,14 +45,14 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Return member using search input.
+        /// Return members using search input.
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>
-        public Member GetMemberFromSearch(Member member)
+        public List<Member> GetMembersFromSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
-            return MembersDAL.GetMemberFromSearch(member);
+            return MembersDAL.GetMembersFromSearch(member);
         }
 
         /// <summary>

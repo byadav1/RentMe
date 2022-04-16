@@ -1,6 +1,10 @@
 ﻿using System;
 namespace RentMe.Model.Validators
 {
+    /// <summary>
+    /// This class serves as a validator
+    /// for Furniture objects.
+    /// </summary>
     public class FurnitureValidator
     {
 

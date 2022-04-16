@@ -83,8 +83,8 @@ namespace RentMe.DAL
                                 DailyRentalRate = (float)Convert.ToDouble(reader["Daily_rental_rate"]),
                                 Quantity = Convert.ToInt32(reader["Quantity"])
                             };
-                            furnitureList.Add(furniturefound);
 
+                            furnitureList.Add(furniturefound);
                         }
                     }
                 }
@@ -176,7 +176,6 @@ namespace RentMe.DAL
                 }
             }
         }
-
 
         /// <summary>
         /// Gets the list of all style name from database
