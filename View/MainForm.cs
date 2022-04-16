@@ -100,9 +100,9 @@ namespace RentMe.View
                 case "Search Employee":
                     this.employeeSearch.RefreshControl();
                     break;
-                case "Search Furniture":
+                case "Search/Rent Furniture":
                     break;
-                case "View Rentals":
+                case "View Transactions":
                     this.viewTransactions.RefreshControl();
                     break;
                 default:

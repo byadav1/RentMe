@@ -17,15 +17,14 @@ namespace RentMe.UserControls
 
         private readonly FurnitureController furnitureController;
         private  List<Furniture> furnitureSearchResults;
-        private  MembersController memberController;
+        private readonly MembersController memberController;
         private Furniture furnitureSearchDetails;
         private List<string> categoryList;
         private List<string> styleList;
         private Member MemberRent;
         private bool isMemberAvailable =false;
-        private RentCartController cartController;
+        private readonly RentCartController cartController;
 
-        private FurnitureRentController rentController;
         private List<RentFurniture> rentFurnitureList;
 
         /// <summary>
@@ -36,7 +35,6 @@ namespace RentMe.UserControls
             InitializeComponent();
             this.furnitureController = new FurnitureController();
             this.memberController = new MembersController();
-            this.rentController = new FurnitureRentController();
             this.cartController = new RentCartController();
             this.rentFurnitureList = new List<RentFurniture>();
             this.ToggleFormButtons();          
@@ -315,7 +313,7 @@ namespace RentMe.UserControls
 
         private void DisplayMemberDetails(Member memberSearch)
         {
-            this.MemberRent = this.memberController.GetMemberFromSearch(memberSearch);
+            this.MemberRent = this.memberController.GetMembersFromSearch(memberSearch)[0];
             if (this.MemberRent == null)
             {
                 throw new ArgumentException(" No member found with member ID + " + memberSearch.MemberID.ToString());

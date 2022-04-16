@@ -17,11 +17,7 @@ namespace RentMe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // Application.Run(FormProvider.LoginForm);
-
-           Application.Run(new View.MainForm());
-
-           
+            Application.Run(FormProvider.LoginForm);                    
         }
     }
 }
