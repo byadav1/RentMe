@@ -233,9 +233,8 @@ namespace RentMe.UserControls
         /// </summary>
         private void DecorateDataGridView()
         {
-            Console.WriteLine(this.transactionDataGridView.Rows.Count);
             foreach (DataGridViewRow row in this.transactionDataGridView.Rows)
-            {
+            {               
                 if (string.Equals(row.Cells["TransactionType"].Value.ToString(), "Rental"))
                 {
                     row.DefaultCellStyle.BackColor = Color.PowderBlue;

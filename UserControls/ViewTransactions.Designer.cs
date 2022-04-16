@@ -308,7 +308,7 @@ namespace RentMe.UserControls
             "TransactionID",
             "EmployeeID",
             "MemberID"});
-            this.searchByComboBox.Location = new System.Drawing.Point(168, 8);
+            this.searchByComboBox.Location = new System.Drawing.Point(168, 7);
             this.searchByComboBox.Name = "searchByComboBox";
             this.searchByComboBox.Size = new System.Drawing.Size(200, 30);
             this.searchByComboBox.TabIndex = 4;
@@ -325,7 +325,7 @@ namespace RentMe.UserControls
             "Rentals",
             "Returns",
             "Active Rentals"});
-            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 7);
+            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 8);
             this.filterResultsComboBox.Name = "filterResultsComboBox";
             this.filterResultsComboBox.Size = new System.Drawing.Size(200, 30);
             this.filterResultsComboBox.TabIndex = 6;
