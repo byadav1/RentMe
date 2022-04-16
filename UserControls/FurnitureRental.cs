@@ -18,15 +18,14 @@ namespace RentMe.UserControls
 
         private readonly FurnitureController furnitureController;
         private  List<Furniture> furnitureSearchResults;
-        private  MembersController memberController;
+        private readonly MembersController memberController;
         private Furniture furnitureSearchDetails;
         private List<string> categoryList;
         private List<string> styleList;
         private Member MemberRent;
         private bool isMemberAvailable =false;
-        private RentCartController cartController;
+        private readonly RentCartController cartController;
 
-        private FurnitureRentController rentController;
         private List<RentFurniture> rentFurnitureList;
 
         /// <summary>
@@ -37,7 +36,6 @@ namespace RentMe.UserControls
             InitializeComponent();
             this.furnitureController = new FurnitureController();
             this.memberController = new MembersController();
-            this.rentController = new FurnitureRentController();
             this.cartController = new RentCartController();
             this.rentFurnitureList = new List<RentFurniture>();
             this.ToggleFormButtons();          
@@ -325,9 +323,14 @@ namespace RentMe.UserControls
         /// <returns></returns>
         private Member CreateMemberFromSearch()
         {
+<<<<<<< HEAD
             Member member = new Member();
             TextBox search = this.memberIDRentTextBox;
             if (search.Text == "")
+=======
+            this.MemberRent = this.memberController.GetMembersFromSearch(memberSearch)[0];
+            if (this.MemberRent == null)
+>>>>>>> 86b92ad6354a6267ecae612b362c1c7d107d2c63
             {
                 throw new ArgumentException("Member search field cannot be empty");
             }
