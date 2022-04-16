@@ -115,23 +115,9 @@ namespace RentMe.UserControls
         private void SearchTransactions(Transaction transaction)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
-            switch (this.filterResultsComboBox.SelectedItem)
-            {
-                case "All Transactions":
-                    this.transactionSearchResults = this.transactionController
-                .GetTransactionsFromSearch(transaction);
-                    break;
-                case "Rentals":
-                    this.transactionSearchResults = this.transactionController
-                .GetRentalsFromSearch(transaction);
-                    break;
-                case "Returns":
-                    this.transactionSearchResults = this.transactionController
-                .GetReturnsFromSearch(transaction);
-                    break;
-                default:
-                    break;
-            }            
+            string filter = this.filterResultsComboBox.GetItemText(this.filterResultsComboBox.SelectedItem);
+            this.transactionSearchResults = this.transactionController
+                .SearchTransactions(transaction, filter);   
         }
 
         /// <summary>
@@ -190,31 +176,6 @@ namespace RentMe.UserControls
             {
                 this.UpdateStatusMessage(ex.Message, true);
             }          
-        }
-
-        
-
-        /// <summary>
-        /// Event Handler for View All Active button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ViewActiveTransactionsButtonClick(object sender, EventArgs e)
-        {
-            try
-            {
-                List<Transaction> rentals = this.transactionController.GetActiveTransactions();
-                this.DisplayRentalsList(rentals);
-                this.viewAllTransactionsButton.Enabled = true;
-                this.viewRentalsButton.Enabled = false;
-                this.searchTextBox.Clear();
-                this.searchByComboBox.SelectedIndex = 0;
-                this.filterResultsComboBox.SelectedIndex = 0;
-            }
-            catch(Exception ex)
-            {
-                this.UpdateStatusMessage(ex.Message, true);
-            }           
         }
 
         /// <summary>

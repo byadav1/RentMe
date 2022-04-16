@@ -40,15 +40,6 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Gets all active Transactions from RentalTransactions table.
-        /// </summary>
-        /// <returns>List of active transactions</returns>
-        public List<Transaction> GetActiveTransactions()
-        {
-            return TransactionsDAL.GetActiveTransactions();
-        }
-
-        /// <summary>
         /// Return true if Transaction
         /// exists based on search criteria.
         /// </summary>
@@ -66,10 +57,10 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="transaction"></param>
         /// <returns>Transaction list</returns>
-        public List<Transaction> GetTransactionsFromSearch(Transaction transaction)
+        public List<Transaction> SearchTransactions(Transaction transaction, string searchFilter)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
-            return TransactionsDAL.GetTransactionsFromSearch(transaction);
+            return TransactionsDAL.SearchTransactions(transaction, searchFilter);
         }
 
         /// <summary>

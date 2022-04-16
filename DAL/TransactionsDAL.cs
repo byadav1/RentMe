@@ -138,62 +138,6 @@ namespace RentMe.DAL
         }
 
         /// <summary>
-        /// Gets all active Transactions from RentalTransactions table.
-        /// </summary>
-        /// <returns>List of active transactions</returns>
-        public static List<Transaction> GetActiveTransactions()
-        {
-            List<Transaction> transactions = new List<Transaction>();
-            string selectStatement = "SELECT rt.TransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
-                                     "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, " +
-                                     "rtrn.ReturnDate, (f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
-                                     "FROM RentalTransactions rt " +
-                                     "JOIN RentedItems ri " +
-                                     "ON rt.TransactionID = ri.RentalTransactionID " +
-                                     "JOIN ReturnTransaction rtrn " +
-                                     "ON rt.TransactionID = rtrn.TransactionID " +
-                                     "JOIN Furnitures f " +
-                                     "ON ri.FurnitureID = f.FurnitureID " +
-                                     "JOIN Categories c " +
-                                     "ON f.CategoryID = c.CategoryID " +
-                                     "JOIN Styles s " +
-                                     "ON f.StyleID = s.StyleID " +
-                                     "WHERE rtrn.ReturnDate IS NULL";
-
-            using (SqlConnection connection = RentMeDBConnection.GetConnection())
-            {
-                connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {                   
-                    using (SqlDataReader reader = selectCommand.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Transaction transaction = new Transaction
-                            {
-                                TransactionID = Convert.ToInt32(reader["TransactionID"]),
-                                EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
-                                MemberID = Convert.ToInt32(reader["MemberID"]),
-                                FurnitureName = reader["Furniture"].ToString(),
-                                FurnitureCategory = reader["Category"].ToString(),
-                                FurnitureStyle = reader["Style"].ToString(),
-                                Quantity = Convert.ToInt32(reader["Quantity"]),
-                                RentalDate = (DateTime)reader["RentDate"],
-                                DueDate = (DateTime)reader["DueDate"],
-                                ReturnDate = (DateTime)reader["ReturnDate"],
-                                RentalCharge = decimal.Round(Convert.ToDecimal(reader["RentalCharge"].ToString()), 2, MidpointRounding.AwayFromZero)
-                            };
-
-                            transactions.Add(transaction);
-                        }
-                    }
-                }
-            }
-
-            return transactions;
-        }
-
-        /// <summary>
         /// Return true if Rental Transaction
         /// exists based on search criteria.
         /// </summary>
@@ -210,6 +154,40 @@ namespace RentMe.DAL
             {
                 throw new ArgumentException("No search results");
             }
+        }
+
+        /// <summary>
+        /// Performs a search over RentMe transactions.
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <param name="searchFilter"></param>
+        /// <returns></returns>
+        public static List<Transaction> SearchTransactions(Transaction transaction, string searchFilter)
+        {
+            TransactionValidator.ValidateTransactionNotNull(transaction);
+            if (string.IsNullOrWhiteSpace(searchFilter))
+            {
+                throw new ArgumentException("Invalid search criteria");
+            }
+
+            _ = new List<Transaction>();
+            List<Transaction> searchResults;
+            switch (searchFilter)
+            {
+                case "All Transactions":
+                    searchResults = GetTransactionsFromSearch(transaction);
+                    break;
+                case "Rentals":
+                    searchResults = GetRentalsFromSearch(transaction);
+                    break;
+                case "Returns":
+                    searchResults = GetReturnsFromSearch(transaction);
+                    break;
+                default:
+                    throw new ArgumentException("No results");
+            }
+
+            return searchResults;
         }
 
         /// <summary>
@@ -341,7 +319,7 @@ namespace RentMe.DAL
                                         "WHERE ";
             if (TransactionIDExists(transaction))
             {
-                selectStatement += "rtrn.TransactionID = @TransactionID";
+                selectStatement += "rt.TransactionID = @TransactionID";
             }
             else if (EmployeeIDExists(transaction))
             {
