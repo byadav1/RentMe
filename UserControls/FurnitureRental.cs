@@ -323,14 +323,9 @@ namespace RentMe.UserControls
         /// <returns></returns>
         private Member CreateMemberFromSearch()
         {
-<<<<<<< HEAD
             Member member = new Member();
             TextBox search = this.memberIDRentTextBox;
             if (search.Text == "")
-=======
-            this.MemberRent = this.memberController.GetMembersFromSearch(memberSearch)[0];
-            if (this.MemberRent == null)
->>>>>>> 86b92ad6354a6267ecae612b362c1c7d107d2c63
             {
                 throw new ArgumentException("Member search field cannot be empty");
             }
