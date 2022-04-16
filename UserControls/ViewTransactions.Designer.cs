@@ -30,7 +30,7 @@ namespace RentMe.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.viewTransactionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.transactionDataGridView = new System.Windows.Forms.DataGridView();
             this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +95,7 @@ namespace RentMe.UserControls
             this.transactionDataGridView.AllowUserToDeleteRows = false;
             this.transactionDataGridView.AutoGenerateColumns = false;
             this.transactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.transactionDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.transactionDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.transactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.transactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -225,9 +226,9 @@ namespace RentMe.UserControls
             // RentalCharge
             // 
             this.RentalCharge.DataPropertyName = "RentalCharge";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.RentalCharge.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RentalCharge.DefaultCellStyle = dataGridViewCellStyle1;
             this.RentalCharge.HeaderText = "Rental Charge";
             this.RentalCharge.MinimumWidth = 6;
             this.RentalCharge.Name = "RentalCharge";
@@ -308,7 +309,7 @@ namespace RentMe.UserControls
             "TransactionID",
             "EmployeeID",
             "MemberID"});
-            this.searchByComboBox.Location = new System.Drawing.Point(168, 7);
+            this.searchByComboBox.Location = new System.Drawing.Point(168, 8);
             this.searchByComboBox.Name = "searchByComboBox";
             this.searchByComboBox.Size = new System.Drawing.Size(200, 30);
             this.searchByComboBox.TabIndex = 4;
@@ -325,7 +326,7 @@ namespace RentMe.UserControls
             "Rentals",
             "Returns",
             "Active Rentals"});
-            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 8);
+            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 7);
             this.filterResultsComboBox.Name = "filterResultsComboBox";
             this.filterResultsComboBox.Size = new System.Drawing.Size(200, 30);
             this.filterResultsComboBox.TabIndex = 6;

@@ -69,14 +69,14 @@ namespace RentMe.View
                 if (this.loginUser.Type == "Regular")
                 {
                     this.mainTabControl.TabPages.Remove(this.searchEmployeeTabPage);
+                    this.memberSearch.RefreshControl();
                 }
                 else
                 {
                     this.mainTabControl.TabPages.Remove(this.searchMemberTabPage);
                     this.mainTabControl.TabPages.Remove(this.furnitureSearchTabPage);
                     this.mainTabControl.TabPages.Remove(this.viewTransactionsTabPage);
-                }
-
+                }                
             }
             catch (Exception exe)
             {

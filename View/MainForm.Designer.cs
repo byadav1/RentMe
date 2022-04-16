@@ -37,13 +37,10 @@ namespace RentMe.View
             this.searchEmployeeTabPage = new System.Windows.Forms.TabPage();
             this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
             this.viewTransactionsTabPage = new System.Windows.Forms.TabPage();
-            this.memberSearch = new RentMe.UserControls.MemberSearch();
             this.employeeSearch = new RentMe.UserControls.EmployeeSearch();
+            this.memberSearch = new RentMe.UserControls.MemberSearch();
             this.furnitureRental = new RentMe.UserControls.FurnitureRental();
             this.viewTransactions = new RentMe.UserControls.ViewTransactions();
-            this.memberSearch = new RentMe.UserControls.MemberSearch();
-            this.employeeSearch = new RentMe.UserControls.EmployeeSearch();
-            this.furnitureRental = new RentMe.UserControls.FurnitureRental();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.searchMemberTabPage.SuspendLayout();
@@ -199,15 +196,6 @@ namespace RentMe.View
             this.memberSearch.Size = new System.Drawing.Size(1413, 895);
             this.memberSearch.TabIndex = 0;
             // 
-            // employeeSearch
-            // 
-            this.employeeSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeeSearch.Location = new System.Drawing.Point(0, 0);
-            this.employeeSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.employeeSearch.Name = "employeeSearch";
-            this.employeeSearch.Size = new System.Drawing.Size(1419, 901);
-            this.employeeSearch.TabIndex = 0;
-            // 
             // furnitureRental
             // 
             this.furnitureRental.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -216,6 +204,15 @@ namespace RentMe.View
             this.furnitureRental.Name = "furnitureRental";
             this.furnitureRental.Size = new System.Drawing.Size(1413, 895);
             this.furnitureRental.TabIndex = 0;
+            // 
+            // viewTransactions
+            // 
+            this.viewTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewTransactions.Location = new System.Drawing.Point(3, 3);
+            this.viewTransactions.Margin = new System.Windows.Forms.Padding(5);
+            this.viewTransactions.Name = "viewTransactions";
+            this.viewTransactions.Size = new System.Drawing.Size(1413, 895);
+            this.viewTransactions.TabIndex = 0;
             // 
             // MainForm
             // 
