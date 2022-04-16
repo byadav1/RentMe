@@ -157,7 +157,19 @@ namespace RentMe.UserControls
             {
                 this.memberBindingSource.Clear();
                 this.memberBindingSource.DataSource = members;
+                this.DecorateDataGridView();
                 this.updateButton.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Configures the appearance of Members DataGridView.
+        /// </summary>
+        private void DecorateDataGridView()
+        {
+            foreach (DataGridViewRow row in this.memberDataGridView.Rows)
+            {
+                row.DefaultCellStyle.BackColor = Color.Cornsilk;
             }
         }
 

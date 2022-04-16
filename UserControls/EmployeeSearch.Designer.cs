@@ -42,7 +42,6 @@ namespace RentMe.UserControls
             this.statusMessage = new System.Windows.Forms.Label();
             this.memberSearchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.employeeDataGridView = new System.Windows.Forms.DataGridView();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.employeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +56,7 @@ namespace RentMe.UserControls
             this.city = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonsTableLayoutPanel.SuspendLayout();
             this.searchMemberTableLayoutPanel.SuspendLayout();
             this.memberSearchTableLayoutPanel.SuspendLayout();
@@ -230,6 +230,7 @@ namespace RentMe.UserControls
             this.employeeDataGridView.AllowUserToDeleteRows = false;
             this.employeeDataGridView.AutoGenerateColumns = false;
             this.employeeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.employeeDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.employeeDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.employeeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.employeeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -259,10 +260,6 @@ namespace RentMe.UserControls
             this.employeeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.employeeDataGridView.Size = new System.Drawing.Size(1074, 390);
             this.employeeDataGridView.TabIndex = 26;
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(RentMe.Model.Employee);
             // 
             // active
             // 
@@ -389,6 +386,10 @@ namespace RentMe.UserControls
             this.zip.Name = "zip";
             this.zip.ReadOnly = true;
             this.zip.Width = 57;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(RentMe.Model.Employee);
             // 
             // EmployeeSearch
             // 
