@@ -52,26 +52,35 @@
     <Compile Include="Controller\FurnitureRentController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\MembersController.cs" />
+    <Compile Include="Controller\StatesController.cs" />
+    <Compile Include="Controller\TransactionsController.cs" />
     <Compile Include="Controller\RentCartController.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
     <Compile Include="DAL\FurnitureRentalDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\MembersDAL.cs" />
+    <Compile Include="DAL\StatesDAL.cs" />
+    <Compile Include="DAL\TransactionsDAL.cs" />
     <Compile Include="DAL\RentCartDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\RentFurniture.cs" />
     <Compile Include="Model\Furniture.cs" />
-    <Compile Include="Model\Helpers\States.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\ReceiptItem.cs" />
+    <Compile Include="Model\State.cs" />
+    <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
     <Compile Include="Model\Validators\FurnitureValidator.cs" />
     <Compile Include="Model\Validators\MemberValidator.cs" />
-    <Compile Include="UserControls\EmployeeServices.cs">
+    <Compile Include="Model\Validators\ReceiptItemValidator.cs" />
+    <Compile Include="Model\Validators\StateValidator.cs" />
+    <Compile Include="Model\Validators\TransactionValidator.cs" />
+    <Compile Include="UserControls\EmployeeSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\EmployeeServices.Designer.cs">
-      <DependentUpon>EmployeeServices.cs</DependentUpon>
+    <Compile Include="UserControls\EmployeeSearch.Designer.cs">
+      <DependentUpon>EmployeeSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FurnitureRental.cs">
       <SubType>UserControl</SubType>
@@ -79,11 +88,23 @@
     <Compile Include="UserControls\FurnitureRental.Designer.cs">
       <DependentUpon>FurnitureRental.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MemberServices.cs">
+    <Compile Include="UserControls\MemberSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MemberServices.Designer.cs">
-      <DependentUpon>MemberServices.cs</DependentUpon>
+    <Compile Include="UserControls\MemberSearch.Designer.cs">
+      <DependentUpon>MemberSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewTransactions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ViewTransactions.Designer.cs">
+      <DependentUpon>ViewTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeServicesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeServicesDialog.Designer.cs">
+      <DependentUpon>EmployeeServicesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -105,6 +126,18 @@
     <Compile Include="View\ViewCartDialog.Designer.cs">
       <DependentUpon>ViewCartDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MemberServicesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MemberServicesDialog.Designer.cs">
+      <DependentUpon>MemberServicesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReceiptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReceiptDialog.Designer.cs">
+      <DependentUpon>ReceiptDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -114,14 +147,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\EmployeeServices.resx">
-      <DependentUpon>EmployeeServices.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\EmployeeSearch.resx">
+      <DependentUpon>EmployeeSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FurnitureRental.resx">
       <DependentUpon>FurnitureRental.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MemberServices.resx">
-      <DependentUpon>MemberServices.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MemberSearch.resx">
+      <DependentUpon>MemberSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ViewTransactions.resx">
+      <DependentUpon>ViewTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeServicesDialog.resx">
+      <DependentUpon>EmployeeServicesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -134,6 +173,16 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.RentFurniture.datasource" />
+    <EmbeddedResource Include="View\MemberServicesDialog.resx">
+      <DependentUpon>MemberServicesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReceiptDialog.resx">
+      <DependentUpon>ReceiptDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\RentMe.Model.Employee.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.Transaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

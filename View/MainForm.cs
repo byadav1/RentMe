@@ -60,16 +60,21 @@ namespace RentMe.View
         {
             try
             {
-
                 this.loginUser = this.employeeController.GetCurrentEmployeeData(this.loginUser);
                 if (this.loginUser != null)
                 {
                     this.currentUserLabel.Text = "Welcome, " + this.loginUser.FName + " " + this.loginUser.LName +
-                        "!\nUsername: " + this.loginUser.Username;
-                    if (this.loginUser.Type == "Regular")
-                    {
-                        this.mainTabControl.TabPages.Remove(this.employeeTabPage);
-                    }
+                        "!\nUsername: " + this.loginUser.Username;                   
+                }
+                if (this.loginUser.Type == "Regular")
+                {
+                    this.mainTabControl.TabPages.Remove(this.searchEmployeeTabPage);
+                }
+                else
+                {
+                    this.mainTabControl.TabPages.Remove(this.searchMemberTabPage);
+                    this.mainTabControl.TabPages.Remove(this.furnitureSearchTabPage);
+                    this.mainTabControl.TabPages.Remove(this.viewTransactionsTabPage);
                 }
 
             }
@@ -80,5 +85,29 @@ namespace RentMe.View
             }
         }
 
+        /// <summary>
+        /// Event Handler for Tab Index changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainTabControlSelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (this.mainTabControl.SelectedTab.Text)
+            {
+                case "Search Member":
+                    this.memberSearch.RefreshControl();
+                    break;
+                case "Search Employee":
+                    this.employeeSearch.RefreshControl();
+                    break;
+                case "Search Furniture":
+                    break;
+                case "View Rentals":
+                    this.viewTransactions.RefreshControl();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

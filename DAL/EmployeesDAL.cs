@@ -1,6 +1,7 @@
 ﻿using RentMe.Model;
 using RentMe.Validators;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,6 +14,59 @@ namespace RentMe.DAL
     public class EmployeesDAL
     {
 
+
+        /// <summary>
+        /// Gets all RentMe Members from Members table.
+        /// </summary>
+        /// <returns>List of RentMe employees</returns>
+        public static List<Employee> GetEmployees()
+        {
+            List<Employee> employees = new List<Employee>();
+            string selectStatement = "SELECT e.EmployeeID, e.Fname, e.Lname, e.DateOfBirth, e.Phone, " +
+                                     "e.Sex, e.Address1, e.Address2, e.City, e.State, e.ZipCode, a.Username, " +
+                                     "e.Employee_type, e.Active " +
+                                     "FROM Employees e " +
+                                     "JOIN Accounts a " +
+                                     "ON e.AccountID = a.AccountID";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Employee employee = new Employee
+                            {
+                                EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
+                                FName = reader["Fname"].ToString(),
+                                LName = reader["Lname"].ToString(),
+                                DOB = (DateTime)reader["DateOfBirth"],
+                                Phone = reader["Phone"].ToString(),
+                                Sex = reader["Sex"].ToString(),
+                                Address1 = reader["Address1"].ToString(),
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                Zip = reader["ZipCode"].ToString(),
+                                Username = reader["Username"].ToString(),
+                                Type = reader["Employee_type"].ToString(),
+                                Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"]))
+                        };
+                            if (!reader.IsDBNull(8))
+                            {
+                                employee.Address2 = reader["Address2"].ToString();
+                            }
+
+                            employees.Add(employee);
+                        }
+                    }
+                }
+            }
+
+            return employees;
+        }
 
         /// <summary>
         /// Return true if Employee account exists.
@@ -70,9 +124,10 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="employee"></param>
         /// <returns>Searched employee</returns>
-        public static Employee GetEmployeeFromSearch(Employee employee)
+        public static List<Employee> GetEmployeesFromSearch(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
+            List<Employee> employees = new List<Employee>();
             string selectStatement = "SELECT * " +
                                      "FROM Employees e " +
                                      "JOIN Accounts a " +
@@ -117,32 +172,35 @@ namespace RentMe.DAL
                     {
                         while (reader.Read())
                         {
-                            employee.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                            employee.FName = reader["Fname"].ToString();
-                            employee.LName = reader["Lname"].ToString();
-                            employee.DOB = (DateTime)reader["DateOfBirth"];
-                            employee.Phone = reader["Phone"].ToString();
-                            employee.Sex = reader["Sex"].ToString();
-                            employee.Address1 = reader["Address1"].ToString();
+                            employee = new Employee
+                            {
+                                EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
+                                FName = reader["Fname"].ToString(),
+                                LName = reader["Lname"].ToString(),
+                                DOB = (DateTime)reader["DateOfBirth"],
+                                Phone = reader["Phone"].ToString(),
+                                Sex = reader["Sex"].ToString(),
+                                Address1 = reader["Address1"].ToString(),
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                Zip = reader["ZipCode"].ToString(),
+                                Username = reader["Username"].ToString(),
+                                Type = reader["Employee_type"].ToString(),
+                                Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"])),
+                            };
                             if (!reader.IsDBNull(8))
                             {
                                 employee.Address2 = reader["Address2"].ToString();
                             }
-                            employee.City = reader["City"].ToString();
-                            employee.State = reader["State"].ToString();
-                            employee.Zip = reader["ZipCode"].ToString();
-                            employee.Username = reader["Username"].ToString();
-                            employee.Type = reader["Employee_type"].ToString();
-                            employee.Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"]));
-                        }
+
+                            employees.Add(employee);
+                            }
                     }
                 }
             }
 
-            return employee;
+            return employees;
         }
-
-
 
         /// <summary>
         /// Gets the login employee data.
@@ -208,11 +266,12 @@ namespace RentMe.DAL
                                      "@Sex, @Address1, @Address2, @City, @State, @Zip, (SELECT SCOPE_IDENTITY()), @Type, 1) " +
                                      "SELECT SCOPE_IDENTITY()";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
-            {
+            {                
                 connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(insertStatement, connection))
-                {
-                    try
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
+                {                    
+                    using (SqlCommand selectCommand = new SqlCommand(insertStatement, connection, transaction))
                     {
                         selectCommand.Parameters.AddWithValue("Username", employee.Username);
                         selectCommand.Parameters.AddWithValue("Password", employee.Password);
@@ -236,13 +295,14 @@ namespace RentMe.DAL
                         selectCommand.Parameters.AddWithValue("Type", employee.Type);
 
                         employee.EmployeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                        transaction.Commit();
                     }
-                    catch (Exception)
-                    {
-                        throw new ArgumentException("An employee account with that username already exists");
-                    }
-
                 }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw new ArgumentException("An employee account with that username already exists");
+                }                                
             }
         }
 
@@ -336,7 +396,6 @@ namespace RentMe.DAL
             }
         }
 
-
         /// <summary>
         /// Deactivates  or activate employee.
         /// </summary>
@@ -345,16 +404,22 @@ namespace RentMe.DAL
         public static bool DeactivateORActivateEmployee(Employee employee)
         {
             string selectStatement;
-            int activeValue;
+            bool active;
 
             if (employee.Active) {
-                selectStatement=" UPDATE Employees SET ACTIVE=0 Where EmployeeID=@ID and ACTIVE=@flag";
-                activeValue = 1;
+                selectStatement= "UPDATE Employees " +
+                                 "SET ACTIVE = 0 " +
+                                 "WHERE EmployeeID = @ID " +
+                                 "AND ACTIVE = @flag";
+                active = false;
             }
             else 
             {
-                selectStatement = " UPDATE Employees SET ACTIVE= 1 Where EmployeeID=@ID and ACTIVE=@flag";
-                activeValue = 0;
+                selectStatement = "UPDATE Employees " +
+                                  "SET Active = 1 WHERE " +
+                                  "EmployeeID = @ID " +
+                                  "AND Active = @flag";
+                active = true;
             }
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -364,20 +429,18 @@ namespace RentMe.DAL
                     
                     
                     selectCommand.Parameters.AddWithValue("ID", employee.EmployeeID);
-                    selectCommand.Parameters.AddWithValue("flag", activeValue);
-                    int resultCount = selectCommand.ExecuteNonQuery();
-                    if (resultCount > 0)
+                    selectCommand.Parameters.AddWithValue("flag", employee.Active);
+                    if (selectCommand.ExecuteNonQuery() > 0)
                     {
+                        employee.Active = active;
                         return true;
                     }
                     else
                     {
-                        return false;
+                        throw new ArgumentException("Employee deletion failed at database transaction");
                     }
-
                 }
             }
-
         }
 
         /// <summary>
@@ -555,11 +618,8 @@ namespace RentMe.DAL
                     {
                         return false;
                     }
-
                 }
             }
         }
-
-
     }
 }

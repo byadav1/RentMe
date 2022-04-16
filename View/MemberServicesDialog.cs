@@ -1,80 +1,60 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
-using RentMe.Model.Helpers;
 using RentMe.Validators;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Drawing;
 
-
-namespace RentMe.UserControls
+namespace RentMe.View
 {
     /// <summary>
-    /// This UserControl models a form
-    /// which will enable the update, deletion,
-    /// or registration of a RentMe member
+    /// This Dialog serves as a services form
+    /// to view and update RentMe Member information.
     /// </summary>
-    public partial class MemberServices : UserControl
+    public partial class MemberServicesDialog : Form
     {
         private readonly MembersController membersController;
-        private Member memberSearchDetails;
+        private readonly StatesController statesController;
+        private readonly Member memberSearchDetails;
 
         /// <summary>
-        /// Initialize the control.
+        /// Initialize the form.
         /// </summary>
-        public MemberServices()
+        /// <param name="isUpdate"></param>
+        /// <param name="member"></param>
+        public MemberServicesDialog(bool isUpdate, Member member)
         {
+            MemberValidator.ValidateMemberNotNull(member);
             InitializeComponent();
-            this.InitializeControls();
             this.membersController = new MembersController();
+            this.statesController = new StatesController();
+            this.memberSearchDetails = member;
+            this.InitializeControls(isUpdate);
         }
 
         /// <summary>
         /// Initializes the default values
         /// for the form controls.
         /// </summary>
-        private void InitializeControls()
+        private void InitializeControls(bool isUpdate)
         {
-            this.sexComboBox.SelectedIndex = 0;
-            this.stateComboBox.DataSource = new States().GetStateNames();
-            this.stateComboBox.SelectedIndex = 0;
-            this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
-        }
+            this.stateComboBox.DataSource = this.statesController.GetStateNames();
 
-        /// <summary>
-        /// Event handler for search button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SearchButtonClick(object sender, System.EventArgs e)
-        {
-            try
+            if (isUpdate)
             {
-                this.memberSearchDetails = this.CreateMemberFromSearch();
-                if (this.membersController.ValidMemberSearch(this.memberSearchDetails))
-                {
-                    this.memberSearchDetails = this.membersController.GetMemberFromSearch(this.memberSearchDetails);
-                    this.ToggleFormButtons(true);
-                    this.SetFields(this.memberSearchDetails);
-                }
-            }
-            catch (ArgumentException ae)
-            {
-                this.UpdateStatusMessage(ae.Message, true);
+                this.SetFields(this.memberSearchDetails);
                 this.ToggleFormButtons(false);
             }
-            catch (Exception ex)
+            else
             {
-                this.UpdateStatusMessage(ex.Message, true);
-                this.ToggleFormButtons(false);
+                this.sexComboBox.SelectedIndex = 0;
+                this.stateComboBox.SelectedIndex = 0;
+                this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
             }
         }
-
-       
-     
 
         /// <summary>
         /// Event handler for update button click.
@@ -83,7 +63,6 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void UpdateButtonClick(object sender, System.EventArgs e)
         {
-            this.statusMessage.Text = "";
             try
             {
                 this.ValidateFormFields();
@@ -96,10 +75,8 @@ namespace RentMe.UserControls
             }
             catch (Exception ex)
             {
-                this.statusMessage.Visible = true;
-                this.statusMessage.Text = ex.Message;
+                this.UpdateStatusMessage(ex.Message, true);
             }
-
         }
 
         /// <summary>
@@ -107,6 +84,10 @@ namespace RentMe.UserControls
         /// </summary>
         private void ProcessUpdate()
         {
+            State state = new State
+            {
+                StateName = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)
+            };
             Member memberUpdateData =
                 new Member()
                 {
@@ -120,7 +101,7 @@ namespace RentMe.UserControls
                     Address2 = this.address2TextBox.Text,
                     City = this.cityTextBox.Text,
                     Zip = this.zipTextBox.Text,
-                    State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem))
+                    State = this.statesController.GetStateCode(state).StateCode
                 };
 
             if (this.CheckUpdates(memberUpdateData))
@@ -128,12 +109,11 @@ namespace RentMe.UserControls
                 if (this.membersController.UpdateMemberInformation(this.memberSearchDetails, memberUpdateData))
                 {
                     this.UpdateStatusMessage("Member information updated successfully", false);
-                    this.memberSearchDetails = this.membersController.GetMemberFromSearch(memberUpdateData);
                 }
                 else
                 {
-                    this.UpdateStatusMessage("Member information cannot be perfomed.Something went wrong "+
-                        "with the process or member data is updated at the backend", true);                    
+                    this.UpdateStatusMessage("Member information cannot be perfomed.Something went wrong " +
+                        "with the process or member data is updated at the backend", true);
                 };
             }
             else
@@ -166,13 +146,10 @@ namespace RentMe.UserControls
                               l1.City != l2.City || l1.Zip != l2.Zip
                               )));
                 isModified = result.Any();
-
             }
+
             return isModified;
         }
-
-
-       
 
         /// <summary>
         /// Event handler for register member button click.
@@ -189,7 +166,7 @@ namespace RentMe.UserControls
                     this.membersController.RegisterNewMember(member);
                     UpdateStatusMessage("Member registration successfully!\n" +
                     "MemberID is " + member.MemberID, false);
-                    this.ToggleFormButtons(true);
+                    this.ToggleFormButtons(false);
                 }
             }
             catch (ArgumentException ae)
@@ -203,77 +180,6 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
-        /// Event handler for clear button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ClearButtonClick(object sender, System.EventArgs e)
-        {
-            this.ToggleFormButtons(false);
-            this.ClearFields();
-        }
-
-        /// <summary>
-        /// Clears the form fields.
-        /// </summary>
-        private void ClearFields()
-        {
-            void func(Control.ControlCollection controls)
-            {
-                foreach (Control control in controls)
-                    if (control is TextBox)
-                    {
-                        (control as TextBox).Clear();
-                    }
-                    else if (control is ComboBox)
-                    {
-                        (control as ComboBox).SelectedIndex = 0;
-                    }
-                    else if (control is DateTimePicker)
-                    {
-                        (control as DateTimePicker).Value = (control as DateTimePicker).MaxDate;
-                    }
-                    else
-                    {
-                        func(control.Controls);
-                    }
-            }
-
-            func(Controls);
-        }
-
-        /// <summary>
-        /// Takes input from the search field
-        /// and returns a Member.
-        /// </summary>
-        /// <returns></returns>
-        private Member CreateMemberFromSearch()
-        {
-            Member member = new Member();
-            TextBox search = this.searchMemberTextBox;
-            if (search.Text == "")
-            {
-                throw new ArgumentException("Member search field cannot be empty");
-            }
-            else if (new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$").IsMatch(search.Text))
-            {
-                member.Phone = search.Text;
-
-            }
-            else if (new Regex("[a-zA-Z] [a-zA-Z]").IsMatch(search.Text))
-            {
-                member.FName = search.Text.Substring(0, search.Text.IndexOf(" "));
-                member.LName = search.Text.Substring(search.Text.IndexOf(" ") + 1);
-            }
-            else if (Int32.TryParse(search.Text, out int memberID))
-            {
-                member.MemberID = memberID;
-            }
-
-            return member;
-        }
-
-        /// <summary>
         /// Creates a new Member using validated
         /// form fields.
         /// </summary>
@@ -281,6 +187,10 @@ namespace RentMe.UserControls
         private Member CreateMemberFromFormFields()
         {
             this.ValidateFormFields();
+            State state = new State
+            {
+                StateName = this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)
+            };
             Member member = new Member()
             {
                 FName = this.fnameTextBox.Text,
@@ -291,7 +201,7 @@ namespace RentMe.UserControls
                 Address1 = this.address1TextBox.Text,
                 Address2 = this.address2TextBox.Text,
                 City = this.cityTextBox.Text,
-                State = new States().GetStateCharFormat(this.stateComboBox.GetItemText(this.stateComboBox.SelectedItem)),
+                State = this.statesController.GetStateCode(state).StateCode,
                 Zip = this.zipTextBox.Text
             };
             return member;
@@ -318,6 +228,10 @@ namespace RentMe.UserControls
         private void SetFields(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
+            State state = new State
+            {
+                StateCode = member.State
+            };
             this.fnameTextBox.Text = member.FName;
             this.lnameTextBox.Text = member.LName;
             this.sexComboBox.SelectedIndex = this.sexComboBox.FindStringExact(member.Sex);
@@ -326,7 +240,7 @@ namespace RentMe.UserControls
             this.address1TextBox.Text = member.Address1;
             this.address2TextBox.Text = member.Address2;
             this.cityTextBox.Text = member.City;
-            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(new States().GetStateName(member.State));
+            this.stateComboBox.SelectedIndex = this.stateComboBox.FindStringExact(this.statesController.GetStateName(state).StateName);
             this.zipTextBox.Text = member.Zip;
         }
 
@@ -340,7 +254,6 @@ namespace RentMe.UserControls
             this.statusMessage.Visible = false;
         }
 
-
         /// <summary>
         /// Validates the required form fields.
         /// </summary>
@@ -349,7 +262,7 @@ namespace RentMe.UserControls
             if (this.InvalidInput(this.fnameTextBox, this.GenerateRegexForTextBox(this.fnameTextBox)) ||
                 this.InvalidInput(this.lnameTextBox, this.GenerateRegexForTextBox(this.lnameTextBox)))
             {
-                throw new Exception("Name should consist of letters and not:\n" + 
+                throw new Exception("Name should consist of letters and not:\n" +
                     "be empty, include numbers, or special characters");
             }
             else if (this.InvalidInput(this.phoneTextBox, this.GenerateRegexForTextBox(this.phoneTextBox)))
@@ -419,7 +332,7 @@ namespace RentMe.UserControls
                     regex = new Regex("^[0-9a-zA-Z#&/. -]+$");
                     break;
                 case "cityTextBox":
-                    regex = new Regex("^[a-zA-Z ]+$");
+                    regex = new Regex("^[a-zA-Z]+$");
                     break;
                 case "zipTextBox":
                     regex = new Regex("[0-9]{5}");
@@ -436,8 +349,8 @@ namespace RentMe.UserControls
         /// </summary>
         private void ToggleFormButtons(bool enabled)
         {
-            this.updateButton.Enabled = enabled;
-            this.registerButton.Enabled = !enabled;
+            this.updateButton.Enabled = !enabled;
+            this.registerButton.Enabled = enabled;
         }
 
         /// <summary>
@@ -467,23 +380,63 @@ namespace RentMe.UserControls
         }
 
         /// <summary>
-        /// Event handler for visible change.
+        /// Clears the form fields.
+        /// </summary>
+        private void ClearFields()
+        {
+            void func(Control.ControlCollection controls)
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                    {
+                        (control as TextBox).Clear();
+                    }
+                    else if (control is ComboBox)
+                    {
+                        (control as ComboBox).SelectedIndex = 0;
+                    }
+                    else if (control is DateTimePicker)
+                    {
+                        (control as DateTimePicker).Value = (control as DateTimePicker).MaxDate;
+                    }
+                    else if (control is CheckBox)
+                    {
+                        (control as CheckBox).Checked = false;
+                    }
+                    else
+                    {
+                        func(control.Controls);
+                    }
+            }
+
+            func(Controls);
+        }
+
+        /// <summary>
+        /// Event Handler for Close button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MemberServicesVisibleChanged(object sender, EventArgs e)
+        private void CloseButtonClick(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            GC.Collect();
+        }
+
+        /// <summary>
+        /// Event handler for Clear button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClearButtonClick(object sender, EventArgs e)
         {
             this.ClearFields();
         }
 
-        /// <summary>
-        /// Event handler for UserControl Load event.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MemberServicesLoad(object sender, EventArgs e)
+        private void ServicesFormFormClosed(object sender, FormClosedEventArgs e)
         {
-            this.searchMemberTextBox.Focus();
+            this.DialogResult = DialogResult.OK;
+            GC.Collect();
         }
     }
 }

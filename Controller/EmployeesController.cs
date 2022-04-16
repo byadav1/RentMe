@@ -2,6 +2,7 @@
 using RentMe.Model;
 using RentMe.Validators;
 using System;
+using System.Collections.Generic;
 
 namespace RentMe.Controller
 {
@@ -12,6 +13,15 @@ namespace RentMe.Controller
     /// </summary>
     public class EmployeesController
     {
+        /// <summary>
+        /// Gets all RentMe Employees from Employees table.
+        /// </summary>
+        /// <returns>List of RentMe members</returns>
+        public List<Employee> GetEmployees()
+        {
+            return EmployeesDAL.GetEmployees();
+        }
+
         /// <summary>
         /// Return true if employee account exists.
         /// </summary>
@@ -29,8 +39,7 @@ namespace RentMe.Controller
         /// <param name="employee"></param>
         /// <returns></returns>
         public bool Checkpassword(Employee employee,Employee updateEmployee)
-        {
-           
+        {          
             return EmployeesDAL.IsPasswordChange(employee, updateEmployee);
         }
 
@@ -51,10 +60,10 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="employee"></param>
         /// <returns>Searched employee</returns>
-        public Employee GetEmployeeFromSearch(Employee employee)
+        public List<Employee> GetEmployeesFromSearch(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
-            return EmployeesDAL.GetEmployeeFromSearch(employee);
+            return EmployeesDAL.GetEmployeesFromSearch(employee);
         }
 
         /// <summary>
@@ -75,11 +84,11 @@ namespace RentMe.Controller
         /// <exception cref="ArgumentNullException">Delete cannot be performed</exception>
         public bool DeleteOrRestoreEmployee(Employee employee)
         {
-
             if (employee == null)
             {
                 throw new ArgumentNullException("Delete or restore cannot be performed ");
             }
+
             return EmployeesDAL.DeactivateORActivateEmployee(employee);
         }
 
@@ -91,11 +100,11 @@ namespace RentMe.Controller
         /// <exception cref="ArgumentNullException">Employee username cannot be null</exception>
         public Employee GetCurrentEmployeeData(Employee employee)
         {
-
             if (employee == null)
             {
                 throw new ArgumentNullException("Employee username cannot be null ");
             }
+
             return EmployeesDAL.GetLoginEmployeeData(employee);
         }
 
@@ -108,14 +117,13 @@ namespace RentMe.Controller
         /// <exception cref="ArgumentNullException">Update cannot be performed with no change in data</exception>
         public bool UpdateEmployeeInformation(Employee oldEmployee, Employee newEmployee)
         {
-
             if (oldEmployee == null && newEmployee == null)
             {
                 throw new ArgumentNullException("Update cannot be performed as there is no change in data");
             }
+
             return EmployeesDAL.UpdateEmployeeDetails(oldEmployee, newEmployee);
         }
-
 
         /// <summary>
         /// Updates the employee password.
@@ -126,13 +134,12 @@ namespace RentMe.Controller
         /// <exception cref="ArgumentNullException">Update cannot be performed as there is no change in data</exception>
        public bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
         {
-
             if (oldEmployee == null && newEmployee == null)
             {
                 throw new ArgumentNullException("Update cannot be performed as there is no change in data");
             }
+
             return EmployeesDAL.UpdateEmployeeUserNameORPassword(oldEmployee, newEmployee);
         }
-
     }
 }
