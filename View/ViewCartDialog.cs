@@ -27,9 +27,7 @@ namespace RentMe.View
 
         private void ViewCartDialog_Load(object sender, EventArgs e)
         {
-           this.DisplayRentData();
-
-           
+           this.DisplayRentData();           
         }
 
         private void DisplayRentData()
@@ -57,9 +55,6 @@ namespace RentMe.View
                     this.CalculateTotal();
 
                 }
-
-
-
                 else
                 {
                     this.submitOrderButton.Enabled = false;
@@ -83,7 +78,6 @@ namespace RentMe.View
 
         private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
-
             if (!this.cartList.Any())
             {
                 return;
@@ -91,7 +85,6 @@ namespace RentMe.View
             var result = MessageBox.Show("Are you sure want to Submit the Furniture Rental ", "Order submitting",
                                  MessageBoxButtons.YesNo,
                                  MessageBoxIcon.Question);
-
           
             if (result == DialogResult.Yes)
             {

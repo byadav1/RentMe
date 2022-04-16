@@ -127,7 +127,7 @@ namespace RentMe.View
             // 
             this.amountLabel.AutoSize = true;
             this.amountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amountLabel.Location = new System.Drawing.Point(341, 0);
+            this.amountLabel.Location = new System.Drawing.Point(409, 0);
             this.amountLabel.Name = "amountLabel";
             this.amountLabel.Size = new System.Drawing.Size(61, 25);
             this.amountLabel.TabIndex = 2;
@@ -137,7 +137,7 @@ namespace RentMe.View
             // 
             this.cancelCartButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelCartButton.Location = new System.Drawing.Point(699, 3);
+            this.cancelCartButton.Location = new System.Drawing.Point(838, 4);
             this.cancelCartButton.Name = "cancelCartButton";
             this.cancelCartButton.Size = new System.Drawing.Size(124, 39);
             this.cancelCartButton.TabIndex = 3;
@@ -148,7 +148,7 @@ namespace RentMe.View
             // 
             this.submitOrderButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.submitOrderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitOrderButton.Location = new System.Drawing.Point(453, 3);
+            this.submitOrderButton.Location = new System.Drawing.Point(544, 4);
             this.submitOrderButton.Name = "submitOrderButton";
             this.submitOrderButton.Size = new System.Drawing.Size(189, 39);
             this.submitOrderButton.TabIndex = 4;
@@ -187,7 +187,7 @@ namespace RentMe.View
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.23697F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.71386F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 349F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 386F));
             this.tableLayoutPanel2.Controls.Add(this.emptyCartButton, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.rentAmountlabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.amountLabel, 1, 0);
@@ -203,7 +203,7 @@ namespace RentMe.View
             // emptyCartButton
             // 
             this.emptyCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emptyCartButton.Location = new System.Drawing.Point(904, 3);
+            this.emptyCartButton.Location = new System.Drawing.Point(1083, 4);
             this.emptyCartButton.Name = "emptyCartButton";
             this.emptyCartButton.Size = new System.Drawing.Size(210, 39);
             this.emptyCartButton.TabIndex = 5;

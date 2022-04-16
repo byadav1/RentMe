@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
 {
@@ -144,10 +145,14 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Text = "";
             this.categoryComboBox.Text = "";
             this.styleComboBox.Text = "";
-          
+            this.furnitureBindingSource.DataSource = null;
             this.rentalStatusLabel.Visible = false;
             this.rentalStatusLabel.Text = "";
             this.memberIDRentTextBox.Text = "";
+            this.memberFirstName.Text = "";
+            this.memberIDLabel.Text = "";
+            this.memberFirstName.Visible = false;
+            this.memberIDLabel.Visible = false;
 
         }
 
@@ -286,43 +291,66 @@ namespace RentMe.UserControls
             this.categoryRadioButton.Checked = false;
             this.memberIDRentTextBox.Enabled = false;
             this.memberSearchButton.Enabled = false;
+            this.furnitureBindingSource.DataSource = null;
             this.LoadComboBox();
         }
 
 
         private void MemberSearchButton_Click(object sender, EventArgs e)
         {
-            try
+            try              
             {
-                this.rentalStatusLabel.Visible = false;
-                this.rentalStatusLabel.Text = "";  
-                if (!int.TryParse(this.memberIDRentTextBox.Text, out int numericValue))
+                Member memberRental = this.CreateMemberFromSearch();
+                if (this.memberController.ValidMemberSearch(memberRental))
                 {
-                    this.rentalStatusLabel.Visible = true;
-                    this.rentalStatusLabel.Text = " Member Id should be a valid number, please enter the valid the Member Id";
-                    return;
+                    this.MemberRent = this.memberController.GetMemberFromSearch(memberRental);
+                    this.DisplayMemberDetails();
                 }
-                Member memberSearch = new Member
-                {
-                    MemberID = Int32.Parse(this.memberIDRentTextBox.Text)
-                };
-                this.DisplayMemberDetails(memberSearch);
+            }
+            catch (ArgumentException ae)
+            {
+                this.UpdateStatusMessage(ae.Message, true);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error occured on - Member ID search -" + ex.Message,
-                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.UpdateStatusMessage(ex.Message, true);
+                
             }
         }
 
-        private void DisplayMemberDetails(Member memberSearch)
+        /// <summary>
+        /// Takes input from the search field
+        /// and returns a Member.
+        /// </summary>
+        /// <returns></returns>
+        private Member CreateMemberFromSearch()
         {
-            this.MemberRent = this.memberController.GetMemberFromSearch(memberSearch);
-            if (this.MemberRent == null)
+            Member member = new Member();
+            TextBox search = this.memberIDRentTextBox;
+            if (search.Text == "")
             {
-                throw new ArgumentException(" No member found with member ID + " + memberSearch.MemberID.ToString());
-              
+                throw new ArgumentException("Member search field cannot be empty");
             }
+            else if (new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$").IsMatch(search.Text))
+            {
+                member.Phone = search.Text;
+
+            }
+            else if (new Regex("[a-zA-Z] [a-zA-Z]").IsMatch(search.Text))
+            {
+                member.FName = search.Text.Substring(0, search.Text.IndexOf(" "));
+                member.LName = search.Text.Substring(search.Text.IndexOf(" ") + 1);
+            }
+            else if (Int32.TryParse(search.Text, out int memberID))
+            {
+                member.MemberID = memberID;
+            }
+
+            return member;
+        }
+
+        private void DisplayMemberDetails()
+        {
                 this.memberIDLabel.Visible = true;
                 this.memberFirstName.Visible = true;
                 this.memberIDLabel.Text = "MemberId: " + this.MemberRent.MemberID.ToString();
@@ -344,22 +372,18 @@ namespace RentMe.UserControls
                 foreach (DataGridViewColumn dc in this.furnitureDateGridView.Columns)
                 {
                    if (!dc.Index.Equals(7) && !dc.Index.Equals(8) && !dc.Index.Equals(9))
-                    {
-                        dc.ReadOnly = true;
-                     
-                    }
+                   {
+                        dc.ReadOnly = true;                     
+                   }
                    else
-                    {
+                   {
                         dc.ReadOnly = false;
                         dc.DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
                         dc.DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
-                    }
+                   }
 
                 }
-
                 this.SetUpDataGridView();
-
-
             }
         }
 
@@ -375,29 +399,25 @@ namespace RentMe.UserControls
         }
 
 
-
-
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
 
             this.rentalStatusLabel.Visible = false;
-            this.rentFurnitureList = new List<RentFurniture>();
+           this.rentFurnitureList = new List<RentFurniture>();
             string message="";
             int itemCount = 0;
             bool itemMissing = false;
             foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
             {
                 row.Cells[7].Style.BackColor = Color.White;
-                row.Cells[8].Style.BackColor = Color.White; ;
-                row.Cells[9].Style.BackColor = Color.White;
-
-              
+                row.Cells[8].Style.BackColor = Color.White; 
+                row.Cells[9].Style.BackColor = Color.White;             
               
                 if (Convert.ToBoolean(row.Cells[9].Value)) {
                     itemCount = 1;
                     if (string.IsNullOrEmpty((string)row.Cells[7].Value) && string.IsNullOrEmpty((string)row.Cells[8].Value))
                     {
-                        message= "Please enter the Quantity  and return date to rent";
+                        message = "Please enter the Quantity  and return date to rent";
                         row.Cells[7].Style.BackColor = Color.Red;
                         row.Cells[8].Style.BackColor = Color.Red;
                         this.rentFurnitureList.Clear();
@@ -421,16 +441,34 @@ namespace RentMe.UserControls
 
 
                     }
-                    else if (!itemMissing) 
+                    else if (!itemMissing)
                     {
-                        int result = Int32.Parse(row.Cells[7].Value.ToString());
-                        if (result > 0)
+                        int rentCount = Int32.Parse(row.Cells[7].Value.ToString());
+                        int availableCount = Int32.Parse(row.Cells[5].Value.ToString());
+                        int dueDays = Int32.Parse(row.Cells[8].Value.ToString());
+                       
+                        if (rentCount < 0 || rentCount > availableCount)
                         {
+                            message = "Please check the quantity it exceeds the avilable furniture count";
+                            row.Cells[7].Style.BackColor = Color.Red;
+                            this.rentFurnitureList.Clear();
+                            itemMissing = true;
+                        }
+                        else if (dueDays > 365)
+                        {
+                            message = "Due date cannot be more than 1 year";
+                            row.Cells[8].Style.BackColor = Color.Red;
+                            this.rentFurnitureList.Clear();
+                            itemMissing = true;
+                        }
+                        else if (!itemMissing)
+                        {
+                            DateTime dueDate = DateTime.Today.AddDays(dueDays);
                           
                             RentFurniture rentItem = new RentFurniture
                             {
                                 FurnitureID = int.Parse(row.Cells[0].Value.ToString()),
-                                FurnitureRentQuantity = result,
+                                FurnitureRentQuantity = rentCount,
                                 RentalAmount = float.Parse(row.Cells[8].Value.ToString())
                             };
                             rentItem.TotalItemRentalAmount = float.Parse(row.Cells[8].Value.ToString()) * rentItem.FurnitureRentQuantity;
@@ -439,10 +477,12 @@ namespace RentMe.UserControls
                             rentItem.Description = row.Cells[2].Value.ToString();
                             rentItem.Category = row.Cells[3].Value.ToString();
                             rentItem.Style = row.Cells[4].Value.ToString();
+                            rentItem.DueDate = dueDate;
                             rentItem.FurnitureRentEmployeeID = 1;
                             this.rentFurnitureList.Add(rentItem);
                         }
                     }
+                    
                 }              
             }
             if (itemCount ==0 )
@@ -471,6 +511,10 @@ namespace RentMe.UserControls
                  row.Cells[7].Value = "";
                 row.Cells[9].Value = false;
                 row.Cells[8].Value = "";
+                row.Cells[7].Style.BackColor = Color.White;
+                row.Cells[8].Style.BackColor = Color.White; ;
+                row.Cells[9].Style.BackColor = Color.White;
+
             }
         }
 
@@ -531,6 +575,10 @@ namespace RentMe.UserControls
             this.furnitureDateGridView.DefaultCellStyle.BackColor = Color.White;
 
         }
+
+      
+
+
     }
 
     
