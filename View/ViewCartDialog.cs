@@ -5,6 +5,7 @@ using RentMe.Controller;
 using System.Windows.Forms;
 using RentMe.Model;
 using System.Linq;
+using System.Drawing;
 
 namespace RentMe.View
 {
@@ -15,7 +16,7 @@ namespace RentMe.View
         private FurnitureRentController rentController;
         private List<RentFurniture> cartList;
         private Member rentMember;
-        
+
         public ViewCartDialog(Member member)
         {
             InitializeComponent();
@@ -27,7 +28,22 @@ namespace RentMe.View
 
         private void ViewCartDialog_Load(object sender, EventArgs e)
         {
-           this.DisplayRentData();           
+            this.cartDataGrideView.ReadOnly = false;
+            this.DisplayRentData();
+            foreach (DataGridViewColumn dc in this.cartDataGrideView.Columns)
+            {
+                if (!dc.Index.Equals(7) && !dc.Index.Equals(8))
+                {
+                    dc.ReadOnly = true;
+                }
+                else
+                {
+                    dc.ReadOnly = false;
+                    dc.DefaultCellStyle.ForeColor = Color.Blue;
+                    dc.DefaultCellStyle.ForeColor = Color.Blue;
+                }
+
+            }
         }
 
         private void DisplayRentData()
@@ -48,9 +64,9 @@ namespace RentMe.View
                         o.Category,
                         o.Style,
                         o.RentalAmount,
-                        o.DueDate,
-                           o.TotalItemRentalAmount,
-                       o.FurnitureRentQuantity
+                        o.TotalItemRentalAmount,
+                        o.FurnitureRentQuantity,
+                        o.DueDate
                     }).ToList();
                     this.CalculateTotal();
 
@@ -60,8 +76,9 @@ namespace RentMe.View
                     this.submitOrderButton.Enabled = false;
                     this.emptyCartButton.Enabled = false;
                 }
-               
-            }catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error occured on - Displaying the cart items -" + ex.Message,
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -85,7 +102,7 @@ namespace RentMe.View
             var result = MessageBox.Show("Are you sure want to Submit the Furniture Rental ", "Order submitting",
                                  MessageBoxButtons.YesNo,
                                  MessageBoxIcon.Question);
-          
+
             if (result == DialogResult.Yes)
             {
                 this.rentController.AddFurnituresToRent(this.cartList);
@@ -95,7 +112,7 @@ namespace RentMe.View
             {
                 this.Show();
             }
-           
+
         }
 
         private void EmptyCartButton_Click(object sender, EventArgs e)
@@ -105,53 +122,25 @@ namespace RentMe.View
                 this.cartList.Clear();
                 this.cartDataGrideView.DataSource = null;
                 this.submitOrderButton.Enabled = false;
-                this.amountLabel.Text="$0.00";
-                  
+                this.amountLabel.Text = "$0.00";
+
             }
 
         }
 
         private void CartDataGrideView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (this.cartDataGrideView.Columns[e.ColumnIndex].Name== "DeleteItem")
+            if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "DeleteItem")
             {
-
                 if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     this.cartList.RemoveAt(cartDataGrideView.CurrentCell.RowIndex);
-                    this.rentFurnitureBindingSource.RemoveCurrent();
+                this.rentFurnitureBindingSource.RemoveCurrent();
                 this.CalculateTotal();
             }
-            else if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "UpdateItem")
-            {
 
-                //   RentFurniture newRentFurniture= (RentFurniture)this.rentFurnitureBindingSource.Current;
-                // 
-                //      this.cartList[cartDataGrideView.CurrentCell.RowIndex] = newRentFurniture;
-
-                RentFurniture rentFurniture = this.cartList.ElementAt(cartDataGrideView.CurrentCell.RowIndex);
-                int rowIndex = e.RowIndex; 
-                DataGridViewRow row = this.cartDataGrideView.Rows[rowIndex];
-                MessageBox.Show(row.Cells[9].Value.ToString());
-                rentFurniture.FurnitureRentQuantity = Int32.Parse(row.Cells[9].Value.ToString());
-                this.cartList[cartDataGrideView.CurrentCell.RowIndex] = rentFurniture;
-             
-                //this.rentFurnitureBindingSource.DataSource = this.cartList.Select(o => new
-                //{
-                //    o.FurnitureID,
-                //    o.Name,
-                //    o.Description,
-                //    o.Category,
-                //    o.Style,
-                //    o.RentalAmount,
-                //    o.DueDate,
-                //    o.TotalItemRentalAmount,
-                //    o.FurnitureRentQuantity
-                //}).ToList();
-                this.CalculateTotal();
-
-            }
-         
         }
 
     }
+
+}
 }

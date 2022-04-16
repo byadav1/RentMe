@@ -378,8 +378,8 @@ namespace RentMe.UserControls
                    else
                    {
                         dc.ReadOnly = false;
-                        dc.DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
-                        dc.DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
+                        dc.DefaultCellStyle.ForeColor = Color.Blue;
+                        dc.DefaultCellStyle.ForeColor = Color.Blue;
                    }
 
                 }
@@ -422,7 +422,6 @@ namespace RentMe.UserControls
                         row.Cells[8].Style.BackColor = Color.Red;
                         this.rentFurnitureList.Clear();
                         itemMissing = true;
-
                     }
                     else if (string.IsNullOrEmpty((string)row.Cells[7].Value))
                     {
@@ -438,15 +437,12 @@ namespace RentMe.UserControls
                         row.Cells[8].Style.BackColor = Color.Red;
                         this.rentFurnitureList.Clear();
                         itemMissing = true;
-
-
                     }
                     else if (!itemMissing)
                     {
                         int rentCount = Int32.Parse(row.Cells[7].Value.ToString());
                         int availableCount = Int32.Parse(row.Cells[5].Value.ToString());
-                        int dueDays = Int32.Parse(row.Cells[8].Value.ToString());
-                       
+                        int dueDays = Int32.Parse(row.Cells[8].Value.ToString());                       
                         if (rentCount < 0 || rentCount > availableCount)
                         {
                             message = "Please check the quantity it exceeds the avilable furniture count";
@@ -469,9 +465,9 @@ namespace RentMe.UserControls
                             {
                                 FurnitureID = int.Parse(row.Cells[0].Value.ToString()),
                                 FurnitureRentQuantity = rentCount,
-                                RentalAmount = float.Parse(row.Cells[8].Value.ToString())
+                                RentalAmount = float.Parse(row.Cells[6].Value.ToString())
                             };
-                            rentItem.TotalItemRentalAmount = float.Parse(row.Cells[8].Value.ToString()) * rentItem.FurnitureRentQuantity;
+                            rentItem.TotalItemRentalAmount = float.Parse(row.Cells[6].Value.ToString()) * rentItem.FurnitureRentQuantity* dueDays;
                             rentItem.FurnitureRentMemberID = this.MemberRent.MemberID;
                             rentItem.Name = row.Cells[1].Value.ToString();
                             rentItem.Description = row.Cells[2].Value.ToString();
