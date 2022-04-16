@@ -102,7 +102,7 @@ namespace RentMe.View
                     break;
                 case "Search Furniture":
                     break;
-                case "View Rentals":
+                case "View Transactions":
                     this.viewTransactions.RefreshControl();
                     break;
                 default:
