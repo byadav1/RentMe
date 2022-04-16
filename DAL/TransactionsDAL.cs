@@ -82,6 +82,26 @@ namespace RentMe.DAL
         }
 
         /// <summary>
+        /// Gets all active RentMe Rental Transactions.
+        /// </summary>
+        /// <returns>List of active RentMe Rental Transactions</returns>
+        public static List<Transaction> GetActiveRentalTransactions()
+        {
+            List<Transaction> rentals = GetRentalTransactions();
+            List<Transaction> activeRentalTransactions = new List<Transaction>();
+
+            foreach (Transaction transaction in rentals)
+            {
+                if(IsActiveRental(transaction))
+                {
+                    activeRentalTransactions.Add(transaction);
+                }
+            }
+
+            return activeRentalTransactions;
+        }
+
+        /// <summary>
         /// Gets all RentMe Return Transactions.
         /// </summary>
         /// <returns>List of RentMe Return Transactions</returns>
@@ -178,10 +198,13 @@ namespace RentMe.DAL
                     searchResults = GetTransactionsFromSearch(transaction);
                     break;
                 case "Rentals":
-                    searchResults = GetRentalsFromSearch(transaction);
+                    searchResults = GetRentalsFromSearch(transaction, false);
                     break;
                 case "Returns":
                     searchResults = GetReturnsFromSearch(transaction);
+                    break;
+                case "Active Rentals":
+                    searchResults = GetRentalsFromSearch(transaction, true);
                     break;
                 default:
                     throw new ArgumentException("No results");
@@ -198,7 +221,7 @@ namespace RentMe.DAL
         /// <returns></returns>
         public static List<Transaction> GetTransactionsFromSearch(Transaction transaction)
         {
-            List<Transaction> rentals = GetRentalsFromSearch(transaction);
+            List<Transaction> rentals = GetRentalsFromSearch(transaction, false);
             List<Transaction> returns = GetReturnsFromSearch(transaction);
             List<Transaction> transactions = rentals.Concat(returns).ToList();
             transactions = transactions.OrderBy(t => t.TransactionID)
@@ -213,7 +236,7 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="rentalTransaction"></param>
         /// <returns>RentalTransaction list</returns>
-        public static List<Transaction> GetRentalsFromSearch(Transaction transaction)
+        public static List<Transaction> GetRentalsFromSearch(Transaction transaction, bool activeOnly)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);           
             List<Transaction> transactions = new List<Transaction>();
@@ -282,8 +305,11 @@ namespace RentMe.DAL
                                 DueDate = (DateTime)reader["DueDate"],
                                 RentalCharge = decimal.Round(Convert.ToDecimal(reader["RentalCharge"].ToString()), 2, MidpointRounding.AwayFromZero)
                             };
-
-                            transactions.Add(transaction);
+                            if ((activeOnly && IsActiveRental(transaction)) || !activeOnly)
+                            {
+                                Console.WriteLine(IsActiveRental(transaction));
+                                transactions.Add(transaction);
+                            }                                                     
                         }
                     }
                 }
@@ -457,6 +483,37 @@ namespace RentMe.DAL
                     }
 
                     return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns true if rental is still active.
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        private static bool IsActiveRental(Transaction transaction)
+        {
+            TransactionValidator.ValidateTransactionNotNull(transaction);
+            string selectStatement = "SELECT ri.RentalTransactionID, ri.RentedItemsID, ri.FurnitureID, ri.Quantity, SUM(rtrn.Quantity) " +
+                                        "FROM RentedItems ri " +
+                                        "JOIN ReturnTransaction rtrn " +
+                                        "ON ri.RentedItemsID = rtrn.RentedItemsID " +
+                                        "WHERE ri.RentalTransactionID = @TransactionID " +
+                                        "GROUP BY ri.RentalTransactionID, ri.RentedItemsID, ri.FurnitureID, ri.Quantity " +
+                                        "HAVING ri.Quantity - SUM(rtrn.Quantity) = 0";
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("TransactionID", transaction.TransactionID);
+                    if (Convert.ToBoolean(selectCommand.ExecuteScalar()))
+                    {
+                        return false;
+                    }
+
+                    return true;
                 }
             }
         }

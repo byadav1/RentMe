@@ -42,6 +42,8 @@ namespace RentMe.UserControls
                 this.DisplayRentalsList(rentals);
                 this.viewAllTransactionsButton.Enabled = false;
                 this.viewRentalsButton.Enabled = true;
+                this.viewActiveRentalsButton.Enabled = true;
+                this.viewReturnsButton.Enabled = true;
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
                 this.filterResultsComboBox.SelectedIndex = 0;
@@ -143,12 +145,38 @@ namespace RentMe.UserControls
                 this.DisplayRentalsList(rentals);
                 this.viewAllTransactionsButton.Enabled = true;
                 this.viewRentalsButton.Enabled = false;
+                this.viewActiveRentalsButton.Enabled = true;
                 this.viewReturnsButton.Enabled = true;
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
                 this.filterResultsComboBox.SelectedIndex = 0;                
             }
             catch(Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
+            }
+        }
+
+        /// <summary>
+        /// Event Handler for View Active Rentals button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ViewActiveRentalsButtonClick(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Transaction> rentals = this.transactionController.GetActiveRentalTransactions();
+                this.DisplayRentalsList(rentals);
+                this.viewAllTransactionsButton.Enabled = true;
+                this.viewRentalsButton.Enabled = true;
+                this.viewActiveRentalsButton.Enabled = false;
+                this.viewReturnsButton.Enabled = true;
+                this.searchTextBox.Clear();
+                this.searchByComboBox.SelectedIndex = 0;
+                this.filterResultsComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
             }
@@ -167,6 +195,7 @@ namespace RentMe.UserControls
                 this.DisplayRentalsList(rentals);
                 this.viewAllTransactionsButton.Enabled = true;
                 this.viewRentalsButton.Enabled = true;
+                this.viewActiveRentalsButton.Enabled = true;
                 this.viewReturnsButton.Enabled = false;
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;

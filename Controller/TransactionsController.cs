@@ -31,6 +31,15 @@ namespace RentMe.Controller
         }
 
         /// <summary>
+        /// Gets all active RentMe Rental Transactions.
+        /// </summary>
+        /// <returns>List of active RentMe Rental Transactions</returns>
+        public List<Transaction> GetActiveRentalTransactions()
+        {
+            return TransactionsDAL.GetActiveRentalTransactions();
+        }
+
+        /// <summary>
         /// Gets all RentMe Return Transactions.
         /// </summary>
         /// <returns>List of RentMe Return Transactions</returns>
@@ -61,30 +70,6 @@ namespace RentMe.Controller
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
             return TransactionsDAL.SearchTransactions(transaction, searchFilter);
-        }
-
-        /// <summary>
-        /// Returns Transaction rentals list
-        /// based on search input.
-        /// </summary>
-        /// <param name="transaction"></param>
-        /// <returns>Transaction rentals list</returns>
-        public List<Transaction> GetRentalsFromSearch(Transaction transaction)
-        {
-            TransactionValidator.ValidateTransactionNotNull(transaction);
-            return TransactionsDAL.GetRentalsFromSearch(transaction);
-        }
-
-        /// <summary>
-        /// Returns Transaction returns list
-        /// based on search input.
-        /// </summary>
-        /// <param name="transaction"></param>
-        /// <returns>Transaction returns list</returns>
-        public List<Transaction> GetReturnsFromSearch(Transaction transaction)
-        {
-            TransactionValidator.ValidateTransactionNotNull(transaction);
-            return TransactionsDAL.GetReturnsFromSearch(transaction);
         }
     }
 }

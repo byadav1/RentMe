@@ -58,6 +58,7 @@ namespace RentMe.UserControls
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viewActiveRentalsButton = new System.Windows.Forms.Button();
             this.viewTransactionsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).BeginInit();
             this.searchTransactionsTableLayoutPanel.SuspendLayout();
@@ -222,7 +223,7 @@ namespace RentMe.UserControls
             "TransactionID",
             "EmployeeID",
             "MemberID"});
-            this.searchByComboBox.Location = new System.Drawing.Point(168, 7);
+            this.searchByComboBox.Location = new System.Drawing.Point(168, 8);
             this.searchByComboBox.Name = "searchByComboBox";
             this.searchByComboBox.Size = new System.Drawing.Size(200, 30);
             this.searchByComboBox.TabIndex = 4;
@@ -237,8 +238,9 @@ namespace RentMe.UserControls
             this.filterResultsComboBox.Items.AddRange(new object[] {
             "All Transactions",
             "Rentals",
-            "Returns"});
-            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 8);
+            "Returns",
+            "Active Rentals"});
+            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 7);
             this.filterResultsComboBox.Name = "filterResultsComboBox";
             this.filterResultsComboBox.Size = new System.Drawing.Size(200, 30);
             this.filterResultsComboBox.TabIndex = 6;
@@ -275,14 +277,16 @@ namespace RentMe.UserControls
             // 
             // buttonsTableLayoutPanel
             // 
-            this.buttonsTableLayoutPanel.ColumnCount = 3;
+            this.buttonsTableLayoutPanel.ColumnCount = 4;
             this.viewTransactionsTableLayoutPanel.SetColumnSpan(this.buttonsTableLayoutPanel, 2);
-            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.buttonsTableLayoutPanel.Controls.Add(this.viewActiveRentalsButton, 0, 0);
             this.buttonsTableLayoutPanel.Controls.Add(this.viewRentalsButton, 0, 0);
-            this.buttonsTableLayoutPanel.Controls.Add(this.viewAllTransactionsButton, 1, 0);
-            this.buttonsTableLayoutPanel.Controls.Add(this.viewReturnsButton, 2, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.viewReturnsButton, 3, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.viewAllTransactionsButton, 2, 0);
             this.buttonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonsTableLayoutPanel.Location = new System.Drawing.Point(3, 653);
             this.buttonsTableLayoutPanel.Name = "buttonsTableLayoutPanel";
@@ -295,7 +299,7 @@ namespace RentMe.UserControls
             // 
             this.viewRentalsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.viewRentalsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewRentalsButton.Location = new System.Drawing.Point(117, 4);
+            this.viewRentalsButton.Location = new System.Drawing.Point(74, 4);
             this.viewRentalsButton.Name = "viewRentalsButton";
             this.viewRentalsButton.Size = new System.Drawing.Size(120, 60);
             this.viewRentalsButton.TabIndex = 29;
@@ -307,7 +311,7 @@ namespace RentMe.UserControls
             // 
             this.viewAllTransactionsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.viewAllTransactionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewAllTransactionsButton.Location = new System.Drawing.Point(476, 4);
+            this.viewAllTransactionsButton.Location = new System.Drawing.Point(610, 4);
             this.viewAllTransactionsButton.Name = "viewAllTransactionsButton";
             this.viewAllTransactionsButton.Size = new System.Drawing.Size(120, 60);
             this.viewAllTransactionsButton.TabIndex = 28;
@@ -319,7 +323,7 @@ namespace RentMe.UserControls
             // 
             this.viewReturnsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.viewReturnsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewReturnsButton.Location = new System.Drawing.Point(836, 4);
+            this.viewReturnsButton.Location = new System.Drawing.Point(879, 4);
             this.viewReturnsButton.Name = "viewReturnsButton";
             this.viewReturnsButton.Size = new System.Drawing.Size(120, 60);
             this.viewReturnsButton.TabIndex = 30;
@@ -412,6 +416,18 @@ namespace RentMe.UserControls
             // 
             this.transactionBindingSource.DataSource = typeof(RentMe.Model.Transaction);
             // 
+            // viewActiveRentalsButton
+            // 
+            this.viewActiveRentalsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.viewActiveRentalsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewActiveRentalsButton.Location = new System.Drawing.Point(342, 4);
+            this.viewActiveRentalsButton.Name = "viewActiveRentalsButton";
+            this.viewActiveRentalsButton.Size = new System.Drawing.Size(120, 60);
+            this.viewActiveRentalsButton.TabIndex = 31;
+            this.viewActiveRentalsButton.Text = "View Active Rentals";
+            this.viewActiveRentalsButton.UseVisualStyleBackColor = true;
+            this.viewActiveRentalsButton.Click += new System.EventHandler(this.ViewActiveRentalsButtonClick);
+            // 
             // ViewTransactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -459,5 +475,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Button viewAllTransactionsButton;
         private System.Windows.Forms.Button viewReturnsButton;
         private System.Windows.Forms.ComboBox filterResultsComboBox;
+        private System.Windows.Forms.Button viewActiveRentalsButton;
     }
 }
