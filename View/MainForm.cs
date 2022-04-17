@@ -78,6 +78,7 @@ namespace RentMe.View
                     this.mainTabControl.TabPages.Remove(this.searchMemberTabPage);
                     this.mainTabControl.TabPages.Remove(this.furnitureSearchTabPage);
                     this.mainTabControl.TabPages.Remove(this.viewTransactionsTabPage);
+                    this.mainTabControl.TabPages.Remove(this.furnitureReturnTabPage);
                 }                
             }
             catch (Exception exe)
