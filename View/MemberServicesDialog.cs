@@ -66,7 +66,15 @@ namespace RentMe.View
             try
             {
                 this.ValidateFormFields();
-                this.ProcessUpdate();
+                Member member = new Member()
+                {
+                    FName = this.fnameTextBox.Text,
+                    LName = this.lnameTextBox.Text
+                };
+                if (this.ConfirmMemberUpdate(member) == DialogResult.OK)
+                {
+                    this.ProcessUpdate();
+                }               
             }
             catch (ArgumentException ae)
             {
@@ -218,6 +226,20 @@ namespace RentMe.View
             DialogResult result = MessageBox.Show("Are you sure you want to register new RentMe member:\n" +
                 member.FName + " " + member.LName + "?",
                 "Confirm Member Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            return result;
+        }
+
+        /// <summary>
+        /// Prompts the user to confirm
+        /// that they want to update a RentMe member.
+        /// </summary>
+        /// <param name="incident"></param>
+        private DialogResult ConfirmMemberUpdate(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            DialogResult result = MessageBox.Show("Are you sure you want to update RentMe member:\n" +
+                member.FName + " " + member.LName + "?",
+                "Confirm Member Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             return result;
         }
 

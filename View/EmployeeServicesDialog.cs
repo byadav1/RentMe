@@ -251,6 +251,20 @@ namespace RentMe.View
         /// an update to an Employee's login credentials.
         /// </summary>
         /// <param name="incident"></param>
+        private DialogResult ConfirmUpdateEmployeeProfile(Employee employee)
+        {
+            EmployeeValidator.ValidateEmployeeNotNull(employee);
+            DialogResult result = MessageBox.Show("Are you sure you want to update the profile of:\n" +
+                employee.FName + " " + employee.LName + "?",
+                "Confirm Employee Profile Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            return result;
+        }
+
+        /// <summary>
+        /// Prompts the user to confirm
+        /// an update to an Employee's login credentials.
+        /// </summary>
+        /// <param name="incident"></param>
         private DialogResult ConfirmUpdateEmployeeLogin(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -489,7 +503,7 @@ namespace RentMe.View
                 }
                 this.ValidateFormFields();
 
-                if (this.CheckUpdates(employeeUpdateData))
+                if (this.CheckUpdates(employeeUpdateData) && this.ConfirmUpdateEmployeeProfile(employeeUpdateData) == DialogResult.OK)
                 {
                     if (this.employeesController.UpdateEmployeeInformation(this.employeeSearchDetails, employeeUpdateData))
                     {
