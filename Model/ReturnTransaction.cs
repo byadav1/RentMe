@@ -9,7 +9,7 @@ namespace RentMe.Model
     /// <summary>
     /// This class models a Return transaction.
     /// </summary>
-    class ReturnTransaction
+    public class ReturnTransaction
     {
         /// <summary>
         /// Return transaction properties
