@@ -609,8 +609,6 @@ namespace RentMe.UserControls
             }
         }
 
-
-
         private void FurnitureDateGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             this.furnitureDateGridView.DefaultCellStyle.BackColor = Color.White;

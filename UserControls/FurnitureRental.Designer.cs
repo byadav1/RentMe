@@ -35,11 +35,6 @@ namespace RentMe.UserControls
             this.components = new System.ComponentModel.Container();
             this.furnitureRentalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.furnitureDateGridView = new System.Windows.Forms.DataGridView();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DailyRentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rentme = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.searchOptionTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.categoryRadioButton = new System.Windows.Forms.RadioButton();
             this.idRadioButton = new System.Windows.Forms.RadioButton();
@@ -50,18 +45,23 @@ namespace RentMe.UserControls
             this.stylerRadiobutton = new System.Windows.Forms.RadioButton();
             this.clearButton = new System.Windows.Forms.Button();
             this.furnitureSearchButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.rentAllButton = new System.Windows.Forms.Button();
+            this.addToCartButton = new System.Windows.Forms.Button();
             this.rentalStatusLabel = new System.Windows.Forms.Label();
             this.furnitureRentalHeaderLableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.memberInfoLabel = new System.Windows.Forms.Label();
             this.viewCartLinkLabel = new System.Windows.Forms.LinkLabel();
             this.memberSearchButton = new System.Windows.Forms.Button();
             this.memberIDRentTextBox = new System.Windows.Forms.TextBox();
             this.memberFirstName = new System.Windows.Forms.Label();
             this.memberIDLabel = new System.Windows.Forms.Label();
             this.furnitureRentalHeaderLabel = new System.Windows.Forms.Label();
-            this.addToCartButton = new System.Windows.Forms.Button();
-            this.rentAllButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.memberInfoLabel = new System.Windows.Forms.Label();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DailyRentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rentme = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.furnitureIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,8 +72,8 @@ namespace RentMe.UserControls
             this.furnitureRentalTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDateGridView)).BeginInit();
             this.searchOptionTableLayout.SuspendLayout();
-            this.furnitureRentalHeaderLableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.furnitureRentalHeaderLableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentFurnitureBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -123,52 +123,13 @@ namespace RentMe.UserControls
             this.furnitureDateGridView.DataSource = this.furnitureBindingSource;
             this.furnitureDateGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.furnitureDateGridView.EnableHeadersVisualStyles = false;
-            this.furnitureDateGridView.Location = new System.Drawing.Point(3, 259);
+            this.furnitureDateGridView.Location = new System.Drawing.Point(3, 277);
             this.furnitureDateGridView.Name = "furnitureDateGridView";
             this.furnitureDateGridView.RowHeadersWidth = 51;
             this.furnitureDateGridView.RowTemplate.Height = 24;
-            this.furnitureDateGridView.Size = new System.Drawing.Size(1385, 383);
+            this.furnitureDateGridView.Size = new System.Drawing.Size(1385, 428);
             this.furnitureDateGridView.TabIndex = 10;
             this.furnitureDateGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FurnitureDateGridView_CellContentClick);
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "AvailableQuantity";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 194;
-            // 
-            // DailyRentalRate
-            // 
-            this.DailyRentalRate.DataPropertyName = "DailyRentalRate";
-            this.DailyRentalRate.HeaderText = "DailyRentalRate";
-            this.DailyRentalRate.MinimumWidth = 6;
-            this.DailyRentalRate.Name = "DailyRentalRate";
-            this.DailyRentalRate.ReadOnly = true;
-            this.DailyRentalRate.Width = 179;
-            // 
-            // AddQuantity
-            // 
-            this.AddQuantity.HeaderText = "RentQuantity";
-            this.AddQuantity.MinimumWidth = 6;
-            this.AddQuantity.Name = "AddQuantity";
-            this.AddQuantity.Width = 154;
-            // 
-            // DueDate
-            // 
-            this.DueDate.HeaderText = "ReturnDate";
-            this.DueDate.MinimumWidth = 6;
-            this.DueDate.Name = "DueDate";
-            this.DueDate.Width = 139;
-            // 
-            // Rentme
-            // 
-            this.Rentme.HeaderText = "Rent Me";
-            this.Rentme.MinimumWidth = 6;
-            this.Rentme.Name = "Rentme";
-            this.Rentme.Width = 91;
             // 
             // searchOptionTableLayout
             // 
@@ -191,19 +152,19 @@ namespace RentMe.UserControls
             this.searchOptionTableLayout.Controls.Add(this.clearButton, 7, 0);
             this.searchOptionTableLayout.Controls.Add(this.furnitureSearchButton, 6, 0);
             this.searchOptionTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchOptionTableLayout.Location = new System.Drawing.Point(3, 113);
+            this.searchOptionTableLayout.Location = new System.Drawing.Point(3, 126);
             this.searchOptionTableLayout.Name = "searchOptionTableLayout";
             this.searchOptionTableLayout.RowCount = 2;
             this.searchOptionTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.62389F));
             this.searchOptionTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.37612F));
-            this.searchOptionTableLayout.Size = new System.Drawing.Size(1385, 95);
+            this.searchOptionTableLayout.Size = new System.Drawing.Size(1385, 107);
             this.searchOptionTableLayout.TabIndex = 1;
             // 
             // categoryRadioButton
             // 
             this.categoryRadioButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.categoryRadioButton.AutoSize = true;
-            this.categoryRadioButton.Location = new System.Drawing.Point(326, 17);
+            this.categoryRadioButton.Location = new System.Drawing.Point(326, 21);
             this.categoryRadioButton.Name = "categoryRadioButton";
             this.categoryRadioButton.Size = new System.Drawing.Size(185, 29);
             this.categoryRadioButton.TabIndex = 4;
@@ -217,7 +178,7 @@ namespace RentMe.UserControls
             this.idRadioButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.idRadioButton.AutoSize = true;
             this.idRadioButton.Checked = true;
-            this.idRadioButton.Location = new System.Drawing.Point(20, 17);
+            this.idRadioButton.Location = new System.Drawing.Point(20, 21);
             this.idRadioButton.Name = "idRadioButton";
             this.idRadioButton.Size = new System.Drawing.Size(140, 29);
             this.idRadioButton.TabIndex = 2;
@@ -229,7 +190,7 @@ namespace RentMe.UserControls
             // furnitureIDTextBox
             // 
             this.furnitureIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.furnitureIDTextBox.Location = new System.Drawing.Point(183, 16);
+            this.furnitureIDTextBox.Location = new System.Drawing.Point(183, 20);
             this.furnitureIDTextBox.Name = "furnitureIDTextBox";
             this.furnitureIDTextBox.Size = new System.Drawing.Size(137, 30);
             this.furnitureIDTextBox.TabIndex = 3;
@@ -242,7 +203,7 @@ namespace RentMe.UserControls
             this.searchOptionTableLayout.SetColumnSpan(this.optionTipLabel, 4);
             this.optionTipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optionTipLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.optionTipLabel.Location = new System.Drawing.Point(399, 63);
+            this.optionTipLabel.Location = new System.Drawing.Point(399, 71);
             this.optionTipLabel.Name = "optionTipLabel";
             this.optionTipLabel.Size = new System.Drawing.Size(540, 18);
             this.optionTipLabel.TabIndex = 7;
@@ -254,7 +215,7 @@ namespace RentMe.UserControls
             // 
             this.categoryComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(538, 15);
+            this.categoryComboBox.Location = new System.Drawing.Point(538, 19);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(95, 33);
             this.categoryComboBox.TabIndex = 5;
@@ -264,7 +225,7 @@ namespace RentMe.UserControls
             // 
             this.styleComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(843, 15);
+            this.styleComboBox.Location = new System.Drawing.Point(843, 19);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(165, 33);
             this.styleComboBox.TabIndex = 7;
@@ -275,7 +236,7 @@ namespace RentMe.UserControls
             // 
             this.stylerRadiobutton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.stylerRadiobutton.AutoSize = true;
-            this.stylerRadiobutton.Location = new System.Drawing.Point(664, 17);
+            this.stylerRadiobutton.Location = new System.Drawing.Point(664, 21);
             this.stylerRadiobutton.Name = "stylerRadiobutton";
             this.stylerRadiobutton.Size = new System.Drawing.Size(165, 29);
             this.stylerRadiobutton.TabIndex = 6;
@@ -309,13 +270,52 @@ namespace RentMe.UserControls
             this.furnitureSearchButton.UseVisualStyleBackColor = true;
             this.furnitureSearchButton.Click += new System.EventHandler(this.FurnitureSearchButtonClick);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.rentAllButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.addToCartButton, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 711);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1368, 71);
+            this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // rentAllButton
+            // 
+            this.rentAllButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rentAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rentAllButton.Location = new System.Drawing.Point(966, 11);
+            this.rentAllButton.Name = "rentAllButton";
+            this.rentAllButton.Size = new System.Drawing.Size(120, 49);
+            this.rentAllButton.TabIndex = 0;
+            this.rentAllButton.Text = "Rent All";
+            this.rentAllButton.UseVisualStyleBackColor = true;
+            this.rentAllButton.Click += new System.EventHandler(this.RentAllButton_Click);
+            // 
+            // addToCartButton
+            // 
+            this.addToCartButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addToCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addToCartButton.Location = new System.Drawing.Point(282, 11);
+            this.addToCartButton.Name = "addToCartButton";
+            this.addToCartButton.Size = new System.Drawing.Size(120, 49);
+            this.addToCartButton.TabIndex = 1;
+            this.addToCartButton.Text = "Add to Cart";
+            this.addToCartButton.UseVisualStyleBackColor = true;
+            this.addToCartButton.Click += new System.EventHandler(this.AddToCartButton_Click);
+            // 
             // rentalStatusLabel
             // 
             this.rentalStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rentalStatusLabel.AutoSize = true;
             this.rentalStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rentalStatusLabel.ForeColor = System.Drawing.Color.Red;
-            this.rentalStatusLabel.Location = new System.Drawing.Point(669, 221);
+            this.rentalStatusLabel.Location = new System.Drawing.Point(669, 243);
             this.rentalStatusLabel.Name = "rentalStatusLabel";
             this.rentalStatusLabel.Size = new System.Drawing.Size(52, 24);
             this.rentalStatusLabel.TabIndex = 3;
@@ -344,22 +344,8 @@ namespace RentMe.UserControls
             this.furnitureRentalHeaderLableLayoutPanel.RowCount = 2;
             this.furnitureRentalHeaderLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.28913F));
             this.furnitureRentalHeaderLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.71087F));
-            this.furnitureRentalHeaderLableLayoutPanel.Size = new System.Drawing.Size(1385, 104);
+            this.furnitureRentalHeaderLableLayoutPanel.Size = new System.Drawing.Size(1385, 117);
             this.furnitureRentalHeaderLableLayoutPanel.TabIndex = 13;
-            // 
-            // memberInfoLabel
-            // 
-            this.memberInfoLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.memberInfoLabel.AutoSize = true;
-            this.furnitureRentalHeaderLableLayoutPanel.SetColumnSpan(this.memberInfoLabel, 4);
-            this.memberInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memberInfoLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.memberInfoLabel.Location = new System.Drawing.Point(794, 56);
-            this.memberInfoLabel.Name = "memberInfoLabel";
-            this.memberInfoLabel.Size = new System.Drawing.Size(552, 18);
-            this.memberInfoLabel.TabIndex = 11;
-            this.memberInfoLabel.Text = "**Member details are mandatory to rent a furniture.Search for a member by their I" +
-    "D.";
             // 
             // viewCartLinkLabel
             // 
@@ -367,7 +353,7 @@ namespace RentMe.UserControls
             this.viewCartLinkLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewCartLinkLabel.Location = new System.Drawing.Point(1206, 0);
             this.viewCartLinkLabel.Name = "viewCartLinkLabel";
-            this.viewCartLinkLabel.Size = new System.Drawing.Size(176, 56);
+            this.viewCartLinkLabel.Size = new System.Drawing.Size(176, 63);
             this.viewCartLinkLabel.TabIndex = 17;
             this.viewCartLinkLabel.TabStop = true;
             this.viewCartLinkLabel.Text = "View Cart";
@@ -379,7 +365,7 @@ namespace RentMe.UserControls
             this.memberSearchButton.Enabled = false;
             this.memberSearchButton.Location = new System.Drawing.Point(1057, 3);
             this.memberSearchButton.Name = "memberSearchButton";
-            this.memberSearchButton.Size = new System.Drawing.Size(143, 50);
+            this.memberSearchButton.Size = new System.Drawing.Size(143, 57);
             this.memberSearchButton.TabIndex = 12;
             this.memberSearchButton.Text = "Search";
             this.memberSearchButton.UseVisualStyleBackColor = true;
@@ -403,9 +389,9 @@ namespace RentMe.UserControls
             this.memberFirstName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.memberFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberFirstName.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.memberFirstName.Location = new System.Drawing.Point(302, 56);
+            this.memberFirstName.Location = new System.Drawing.Point(302, 63);
             this.memberFirstName.Name = "memberFirstName";
-            this.memberFirstName.Size = new System.Drawing.Size(451, 48);
+            this.memberFirstName.Size = new System.Drawing.Size(451, 54);
             this.memberFirstName.TabIndex = 13;
             this.memberFirstName.Text = "Name :";
             this.memberFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -418,9 +404,9 @@ namespace RentMe.UserControls
             this.memberIDLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memberIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberIDLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.memberIDLabel.Location = new System.Drawing.Point(3, 56);
+            this.memberIDLabel.Location = new System.Drawing.Point(3, 63);
             this.memberIDLabel.Name = "memberIDLabel";
-            this.memberIDLabel.Size = new System.Drawing.Size(293, 48);
+            this.memberIDLabel.Size = new System.Drawing.Size(293, 54);
             this.memberIDLabel.TabIndex = 15;
             this.memberIDLabel.Text = "MemberID:";
             this.memberIDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -435,48 +421,62 @@ namespace RentMe.UserControls
             this.furnitureRentalHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.furnitureRentalHeaderLabel.Location = new System.Drawing.Point(3, 0);
             this.furnitureRentalHeaderLabel.Name = "furnitureRentalHeaderLabel";
-            this.furnitureRentalHeaderLabel.Size = new System.Drawing.Size(750, 56);
+            this.furnitureRentalHeaderLabel.Size = new System.Drawing.Size(750, 63);
             this.furnitureRentalHeaderLabel.TabIndex = 8;
             this.furnitureRentalHeaderLabel.Text = "Furniture Rental";
             // 
-            // addToCartButton
+            // memberInfoLabel
             // 
-            this.addToCartButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addToCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addToCartButton.Location = new System.Drawing.Point(285, 14);
-            this.addToCartButton.Name = "addToCartButton";
-            this.addToCartButton.Size = new System.Drawing.Size(120, 49);
-            this.addToCartButton.TabIndex = 1;
-            this.addToCartButton.Text = "Add to Cart";
-            this.addToCartButton.UseVisualStyleBackColor = true;
-            this.addToCartButton.Click += new System.EventHandler(this.AddToCartButton_Click);
+            this.memberInfoLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.memberInfoLabel.AutoSize = true;
+            this.furnitureRentalHeaderLableLayoutPanel.SetColumnSpan(this.memberInfoLabel, 4);
+            this.memberInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memberInfoLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.memberInfoLabel.Location = new System.Drawing.Point(794, 63);
+            this.memberInfoLabel.Name = "memberInfoLabel";
+            this.memberInfoLabel.Size = new System.Drawing.Size(552, 18);
+            this.memberInfoLabel.TabIndex = 11;
+            this.memberInfoLabel.Text = "**Member details are mandatory to rent a furniture.Search for a member by their I" +
+    "D.";
             // 
-            // rentAllButton
+            // Quantity
             // 
-            this.rentAllButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rentAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rentAllButton.Location = new System.Drawing.Point(975, 14);
-            this.rentAllButton.Name = "rentAllButton";
-            this.rentAllButton.Size = new System.Drawing.Size(120, 49);
-            this.rentAllButton.TabIndex = 0;
-            this.rentAllButton.Text = "Rent All";
-            this.rentAllButton.UseVisualStyleBackColor = true;
-            this.rentAllButton.Click += new System.EventHandler(this.RentAllButton_Click);
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Available Quantity";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 181;
             // 
-            // tableLayoutPanel1
+            // DailyRentalRate
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.rentAllButton, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.addToCartButton, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 648);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1368, 72);
-            this.tableLayoutPanel1.TabIndex = 11;
+            this.DailyRentalRate.DataPropertyName = "DailyRentalRate";
+            this.DailyRentalRate.HeaderText = "Daily Rental Rate";
+            this.DailyRentalRate.MinimumWidth = 6;
+            this.DailyRentalRate.Name = "DailyRentalRate";
+            this.DailyRentalRate.ReadOnly = true;
+            this.DailyRentalRate.Width = 172;
+            // 
+            // AddQuantity
+            // 
+            this.AddQuantity.HeaderText = "Rent Quantity";
+            this.AddQuantity.MinimumWidth = 6;
+            this.AddQuantity.Name = "AddQuantity";
+            this.AddQuantity.Width = 145;
+            // 
+            // DueDate
+            // 
+            this.DueDate.HeaderText = "Days to Rent";
+            this.DueDate.MinimumWidth = 6;
+            this.DueDate.Name = "DueDate";
+            this.DueDate.Width = 103;
+            // 
+            // Rentme
+            // 
+            this.Rentme.HeaderText = "Rent Me";
+            this.Rentme.MinimumWidth = 6;
+            this.Rentme.Name = "Rentme";
+            this.Rentme.Width = 82;
             // 
             // furnitureIDDataGridViewTextBoxColumn
             // 
@@ -545,9 +545,9 @@ namespace RentMe.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDateGridView)).EndInit();
             this.searchOptionTableLayout.ResumeLayout(false);
             this.searchOptionTableLayout.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.furnitureRentalHeaderLableLayoutPanel.ResumeLayout(false);
             this.furnitureRentalHeaderLableLayoutPanel.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentFurnitureBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -575,6 +575,14 @@ namespace RentMe.UserControls
         private System.Windows.Forms.LinkLabel viewCartLinkLabel;
         private System.Windows.Forms.BindingSource rentFurnitureBindingSource;
         private System.Windows.Forms.BindingSource furnitureBindingSource;
+        private System.Windows.Forms.TextBox memberIDRentTextBox;
+        private System.Windows.Forms.TableLayoutPanel furnitureRentalHeaderLableLayoutPanel;
+        private System.Windows.Forms.Label optionTipLabel;
+        private System.Windows.Forms.Button furnitureSearchButton;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button rentAllButton;
+        private System.Windows.Forms.Button addToCartButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
@@ -585,13 +593,5 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn AddQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Rentme;
-        private System.Windows.Forms.TextBox memberIDRentTextBox;
-        private System.Windows.Forms.TableLayoutPanel furnitureRentalHeaderLableLayoutPanel;
-        private System.Windows.Forms.Label optionTipLabel;
-        private System.Windows.Forms.Button furnitureSearchButton;
-        private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button rentAllButton;
-        private System.Windows.Forms.Button addToCartButton;
     }
 }
