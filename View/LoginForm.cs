@@ -2,6 +2,7 @@
 using RentMe.Model;
 using RentMe.View;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RentMe
@@ -21,16 +22,6 @@ namespace RentMe
         {
             InitializeComponent();
             this.employeesController = new EmployeesController();
-        }
-
-        /// <summary>
-        /// Hides errorMessage when login info changed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void LoginTextBoxTextChangedEventHandle(object sender, EventArgs e)
-        {
-            errorMessage.Visible = false;
         }
 
         /// <summary>
@@ -57,13 +48,11 @@ namespace RentMe
             }
             catch (ArgumentException ae)
             {
-                this.errorMessage.Visible = true;
-                this.errorMessage.Text = ae.Message;
+                this.UpdateStatusMessage(ae.Message, true);
             }
             catch (Exception ex)
             {
-                this.errorMessage.Visible = true;
-                this.errorMessage.Text = ex.Message;
+                this.UpdateStatusMessage(ex.Message, true);
             }
         }
 
@@ -74,6 +63,42 @@ namespace RentMe
         private bool ValidLogin(Employee employee)
         {
             return this.employeesController.ValidEmployeeLogin(employee);
+        }
+
+        /// <summary>
+        /// Event Handler for login fields changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginTextBoxTextChangedEventHandle(object sender, EventArgs e)
+        {
+            this.UpdateStatusMessage("Username and password are case-sensitive", false);
+        }
+
+        /// <summary>
+        /// Updates the error message to reflect 
+        /// the status of the form.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="isError"></param>
+        private void UpdateStatusMessage(string message, bool isError)
+        {
+            if (string.IsNullOrEmpty(message))
+            {
+                throw new ArgumentException("Message cannot be null or empty");
+            }
+
+            if (isError)
+            {
+                this.statusMessage.ForeColor = Color.Red;
+            }
+            else
+            {
+                this.statusMessage.ForeColor = Color.Black;
+            }
+
+            this.statusMessage.Text = message;
+            this.statusMessage.Visible = true;
         }
 
         /// <summary>
