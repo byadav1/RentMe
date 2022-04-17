@@ -11,14 +11,16 @@ namespace RentMe.View
 
         private readonly RentCartController _cartController;
         private readonly FurnitureRentController rentController;
+        private readonly Member member;
         private List<RentFurniture> cartList;
      
 
-        public ViewCartDialog()
+        public ViewCartDialog(Member searchMember)
         {
             InitializeComponent();
             this._cartController = new RentCartController();
             this.rentController = new FurnitureRentController();
+            this.member = searchMember;
             _ = new List<RentFurniture>();
         }
 
@@ -36,10 +38,10 @@ namespace RentMe.View
                 this.rentFurnitureBindingSource.DataSource = null;
                 this.rentFurnitureBindingSource.Clear();
                 this.cartList = this._cartController.GetRentItem();
-
+               
                 if (this.cartList.Any())
                 {
-                    this.rentFurnitureBindingSource.DataSource = this.cartList.Select(o => new
+                    this.rentFurnitureBindingSource.DataSource = this.GetMemberCartDetails().Select(o => new
                     {
                         o.FurnitureID,
                         o.Name,
@@ -66,6 +68,11 @@ namespace RentMe.View
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private List<RentFurniture> GetMemberCartDetails()
+        {
+            return this.cartList.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));
         }
         private void CalculateTotal()
         {

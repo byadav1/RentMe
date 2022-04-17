@@ -265,6 +265,7 @@ namespace RentMe.UserControls
             this.memberIDRentTextBox.Enabled = false;
             this.memberSearchButton.Enabled = false;
             this.furnitureBindingSource.DataSource = null;
+            this.viewCartLinkLabel.Enabled = false;
             this.LoadComboBox();
         }
 
@@ -571,7 +572,7 @@ namespace RentMe.UserControls
         {
             this.rentalStatusLabel.Text = "";
             this.rentalStatusLabel.Visible = false;
-            using (Form viewCartDialog = new View.ViewCartDialog())
+            using (Form viewCartDialog = new View.ViewCartDialog(this.MemberRent))
             {
                 DialogResult result = viewCartDialog.ShowDialog();
                 if (result == DialogResult.OK)
