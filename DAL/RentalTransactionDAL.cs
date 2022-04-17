@@ -15,7 +15,12 @@ namespace RentMe.DAL
     /// </summary>
     public class RentalTransactionDAL
     {
-        public static List<RentalTransaction> GetRentalTransactionByMemberID(int memberID)
+        /// <summary>
+        /// Return Rental transaction by member ID
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>RentalTransaction list </returns>
+        public  List<RentalTransaction> GetRentalTransactionByMemberID(int memberID)
         {
             List<RentalTransaction> rentalTransactionList = new List<RentalTransaction>();
             String selectStatement =
