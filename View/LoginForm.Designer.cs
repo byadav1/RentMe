@@ -31,7 +31,7 @@ namespace RentMe
         {
             this.loginTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.loginFormHeaderLabel = new System.Windows.Forms.Label();
-            this.errorMessage = new System.Windows.Forms.Label();
+            this.statusMessage = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@ namespace RentMe
             this.loginTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.02929F));
             this.loginTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.97071F));
             this.loginTableLayoutPanel.Controls.Add(this.loginFormHeaderLabel, 0, 0);
-            this.loginTableLayoutPanel.Controls.Add(this.errorMessage, 0, 3);
+            this.loginTableLayoutPanel.Controls.Add(this.statusMessage, 0, 3);
             this.loginTableLayoutPanel.Controls.Add(this.usernameTextBox, 1, 1);
             this.loginTableLayoutPanel.Controls.Add(this.passwordTextBox, 1, 2);
             this.loginTableLayoutPanel.Controls.Add(this.usernameLabel, 0, 1);
@@ -78,19 +78,18 @@ namespace RentMe
             this.loginFormHeaderLabel.TabIndex = 0;
             this.loginFormHeaderLabel.Text = "RentMe 🛋️";
             // 
-            // errorMessage
+            // statusMessage
             // 
-            this.errorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.errorMessage.AutoSize = true;
-            this.loginTableLayoutPanel.SetColumnSpan(this.errorMessage, 2);
-            this.errorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessage.ForeColor = System.Drawing.Color.Red;
-            this.errorMessage.Location = new System.Drawing.Point(108, 286);
-            this.errorMessage.Name = "errorMessage";
-            this.errorMessage.Size = new System.Drawing.Size(261, 24);
-            this.errorMessage.TabIndex = 1;
-            this.errorMessage.Text = "Invalid username or password";
-            this.errorMessage.Visible = false;
+            this.statusMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.statusMessage.AutoSize = true;
+            this.loginTableLayoutPanel.SetColumnSpan(this.statusMessage, 2);
+            this.statusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusMessage.ForeColor = System.Drawing.Color.Black;
+            this.statusMessage.Location = new System.Drawing.Point(51, 286);
+            this.statusMessage.Name = "statusMessage";
+            this.statusMessage.Size = new System.Drawing.Size(375, 24);
+            this.statusMessage.TabIndex = 1;
+            this.statusMessage.Text = "Username and password are case-sensitive";
             // 
             // usernameTextBox
             // 
@@ -169,7 +168,7 @@ namespace RentMe
 
         private System.Windows.Forms.TableLayoutPanel loginTableLayoutPanel;
         private System.Windows.Forms.Label loginFormHeaderLabel;
-        private System.Windows.Forms.Label errorMessage;
+        private System.Windows.Forms.Label statusMessage;
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label usernameLabel;

@@ -80,8 +80,8 @@ namespace RentMe.DAL
                                         "FROM Employees e " +
                                         "JOIN Accounts a " +
                                         "ON e.AccountID = a.AccountID " +
-                                        "WHERE a.Username = @Username " +
-                                        "AND a.Password = @Password " +
+                                        "WHERE a.Username COLLATE Latin1_General_CS_AS = @Username " +
+                                        "AND a.Password COLLATE Latin1_General_CS_AS = @Password " +
                                         "AND e.Active = 1";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
