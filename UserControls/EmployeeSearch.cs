@@ -101,6 +101,7 @@ namespace RentMe.UserControls
                 Form employeeServicesDialog = new EmployeeServicesDialog(true, employee);
                 Form owner = ((Form)this.TopLevelControl);
                 owner.Hide();
+                this.statusMessage.Visible = false;
                 DialogResult result = employeeServicesDialog.ShowDialog();              
                 if (result == DialogResult.OK)
                 {
@@ -125,6 +126,7 @@ namespace RentMe.UserControls
             Form owner = ((Form)this.TopLevelControl);
             Form employeeServicesDialog = new EmployeeServicesDialog(false, new Employee());
             owner.Hide();
+            this.statusMessage.Visible = false;
             DialogResult result = employeeServicesDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -141,6 +143,7 @@ namespace RentMe.UserControls
         private void ViewAllEmployeesButtonClick(object sender, EventArgs e)
         {
             this.RefreshControl();
+            this.statusMessage.Visible = false;
         }
 
         /// <summary>
@@ -262,6 +265,8 @@ namespace RentMe.UserControls
             {
                 this.searchButton.Enabled = true;
             }
+
+            this.statusMessage.Visible = false;
         }
     }
 }

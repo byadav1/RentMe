@@ -98,6 +98,7 @@ namespace RentMe.UserControls
                 Form employeeServicesDialog = new MemberServicesDialog(true, member);
                 Form owner = ((Form)this.TopLevelControl);
                 owner.Hide();
+                this.statusMessage.Visible = false;
                 DialogResult result = employeeServicesDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -122,6 +123,7 @@ namespace RentMe.UserControls
             Form employeeServicesDialog = new MemberServicesDialog(false, new Member());
             Form owner = ((Form)this.TopLevelControl);
             owner.Hide();
+            this.statusMessage.Visible = false;
             DialogResult result = employeeServicesDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -245,6 +247,8 @@ namespace RentMe.UserControls
             {
                 this.searchButton.Enabled = true;
             }
+
+            this.statusMessage.Visible = false;
         }
     }
 }
