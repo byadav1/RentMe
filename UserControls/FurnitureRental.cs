@@ -45,7 +45,7 @@ namespace RentMe.UserControls
             if (this.SetSearchValues())
             {
               this.DisplayResults();
-            };
+            }
         }
 
         private bool SetSearchValues()
@@ -390,6 +390,11 @@ namespace RentMe.UserControls
         }
 
 
+        /// <summary>
+        /// Handles the Click event of the AddToCartButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
 
@@ -526,8 +531,7 @@ namespace RentMe.UserControls
                 row.Cells[7].Style.BackColor = Color.White;
                 row.Cells[8].Style.BackColor = Color.White; ;
                 row.Cells[9].Style.BackColor = Color.White;
-                this.rentalStatusLabel.Text = "";
-                this.rentalStatusLabel.Visible = false;
+                         
             }
         }
 
@@ -581,9 +585,11 @@ namespace RentMe.UserControls
                     this.UpdateStatusMessage("Your Rent Order submitted Sucessfully", false);
                 }
 
-
+             
             }
         }
+
+
 
         private void FurnitureDateGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

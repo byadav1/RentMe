@@ -1,6 +1,5 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
-using RentMe.Model.Validators;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,23 +12,17 @@ namespace RentMe.Controller
     /// </summary>
     public class FurnitureRentController
     {
-       
-
+        /// <summary>
+        /// Adds the furnitures to rent.
+        /// </summary>
+        /// <param name="rentFurnitureList">The rent furniture list.</param>
         public void AddFurnituresToRent(List<RentFurniture> rentFurnitureList)
         {
             if (rentFurnitureList.Any())
             {
                 FurnitureRentalDAL.AddRentalItems(rentFurnitureList);
             }
-
-        }
-
-
-        public List<RentFurniture> GetRentItem(Member rentMember)
-        {
-          
-               return  FurnitureRentalDAL.GetCartItems(rentMember);
-        }
+        }      
 
     }
 

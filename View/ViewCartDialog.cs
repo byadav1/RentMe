@@ -6,6 +6,11 @@ using RentMe.Model;
 using System.Linq;
 namespace RentMe.View
 {
+    /// <summary>
+    /// This form models a Dialog which
+    /// displays the cart for a
+    /// furniture rental item.
+    /// </summary>>
     public partial class ViewCartDialog : Form
     {
 
@@ -13,24 +18,31 @@ namespace RentMe.View
         private readonly FurnitureRentController rentController;
         private readonly Member member;
         private List<RentFurniture> cartList;
-     
 
+        private List<ReceiptItem> receiptList;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewCartDialog"/> class.
+        /// </summary>
+        /// <param name="searchMember">The search member.</param>
         public ViewCartDialog(Member searchMember)
         {
             InitializeComponent();
             this._cartController = new RentCartController();
             this.rentController = new FurnitureRentController();
+            List<ReceiptItem> receiptList = new List<ReceiptItem> ();
             this.member = searchMember;
             _ = new List<RentFurniture>();
         }
 
         private void ViewCartDialog_Load(object sender, EventArgs e)
         {
-           
-            this.DisplayRentData();
+           this.DisplayRentData();
            
         }
-
+        /// <summary>
+        /// Displays the rent data.
+        /// </summary>
         private void DisplayRentData()
         {
             try
@@ -38,7 +50,7 @@ namespace RentMe.View
                 this.rentFurnitureBindingSource.DataSource = null;
                 this.rentFurnitureBindingSource.Clear();
                 this.cartList = this._cartController.GetRentItem(this.member);
-               
+
                 if (this.cartList.Any())
                 {
                     this.rentFurnitureBindingSource.DataSource = this.cartList.Select(o => new
@@ -72,7 +84,9 @@ namespace RentMe.View
 
         }
 
-      
+        /// <summary>
+        /// Calculates the total.
+        /// </summary>
         private void CalculateTotal()
         {
             var totalAmountToPay = this.cartList.Sum(cart => cart.TotalItemRentalAmount);
@@ -93,9 +107,10 @@ namespace RentMe.View
 
             if (result == DialogResult.Yes)
             {
-                this.rentController.AddFurnituresToRent(this.cartList);
+                this.CreateReceipt();
+                this.rentController.AddFurnituresToRent(this.cartList);               
                 this._cartController.UpdateRentalCart(this.member);
-                this.cartList.Clear();
+                this.cartList.Clear();               
             }
             else
             {
@@ -104,6 +119,45 @@ namespace RentMe.View
 
         }
 
+        private void ShowReceipt()
+        {
+            
+                using (Form viewReceiptDialog = new View.ReceiptDialog(this.receiptList, this.member.FName + " " + this.member.LName, true))
+                {
+                    DialogResult result = viewReceiptDialog.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        return;
+                    }
+                }
+            
+
+        }
+
+        private void CreateReceipt()
+        {
+
+            var list = from x in this.cartList
+                           select new ReceiptItem
+                           {
+                               FurnitureID = x.FurnitureID,
+                               Description = x.Description,
+                               RentalDate = DateTime.Now,
+                               DueDate = x.DueDate,
+                               Quantity = x.FurnitureRentQuantity,
+                               SubTotal = (decimal)x.TotalCartCalculatedAmount
+                           };
+            this.receiptList = list.ToList();
+            if (this.receiptList.Any())
+            {
+                this.ShowReceipt();
+            }
+
+        }
+
+
+
+    
         private void EmptyCartButton_Click(object sender, EventArgs e)
         {
             if (this.cartList.Any())
