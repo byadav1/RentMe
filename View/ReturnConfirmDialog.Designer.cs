@@ -36,10 +36,10 @@ namespace RentMe.View
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.confirmButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,8 +52,8 @@ namespace RentMe.View
             this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -126,6 +126,7 @@ namespace RentMe.View
             this.confirmButton.TabIndex = 0;
             this.confirmButton.Text = "Confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // CancelButton
             // 
@@ -137,17 +138,13 @@ namespace RentMe.View
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             // 
-            // returnTransactionBindingSource
-            // 
-            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
-            // 
             // returnTransactionDataGridView
             // 
             this.returnTransactionDataGridView.AutoGenerateColumns = false;
             this.returnTransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.returnTransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FurnitureName,
-            this.dataGridViewTextBoxColumn1,
+            this.RentedItemsID,
             this.Quantity,
             this.Days,
             this.EmployeeID,
@@ -167,6 +164,10 @@ namespace RentMe.View
             this.returnTransactionDataGridView.Size = new System.Drawing.Size(1182, 329);
             this.returnTransactionDataGridView.TabIndex = 5;
             // 
+            // returnTransactionBindingSource
+            // 
+            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
+            // 
             // FurnitureName
             // 
             this.FurnitureName.DataPropertyName = "FurnitureName";
@@ -175,14 +176,14 @@ namespace RentMe.View
             this.FurnitureName.Name = "FurnitureName";
             this.FurnitureName.Width = 125;
             // 
-            // dataGridViewTextBoxColumn1
+            // RentedItemsID
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "RentedItemsID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "RentedItemsID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 125;
+            this.RentedItemsID.DataPropertyName = "RentedItemsID";
+            this.RentedItemsID.HeaderText = "RentedItemsID";
+            this.RentedItemsID.MinimumWidth = 6;
+            this.RentedItemsID.Name = "RentedItemsID";
+            this.RentedItemsID.Visible = false;
+            this.RentedItemsID.Width = 125;
             // 
             // Quantity
             // 
@@ -274,11 +275,12 @@ namespace RentMe.View
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ReturnConfirmDialog";
             this.Text = "ReturnConfirmDialog";
+            this.Load += new System.EventHandler(this.ReturnConfirmDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -292,8 +294,9 @@ namespace RentMe.View
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.DataGridView returnTransactionDataGridView;
+        private System.Windows.Forms.BindingSource returnTransactionBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RentedItemsID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Days;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
@@ -304,6 +307,5 @@ namespace RentMe.View
         private System.Windows.Forms.DataGridViewTextBoxColumn Fine;
         private System.Windows.Forms.DataGridViewTextBoxColumn Refund;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
-        private System.Windows.Forms.BindingSource returnTransactionBindingSource;
     }
 }

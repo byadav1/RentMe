@@ -2,6 +2,7 @@
 using RentMe.Model;
 using RentMe.Validators;
 using System;
+using RentMe.View;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,8 +22,10 @@ namespace RentMe.UserControls
     {
         private readonly MembersController membersController;
         private readonly RentalTransactionController rentalTransactionController;
+        private readonly ReturnTransactionController returnTransactionController;
         private Member memberSearchDetails;
         private List<RentalTransaction> rentalTransactionList;
+        private List<ReturnTransaction> returnTransactionsList;
       
        
         /// <summary>
@@ -33,7 +36,9 @@ namespace RentMe.UserControls
             InitializeComponent();
             this.membersController = new MembersController();
             this.rentalTransactionController = new RentalTransactionController();
+            this.returnTransactionController = new ReturnTransactionController();
             this.rentalTransactionList = new List<RentalTransaction>();
+            this.returnTransactionsList = new List<ReturnTransaction>();
 
         }
 
@@ -133,80 +138,82 @@ namespace RentMe.UserControls
             this.statusMessageLabel.Visible = true;
         }
 
-        //private void ProcessReturnButton_Click(object sender, EventArgs e)
-        //{
-        //    foreach (DataGridViewRow row in this.rentReturnFurnitureDataGridView.Rows)
-        //    {
+        private void ProcessReturnButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in this.rentalTransactionDataGridView.Rows)
+            {
 
-        //        bool isSelected = Convert.ToBoolean(row.Cells["returnMe"].Value);
-        //        if (isSelected)
-        //        {
-        //            int returnQuantity = Int32.Parse(row.Cells["ReturnQuantity"].Value.ToString());
-        //            if (returnQuantity > 0)
-        //            {
-        //                ReturnFurniture returnFurniture = new ReturnFurniture
-        //                {
-        //                    RentedItemsID = int.Parse(row.Cells["RentedItemsID"].Value.ToString()),
-        //                    Quantity = int.Parse(row.Cells["ReturnQuantity"].Value.ToString()),
-        //                    FurnitureName = (row.Cells["FurnitureName"].Value.ToString()),
-        //                    RentDate = DateTime.Parse(row.Cells["RentDate"].Value.ToString()),
-        //                    DueDate = DateTime.Parse(row.Cells["DueDate"].Value.ToString()),
-        //                    RentalRate = float.Parse(row.Cells["RentalRate"].Value.ToString()),
-        //                    ReturnDate = DateTime.Now,
-        //                    EmployeeID = 1
-        //                };
+                bool isSelected = Convert.ToBoolean(row.Cells["returnMe"].Value);
+                if (isSelected)
+                {
+                    int returnQuantity = Int32.Parse(row.Cells["ReturnQuantity"].Value.ToString());
+                    if (returnQuantity > 0)
+                    {
+                        ReturnTransaction returnTransaction = new ReturnTransaction
+                        {
+                            RentedItemsID = int.Parse(row.Cells["RentedItemsID"].Value.ToString()),
+                            Quantity = int.Parse(row.Cells["ReturnQuantity"].Value.ToString()),
+                            FurnitureName = (row.Cells["FurnitureName"].Value.ToString()),
+                            RentDate = DateTime.Parse(row.Cells["RentDate"].Value.ToString()),
+                            DueDate = DateTime.Parse(row.Cells["DueDate"].Value.ToString()),
+                            RentalRate = float.Parse(row.Cells["RentalRate"].Value.ToString()),
+                            ReturnDate = DateTime.Now,
+                            EmployeeID = 1
+                        };
 
 
-        //                //if (int.Parse(row.Cells["ReturnQuantity"].Value.ToString()) > )
+                        //if (int.Parse(row.Cells["ReturnQuantity"].Value.ToString()) > )
 
-        //                double days = Math.Abs((returnFurniture.DueDate - returnFurniture.ReturnDate).TotalDays);
-        //                if (days > 0)
-        //                {
-        //                    returnFurniture.Days = days;
-        //                    returnFurniture.Fine = returnFurniture.RentalRate * (float)days;
-        //                    returnFurniture.SubTotal = returnFurniture.Quantity * returnFurniture.Fine;
-        //                }
-        //                else if (days < 0)
-        //                {
-        //                    returnFurniture.Days = days;
-        //                    returnFurniture.Refund = returnFurniture.RentalRate * Math.Abs((float)days);
-        //                    returnFurniture.SubTotal = returnFurniture.Quantity * returnFurniture.Refund;
-        //                }
-        //                else
-        //                {
-        //                    returnFurniture.Days = 0;
-        //                    returnFurniture.Refund = 0;
-        //                    returnFurniture.Fine = 0;
-        //                    returnFurniture.SubTotal = 0;
-        //                }
+                        double days = Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays);
+                        if (days > 0)
+                        {
+                            returnTransaction.Days = days;
+                            returnTransaction.Fine = returnTransaction.RentalRate * (float)days;
+                            returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Fine;
+                        }
+                        else if (days < 0)
+                        {
+                            returnTransaction.Days = days;
+                            returnTransaction.Refund = returnTransaction.RentalRate * Math.Abs((float)days);
+                            returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Refund;
+                        }
+                        else
+                        {
+                            returnTransaction.Days = 0;
+                            returnTransaction.Refund = 0;
+                            returnTransaction.Fine = 0;
+                            returnTransaction.SubTotal = 0;
+                        }
 
-        //                this.returnFurnituresList.Add(returnFurniture);
+                        this.returnTransactionsList.Add(returnTransaction);
+                      
 
-        //            }
-        //            else
-        //            {
-        //                string message = "Return Quantity can't be zero or less than zero";
-        //                this.UpdateStatusMessage(message, true);
-        //            }
+                    }
+                    else
+                    {
+                        string message = "Return Quantity can't be zero or less than zero";
+                        this.UpdateStatusMessage(message, true);
+                    }
 
-        //        }
-        //    }
+                }
+            }
 
-        //    String memberName = "Name: " + this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
-        //    using (Form confirmReturnDialog = new ConfirmReturnDialog(this.returnFurnituresList, memberName))
-        //    {
-        //        DialogResult result = confirmReturnDialog.ShowDialog();
-        //        if (result == DialogResult.OK)
-        //        {
-        //            foreach (ReturnFurniture returnFurniture in this.returnFurnituresList)
-        //            {
-        //                this.furnitureReturnController.AddReturnFurniture(returnFurniture);
-        //            }
+            String memberName = "Name: " + this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
+        
+            using (Form ReturnConfirmDialog = new ReturnConfirmDialog(this.returnTransactionsList, memberName))
+            {
+                DialogResult result = ReturnConfirmDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    foreach (ReturnTransaction returnTransaction in this.returnTransactionsList)
+                    {
+                        this.returnTransactionController.AddReturnFurniture(returnTransaction);
+                    }
 
-        //        }
+                }
 
-        //    }
-        //}
+            }
+        }
 
 
     }
