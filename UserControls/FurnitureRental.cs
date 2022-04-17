@@ -397,43 +397,48 @@ namespace RentMe.UserControls
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
-
-            this.rentalStatusLabel.Visible = false;
-            this.rentFurnitureList = new List<RentFurniture>();
-            string message = "";
-            bool itemSelected = false;
-            foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
+            try
             {
-                row.Cells[7].Style.BackColor = Color.White;
-                row.Cells[8].Style.BackColor = Color.White;
-                row.Cells[9].Style.BackColor = Color.White;
-                if (Convert.ToBoolean(row.Cells[9].Value))
+                this.rentalStatusLabel.Visible = false;
+                this.rentFurnitureList = new List<RentFurniture>();
+                string message = "";
+                bool itemSelected = false;
+                foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
                 {
-                    itemSelected = true;
-                    message = this.ValidateMissingRentalItemDetails(row, message); ;
-                    if (message == "")
+                    row.Cells[7].Style.BackColor = Color.White;
+                    row.Cells[8].Style.BackColor = Color.White;
+                    row.Cells[9].Style.BackColor = Color.White;
+                    if (Convert.ToBoolean(row.Cells[9].Value))
                     {
-                        message = this.ValidateRentalItemDetails(row, message);
+                        itemSelected = true;
+                        message = this.ValidateMissingRentalItemDetails(row, message); ;
                         if (message == "")
                         {
-                            this.AddItemsToCart(row);
+                            message = this.ValidateRentalItemDetails(row, message);
+                            if (message == "")
+                            {
+                                this.AddItemsToCart(row);
+                            }
                         }
                     }
                 }
+                if (!itemSelected)
+                {
+                    this.UpdateStatusMessage("Please select the items to Rent.", true);
+                }
+                else if (this.rentFurnitureList.Any())
+                {
+                    this.cartController.AddFurnituresToRent(this.rentFurnitureList);
+                    this.UpdateStatusMessage("Items added to the cart.", false);
+                    this.Reset();
+                }
+                else
+                {
+                    this.UpdateStatusMessage(message, true);
+                }
             }
-            if (!itemSelected)
-            {
-               this.UpdateStatusMessage("Please select the items to Rent.", true);
-            }
-            else if (this.rentFurnitureList.Any())
-            {
-                this.cartController.AddFurnituresToRent(this.rentFurnitureList);
-                this.UpdateStatusMessage("Items added to the cart.", false);
-                this.Reset();
-            }
-            else
-            {
-                this.UpdateStatusMessage(message, true);
+            catch(Exception exe){
+                this.UpdateStatusMessage(exe.Message, true);
             }
 
         }
@@ -444,24 +449,31 @@ namespace RentMe.UserControls
 
         private RentFurniture CreateRentalData(DataGridViewRow row)
         {
-
-            int dueDays = Int32.Parse(row.Cells[8].Value.ToString());
-            int rentCount = Int32.Parse(row.Cells[7].Value.ToString());
-            DateTime dueDate = DateTime.Today.AddDays(dueDays);
-            RentFurniture rentItem = new RentFurniture
+            RentFurniture rentItem = null;
+            try
             {
-                FurnitureID = int.Parse(row.Cells[0].Value.ToString()),
-                FurnitureRentQuantity = rentCount,
-                RentalAmount = float.Parse(row.Cells[6].Value.ToString())
-            };
-            rentItem.TotalItemRentalAmount = float.Parse(row.Cells[6].Value.ToString()) * rentItem.FurnitureRentQuantity * dueDays;
-            rentItem.FurnitureRentMemberID = this.MemberRent.MemberID;
-            rentItem.FurnitureRentEmployeeID = this.GetEmployeeID();
-            rentItem.Name = row.Cells[1].Value.ToString();
-            rentItem.Description = row.Cells[2].Value.ToString();
-            rentItem.Category = row.Cells[3].Value.ToString();
-            rentItem.Style = row.Cells[4].Value.ToString();
-            rentItem.DueDate = dueDate;
+                int dueDays = Int32.Parse(row.Cells[8].Value.ToString());
+                int rentCount = Int32.Parse(row.Cells[7].Value.ToString());
+                DateTime dueDate = DateTime.Today.AddDays(dueDays);
+                 rentItem = new RentFurniture
+                {
+                    FurnitureID = int.Parse(row.Cells[0].Value.ToString()),
+                    FurnitureRentQuantity = rentCount,
+                    RentalAmount = float.Parse(row.Cells[6].Value.ToString())
+                };
+                rentItem.TotalItemRentalAmount = float.Parse(row.Cells[6].Value.ToString()) * rentItem.FurnitureRentQuantity * dueDays;
+                rentItem.FurnitureRentMemberID = this.MemberRent.MemberID;
+                rentItem.FurnitureRentEmployeeID = this.GetEmployeeID();
+                rentItem.Name = row.Cells[1].Value.ToString();
+                rentItem.Description = row.Cells[2].Value.ToString();
+                rentItem.Category = row.Cells[3].Value.ToString();
+                rentItem.Style = row.Cells[4].Value.ToString();
+                rentItem.DueDate = dueDate;
+            }
+            catch (Exception exe)
+            {
+                this.UpdateStatusMessage(exe.Message, true);
+            }
             return rentItem;
         }
         private string ValidateMissingRentalItemDetails(DataGridViewRow row, string message)
@@ -473,19 +485,27 @@ namespace RentMe.UserControls
                 this.rentFurnitureList.Clear();
                 return "Please enter the Quantity and return date to rent";
             }
-            else if (string.IsNullOrEmpty((string)row.Cells[7].Value))
+            else if (!int.TryParse((string)row.Cells[7].Value, out int quatityvalue) && 
+                !int.TryParse((string)row.Cells[8].Value, out int numericValue))
+            {
+                row.Cells[7].Style.BackColor = Color.Red;
+                row.Cells[8].Style.BackColor = Color.Red;
+                this.rentFurnitureList.Clear();
+                return "Please enter the Quantity and return date. Both should be a valid number";
+            }
+            else if (string.IsNullOrEmpty((string)row.Cells[7].Value) || !int.TryParse((string)row.Cells[7].Value, out int quantiyvalue))
             {
 
                 row.Cells[7].Style.BackColor = Color.Red;
                 this.rentFurnitureList.Clear();
-                return "Please enter the Quantity to rent"; ;
+                return "Please enter the Quantity to rent and it should be a valid number"; ;
             }
-            else if (string.IsNullOrEmpty((string)row.Cells[8].Value))
+            else if (string.IsNullOrEmpty((string)row.Cells[8].Value) || !int.TryParse((string)row.Cells[8].Value, out int daysValue))
             {
 
                 row.Cells[8].Style.BackColor = Color.Red;
                 this.rentFurnitureList.Clear();
-                return "Please enter the Rental days to rent"; ;
+                return "Please enter the Rental days to rent and it should be a valid number"; ;
             }
             return message;
         }

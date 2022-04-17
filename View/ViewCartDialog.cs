@@ -163,6 +163,7 @@ namespace RentMe.View
             if (this.cartList.Any())
             {
                 this.cartList.Clear();
+                this._cartController.UpdateRentalCart(this.member);
                 this.rentFurnitureBindingSource.DataSource = null;
                 this.cartDataGrideView.DataSource = null;
                 this.submitOrderButton.Enabled = false;
