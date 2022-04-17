@@ -64,6 +64,7 @@
     <Compile Include="DAL\RentCartDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\RentFurniture.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Member.cs" />
