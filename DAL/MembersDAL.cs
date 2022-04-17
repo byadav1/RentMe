@@ -157,6 +157,86 @@ namespace RentMe.DAL
             return members;
         }
 
+
+        /// <summary>
+        /// Return Member information based upon search.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
+        public static Member GetMemberFromSearch(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            List<Member> members = new List<Member>();
+            string selectStatement = "SELECT * " +
+                                        "FROM Members " +
+                                        "WHERE ";
+            if (MemberIDExists(member))
+            {
+                selectStatement += "MemberID = @MemberID";
+            }
+            else if (MemberPhoneExists(member))
+            {
+                selectStatement += "Phone = @Phone";
+            }
+            else if (MemberNameExists(member))
+            {
+                selectStatement += "Fname = @FName AND Lname = @LName";
+            }
+            else
+            {
+                throw new ArgumentException("No member found with the provided input");
+            }
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    if (MemberIDExists(member))
+                    {
+                        selectCommand.Parameters.AddWithValue("MemberID", member.MemberID);
+                    }
+                    else if (MemberPhoneExists(member))
+                    {
+                        selectCommand.Parameters.AddWithValue("Phone", member.Phone);
+                    }
+                    else if (MemberNameExists(member))
+                    {
+                        selectCommand.Parameters.AddWithValue("FName", member.FName);
+                        selectCommand.Parameters.AddWithValue("LName", member.LName);
+                    }
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            member = new Member
+                            {
+                                MemberID = Convert.ToInt32(reader["MemberID"]),
+                                FName = reader["Fname"].ToString(),
+                                LName = reader["Lname"].ToString(),
+                                DOB = (DateTime)reader["DateOfBirth"],
+                                Phone = reader["Phone"].ToString(),
+                                Sex = reader["Sex"].ToString(),
+                                Address1 = reader["Address1"].ToString(),
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                Zip = reader["ZipCode"].ToString()
+                            };
+                            if (!reader.IsDBNull(8))
+                            {
+                                member.Address2 = reader["Address2"].ToString();
+                            }
+
+                           
+                        }
+                    }
+                }
+            }
+
+            return member;
+        }
+
+
         /// <summary>
         /// Register and return a new RentMe Member.
         /// </summary>

@@ -71,6 +71,7 @@
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\ReceiptItem.cs" />
+    <Compile Include="Model\ReturnTransaction.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\Validators\EmployeeValidator.cs" />
@@ -90,6 +91,12 @@
     </Compile>
     <Compile Include="UserControls\FurnitureRental.Designer.cs">
       <DependentUpon>FurnitureRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FurnitureReturn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FurnitureReturn.Designer.cs">
+      <DependentUpon>FurnitureReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MemberSearch.cs">
       <SubType>UserControl</SubType>
@@ -155,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FurnitureRental.resx">
       <DependentUpon>FurnitureRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FurnitureReturn.resx">
+      <DependentUpon>FurnitureReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberSearch.resx">
       <DependentUpon>MemberSearch.cs</DependentUpon>
