@@ -1,6 +1,9 @@
 ﻿
 namespace RentMe.UserControls
 {
+    /// <summary>
+    /// Designer class to rent a furniture
+    /// </summary>
     partial class FurnitureRental
     {
         /// <summary> 

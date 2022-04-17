@@ -1,6 +1,11 @@
 ﻿
 namespace RentMe.View
 {
+
+    /// <summary>
+    /// Designer class to view the cart items
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     partial class ViewCartDialog
     {
         /// <summary>
