@@ -94,6 +94,7 @@ namespace RentMe.View
             if (result == DialogResult.Yes)
             {
                 this.rentController.AddFurnituresToRent(this.cartList);
+                this._cartController.UpdateRentalCart(this.member);
                 this.cartList.Clear();
             }
             else
@@ -123,8 +124,9 @@ namespace RentMe.View
             if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "DeleteItem")
             {
                 if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    this.cartList.RemoveAt(cartDataGrideView.CurrentCell.RowIndex);
-                this.rentFurnitureBindingSource.RemoveCurrent();
+                this.cartList.RemoveAt(cartDataGrideView.CurrentCell.RowIndex);
+                this._cartController.DeleteCartItem(cartDataGrideView.CurrentCell.RowIndex);
+                this.rentFurnitureBindingSource.RemoveCurrent();               
                 this.CalculateTotal();
             }
 

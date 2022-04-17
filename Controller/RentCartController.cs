@@ -28,5 +28,17 @@ namespace RentMe.Controller
             return RentCartDAL.GetCartItems(memberID);
         }
 
+
+        public void UpdateRentalCart(Member member)
+        {
+            RentCartDAL.UpdateCartItems(member);
+
+        }
+
+        public void DeleteCartItem(int index)
+        {
+            RentCartDAL.RemoveCartItem(index);
+
+        }
     }
 }

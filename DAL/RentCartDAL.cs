@@ -32,10 +32,28 @@ namespace RentMe.DAL
             {
                 return _rentCartItems = new List<RentFurniture>();
             }
-            return _rentCartItems.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));
-           
+            return _rentCartItems.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));           
 
         }
-    
+
+        public static void UpdateCartItems(Member member)
+        {
+            if (_rentCartItems.Any())
+            {
+                _rentCartItems.RemoveAll(s => s.FurnitureRentMemberID == member.MemberID);
+            }         
+
+        }
+
+
+        public static void RemoveCartItem(int index)
+        {
+            if (_rentCartItems.Any())
+            {
+                _rentCartItems.RemoveAt(index);
+            }
+
+        }
+
     }
 }
