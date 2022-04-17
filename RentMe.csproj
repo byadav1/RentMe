@@ -59,6 +59,7 @@
     <Compile Include="DAL\FurnitureRentalDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\MembersDAL.cs" />
+    <Compile Include="DAL\RentalTransactionDAL.cs" />
     <Compile Include="DAL\StatesDAL.cs" />
     <Compile Include="DAL\TransactionsDAL.cs" />
     <Compile Include="DAL\RentCartDAL.cs" />
