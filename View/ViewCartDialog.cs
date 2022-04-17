@@ -52,7 +52,6 @@ namespace RentMe.View
                         o.DueDate
                     }).ToList();
                     this.CalculateTotal();
-
                 }
                 else
                 {

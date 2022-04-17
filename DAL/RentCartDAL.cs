@@ -10,11 +10,6 @@ namespace RentMe.DAL
 
         private static List<RentFurniture> _rentCartItems;
 
-        public RentCartDAL()
-        {
-            
-        }
-
 
         public static void AddCartItems(List<RentFurniture> itemList)
         {
@@ -33,7 +28,10 @@ namespace RentMe.DAL
        
         public static List<RentFurniture> GetCartItems()
         {
-                    
+            if (_rentCartItems == null)
+            {
+                return _rentCartItems = new List<RentFurniture>();
+            }
             return _rentCartItems;
 
         }
