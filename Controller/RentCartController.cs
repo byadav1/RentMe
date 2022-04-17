@@ -22,10 +22,10 @@ namespace RentMe.Controller
         }
 
 
-        public List<RentFurniture> GetRentItem()
+        public List<RentFurniture> GetRentItem(Member memberID)
         {
 
-            return RentCartDAL.GetCartItems();
+            return RentCartDAL.GetCartItems(memberID);
         }
 
     }

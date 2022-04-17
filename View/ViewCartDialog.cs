@@ -37,11 +37,11 @@ namespace RentMe.View
             {
                 this.rentFurnitureBindingSource.DataSource = null;
                 this.rentFurnitureBindingSource.Clear();
-                this.cartList = this._cartController.GetRentItem();
+                this.cartList = this._cartController.GetRentItem(this.member);
                
                 if (this.cartList.Any())
                 {
-                    this.rentFurnitureBindingSource.DataSource = this.GetMemberCartDetails().Select(o => new
+                    this.rentFurnitureBindingSource.DataSource = this.cartList.Select(o => new
                     {
                         o.FurnitureID,
                         o.Name,
@@ -54,6 +54,8 @@ namespace RentMe.View
                         o.DueDate
                     }).ToList();
                     this.CalculateTotal();
+                    this.submitOrderButton.Enabled = true;
+                    this.emptyCartButton.Enabled = true;
                 }
                 else
                 {
@@ -70,10 +72,7 @@ namespace RentMe.View
 
         }
 
-        private List<RentFurniture> GetMemberCartDetails()
-        {
-            return this.cartList.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));
-        }
+      
         private void CalculateTotal()
         {
             var totalAmountToPay = this.cartList.Sum(cart => cart.TotalItemRentalAmount);
@@ -115,6 +114,7 @@ namespace RentMe.View
                 this.amountLabel.Text = "$0.00";
 
             }
+            this.emptyCartButton.Enabled = false;
 
         }
 

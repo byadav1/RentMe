@@ -26,13 +26,14 @@ namespace RentMe.DAL
             _rentCartItems = itemList;
         }
        
-        public static List<RentFurniture> GetCartItems()
+        public static List<RentFurniture> GetCartItems(Member member)
         {
             if (_rentCartItems == null)
             {
                 return _rentCartItems = new List<RentFurniture>();
             }
-            return _rentCartItems;
+            return _rentCartItems.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));
+           
 
         }
     
