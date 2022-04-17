@@ -34,10 +34,11 @@ namespace RentMe.View
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.searchMemberTabPage = new System.Windows.Forms.TabPage();
-            this.memberSearch = new RentMe.UserControls.MemberSearch();
             this.searchEmployeeTabPage = new System.Windows.Forms.TabPage();
-            this.employeeSearch = new RentMe.UserControls.EmployeeSearch();
             this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
+            this.viewTransactionsTabPage = new System.Windows.Forms.TabPage();
+            this.memberSearch = new RentMe.UserControls.MemberSearch();
+            this.employeeSearch = new RentMe.UserControls.EmployeeSearch();
             this.furnitureRental = new RentMe.UserControls.FurnitureRental();
             this.viewTransactionsTabPage = new System.Windows.Forms.TabPage();
             this.viewTransactions = new RentMe.UserControls.ViewTransactions();
@@ -185,6 +186,33 @@ namespace RentMe.View
             this.viewTransactions.Margin = new System.Windows.Forms.Padding(5);
             this.viewTransactions.Name = "viewTransactions";
             this.viewTransactions.Size = new System.Drawing.Size(1558, 848);
+            this.viewTransactions.TabIndex = 0;
+            // 
+            // memberSearch
+            // 
+            this.memberSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberSearch.Location = new System.Drawing.Point(3, 3);
+            this.memberSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.memberSearch.Name = "memberSearch";
+            this.memberSearch.Size = new System.Drawing.Size(1413, 895);
+            this.memberSearch.TabIndex = 0;
+            // 
+            // furnitureRental
+            // 
+            this.furnitureRental.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.furnitureRental.Location = new System.Drawing.Point(3, 3);
+            this.furnitureRental.Margin = new System.Windows.Forms.Padding(5);
+            this.furnitureRental.Name = "furnitureRental";
+            this.furnitureRental.Size = new System.Drawing.Size(1413, 895);
+            this.furnitureRental.TabIndex = 0;
+            // 
+            // viewTransactions
+            // 
+            this.viewTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewTransactions.Location = new System.Drawing.Point(3, 3);
+            this.viewTransactions.Margin = new System.Windows.Forms.Padding(5);
+            this.viewTransactions.Name = "viewTransactions";
+            this.viewTransactions.Size = new System.Drawing.Size(1413, 895);
             this.viewTransactions.TabIndex = 0;
             // 
             // MainForm

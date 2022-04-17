@@ -42,9 +42,12 @@ namespace RentMe.UserControls
             this.statusMessage = new System.Windows.Forms.Label();
             this.memberSearchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.employeeDataGridView = new System.Windows.Forms.DataGridView();
+            this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.employeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,9 +56,6 @@ namespace RentMe.UserControls
             this.city = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonsTableLayoutPanel.SuspendLayout();
             this.searchMemberTableLayoutPanel.SuspendLayout();
@@ -230,12 +230,16 @@ namespace RentMe.UserControls
             this.employeeDataGridView.AllowUserToDeleteRows = false;
             this.employeeDataGridView.AutoGenerateColumns = false;
             this.employeeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.employeeDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.employeeDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.employeeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.employeeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.active,
             this.employeeID,
+            this.type,
             this.fname,
             this.lname,
+            this.username,
             this.dob,
             this.phone,
             this.sex,
@@ -243,10 +247,7 @@ namespace RentMe.UserControls
             this.address2,
             this.city,
             this.state,
-            this.zip,
-            this.username,
-            this.type,
-            this.active});
+            this.zip});
             this.memberSearchTableLayoutPanel.SetColumnSpan(this.employeeDataGridView, 2);
             this.employeeDataGridView.DataSource = this.employeeBindingSource;
             this.employeeDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -260,6 +261,15 @@ namespace RentMe.UserControls
             this.employeeDataGridView.Size = new System.Drawing.Size(1074, 390);
             this.employeeDataGridView.TabIndex = 26;
             // 
+            // active
+            // 
+            this.active.DataPropertyName = "Active";
+            this.active.HeaderText = "Active";
+            this.active.MinimumWidth = 6;
+            this.active.Name = "active";
+            this.active.ReadOnly = true;
+            this.active.Width = 52;
+            // 
             // employeeID
             // 
             this.employeeID.DataPropertyName = "EmployeeID";
@@ -268,6 +278,15 @@ namespace RentMe.UserControls
             this.employeeID.Name = "employeeID";
             this.employeeID.ReadOnly = true;
             this.employeeID.Width = 50;
+            // 
+            // type
+            // 
+            this.type.DataPropertyName = "Type";
+            this.type.HeaderText = "Type";
+            this.type.MinimumWidth = 6;
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            this.type.Width = 69;
             // 
             // fname
             // 
@@ -286,6 +305,15 @@ namespace RentMe.UserControls
             this.lname.Name = "lname";
             this.lname.ReadOnly = true;
             this.lname.Width = 105;
+            // 
+            // username
+            // 
+            this.username.DataPropertyName = "Username";
+            this.username.HeaderText = "Username";
+            this.username.MinimumWidth = 6;
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
+            this.username.Width = 102;
             // 
             // dob
             // 
@@ -359,33 +387,6 @@ namespace RentMe.UserControls
             this.zip.ReadOnly = true;
             this.zip.Width = 57;
             // 
-            // username
-            // 
-            this.username.DataPropertyName = "Username";
-            this.username.HeaderText = "Username";
-            this.username.MinimumWidth = 6;
-            this.username.Name = "username";
-            this.username.ReadOnly = true;
-            this.username.Width = 102;
-            // 
-            // type
-            // 
-            this.type.DataPropertyName = "Type";
-            this.type.HeaderText = "Type";
-            this.type.MinimumWidth = 6;
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            this.type.Width = 69;
-            // 
-            // active
-            // 
-            this.active.DataPropertyName = "Active";
-            this.active.HeaderText = "Active";
-            this.active.MinimumWidth = 6;
-            this.active.Name = "active";
-            this.active.ReadOnly = true;
-            this.active.Width = 52;
-            // 
             // employeeBindingSource
             // 
             this.employeeBindingSource.DataSource = typeof(RentMe.Model.Employee);
@@ -422,9 +423,12 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Button viewAllEmployeesButton;
         private System.Windows.Forms.DataGridView employeeDataGridView;
         private System.Windows.Forms.BindingSource employeeBindingSource;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn active;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn fname;
         private System.Windows.Forms.DataGridViewTextBoxColumn lname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn dob;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn sex;
@@ -433,8 +437,5 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn city;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn zip;
-        private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn active;
     }
 }

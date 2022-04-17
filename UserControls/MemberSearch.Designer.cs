@@ -32,6 +32,16 @@ namespace RentMe.UserControls
             this.components = new System.ComponentModel.Container();
             this.memberSearchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.memberDataGridView = new System.Windows.Forms.DataGridView();
+            this.statusMessage = new System.Windows.Forms.Label();
+            this.searchMemberTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.searchMemberLabel = new System.Windows.Forms.Label();
+            this.searchMemberTextBox = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.memberSearchHeaderLabel = new System.Windows.Forms.Label();
+            this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
+            this.viewAllMembersButton = new System.Windows.Forms.Button();
             this.memberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,21 +54,11 @@ namespace RentMe.UserControls
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.statusMessage = new System.Windows.Forms.Label();
-            this.searchMemberTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.searchMemberLabel = new System.Windows.Forms.Label();
-            this.searchMemberTextBox = new System.Windows.Forms.TextBox();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.memberSearchHeaderLabel = new System.Windows.Forms.Label();
-            this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.updateButton = new System.Windows.Forms.Button();
-            this.registerButton = new System.Windows.Forms.Button();
-            this.viewAllMembersButton = new System.Windows.Forms.Button();
             this.memberSearchTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memberDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.searchMemberTableLayoutPanel.SuspendLayout();
             this.buttonsTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // memberSearchTableLayoutPanel
@@ -89,6 +89,7 @@ namespace RentMe.UserControls
             this.memberDataGridView.AllowUserToDeleteRows = false;
             this.memberDataGridView.AutoGenerateColumns = false;
             this.memberDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.memberDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.memberDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.memberDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.memberDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -115,109 +116,6 @@ namespace RentMe.UserControls
             this.memberDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.memberDataGridView.Size = new System.Drawing.Size(1074, 390);
             this.memberDataGridView.TabIndex = 3;
-            // 
-            // memberID
-            // 
-            this.memberID.DataPropertyName = "MemberID";
-            this.memberID.HeaderText = "ID";
-            this.memberID.MinimumWidth = 6;
-            this.memberID.Name = "memberID";
-            this.memberID.ReadOnly = true;
-            this.memberID.Width = 50;
-            // 
-            // fname
-            // 
-            this.fname.DataPropertyName = "FName";
-            this.fname.HeaderText = "First Name";
-            this.fname.MinimumWidth = 6;
-            this.fname.Name = "fname";
-            this.fname.ReadOnly = true;
-            this.fname.Width = 105;
-            // 
-            // lname
-            // 
-            this.lname.DataPropertyName = "LName";
-            this.lname.HeaderText = "Last Name";
-            this.lname.MinimumWidth = 6;
-            this.lname.Name = "lname";
-            this.lname.ReadOnly = true;
-            this.lname.Width = 105;
-            // 
-            // dob
-            // 
-            this.dob.DataPropertyName = "DOB";
-            this.dob.HeaderText = "DOB";
-            this.dob.MinimumWidth = 6;
-            this.dob.Name = "dob";
-            this.dob.ReadOnly = true;
-            this.dob.Width = 67;
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "Phone";
-            this.phone.HeaderText = "Phone";
-            this.phone.MinimumWidth = 6;
-            this.phone.Name = "phone";
-            this.phone.ReadOnly = true;
-            this.phone.Width = 78;
-            // 
-            // sex
-            // 
-            this.sex.DataPropertyName = "Sex";
-            this.sex.HeaderText = "Sex";
-            this.sex.MinimumWidth = 6;
-            this.sex.Name = "sex";
-            this.sex.ReadOnly = true;
-            this.sex.Width = 60;
-            // 
-            // address1
-            // 
-            this.address1.DataPropertyName = "Address1";
-            this.address1.HeaderText = "Address1";
-            this.address1.MinimumWidth = 6;
-            this.address1.Name = "address1";
-            this.address1.ReadOnly = true;
-            this.address1.Width = 97;
-            // 
-            // address2
-            // 
-            this.address2.DataPropertyName = "Address2";
-            this.address2.HeaderText = "Address2";
-            this.address2.MinimumWidth = 6;
-            this.address2.Name = "address2";
-            this.address2.ReadOnly = true;
-            this.address2.Width = 97;
-            // 
-            // city
-            // 
-            this.city.DataPropertyName = "City";
-            this.city.HeaderText = "City";
-            this.city.MinimumWidth = 6;
-            this.city.Name = "city";
-            this.city.ReadOnly = true;
-            this.city.Width = 60;
-            // 
-            // state
-            // 
-            this.state.DataPropertyName = "State";
-            this.state.HeaderText = "State";
-            this.state.MinimumWidth = 6;
-            this.state.Name = "state";
-            this.state.ReadOnly = true;
-            this.state.Width = 70;
-            // 
-            // zip
-            // 
-            this.zip.DataPropertyName = "Zip";
-            this.zip.HeaderText = "Zip";
-            this.zip.MinimumWidth = 6;
-            this.zip.Name = "zip";
-            this.zip.ReadOnly = true;
-            this.zip.Width = 57;
-            // 
-            // memberBindingSource
-            // 
-            this.memberBindingSource.DataSource = typeof(RentMe.Model.Member);
             // 
             // statusMessage
             // 
@@ -357,6 +255,109 @@ namespace RentMe.UserControls
             this.viewAllMembersButton.UseVisualStyleBackColor = true;
             this.viewAllMembersButton.Click += new System.EventHandler(this.ViewAllMembersButtonClick);
             // 
+            // memberID
+            // 
+            this.memberID.DataPropertyName = "MemberID";
+            this.memberID.HeaderText = "ID";
+            this.memberID.MinimumWidth = 6;
+            this.memberID.Name = "memberID";
+            this.memberID.ReadOnly = true;
+            this.memberID.Width = 50;
+            // 
+            // fname
+            // 
+            this.fname.DataPropertyName = "FName";
+            this.fname.HeaderText = "First Name";
+            this.fname.MinimumWidth = 6;
+            this.fname.Name = "fname";
+            this.fname.ReadOnly = true;
+            this.fname.Width = 105;
+            // 
+            // lname
+            // 
+            this.lname.DataPropertyName = "LName";
+            this.lname.HeaderText = "Last Name";
+            this.lname.MinimumWidth = 6;
+            this.lname.Name = "lname";
+            this.lname.ReadOnly = true;
+            this.lname.Width = 105;
+            // 
+            // dob
+            // 
+            this.dob.DataPropertyName = "DOB";
+            this.dob.HeaderText = "DOB";
+            this.dob.MinimumWidth = 6;
+            this.dob.Name = "dob";
+            this.dob.ReadOnly = true;
+            this.dob.Width = 67;
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "Phone";
+            this.phone.HeaderText = "Phone";
+            this.phone.MinimumWidth = 6;
+            this.phone.Name = "phone";
+            this.phone.ReadOnly = true;
+            this.phone.Width = 78;
+            // 
+            // sex
+            // 
+            this.sex.DataPropertyName = "Sex";
+            this.sex.HeaderText = "Sex";
+            this.sex.MinimumWidth = 6;
+            this.sex.Name = "sex";
+            this.sex.ReadOnly = true;
+            this.sex.Width = 60;
+            // 
+            // address1
+            // 
+            this.address1.DataPropertyName = "Address1";
+            this.address1.HeaderText = "Address1";
+            this.address1.MinimumWidth = 6;
+            this.address1.Name = "address1";
+            this.address1.ReadOnly = true;
+            this.address1.Width = 97;
+            // 
+            // address2
+            // 
+            this.address2.DataPropertyName = "Address2";
+            this.address2.HeaderText = "Address2";
+            this.address2.MinimumWidth = 6;
+            this.address2.Name = "address2";
+            this.address2.ReadOnly = true;
+            this.address2.Width = 97;
+            // 
+            // city
+            // 
+            this.city.DataPropertyName = "City";
+            this.city.HeaderText = "City";
+            this.city.MinimumWidth = 6;
+            this.city.Name = "city";
+            this.city.ReadOnly = true;
+            this.city.Width = 60;
+            // 
+            // state
+            // 
+            this.state.DataPropertyName = "State";
+            this.state.HeaderText = "State";
+            this.state.MinimumWidth = 6;
+            this.state.Name = "state";
+            this.state.ReadOnly = true;
+            this.state.Width = 70;
+            // 
+            // zip
+            // 
+            this.zip.DataPropertyName = "Zip";
+            this.zip.HeaderText = "Zip";
+            this.zip.MinimumWidth = 6;
+            this.zip.Name = "zip";
+            this.zip.ReadOnly = true;
+            this.zip.Width = 57;
+            // 
+            // memberBindingSource
+            // 
+            this.memberBindingSource.DataSource = typeof(RentMe.Model.Member);
+            // 
             // MemberSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -367,10 +368,10 @@ namespace RentMe.UserControls
             this.memberSearchTableLayoutPanel.ResumeLayout(false);
             this.memberSearchTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memberDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.searchMemberTableLayoutPanel.ResumeLayout(false);
             this.searchMemberTableLayoutPanel.PerformLayout();
             this.buttonsTableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
