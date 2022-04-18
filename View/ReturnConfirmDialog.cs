@@ -13,8 +13,8 @@ namespace RentMe.View
     public partial class ReturnConfirmDialog : Form
     {
 
-        private List<ReturnTransaction> returnTransactionList;
-        private string memberName;
+        private readonly List<ReturnTransaction> returnTransactionList;
+        private readonly string memberName;
 
         /// <summary>
         /// constructor 

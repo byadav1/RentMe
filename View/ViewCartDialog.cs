@@ -28,7 +28,7 @@ namespace RentMe.View
             InitializeComponent();
             this._cartController = new RentCartController();
             this.rentController = new FurnitureRentController();
-            List<ReceiptItem> receiptList = new List<ReceiptItem>();
+            _ = new List<ReceiptItem>();
             this.member = searchMember;
             _ = new List<RentFurniture>();
         }

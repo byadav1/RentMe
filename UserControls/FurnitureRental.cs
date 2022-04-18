@@ -102,7 +102,7 @@ namespace RentMe.UserControls
                         o.Description,
                         o.Category,
                         o.Style,
-                        Quantity = o.Quantity,
+                        o.Quantity,
                         o.DailyRentalRate
 
                     }).ToList();
@@ -486,22 +486,22 @@ namespace RentMe.UserControls
                 this.rentFurnitureList.Clear();
                 return "Please enter the Quantity and return date to rent";
             }
-            else if (!int.TryParse((string)row.Cells[7].Value, out int quatityvalue) &&
-                !int.TryParse((string)row.Cells[8].Value, out int numericValue))
+            else if (!int.TryParse((string)row.Cells[7].Value, out _) &&
+                !int.TryParse((string)row.Cells[8].Value, out _))
             {
                 row.Cells[7].Style.BackColor = Color.Red;
                 row.Cells[8].Style.BackColor = Color.Red;
                 this.rentFurnitureList.Clear();
                 return "Please enter the Quantity and return date. Both should be a valid number";
             }
-            else if (string.IsNullOrEmpty((string)row.Cells[7].Value) || !int.TryParse((string)row.Cells[7].Value, out int quantiyvalue))
+            else if (string.IsNullOrEmpty((string)row.Cells[7].Value) || !int.TryParse((string)row.Cells[7].Value, out _))
             {
 
                 row.Cells[7].Style.BackColor = Color.Red;
                 this.rentFurnitureList.Clear();
                 return "Please enter the Quantity to rent and it should be a valid number"; ;
             }
-            else if (string.IsNullOrEmpty((string)row.Cells[8].Value) || !int.TryParse((string)row.Cells[8].Value, out int daysValue))
+            else if (string.IsNullOrEmpty((string)row.Cells[8].Value) || !int.TryParse((string)row.Cells[8].Value, out _))
             {
 
                 row.Cells[8].Style.BackColor = Color.Red;

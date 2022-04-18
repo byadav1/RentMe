@@ -21,8 +21,8 @@ namespace RentMe.UserControls
         private readonly EmployeesController employeeController;
         private Member memberSearchDetails;
         private List<RentalTransaction> rentalTransactionList;
-        private List<ReturnTransaction> returnTransactionsList;
-        private List<ReceiptItem> receiptItemsList;
+        private readonly List<ReturnTransaction> returnTransactionsList;
+        private readonly List<ReceiptItem> receiptItemsList;
 
 
 
@@ -182,17 +182,19 @@ namespace RentMe.UserControls
         {
             foreach (ReturnTransaction returnTransaction in this.returnTransactionsList)
             {
-                ReceiptItem receiptItem = new ReceiptItem();
-                receiptItem.FurnitureID = returnTransaction.FurnitureID;
-                receiptItem.Description = returnTransaction.Description;
-                receiptItem.DailyRate = returnTransaction.RentalRate;
-                receiptItem.DueDate = returnTransaction.DueDate;
-                receiptItem.NumberOfDays = Convert.ToInt32(returnTransaction.Days);
-                receiptItem.Quantity = returnTransaction.Quantity;
-                receiptItem.ReturnedDate = returnTransaction.ReturnDate;
-                receiptItem.RefundAmount = returnTransaction.Refund;
-                receiptItem.LateFee = returnTransaction.Fine;
-                receiptItem.SubTotal = returnTransaction.SubTotal;
+                ReceiptItem receiptItem = new ReceiptItem
+                {
+                    FurnitureID = returnTransaction.FurnitureID,
+                    Description = returnTransaction.Description,
+                    DailyRate = returnTransaction.RentalRate,
+                    DueDate = returnTransaction.DueDate,
+                    NumberOfDays = Convert.ToInt32(returnTransaction.Days),
+                    Quantity = returnTransaction.Quantity,
+                    ReturnedDate = returnTransaction.ReturnDate,
+                    RefundAmount = returnTransaction.Refund,
+                    LateFee = returnTransaction.Fine,
+                    SubTotal = returnTransaction.SubTotal
+                };
 
                 this.receiptItemsList.Add(receiptItem);
             }
