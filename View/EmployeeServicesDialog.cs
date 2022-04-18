@@ -18,7 +18,7 @@ namespace RentMe.View
     {
         private readonly EmployeesController employeesController;
         private readonly StatesController statesController;
-        private readonly Employee employeeSearchDetails;      
+        private Employee employeeSearchDetails;
 
         /// <summary>
         /// Initialize the form.
@@ -70,11 +70,11 @@ namespace RentMe.View
                 if (this.ConfirmEmployeeRegistration(employee) == DialogResult.OK)
                 {
                     this.employeesController.RegisterNewEmployee(employee);
-                   
+
                     this.ClearFields();
                     UpdateStatusMessage("Employee registration successfully!\n" +
                    "EmployeeID is " + employee.EmployeeID, false);
-                   
+
                 }
             }
             catch (ArgumentException ae)
@@ -475,7 +475,7 @@ namespace RentMe.View
                     this.UpdateStatusMessage(message, false);
                     this.DisplayEmployeeActiveStatus();
                     this.DisableEmployeeData(this.employeeSearchDetails.Active);
-                }               
+                }
             }
             catch (ArgumentException ae)
             {
@@ -509,8 +509,10 @@ namespace RentMe.View
                 {
                     if (this.employeesController.UpdateEmployeeInformation(this.employeeSearchDetails, employeeUpdateData))
                     {
+                        this.RefreshEmployeeUpdate(employeeUpdateData);
 
                         this.UpdateStatusMessage("Employee information updated successfully", false);
+
                     }
                     else
                     {
@@ -534,6 +536,18 @@ namespace RentMe.View
                 this.UpdateStatusMessage(ex.Message, true);
             }
         }
+
+        private void RefreshEmployeeUpdate(Employee employeeUpdateData)
+        {
+
+             List<Employee> employeeData = this.employeesController.GetEmployeesFromSearch(employeeUpdateData);
+            if (employeeData.Count == 1)
+            {
+                this.employeeSearchDetails = employeeData[0];
+                this.SetFields(employeeData[0]);
+            }
+        }
+
 
         /// <summary>
         /// Read change in data for an employeee
@@ -644,6 +658,7 @@ namespace RentMe.View
                     if (this.employeesController.UpdateEmployeeUserNameORPassword(this.employeeSearchDetails, employeeUpdateData))
                     {
                         this.passwordTextBox.Text = "";
+                        this.RefreshEmployeeUpdate(employeeUpdateData);
                         this.UpdateStatusMessage("Employee login updated successfully", false);                       
                     }
                     else
