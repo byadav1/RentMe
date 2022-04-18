@@ -183,53 +183,55 @@ namespace RentMe.UserControls
                 bool isSelected = Convert.ToBoolean(row.Cells["returnMe"].Value);
                 if (isSelected)
                 {
-                    int returnQuantity = Int32.Parse(row.Cells["ReturnQuantity"].Value.ToString());
-                    if (returnQuantity > 0)
-                    {
-                        ReturnTransaction returnTransaction = new ReturnTransaction
+                    
+                        int returnQuantity = Int32.Parse(row.Cells["ReturnQuantity"].Value.ToString());
+                        if (returnQuantity > 0)
                         {
-                            Description = (row.Cells["Description"].Value.ToString()),
-                            FurnitureID = int.Parse(row.Cells["FurnitureID"].Value.ToString()),
-                            RentedItemsID = int.Parse(row.Cells["RentedItemsID"].Value.ToString()),
-                            Quantity = int.Parse(row.Cells["ReturnQuantity"].Value.ToString()),
-                            FurnitureName = (row.Cells["FurnitureName"].Value.ToString()),
-                            RentDate = DateTime.Parse(row.Cells["RentDate"].Value.ToString()),
-                            DueDate = DateTime.Parse(row.Cells["DueDate"].Value.ToString()),
-                            RentalRate = float.Parse(row.Cells["RentalRate"].Value.ToString()),
-                            ReturnDate = DateTime.Now,
-                            EmployeeID = 1
-                        };
+                            ReturnTransaction returnTransaction = new ReturnTransaction
+                            {
+                                Description = (row.Cells["Description"].Value.ToString()),
+                                FurnitureID = int.Parse(row.Cells["FurnitureID"].Value.ToString()),
+                                RentedItemsID = int.Parse(row.Cells["RentedItemsID"].Value.ToString()),
+                                Quantity = int.Parse(row.Cells["ReturnQuantity"].Value.ToString()),
+                                FurnitureName = (row.Cells["FurnitureName"].Value.ToString()),
+                                RentDate = DateTime.Parse(row.Cells["RentDate"].Value.ToString()),
+                                DueDate = DateTime.Parse(row.Cells["DueDate"].Value.ToString()),
+                                RentalRate = float.Parse(row.Cells["RentalRate"].Value.ToString()),
+                                ReturnDate = DateTime.Now,
+                                EmployeeID = 1
+                            };
 
-                        double days = Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays);
-                        if (days > 0)
-                        {
-                            returnTransaction.Days = days;
-                            returnTransaction.Fine = Convert.ToDecimal(returnTransaction.RentalRate * days);
-                            returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Fine;
-                        }
-                        else if (days < 0)
-                        {
-                            returnTransaction.Days = days;
-                            returnTransaction.Refund = Convert.ToDecimal(returnTransaction.RentalRate * Math.Abs(days));
-                            returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Refund;
+                            double days = Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays);
+                            if (days > 0)
+                            {
+                                returnTransaction.Days = days;
+                                returnTransaction.Fine = Convert.ToDecimal(returnTransaction.RentalRate * days);
+                                returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Fine;
+                            }
+                            else if (days < 0)
+                            {
+                                returnTransaction.Days = days;
+                                returnTransaction.Refund = Convert.ToDecimal(returnTransaction.RentalRate * Math.Abs(days));
+                                returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Refund;
+                            }
+                            else
+                            {
+                                returnTransaction.Days = 0;
+                                returnTransaction.Refund = 0;
+                                returnTransaction.Fine = 0;
+                                returnTransaction.SubTotal = 0;
+                            }
+
+                            this.returnTransactionsList.Add(returnTransaction);
+
+
                         }
                         else
                         {
-                            returnTransaction.Days = 0;
-                            returnTransaction.Refund = 0;
-                            returnTransaction.Fine = 0;
-                            returnTransaction.SubTotal = 0;
+                            string message = "Return Quantity can't be zero or less than zero";
+                            this.UpdateStatusMessage(message, true);
                         }
-
-                        this.returnTransactionsList.Add(returnTransaction);
-
-
-                    }
-                    else
-                    {
-                        string message = "Return Quantity can't be zero or less than zero";
-                        this.UpdateStatusMessage(message, true);
-                    }
+                 
 
                 }
             }

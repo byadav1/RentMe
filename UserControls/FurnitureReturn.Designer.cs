@@ -30,10 +30,10 @@ namespace RentMe.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RentalMainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rentalTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.ReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnMe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchMemberLabel = new System.Windows.Forms.Label();
             this.furnitureReturnHeaderLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,13 +58,14 @@ namespace RentMe.UserControls
             this.Style = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnMe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.RentalMainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.memberTabelLayoutPanel.SuspendLayout();
             this.processButtonLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RentalMainTableLayoutPanel
@@ -95,6 +96,8 @@ namespace RentMe.UserControls
             // 
             // rentalTransactionDataGridView
             // 
+            this.rentalTransactionDataGridView.AllowUserToAddRows = false;
+            this.rentalTransactionDataGridView.AllowUserToDeleteRows = false;
             this.rentalTransactionDataGridView.AutoGenerateColumns = false;
             this.rentalTransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rentalTransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -121,21 +124,9 @@ namespace RentMe.UserControls
             this.rentalTransactionDataGridView.Size = new System.Drawing.Size(1322, 290);
             this.rentalTransactionDataGridView.TabIndex = 26;
             // 
-            // ReturnQuantity
+            // rentalTransactionBindingSource
             // 
-            this.ReturnQuantity.HeaderText = "Return Quantity";
-            this.ReturnQuantity.MinimumWidth = 6;
-            this.ReturnQuantity.Name = "ReturnQuantity";
-            this.ReturnQuantity.Width = 125;
-            // 
-            // ReturnMe
-            // 
-            this.ReturnMe.HeaderText = "Return Me";
-            this.ReturnMe.MinimumWidth = 6;
-            this.ReturnMe.Name = "ReturnMe";
-            this.ReturnMe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ReturnMe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ReturnMe.Width = 130;
+            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
             // 
             // searchMemberLabel
             // 
@@ -314,6 +305,7 @@ namespace RentMe.UserControls
             this.FurnitureName.HeaderText = "Furniture Name";
             this.FurnitureName.MinimumWidth = 6;
             this.FurnitureName.Name = "FurnitureName";
+            this.FurnitureName.ReadOnly = true;
             this.FurnitureName.Width = 125;
             // 
             // Quantity
@@ -322,6 +314,7 @@ namespace RentMe.UserControls
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.MinimumWidth = 6;
             this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
             this.Quantity.Width = 125;
             // 
             // EmployeeID
@@ -348,6 +341,7 @@ namespace RentMe.UserControls
             this.DueDate.HeaderText = "Due Date";
             this.DueDate.MinimumWidth = 6;
             this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
             this.DueDate.Width = 125;
             // 
             // RentDate
@@ -356,6 +350,7 @@ namespace RentMe.UserControls
             this.RentDate.HeaderText = "Rent Date";
             this.RentDate.MinimumWidth = 6;
             this.RentDate.Name = "RentDate";
+            this.RentDate.ReadOnly = true;
             this.RentDate.Width = 125;
             // 
             // Category
@@ -364,6 +359,7 @@ namespace RentMe.UserControls
             this.Category.HeaderText = "Category";
             this.Category.MinimumWidth = 6;
             this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
             this.Category.Width = 125;
             // 
             // Style
@@ -372,6 +368,7 @@ namespace RentMe.UserControls
             this.Style.HeaderText = "Style";
             this.Style.MinimumWidth = 6;
             this.Style.Name = "Style";
+            this.Style.ReadOnly = true;
             this.Style.Width = 125;
             // 
             // Description
@@ -380,19 +377,36 @@ namespace RentMe.UserControls
             this.Description.HeaderText = "Description";
             this.Description.MinimumWidth = 6;
             this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             this.Description.Width = 125;
             // 
             // RentalRate
             // 
             this.RentalRate.DataPropertyName = "RentalRate";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RentalRate.DefaultCellStyle = dataGridViewCellStyle1;
             this.RentalRate.HeaderText = "Rental Rate";
             this.RentalRate.MinimumWidth = 6;
             this.RentalRate.Name = "RentalRate";
+            this.RentalRate.ReadOnly = true;
             this.RentalRate.Width = 130;
             // 
-            // rentalTransactionBindingSource
+            // ReturnQuantity
             // 
-            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
+            this.ReturnQuantity.HeaderText = "Return Quantity";
+            this.ReturnQuantity.MinimumWidth = 6;
+            this.ReturnQuantity.Name = "ReturnQuantity";
+            this.ReturnQuantity.Width = 125;
+            // 
+            // ReturnMe
+            // 
+            this.ReturnMe.HeaderText = "Return Me";
+            this.ReturnMe.MinimumWidth = 6;
+            this.ReturnMe.Name = "ReturnMe";
+            this.ReturnMe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ReturnMe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ReturnMe.Width = 130;
             // 
             // FurnitureReturn
             // 
@@ -405,12 +419,12 @@ namespace RentMe.UserControls
             this.RentalMainTableLayoutPanel.ResumeLayout(false);
             this.RentalMainTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.memberTabelLayoutPanel.ResumeLayout(false);
             this.memberTabelLayoutPanel.PerformLayout();
             this.processButtonLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

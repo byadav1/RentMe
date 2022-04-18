@@ -30,8 +30,18 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.confirmReturnHeaderLabel = new System.Windows.Forms.Label();
+            this.memberNameLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.confirmButton = new System.Windows.Forms.Button();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,12 +54,6 @@ namespace RentMe.View
             this.Fine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Refund = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.confirmReturnHeaderLabel = new System.Windows.Forms.Label();
-            this.memberNameLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.confirmButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).BeginInit();
@@ -101,6 +105,73 @@ namespace RentMe.View
             this.returnTransactionDataGridView.RowTemplate.Height = 24;
             this.returnTransactionDataGridView.Size = new System.Drawing.Size(1182, 329);
             this.returnTransactionDataGridView.TabIndex = 5;
+            // 
+            // returnTransactionBindingSource
+            // 
+            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
+            // 
+            // confirmReturnHeaderLabel
+            // 
+            this.confirmReturnHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.confirmReturnHeaderLabel.AutoSize = true;
+            this.confirmReturnHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.confirmReturnHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmReturnHeaderLabel.Location = new System.Drawing.Point(410, 4);
+            this.confirmReturnHeaderLabel.Name = "confirmReturnHeaderLabel";
+            this.confirmReturnHeaderLabel.Size = new System.Drawing.Size(367, 60);
+            this.confirmReturnHeaderLabel.TabIndex = 2;
+            this.confirmReturnHeaderLabel.Text = "Confirm Return";
+            // 
+            // memberNameLabel
+            // 
+            this.memberNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.memberNameLabel.AutoSize = true;
+            this.memberNameLabel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.memberNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memberNameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.memberNameLabel.Location = new System.Drawing.Point(3, 81);
+            this.memberNameLabel.Name = "memberNameLabel";
+            this.memberNameLabel.Size = new System.Drawing.Size(70, 25);
+            this.memberNameLabel.TabIndex = 4;
+            this.memberNameLabel.Text = "Name:";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.CancelButton, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.confirmButton, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 456);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1182, 45);
+            this.tableLayoutPanel2.TabIndex = 5;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(616, 3);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(87, 39);
+            this.CancelButton.TabIndex = 1;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // confirmButton
+            // 
+            this.confirmButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.confirmButton.Location = new System.Drawing.Point(473, 3);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(3, 3, 25, 3);
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(93, 39);
+            this.confirmButton.TabIndex = 0;
+            this.confirmButton.Text = "Confirm";
+            this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // FurnitureName
             // 
@@ -172,6 +243,9 @@ namespace RentMe.View
             // RentalRate
             // 
             this.RentalRate.DataPropertyName = "RentalRate";
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RentalRate.DefaultCellStyle = dataGridViewCellStyle1;
             this.RentalRate.HeaderText = "RentalRate";
             this.RentalRate.MinimumWidth = 6;
             this.RentalRate.Name = "RentalRate";
@@ -180,6 +254,9 @@ namespace RentMe.View
             // Fine
             // 
             this.Fine.DataPropertyName = "Fine";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Fine.DefaultCellStyle = dataGridViewCellStyle2;
             this.Fine.HeaderText = "Fine";
             this.Fine.MinimumWidth = 6;
             this.Fine.Name = "Fine";
@@ -188,6 +265,9 @@ namespace RentMe.View
             // Refund
             // 
             this.Refund.DataPropertyName = "Refund";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Refund.DefaultCellStyle = dataGridViewCellStyle3;
             this.Refund.HeaderText = "Refund";
             this.Refund.MinimumWidth = 6;
             this.Refund.Name = "Refund";
@@ -196,77 +276,13 @@ namespace RentMe.View
             // SubTotal
             // 
             this.SubTotal.DataPropertyName = "SubTotal";
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.SubTotal.DefaultCellStyle = dataGridViewCellStyle4;
             this.SubTotal.HeaderText = "SubTotal";
             this.SubTotal.MinimumWidth = 6;
             this.SubTotal.Name = "SubTotal";
             this.SubTotal.Width = 125;
-            // 
-            // returnTransactionBindingSource
-            // 
-            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
-            // 
-            // confirmReturnHeaderLabel
-            // 
-            this.confirmReturnHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.confirmReturnHeaderLabel.AutoSize = true;
-            this.confirmReturnHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.confirmReturnHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmReturnHeaderLabel.Location = new System.Drawing.Point(410, 4);
-            this.confirmReturnHeaderLabel.Name = "confirmReturnHeaderLabel";
-            this.confirmReturnHeaderLabel.Size = new System.Drawing.Size(367, 60);
-            this.confirmReturnHeaderLabel.TabIndex = 2;
-            this.confirmReturnHeaderLabel.Text = "Confirm Return";
-            // 
-            // memberNameLabel
-            // 
-            this.memberNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.memberNameLabel.AutoSize = true;
-            this.memberNameLabel.BackColor = System.Drawing.SystemColors.Highlight;
-            this.memberNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memberNameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memberNameLabel.Location = new System.Drawing.Point(3, 81);
-            this.memberNameLabel.Name = "memberNameLabel";
-            this.memberNameLabel.Size = new System.Drawing.Size(70, 25);
-            this.memberNameLabel.TabIndex = 4;
-            this.memberNameLabel.Text = "Name:";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.CancelButton, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.confirmButton, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 456);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1182, 45);
-            this.tableLayoutPanel2.TabIndex = 5;
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Location = new System.Drawing.Point(616, 3);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(87, 39);
-            this.CancelButton.TabIndex = 1;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            // 
-            // confirmButton
-            // 
-            this.confirmButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.confirmButton.Location = new System.Drawing.Point(473, 3);
-            this.confirmButton.Margin = new System.Windows.Forms.Padding(3, 3, 25, 3);
-            this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(93, 39);
-            this.confirmButton.TabIndex = 0;
-            this.confirmButton.Text = "Confirm";
-            this.confirmButton.UseVisualStyleBackColor = true;
-            this.confirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // ReturnConfirmDialog
             // 
