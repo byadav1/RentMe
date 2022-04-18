@@ -97,6 +97,12 @@ namespace RentMe.UserControls
 
 
                     this.rentalTransactionList = this.rentalTransactionController.GetRetalTransactionByMemberID(this.memberSearchDetails.MemberID);
+
+                    if (this.rentalTransactionList.Count == 0)
+                    {
+                        this.UpdateStatusMessage("No Furniture To Return", true);
+                        return;
+                    }
                     this.SetFields(this.memberSearchDetails);
                     this.rentalTransactionDataGridView.DataSource = this.rentalTransactionList;
                 }
@@ -104,12 +110,12 @@ namespace RentMe.UserControls
             catch (ArgumentException ae)
             {
                 this.UpdateStatusMessage(ae.Message, true);
-                //  this.ToggleFormButtons(false);
+               
             }
             catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
-                // this.ToggleFormButtons(false);
+                
             }
         }
 
@@ -261,12 +267,23 @@ namespace RentMe.UserControls
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            this.ClearField();
+            this.searchTextbox.Text = "";
+        }
+
+        private void ClearField()
+        {
             this.rentalTransactionDataGridView.DataSource = null;
             this.memberIDLabel.Text = "";
             this.memberIDLabel.Visible = false;
             this.memberNameLabel.Text = "";
-            this.memberNameLabel.Visible = false;
-            this.searchTextbox.Text = "";
+            this.memberNameLabel.Visible = false; 
+            this.statusMessageLabel.Text = "";
+        }
+
+        private void SearchTextbox_TextChanged(object sender, EventArgs e)
+        {
+            this.ClearField();
         }
     }
     

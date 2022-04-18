@@ -32,21 +32,8 @@ namespace RentMe.UserControls
             this.components = new System.ComponentModel.Container();
             this.RentalMainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rentalTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Style = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnMe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchMemberLabel = new System.Windows.Forms.Label();
             this.furnitureReturnHeaderLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,12 +46,25 @@ namespace RentMe.UserControls
             this.processButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.clearButton = new System.Windows.Forms.Button();
             this.processReturnbutton = new System.Windows.Forms.Button();
+            this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Style = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RentalMainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.memberTabelLayoutPanel.SuspendLayout();
             this.processButtonLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RentalMainTableLayoutPanel
@@ -120,6 +120,174 @@ namespace RentMe.UserControls
             this.rentalTransactionDataGridView.RowTemplate.Height = 24;
             this.rentalTransactionDataGridView.Size = new System.Drawing.Size(1322, 290);
             this.rentalTransactionDataGridView.TabIndex = 26;
+            // 
+            // ReturnQuantity
+            // 
+            this.ReturnQuantity.HeaderText = "Return Quantity";
+            this.ReturnQuantity.MinimumWidth = 6;
+            this.ReturnQuantity.Name = "ReturnQuantity";
+            this.ReturnQuantity.Width = 125;
+            // 
+            // ReturnMe
+            // 
+            this.ReturnMe.HeaderText = "Return Me";
+            this.ReturnMe.MinimumWidth = 6;
+            this.ReturnMe.Name = "ReturnMe";
+            this.ReturnMe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ReturnMe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ReturnMe.Width = 130;
+            // 
+            // searchMemberLabel
+            // 
+            this.searchMemberLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.searchMemberLabel.AutoSize = true;
+            this.searchMemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchMemberLabel.Location = new System.Drawing.Point(3, 139);
+            this.searchMemberLabel.Name = "searchMemberLabel";
+            this.searchMemberLabel.Size = new System.Drawing.Size(378, 20);
+            this.searchMemberLabel.TabIndex = 5;
+            this.searchMemberLabel.Text = "Search for a member by their ID, Phone, or Name";
+            // 
+            // furnitureReturnHeaderLabel
+            // 
+            this.furnitureReturnHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.furnitureReturnHeaderLabel.AutoSize = true;
+            this.furnitureReturnHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.furnitureReturnHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.furnitureReturnHeaderLabel.Location = new System.Drawing.Point(467, 8);
+            this.furnitureReturnHeaderLabel.Name = "furnitureReturnHeaderLabel";
+            this.furnitureReturnHeaderLabel.Size = new System.Drawing.Size(393, 60);
+            this.furnitureReturnHeaderLabel.TabIndex = 3;
+            this.furnitureReturnHeaderLabel.Text = "Furniture Return";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.60373F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.39627F));
+            this.tableLayoutPanel1.Controls.Add(this.searchButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.searchTextbox, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 80);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1322, 49);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.searchButton.Location = new System.Drawing.Point(389, 8);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(92, 32);
+            this.searchButton.TabIndex = 2;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.SearchButtonClick);
+            // 
+            // searchTextbox
+            // 
+            this.searchTextbox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.searchTextbox.Location = new System.Drawing.Point(3, 10);
+            this.searchTextbox.Name = "searchTextbox";
+            this.searchTextbox.Size = new System.Drawing.Size(280, 28);
+            this.searchTextbox.TabIndex = 0;
+            this.searchTextbox.TextChanged += new System.EventHandler(this.SearchTextbox_TextChanged);
+            // 
+            // memberTabelLayoutPanel
+            // 
+            this.memberTabelLayoutPanel.ColumnCount = 2;
+            this.memberTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.5777F));
+            this.memberTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.42229F));
+            this.memberTabelLayoutPanel.Controls.Add(this.memberNameLabel, 0, 0);
+            this.memberTabelLayoutPanel.Controls.Add(this.memberIDLabel, 0, 0);
+            this.memberTabelLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberTabelLayoutPanel.Location = new System.Drawing.Point(3, 170);
+            this.memberTabelLayoutPanel.Name = "memberTabelLayoutPanel";
+            this.memberTabelLayoutPanel.RowCount = 1;
+            this.memberTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.memberTabelLayoutPanel.Size = new System.Drawing.Size(1322, 42);
+            this.memberTabelLayoutPanel.TabIndex = 6;
+            // 
+            // memberNameLabel
+            // 
+            this.memberNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.memberNameLabel.AutoSize = true;
+            this.memberNameLabel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.memberNameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.memberNameLabel.Location = new System.Drawing.Point(327, 9);
+            this.memberNameLabel.Name = "memberNameLabel";
+            this.memberNameLabel.Size = new System.Drawing.Size(66, 24);
+            this.memberNameLabel.TabIndex = 3;
+            this.memberNameLabel.Text = "Name:";
+            // 
+            // memberIDLabel
+            // 
+            this.memberIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.memberIDLabel.AutoSize = true;
+            this.memberIDLabel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.memberIDLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.memberIDLabel.Location = new System.Drawing.Point(3, 9);
+            this.memberIDLabel.Name = "memberIDLabel";
+            this.memberIDLabel.Size = new System.Drawing.Size(108, 24);
+            this.memberIDLabel.TabIndex = 2;
+            this.memberIDLabel.Text = "Member ID:";
+            // 
+            // statusMessageLabel
+            // 
+            this.statusMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.statusMessageLabel.AutoSize = true;
+            this.statusMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.statusMessageLabel.Location = new System.Drawing.Point(604, 222);
+            this.statusMessageLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+            this.statusMessageLabel.Name = "statusMessageLabel";
+            this.statusMessageLabel.Size = new System.Drawing.Size(119, 24);
+            this.statusMessageLabel.TabIndex = 25;
+            this.statusMessageLabel.Text = "Invalid Fields";
+            this.statusMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.statusMessageLabel.Visible = false;
+            // 
+            // processButtonLayoutPanel
+            // 
+            this.processButtonLayoutPanel.ColumnCount = 2;
+            this.processButtonLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.processButtonLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.processButtonLayoutPanel.Controls.Add(this.clearButton, 1, 0);
+            this.processButtonLayoutPanel.Controls.Add(this.processReturnbutton, 0, 0);
+            this.processButtonLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.processButtonLayoutPanel.Location = new System.Drawing.Point(3, 549);
+            this.processButtonLayoutPanel.Name = "processButtonLayoutPanel";
+            this.processButtonLayoutPanel.RowCount = 1;
+            this.processButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.processButtonLayoutPanel.Size = new System.Drawing.Size(1322, 38);
+            this.processButtonLayoutPanel.TabIndex = 26;
+            // 
+            // clearButton
+            // 
+            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.clearButton.Location = new System.Drawing.Point(686, 3);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(66, 32);
+            this.clearButton.TabIndex = 1;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // processReturnbutton
+            // 
+            this.processReturnbutton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.processReturnbutton.Location = new System.Drawing.Point(482, 3);
+            this.processReturnbutton.Margin = new System.Windows.Forms.Padding(3, 3, 25, 3);
+            this.processReturnbutton.Name = "processReturnbutton";
+            this.processReturnbutton.Size = new System.Drawing.Size(154, 32);
+            this.processReturnbutton.TabIndex = 0;
+            this.processReturnbutton.Text = "Process Return";
+            this.processReturnbutton.UseVisualStyleBackColor = true;
+            this.processReturnbutton.Click += new System.EventHandler(this.ProcessReturnButton_Click);
             // 
             // RentedItemsID
             // 
@@ -222,176 +390,9 @@ namespace RentMe.UserControls
             this.RentalRate.Name = "RentalRate";
             this.RentalRate.Width = 130;
             // 
-            // ReturnQuantity
-            // 
-            this.ReturnQuantity.HeaderText = "Return Quantity";
-            this.ReturnQuantity.MinimumWidth = 6;
-            this.ReturnQuantity.Name = "ReturnQuantity";
-            this.ReturnQuantity.Width = 125;
-            // 
-            // ReturnMe
-            // 
-            this.ReturnMe.HeaderText = "Return Me";
-            this.ReturnMe.MinimumWidth = 6;
-            this.ReturnMe.Name = "ReturnMe";
-            this.ReturnMe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ReturnMe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ReturnMe.Width = 130;
-            // 
             // rentalTransactionBindingSource
             // 
             this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
-            // 
-            // searchMemberLabel
-            // 
-            this.searchMemberLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.searchMemberLabel.AutoSize = true;
-            this.searchMemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchMemberLabel.Location = new System.Drawing.Point(3, 139);
-            this.searchMemberLabel.Name = "searchMemberLabel";
-            this.searchMemberLabel.Size = new System.Drawing.Size(378, 20);
-            this.searchMemberLabel.TabIndex = 5;
-            this.searchMemberLabel.Text = "Search for a member by their ID, Phone, or Name";
-            // 
-            // furnitureReturnHeaderLabel
-            // 
-            this.furnitureReturnHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.furnitureReturnHeaderLabel.AutoSize = true;
-            this.furnitureReturnHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.furnitureReturnHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.furnitureReturnHeaderLabel.Location = new System.Drawing.Point(467, 8);
-            this.furnitureReturnHeaderLabel.Name = "furnitureReturnHeaderLabel";
-            this.furnitureReturnHeaderLabel.Size = new System.Drawing.Size(393, 60);
-            this.furnitureReturnHeaderLabel.TabIndex = 3;
-            this.furnitureReturnHeaderLabel.Text = "Furniture Return";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.60373F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.39627F));
-            this.tableLayoutPanel1.Controls.Add(this.searchButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.searchTextbox, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 80);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1322, 49);
-            this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // searchButton
-            // 
-            this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.searchButton.Location = new System.Drawing.Point(389, 8);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(92, 32);
-            this.searchButton.TabIndex = 2;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.SearchButtonClick);
-            // 
-            // searchTextbox
-            // 
-            this.searchTextbox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.searchTextbox.Location = new System.Drawing.Point(3, 10);
-            this.searchTextbox.Name = "searchTextbox";
-            this.searchTextbox.Size = new System.Drawing.Size(280, 28);
-            this.searchTextbox.TabIndex = 0;
-            // 
-            // memberTabelLayoutPanel
-            // 
-            this.memberTabelLayoutPanel.ColumnCount = 2;
-            this.memberTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.5777F));
-            this.memberTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.42229F));
-            this.memberTabelLayoutPanel.Controls.Add(this.memberNameLabel, 0, 0);
-            this.memberTabelLayoutPanel.Controls.Add(this.memberIDLabel, 0, 0);
-            this.memberTabelLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberTabelLayoutPanel.Location = new System.Drawing.Point(3, 170);
-            this.memberTabelLayoutPanel.Name = "memberTabelLayoutPanel";
-            this.memberTabelLayoutPanel.RowCount = 1;
-            this.memberTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.memberTabelLayoutPanel.Size = new System.Drawing.Size(1322, 42);
-            this.memberTabelLayoutPanel.TabIndex = 6;
-            // 
-            // memberNameLabel
-            // 
-            this.memberNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.memberNameLabel.AutoSize = true;
-            this.memberNameLabel.BackColor = System.Drawing.SystemColors.Highlight;
-            this.memberNameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memberNameLabel.Location = new System.Drawing.Point(327, 9);
-            this.memberNameLabel.Name = "memberNameLabel";
-            this.memberNameLabel.Size = new System.Drawing.Size(66, 24);
-            this.memberNameLabel.TabIndex = 3;
-            this.memberNameLabel.Text = "Name:";
-            // 
-            // memberIDLabel
-            // 
-            this.memberIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.memberIDLabel.AutoSize = true;
-            this.memberIDLabel.BackColor = System.Drawing.SystemColors.Highlight;
-            this.memberIDLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memberIDLabel.Location = new System.Drawing.Point(3, 9);
-            this.memberIDLabel.Name = "memberIDLabel";
-            this.memberIDLabel.Size = new System.Drawing.Size(108, 24);
-            this.memberIDLabel.TabIndex = 2;
-            this.memberIDLabel.Text = "Member ID:";
-            // 
-            // statusMessageLabel
-            // 
-            this.statusMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.statusMessageLabel.AutoSize = true;
-            this.statusMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.statusMessageLabel.Location = new System.Drawing.Point(604, 222);
-            this.statusMessageLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
-            this.statusMessageLabel.Name = "statusMessageLabel";
-            this.statusMessageLabel.Size = new System.Drawing.Size(119, 24);
-            this.statusMessageLabel.TabIndex = 25;
-            this.statusMessageLabel.Text = "Invalid Fields";
-            this.statusMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.statusMessageLabel.Visible = false;
-            // 
-            // processButtonLayoutPanel
-            // 
-            this.processButtonLayoutPanel.ColumnCount = 2;
-            this.processButtonLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.processButtonLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.processButtonLayoutPanel.Controls.Add(this.clearButton, 1, 0);
-            this.processButtonLayoutPanel.Controls.Add(this.processReturnbutton, 0, 0);
-            this.processButtonLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.processButtonLayoutPanel.Location = new System.Drawing.Point(3, 549);
-            this.processButtonLayoutPanel.Name = "processButtonLayoutPanel";
-            this.processButtonLayoutPanel.RowCount = 1;
-            this.processButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.processButtonLayoutPanel.Size = new System.Drawing.Size(1322, 38);
-            this.processButtonLayoutPanel.TabIndex = 26;
-            // 
-            // clearButton
-            // 
-            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.clearButton.Location = new System.Drawing.Point(686, 3);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(66, 32);
-            this.clearButton.TabIndex = 1;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
-            // processReturnbutton
-            // 
-            this.processReturnbutton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.processReturnbutton.Location = new System.Drawing.Point(482, 3);
-            this.processReturnbutton.Margin = new System.Windows.Forms.Padding(3, 3, 25, 3);
-            this.processReturnbutton.Name = "processReturnbutton";
-            this.processReturnbutton.Size = new System.Drawing.Size(154, 32);
-            this.processReturnbutton.TabIndex = 0;
-            this.processReturnbutton.Text = "Process Return";
-            this.processReturnbutton.UseVisualStyleBackColor = true;
-            this.processReturnbutton.Click += new System.EventHandler(this.ProcessReturnButton_Click);
             // 
             // FurnitureReturn
             // 
@@ -404,12 +405,12 @@ namespace RentMe.UserControls
             this.RentalMainTableLayoutPanel.ResumeLayout(false);
             this.RentalMainTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.memberTabelLayoutPanel.ResumeLayout(false);
             this.memberTabelLayoutPanel.PerformLayout();
             this.processButtonLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

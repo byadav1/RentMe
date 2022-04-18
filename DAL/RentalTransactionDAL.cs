@@ -38,7 +38,7 @@ namespace RentMe.DAL
                 "JOIN Furnitures f ON ri.furnitureID = f.furnitureID " +
                 "JOIN Categories c ON f.categoryID = c.categoryID " +
                 "JOIN Styles s ON f.styleID = s.styleID " +
-                "WHERE memberID = @memberID";
+                "WHERE memberID = @memberID AND ri.Quantity - rtn.TotalQuantity > 0";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
