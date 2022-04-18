@@ -26,8 +26,8 @@ namespace RentMe.UserControls
         private Member memberSearchDetails;
         private List<RentalTransaction> rentalTransactionList;
         private List<ReturnTransaction> returnTransactionsList;
-      
-       
+
+
         /// <summary>
         /// Constructor to initialize instant variables
         /// </summary>
@@ -151,6 +151,8 @@ namespace RentMe.UserControls
                     {
                         ReturnTransaction returnTransaction = new ReturnTransaction
                         {
+                            Description = (row.Cells["Description"].Value.ToString()),
+                            FurnitureID = int.Parse(row.Cells["FurnitureID"].Value.ToString()),
                             RentedItemsID = int.Parse(row.Cells["RentedItemsID"].Value.ToString()),
                             Quantity = int.Parse(row.Cells["ReturnQuantity"].Value.ToString()),
                             FurnitureName = (row.Cells["FurnitureName"].Value.ToString()),
@@ -168,13 +170,13 @@ namespace RentMe.UserControls
                         if (days > 0)
                         {
                             returnTransaction.Days = days;
-                            returnTransaction.Fine = returnTransaction.RentalRate * (float)days;
+                            returnTransaction.Fine = Convert.ToDecimal(returnTransaction.RentalRate * days);
                             returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Fine;
                         }
                         else if (days < 0)
                         {
                             returnTransaction.Days = days;
-                            returnTransaction.Refund = returnTransaction.RentalRate * Math.Abs((float)days);
+                            returnTransaction.Refund = Convert.ToDecimal(returnTransaction.RentalRate * Math.Abs(days));
                             returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Refund;
                         }
                         else
@@ -186,7 +188,7 @@ namespace RentMe.UserControls
                         }
 
                         this.returnTransactionsList.Add(returnTransaction);
-                      
+
 
                     }
                     else
@@ -198,9 +200,11 @@ namespace RentMe.UserControls
                 }
             }
 
-            String memberName = "Name: " + this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
-        
-            using (Form ReturnConfirmDialog = new ReturnConfirmDialog(this.returnTransactionsList, memberName))
+            String memberNameDisplay = "Name: " + this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
+            String memberName = this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
+
+
+            using (Form ReturnConfirmDialog = new ReturnConfirmDialog(this.returnTransactionsList, memberNameDisplay))
             {
                 DialogResult result = ReturnConfirmDialog.ShowDialog();
                 if (result == DialogResult.OK)
@@ -213,8 +217,39 @@ namespace RentMe.UserControls
                 }
 
             }
+
+            List<ReceiptItem> receiptItemsList = new List<ReceiptItem>();
+            foreach (ReturnTransaction returnTransaction in this.returnTransactionsList)
+            {
+                ReceiptItem receiptItem = new ReceiptItem();
+                receiptItem.FurnitureID = returnTransaction.FurnitureID;
+                receiptItem.Description = returnTransaction.Description;
+                receiptItem.DailyRate = returnTransaction.RentalRate;
+                receiptItem.DueDate = returnTransaction.DueDate;
+                receiptItem.NumberOfDays = Convert.ToInt32(returnTransaction.Days);
+                receiptItem.Quantity = returnTransaction.Quantity;
+                receiptItem.ReturnedDate = returnTransaction.ReturnDate;
+                receiptItem.RefundAmount = returnTransaction.Refund;
+                receiptItem.LateFee = returnTransaction.Fine;
+                receiptItem.SubTotal = returnTransaction.SubTotal;
+
+                receiptItemsList.Add(receiptItem);
+            }
+
+
+            using (Form ReceiptDialog = new ReceiptDialog(receiptItemsList, memberName, false))
+            {
+                DialogResult result = ReceiptDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    return;
+                }
+
+            }
+
         }
 
 
     }
+    
 }
