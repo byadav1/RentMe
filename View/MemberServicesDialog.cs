@@ -172,9 +172,9 @@ namespace RentMe.View
                 if (this.ConfirmMemberRegistration(member) == DialogResult.OK)
                 {
                     this.membersController.RegisterNewMember(member);
+                    this.ClearFields();
                     UpdateStatusMessage("Member registration successfully!\n" +
                     "MemberID is " + member.MemberID, false);
-                    this.ToggleFormButtons(false);
                 }
             }
             catch (ArgumentException ae)

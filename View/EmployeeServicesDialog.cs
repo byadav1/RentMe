@@ -74,7 +74,7 @@ namespace RentMe.View
                     this.ClearFields();
                     UpdateStatusMessage("Employee registration successfully!\n" +
                    "EmployeeID is " + employee.EmployeeID, false);
-                    //this.ToggleFormButtons(true);
+                   
                 }
             }
             catch (ArgumentException ae)
