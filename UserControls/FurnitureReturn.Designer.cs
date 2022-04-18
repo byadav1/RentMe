@@ -33,6 +33,8 @@ namespace RentMe.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RentalMainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rentalTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.ReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnMe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.searchMemberLabel = new System.Windows.Forms.Label();
             this.furnitureReturnHeaderLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,7 +47,6 @@ namespace RentMe.UserControls
             this.processButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.clearButton = new System.Windows.Forms.Button();
             this.processReturnbutton = new System.Windows.Forms.Button();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,8 +59,7 @@ namespace RentMe.UserControls
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnMe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RentalMainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -124,14 +124,30 @@ namespace RentMe.UserControls
             this.rentalTransactionDataGridView.Size = new System.Drawing.Size(1322, 290);
             this.rentalTransactionDataGridView.TabIndex = 26;
             // 
+            // ReturnQuantity
+            // 
+            this.ReturnQuantity.HeaderText = "Return Quantity";
+            this.ReturnQuantity.MinimumWidth = 6;
+            this.ReturnQuantity.Name = "ReturnQuantity";
+            this.ReturnQuantity.Width = 125;
+            // 
+            // ReturnMe
+            // 
+            this.ReturnMe.HeaderText = "Return Me";
+            this.ReturnMe.MinimumWidth = 6;
+            this.ReturnMe.Name = "ReturnMe";
+            this.ReturnMe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ReturnMe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ReturnMe.Width = 130;
+            // 
             // searchMemberLabel
             // 
-            this.searchMemberLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.searchMemberLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.searchMemberLabel.AutoSize = true;
             this.searchMemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchMemberLabel.Location = new System.Drawing.Point(3, 141);
+            this.searchMemberLabel.Location = new System.Drawing.Point(475, 139);
             this.searchMemberLabel.Name = "searchMemberLabel";
-            this.searchMemberLabel.Size = new System.Drawing.Size(320, 17);
+            this.searchMemberLabel.Size = new System.Drawing.Size(378, 20);
             this.searchMemberLabel.TabIndex = 5;
             this.searchMemberLabel.Text = "Search for a member by their ID, Phone, or Name";
             // 
@@ -141,31 +157,31 @@ namespace RentMe.UserControls
             this.furnitureReturnHeaderLabel.AutoSize = true;
             this.furnitureReturnHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.furnitureReturnHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.furnitureReturnHeaderLabel.Location = new System.Drawing.Point(509, 14);
+            this.furnitureReturnHeaderLabel.Location = new System.Drawing.Point(467, 8);
             this.furnitureReturnHeaderLabel.Name = "furnitureReturnHeaderLabel";
-            this.furnitureReturnHeaderLabel.Size = new System.Drawing.Size(310, 48);
+            this.furnitureReturnHeaderLabel.Size = new System.Drawing.Size(393, 60);
             this.furnitureReturnHeaderLabel.TabIndex = 3;
             this.furnitureReturnHeaderLabel.Text = "Furniture Return";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.60373F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.39627F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanel1.Controls.Add(this.searchButton, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.searchTextbox, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 80);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1322, 49);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // searchButton
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.searchButton.Location = new System.Drawing.Point(389, 8);
+            this.searchButton.Location = new System.Drawing.Point(752, 8);
             this.searchButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(92, 32);
@@ -176,25 +192,25 @@ namespace RentMe.UserControls
             // 
             // searchTextbox
             // 
-            this.searchTextbox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.searchTextbox.Location = new System.Drawing.Point(3, 12);
+            this.searchTextbox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.searchTextbox.Location = new System.Drawing.Point(494, 10);
             this.searchTextbox.Name = "searchTextbox";
-            this.searchTextbox.Size = new System.Drawing.Size(280, 24);
+            this.searchTextbox.Size = new System.Drawing.Size(230, 28);
             this.searchTextbox.TabIndex = 0;
             this.searchTextbox.TextChanged += new System.EventHandler(this.SearchTextbox_TextChanged);
             // 
             // memberTabelLayoutPanel
             // 
             this.memberTabelLayoutPanel.ColumnCount = 2;
-            this.memberTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.5777F));
-            this.memberTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.42229F));
+            this.memberTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48F));
+            this.memberTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52F));
             this.memberTabelLayoutPanel.Controls.Add(this.memberNameLabel, 0, 0);
             this.memberTabelLayoutPanel.Controls.Add(this.memberIDLabel, 0, 0);
             this.memberTabelLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memberTabelLayoutPanel.Location = new System.Drawing.Point(3, 170);
             this.memberTabelLayoutPanel.Name = "memberTabelLayoutPanel";
             this.memberTabelLayoutPanel.RowCount = 1;
-            this.memberTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.memberTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.memberTabelLayoutPanel.Size = new System.Drawing.Size(1322, 42);
             this.memberTabelLayoutPanel.TabIndex = 6;
             // 
@@ -204,23 +220,25 @@ namespace RentMe.UserControls
             this.memberNameLabel.AutoSize = true;
             this.memberNameLabel.BackColor = System.Drawing.SystemColors.Highlight;
             this.memberNameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memberNameLabel.Location = new System.Drawing.Point(327, 12);
+            this.memberNameLabel.Location = new System.Drawing.Point(637, 9);
             this.memberNameLabel.Name = "memberNameLabel";
-            this.memberNameLabel.Size = new System.Drawing.Size(52, 18);
+            this.memberNameLabel.Size = new System.Drawing.Size(66, 24);
             this.memberNameLabel.TabIndex = 3;
             this.memberNameLabel.Text = "Name:";
+            this.memberNameLabel.Visible = false;
             // 
             // memberIDLabel
             // 
-            this.memberIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.memberIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.memberIDLabel.AutoSize = true;
             this.memberIDLabel.BackColor = System.Drawing.SystemColors.Highlight;
             this.memberIDLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memberIDLabel.Location = new System.Drawing.Point(3, 12);
+            this.memberIDLabel.Location = new System.Drawing.Point(523, 9);
             this.memberIDLabel.Name = "memberIDLabel";
-            this.memberIDLabel.Size = new System.Drawing.Size(85, 18);
+            this.memberIDLabel.Size = new System.Drawing.Size(108, 24);
             this.memberIDLabel.TabIndex = 2;
             this.memberIDLabel.Text = "Member ID:";
+            this.memberIDLabel.Visible = false;
             // 
             // statusMessageLabel
             // 
@@ -228,10 +246,10 @@ namespace RentMe.UserControls
             this.statusMessageLabel.AutoSize = true;
             this.statusMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.statusMessageLabel.Location = new System.Drawing.Point(618, 225);
+            this.statusMessageLabel.Location = new System.Drawing.Point(604, 222);
             this.statusMessageLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
             this.statusMessageLabel.Name = "statusMessageLabel";
-            this.statusMessageLabel.Size = new System.Drawing.Size(91, 18);
+            this.statusMessageLabel.Size = new System.Drawing.Size(119, 24);
             this.statusMessageLabel.TabIndex = 25;
             this.statusMessageLabel.Text = "Invalid Fields";
             this.statusMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -275,10 +293,6 @@ namespace RentMe.UserControls
             this.processReturnbutton.Text = "Process Return";
             this.processReturnbutton.UseVisualStyleBackColor = true;
             this.processReturnbutton.Click += new System.EventHandler(this.ProcessReturnButton_Click);
-            // 
-            // rentalTransactionBindingSource
-            // 
-            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
             // 
             // RentedItemsID
             // 
@@ -392,25 +406,13 @@ namespace RentMe.UserControls
             this.Quantity.ReadOnly = true;
             this.Quantity.Width = 125;
             // 
-            // ReturnQuantity
+            // rentalTransactionBindingSource
             // 
-            this.ReturnQuantity.HeaderText = "Return Quantity";
-            this.ReturnQuantity.MinimumWidth = 6;
-            this.ReturnQuantity.Name = "ReturnQuantity";
-            this.ReturnQuantity.Width = 125;
-            // 
-            // ReturnMe
-            // 
-            this.ReturnMe.HeaderText = "Return Me";
-            this.ReturnMe.MinimumWidth = 6;
-            this.ReturnMe.Name = "ReturnMe";
-            this.ReturnMe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ReturnMe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ReturnMe.Width = 130;
+            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
             // 
             // FurnitureReturn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.RentalMainTableLayoutPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

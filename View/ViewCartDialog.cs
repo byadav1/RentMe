@@ -13,12 +13,10 @@ namespace RentMe.View
     /// </summary>>
     public partial class ViewCartDialog : Form
     {
-
         private readonly RentCartController _cartController;
         private readonly FurnitureRentController rentController;
         private readonly Member member;
         private List<RentFurniture> cartList;
-
         private List<ReceiptItem> receiptList;
 
         /// <summary>
@@ -35,10 +33,9 @@ namespace RentMe.View
             _ = new List<RentFurniture>();
         }
 
-        private void ViewCartDialog_Load(object sender, EventArgs e)
+        private void ViewCartDialogLoad(object sender, EventArgs e)
         {
             this.DisplayRentData();
-
         }
         /// <summary>
         /// Displays the rent data.
@@ -74,14 +71,12 @@ namespace RentMe.View
                     this.submitOrderButton.Enabled = false;
                     this.emptyCartButton.Enabled = false;
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error occured on - Displaying the cart items -" + ex.Message,
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         /// <summary>
@@ -95,7 +90,7 @@ namespace RentMe.View
             this.emptyCartButton.Enabled = true;
         }
 
-        private void SubmitOrderButton_Click(object sender, EventArgs e)
+        private void SubmitOrderButtonClick(object sender, EventArgs e)
         {
             if (!this.cartList.Any())
             {
@@ -110,18 +105,16 @@ namespace RentMe.View
                 this.CreateReceipt();
                 this.rentController.AddFurnituresToRent(this.cartList);
                 this._cartController.UpdateRentalCart(this.member);
-                this.cartList.Clear();
+                this.cartList.Clear();               
             }
             else
             {
                 this.Show();
             }
-
         }
 
         private void ShowReceipt()
         {
-
             using (Form viewReceiptDialog = new View.ReceiptDialog(this.receiptList, this.member.FName + " " + this.member.LName, true))
             {
                 DialogResult result = viewReceiptDialog.ShowDialog();
@@ -130,13 +123,10 @@ namespace RentMe.View
                     return;
                 }
             }
-
-
         }
 
         private void CreateReceipt()
         {
-
             var list = from x in this.cartList
                        select new ReceiptItem
                        {
@@ -148,18 +138,15 @@ namespace RentMe.View
                            Quantity = x.FurnitureRentQuantity,
                            SubTotal = (decimal)x.TotalItemRentalAmount
                        };
+
             this.receiptList = list.ToList();
             if (this.receiptList.Any())
             {
                 this.ShowReceipt();
             }
-
         }
 
-
-
-
-        private void EmptyCartButton_Click(object sender, EventArgs e)
+        private void EmptyCartButtonClick(object sender, EventArgs e)
         {
             if (this.cartList.Any())
             {
@@ -169,13 +156,12 @@ namespace RentMe.View
                 this.cartDataGrideView.DataSource = null;
                 this.submitOrderButton.Enabled = false;
                 this.amountLabel.Text = "$0.00";
-
             }
+           
             this.emptyCartButton.Enabled = false;
-
         }
 
-        private void CartDataGrideView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CartDataGrideViewCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "DeleteItem")
             {
@@ -185,10 +171,7 @@ namespace RentMe.View
                 this.rentFurnitureBindingSource.RemoveCurrent();
                 this.CalculateTotal();
             }
-
         }
-
     }
-
 
 }

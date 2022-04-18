@@ -64,21 +64,21 @@ namespace RentMe.View
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.returnTransactionDataGridView, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.confirmReturnHeaderLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.memberNameLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.72549F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.803922F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.803922F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(891, 410);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1188, 505);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // returnTransactionDataGridView
@@ -100,12 +100,12 @@ namespace RentMe.View
             this.SubTotal});
             this.returnTransactionDataGridView.DataSource = this.returnTransactionBindingSource;
             this.returnTransactionDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.returnTransactionDataGridView.Location = new System.Drawing.Point(2, 98);
-            this.returnTransactionDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.returnTransactionDataGridView.Location = new System.Drawing.Point(3, 120);
+            this.returnTransactionDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
             this.returnTransactionDataGridView.RowHeadersWidth = 51;
             this.returnTransactionDataGridView.RowTemplate.Height = 24;
-            this.returnTransactionDataGridView.Size = new System.Drawing.Size(887, 269);
+            this.returnTransactionDataGridView.Size = new System.Drawing.Size(1182, 332);
             this.returnTransactionDataGridView.TabIndex = 5;
             // 
             // FurnitureName
@@ -229,10 +229,9 @@ namespace RentMe.View
             this.confirmReturnHeaderLabel.AutoSize = true;
             this.confirmReturnHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.confirmReturnHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmReturnHeaderLabel.Location = new System.Drawing.Point(299, 4);
-            this.confirmReturnHeaderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.confirmReturnHeaderLabel.Location = new System.Drawing.Point(410, 4);
             this.confirmReturnHeaderLabel.Name = "confirmReturnHeaderLabel";
-            this.confirmReturnHeaderLabel.Size = new System.Drawing.Size(292, 48);
+            this.confirmReturnHeaderLabel.Size = new System.Drawing.Size(367, 60);
             this.confirmReturnHeaderLabel.TabIndex = 2;
             this.confirmReturnHeaderLabel.Text = "Confirm Return";
             // 
@@ -243,10 +242,9 @@ namespace RentMe.View
             this.memberNameLabel.BackColor = System.Drawing.SystemColors.Highlight;
             this.memberNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberNameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memberNameLabel.Location = new System.Drawing.Point(2, 66);
-            this.memberNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.memberNameLabel.Location = new System.Drawing.Point(3, 81);
             this.memberNameLabel.Name = "memberNameLabel";
-            this.memberNameLabel.Size = new System.Drawing.Size(55, 20);
+            this.memberNameLabel.Size = new System.Drawing.Size(70, 25);
             this.memberNameLabel.TabIndex = 4;
             this.memberNameLabel.Text = "Name:";
             // 
@@ -258,47 +256,48 @@ namespace RentMe.View
             this.tableLayoutPanel2.Controls.Add(this.confirmButton, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.cancelButton, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 371);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 456);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(887, 37);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1182, 47);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // confirmButton
             // 
             this.confirmButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.confirmButton.Location = new System.Drawing.Point(342, 2);
-            this.confirmButton.Margin = new System.Windows.Forms.Padding(2, 2, 19, 2);
+            this.confirmButton.Location = new System.Drawing.Point(457, 4);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(3, 2, 25, 2);
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(82, 32);
+            this.confirmButton.Size = new System.Drawing.Size(109, 39);
             this.confirmButton.TabIndex = 0;
             this.confirmButton.Text = "Confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
-            this.confirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
+            this.confirmButton.Click += new System.EventHandler(this.ConfirmButtonClick);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(468, 3);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
+            this.cancelButton.Location = new System.Drawing.Point(624, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(33, 4, 4, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 31);
+            this.cancelButton.Size = new System.Drawing.Size(100, 38);
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
             // ReturnConfirmDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 410);
+            this.ClientSize = new System.Drawing.Size(1188, 505);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ReturnConfirmDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReturnConfirmDialog";
-            this.Load += new System.EventHandler(this.ReturnConfirmDialog_Load);
+            this.Load += new System.EventHandler(this.ReturnConfirmDialogLoad);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).EndInit();

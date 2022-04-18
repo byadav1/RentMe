@@ -28,24 +28,25 @@ namespace RentMe.View
             this.memberName = memberName;
         }
 
-        private void populateForm()
+        private void PopulateForm()
         {
             this.memberNameLabel.Text = this.memberName;
             this.returnTransactionDataGridView.DataSource = this.returnTransactionList;
 
         }
 
-        private void ConfirmButton_Click(object sender, EventArgs e)
+        private void ReturnConfirmDialogLoad(object sender, EventArgs e)
+        {
+            this.PopulateForm();
+        }
+
+        private void ConfirmButtonClick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
-        private void ReturnConfirmDialog_Load(object sender, EventArgs e)
-        {
-            this.populateForm();
-        }
-
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void CancelButtonClick(object sender, EventArgs e)
         {
             this.Close();
         }

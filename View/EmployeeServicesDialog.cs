@@ -45,15 +45,15 @@ namespace RentMe.View
 
             if (isUpdate)
             {
-                this.SetFields(this.employeeSearchDetails);
                 this.ToggleFormButtons(true);
+                this.SetFields(this.employeeSearchDetails);               
             }
             else
             {
+                this.ToggleFormButtons(false);
                 this.sexComboBox.SelectedIndex = 0;
                 this.stateComboBox.SelectedIndex = 0;
-                this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
-                this.ToggleFormButtons(false);
+                this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);                
             }
         }
 
@@ -350,7 +350,7 @@ namespace RentMe.View
                 this.isAdministratorCheckBox.Checked = false;
             }
 
-            this.DisplayEmployeeActiveStatus();
+            this.DisplayEmployeeActiveStatus();           
             this.DisableEmployeeData(this.employeeSearchDetails.Active);
         }
 
@@ -359,6 +359,10 @@ namespace RentMe.View
         /// </summary>
         private void DisableEmployeeData(bool isEditable)
         {
+            if (!isEditable)
+            {
+                this.UpdateStatusMessage("Only active employees can receive profile updates", false);
+            }
             this.fnameTextBox.Enabled = isEditable;
             this.lnameTextBox.Enabled = isEditable;
             this.sexComboBox.Enabled = isEditable;
@@ -539,7 +543,6 @@ namespace RentMe.View
 
         private void RefreshEmployeeUpdate(Employee employeeUpdateData)
         {
-
             List<Employee> employeeData = this.employeesController.GetEmployeesFromSearch(employeeUpdateData);
             if (employeeData.Count == 1)
             {
