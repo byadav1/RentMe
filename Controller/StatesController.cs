@@ -28,7 +28,7 @@ namespace RentMe.Controller
         public List<string> GetStateNames()
         {
             List<string> states = new List<string>(50);
-            foreach(State state in this.GetStates())
+            foreach (State state in this.GetStates())
             {
                 states.Add(state.StateName);
             }

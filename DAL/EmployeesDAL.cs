@@ -53,7 +53,7 @@ namespace RentMe.DAL
                                 Username = reader["Username"].ToString(),
                                 Type = reader["Employee_type"].ToString(),
                                 Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"]))
-                        };
+                            };
                             if (!reader.IsDBNull(8))
                             {
                                 employee.Address2 = reader["Address2"].ToString();
@@ -194,7 +194,7 @@ namespace RentMe.DAL
                             }
 
                             employees.Add(employee);
-                            }
+                        }
                     }
                 }
             }
@@ -240,7 +240,7 @@ namespace RentMe.DAL
                             }
                             employee.City = reader["City"].ToString();
                             employee.State = reader["State"].ToString();
-                            employee.Zip = reader["ZipCode"].ToString();                          
+                            employee.Zip = reader["ZipCode"].ToString();
                             employee.Type = reader["Employee_type"].ToString();
                             employee.Active = Convert.ToBoolean(Convert.ToInt32(reader["Active"]));
                             employee.Username = reader["Username"].ToString();
@@ -250,7 +250,7 @@ namespace RentMe.DAL
             }
             _loginEmployee = employee;
 
-          
+
         }
 
         /// <summary>
@@ -279,11 +279,11 @@ namespace RentMe.DAL
                                      "@Sex, @Address1, @Address2, @City, @State, @Zip, (SELECT SCOPE_IDENTITY()), @Type, 1) " +
                                      "SELECT SCOPE_IDENTITY()";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
-            {                
+            {
                 connection.Open();
                 SqlTransaction transaction = connection.BeginTransaction();
                 try
-                {                    
+                {
                     using (SqlCommand selectCommand = new SqlCommand(insertStatement, connection, transaction))
                     {
                         selectCommand.Parameters.AddWithValue("Username", employee.Username);
@@ -315,7 +315,7 @@ namespace RentMe.DAL
                 {
                     transaction.Rollback();
                     throw new ArgumentException("An employee account with that username already exists");
-                }                                
+                }
             }
         }
 
@@ -419,14 +419,15 @@ namespace RentMe.DAL
             string selectStatement;
             bool active;
 
-            if (employee.Active) {
-                selectStatement= "UPDATE Employees " +
+            if (employee.Active)
+            {
+                selectStatement = "UPDATE Employees " +
                                  "SET ACTIVE = 0 " +
                                  "WHERE EmployeeID = @ID " +
                                  "AND ACTIVE = @flag";
                 active = false;
             }
-            else 
+            else
             {
                 selectStatement = "UPDATE Employees " +
                                   "SET Active = 1 WHERE " +
@@ -439,8 +440,8 @@ namespace RentMe.DAL
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    
-                    
+
+
                     selectCommand.Parameters.AddWithValue("ID", employee.EmployeeID);
                     selectCommand.Parameters.AddWithValue("flag", employee.Active);
                     if (selectCommand.ExecuteNonQuery() > 0)
@@ -471,7 +472,7 @@ namespace RentMe.DAL
                        " Phone=@NewPhone ,  City=@NewCity , " +
                       " zipcode=@NewZip , State=@NewState, " +
                       " Address1=@NewAddress1 , Address2=@NewAddress2, " +
-                     
+
                       "EMPLOYEE_TYPE=@Newtype  " +
                        "Where EmployeeID=@oldEmployeeID  AND FNAME=@OldFName AND " +
                       " LNAME=@OldLName AND Sex=@OldSex AND " +
@@ -479,7 +480,7 @@ namespace RentMe.DAL
                       " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
                       " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL) AND " +
                       " EMPLOYEE_TYPE= @Oldtype";
-           
+
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -499,7 +500,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters.Add("@OldState", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@OldAddress1", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@OldAddress2", SqlDbType.VarChar);
-                    
+
                     selectCommand.Parameters.Add("@Oldtype", SqlDbType.VarChar);
 
                     selectCommand.Parameters["@OldFName"].Value = oldEmployee.FName;
@@ -512,7 +513,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters["@OldState"].Value = oldEmployee.State;
                     selectCommand.Parameters["@OldAddress1"].Value = oldEmployee.Address1;
                     selectCommand.Parameters["@OldAddress2"].Value = oldEmployee.Address2;
-                   
+
                     selectCommand.Parameters["@Oldtype"].Value = oldEmployee.Type;
 
                     // New Employee details Mappings
@@ -527,7 +528,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters.Add("@NewAddress1", SqlDbType.VarChar);
                     selectCommand.Parameters.Add("@NewAddress2", SqlDbType.VarChar);
 
-                   
+
                     selectCommand.Parameters.Add("@Newtype", SqlDbType.VarChar);
 
                     selectCommand.Parameters["@NewFName"].Value = newEmployee.FName;
@@ -540,7 +541,7 @@ namespace RentMe.DAL
                     selectCommand.Parameters["@NewState"].Value = newEmployee.State;
                     selectCommand.Parameters["@NewAddress1"].Value = newEmployee.Address1;
                     selectCommand.Parameters["@NewAddress2"].Value = newEmployee.Address2;
-                 
+
                     selectCommand.Parameters["@Newtype"].Value = newEmployee.Type;
                     int resultCount = selectCommand.ExecuteNonQuery();
                     if (resultCount > 0)
@@ -566,7 +567,7 @@ namespace RentMe.DAL
         public static bool IsPasswordChange(Employee oldEmployee, Employee newEmployee)
         {
 
-            string selectStatement=
+            string selectStatement =
                   "select count(*) from employees e join accounts a on a.AccountID = e.AccountID " +
                     "WHERE e.EmployeeID = @ID and a.username=@user AND a.Password <> @changedPassword";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
@@ -593,12 +594,14 @@ namespace RentMe.DAL
         public static bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
         {
             string selectStatement = "";
-            if (!string.IsNullOrEmpty(newEmployee.Username ) && !string.IsNullOrEmpty(newEmployee.Password) && newEmployee.Username != oldEmployee.Username) {
+            if (!string.IsNullOrEmpty(newEmployee.Username) && !string.IsNullOrEmpty(newEmployee.Password) && newEmployee.Username != oldEmployee.Username)
+            {
                 selectStatement =
                      "UPDATE Accounts  set Accounts.Password = @newPassword , Accounts.username=@newUser from Employees e ,accounts a " +
                        "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
             }
-            else if (!string.IsNullOrEmpty(newEmployee.Username) && newEmployee.Username != oldEmployee.Username) {
+            else if (!string.IsNullOrEmpty(newEmployee.Username) && newEmployee.Username != oldEmployee.Username)
+            {
 
                 selectStatement =
                     "UPDATE Accounts  set  Accounts.username=@newUser from Employees e ,accounts a " +

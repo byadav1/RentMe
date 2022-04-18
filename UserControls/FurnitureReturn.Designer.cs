@@ -33,7 +33,6 @@ namespace RentMe.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RentalMainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rentalTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchMemberLabel = new System.Windows.Forms.Label();
             this.furnitureReturnHeaderLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,10 +45,10 @@ namespace RentMe.UserControls
             this.processButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.clearButton = new System.Windows.Forms.Button();
             this.processReturnbutton = new System.Windows.Forms.Button();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,14 +57,15 @@ namespace RentMe.UserControls
             this.Style = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnMe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.RentalMainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.memberTabelLayoutPanel.SuspendLayout();
             this.processButtonLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RentalMainTableLayoutPanel
@@ -104,7 +104,6 @@ namespace RentMe.UserControls
             this.RentedItemsID,
             this.FurnitureID,
             this.FurnitureName,
-            this.Quantity,
             this.EmployeeID,
             this.MemberID,
             this.DueDate,
@@ -113,6 +112,7 @@ namespace RentMe.UserControls
             this.Style,
             this.Description,
             this.RentalRate,
+            this.Quantity,
             this.ReturnQuantity,
             this.ReturnMe});
             this.rentalTransactionDataGridView.DataSource = this.rentalTransactionBindingSource;
@@ -124,18 +124,14 @@ namespace RentMe.UserControls
             this.rentalTransactionDataGridView.Size = new System.Drawing.Size(1322, 290);
             this.rentalTransactionDataGridView.TabIndex = 26;
             // 
-            // rentalTransactionBindingSource
-            // 
-            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
-            // 
             // searchMemberLabel
             // 
             this.searchMemberLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchMemberLabel.AutoSize = true;
             this.searchMemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchMemberLabel.Location = new System.Drawing.Point(3, 139);
+            this.searchMemberLabel.Location = new System.Drawing.Point(3, 141);
             this.searchMemberLabel.Name = "searchMemberLabel";
-            this.searchMemberLabel.Size = new System.Drawing.Size(378, 20);
+            this.searchMemberLabel.Size = new System.Drawing.Size(320, 17);
             this.searchMemberLabel.TabIndex = 5;
             this.searchMemberLabel.Text = "Search for a member by their ID, Phone, or Name";
             // 
@@ -145,9 +141,9 @@ namespace RentMe.UserControls
             this.furnitureReturnHeaderLabel.AutoSize = true;
             this.furnitureReturnHeaderLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.furnitureReturnHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.furnitureReturnHeaderLabel.Location = new System.Drawing.Point(467, 8);
+            this.furnitureReturnHeaderLabel.Location = new System.Drawing.Point(509, 14);
             this.furnitureReturnHeaderLabel.Name = "furnitureReturnHeaderLabel";
-            this.furnitureReturnHeaderLabel.Size = new System.Drawing.Size(393, 60);
+            this.furnitureReturnHeaderLabel.Size = new System.Drawing.Size(310, 48);
             this.furnitureReturnHeaderLabel.TabIndex = 3;
             this.furnitureReturnHeaderLabel.Text = "Furniture Return";
             // 
@@ -181,9 +177,9 @@ namespace RentMe.UserControls
             // searchTextbox
             // 
             this.searchTextbox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.searchTextbox.Location = new System.Drawing.Point(3, 10);
+            this.searchTextbox.Location = new System.Drawing.Point(3, 12);
             this.searchTextbox.Name = "searchTextbox";
-            this.searchTextbox.Size = new System.Drawing.Size(280, 28);
+            this.searchTextbox.Size = new System.Drawing.Size(280, 24);
             this.searchTextbox.TabIndex = 0;
             this.searchTextbox.TextChanged += new System.EventHandler(this.SearchTextbox_TextChanged);
             // 
@@ -208,9 +204,9 @@ namespace RentMe.UserControls
             this.memberNameLabel.AutoSize = true;
             this.memberNameLabel.BackColor = System.Drawing.SystemColors.Highlight;
             this.memberNameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memberNameLabel.Location = new System.Drawing.Point(327, 9);
+            this.memberNameLabel.Location = new System.Drawing.Point(327, 12);
             this.memberNameLabel.Name = "memberNameLabel";
-            this.memberNameLabel.Size = new System.Drawing.Size(66, 24);
+            this.memberNameLabel.Size = new System.Drawing.Size(52, 18);
             this.memberNameLabel.TabIndex = 3;
             this.memberNameLabel.Text = "Name:";
             // 
@@ -220,9 +216,9 @@ namespace RentMe.UserControls
             this.memberIDLabel.AutoSize = true;
             this.memberIDLabel.BackColor = System.Drawing.SystemColors.Highlight;
             this.memberIDLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memberIDLabel.Location = new System.Drawing.Point(3, 9);
+            this.memberIDLabel.Location = new System.Drawing.Point(3, 12);
             this.memberIDLabel.Name = "memberIDLabel";
-            this.memberIDLabel.Size = new System.Drawing.Size(108, 24);
+            this.memberIDLabel.Size = new System.Drawing.Size(85, 18);
             this.memberIDLabel.TabIndex = 2;
             this.memberIDLabel.Text = "Member ID:";
             // 
@@ -232,10 +228,10 @@ namespace RentMe.UserControls
             this.statusMessageLabel.AutoSize = true;
             this.statusMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.statusMessageLabel.Location = new System.Drawing.Point(604, 222);
+            this.statusMessageLabel.Location = new System.Drawing.Point(618, 225);
             this.statusMessageLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
             this.statusMessageLabel.Name = "statusMessageLabel";
-            this.statusMessageLabel.Size = new System.Drawing.Size(119, 24);
+            this.statusMessageLabel.Size = new System.Drawing.Size(91, 18);
             this.statusMessageLabel.TabIndex = 25;
             this.statusMessageLabel.Text = "Invalid Fields";
             this.statusMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -280,6 +276,10 @@ namespace RentMe.UserControls
             this.processReturnbutton.UseVisualStyleBackColor = true;
             this.processReturnbutton.Click += new System.EventHandler(this.ProcessReturnButton_Click);
             // 
+            // rentalTransactionBindingSource
+            // 
+            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
+            // 
             // RentedItemsID
             // 
             this.RentedItemsID.DataPropertyName = "RentedItemsID";
@@ -307,15 +307,6 @@ namespace RentMe.UserControls
             this.FurnitureName.Name = "FurnitureName";
             this.FurnitureName.ReadOnly = true;
             this.FurnitureName.Width = 125;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 125;
             // 
             // EmployeeID
             // 
@@ -392,6 +383,15 @@ namespace RentMe.UserControls
             this.RentalRate.ReadOnly = true;
             this.RentalRate.Width = 130;
             // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 125;
+            // 
             // ReturnQuantity
             // 
             this.ReturnQuantity.HeaderText = "Return Quantity";
@@ -410,7 +410,7 @@ namespace RentMe.UserControls
             // 
             // FurnitureReturn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.RentalMainTableLayoutPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -419,12 +419,12 @@ namespace RentMe.UserControls
             this.RentalMainTableLayoutPanel.ResumeLayout(false);
             this.RentalMainTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.memberTabelLayoutPanel.ResumeLayout(false);
             this.memberTabelLayoutPanel.PerformLayout();
             this.processButtonLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -449,7 +449,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn RentedItemsID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
@@ -458,6 +457,7 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn Style;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReturnQuantity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ReturnMe;
     }

@@ -1,7 +1,7 @@
-﻿using System.Data.SqlClient;
-using RentMe.Model;
+﻿using RentMe.Model;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {
@@ -10,7 +10,7 @@ namespace RentMe.DAL
     /// </summary>
     public class FurnitureRentalDAL
     {
-        private static  List<RentFurniture> _rentCartItems = new List<RentFurniture>();
+        private static List<RentFurniture> _rentCartItems = new List<RentFurniture>();
         /// <summary>
         /// Adds the rental items transaction to database with member id and Employee Id
         /// </summary>
@@ -37,6 +37,6 @@ namespace RentMe.DAL
                     }
                 }
             }
-        }        
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace RentMe
                 {
                     Username = this.usernameTextBox.Text,
                     Password = this.passwordTextBox.Text,
-                    
+
                 };
                 if (this.ValidLogin(employee))
                 {

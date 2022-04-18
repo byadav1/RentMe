@@ -43,7 +43,7 @@ namespace RentMe.View
 
             if (isRental)
             {
-                this.receiptHeaderLabel.Text = "Rental Receipt";               
+                this.receiptHeaderLabel.Text = "Rental Receipt";
             }
             else
             {
@@ -62,7 +62,7 @@ namespace RentMe.View
             {
                 this.ValidateReceipt(receipt);
                 this.CreateColumns(isRental);
-                this.AddItems(receipt, isRental);                                                       
+                this.AddItems(receipt, isRental);
             }
             catch (Exception ex)
             {
@@ -137,8 +137,8 @@ namespace RentMe.View
                     this.receiptListView.Items[i].SubItems.Add(Convert.ToString(item.NumberOfDays));
                     this.receiptListView.Items[i].SubItems.Add(item.LateFee.ToString("c2"));
                     this.receiptListView.Items[i].SubItems.Add(item.SubTotal.ToString("c2"));
-                }                              
-            }                      
+                }
+            }
         }
 
 
@@ -172,7 +172,7 @@ namespace RentMe.View
                 throw new ArgumentException("Must use the member's first and last name");
             }
         }
-        
+
         /// <summary>
         /// Checks that a transaction exists.
         /// </summary>

@@ -1,10 +1,10 @@
-﻿using System;
-using RentMe.Controller;
+﻿using RentMe.Controller;
 using RentMe.Model;
-using System.Windows.Forms;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace RentMe.UserControls
 {
@@ -44,7 +44,7 @@ namespace RentMe.UserControls
         {
             if (this.SetSearchValues())
             {
-              this.DisplayResults();
+                this.DisplayResults();
             }
         }
 
@@ -437,7 +437,8 @@ namespace RentMe.UserControls
                     this.UpdateStatusMessage(message, true);
                 }
             }
-            catch(Exception exe){
+            catch (Exception exe)
+            {
                 this.UpdateStatusMessage(exe.Message, true);
             }
 
@@ -455,7 +456,7 @@ namespace RentMe.UserControls
                 int dueDays = Int32.Parse(row.Cells[8].Value.ToString());
                 int rentCount = Int32.Parse(row.Cells[7].Value.ToString());
                 DateTime dueDate = DateTime.Today.AddDays(dueDays);
-                 rentItem = new RentFurniture
+                rentItem = new RentFurniture
                 {
                     FurnitureID = int.Parse(row.Cells[0].Value.ToString()),
                     FurnitureRentQuantity = rentCount,
@@ -485,7 +486,7 @@ namespace RentMe.UserControls
                 this.rentFurnitureList.Clear();
                 return "Please enter the Quantity and return date to rent";
             }
-            else if (!int.TryParse((string)row.Cells[7].Value, out int quatityvalue) && 
+            else if (!int.TryParse((string)row.Cells[7].Value, out int quatityvalue) &&
                 !int.TryParse((string)row.Cells[8].Value, out int numericValue))
             {
                 row.Cells[7].Style.BackColor = Color.Red;
@@ -551,7 +552,7 @@ namespace RentMe.UserControls
                 row.Cells[7].Style.BackColor = Color.White;
                 row.Cells[8].Style.BackColor = Color.White; ;
                 row.Cells[9].Style.BackColor = Color.White;
-                         
+
             }
         }
 
@@ -605,7 +606,7 @@ namespace RentMe.UserControls
                     this.UpdateStatusMessage("Your Rent Order submitted Sucessfully", false);
                 }
 
-             
+
             }
         }
 

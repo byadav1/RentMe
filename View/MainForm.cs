@@ -17,7 +17,7 @@ namespace RentMe.View
         public MainForm()
         {
             InitializeComponent();
-           
+
         }
         /// <summary>
         /// Initializes MainForm with login user
@@ -25,9 +25,9 @@ namespace RentMe.View
         public MainForm(Employee currentLoginUser)
         {
             InitializeComponent();
-         
+
             this.employeeController = new EmployeesController();
-           
+
             this.employeeController.LoginCurrentEmployeeData(currentLoginUser);
         }
 
@@ -38,7 +38,7 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void MainFormClosedEventHandle(object sender, FormClosedEventArgs e)
         {
-            Application.Exit(); 
+            Application.Exit();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace RentMe.View
                 if (this.loginUser != null)
                 {
                     this.currentUserLabel.Text = "Welcome, " + this.loginUser.FName + " " + this.loginUser.LName +
-                        "!\nUsername: " + this.loginUser.Username;                   
+                        "!\nUsername: " + this.loginUser.Username;
                 }
                 if (this.loginUser.Type == "Regular")
                 {
@@ -79,7 +79,7 @@ namespace RentMe.View
                     this.mainTabControl.TabPages.Remove(this.furnitureSearchTabPage);
                     this.mainTabControl.TabPages.Remove(this.viewTransactionsTabPage);
                     this.mainTabControl.TabPages.Remove(this.furnitureReturnTabPage);
-                }                
+                }
             }
             catch (Exception exe)
             {

@@ -10,6 +10,6 @@
         /// </summary>
         public string StateCode { get; set; }
         public string StateName { get; set; }
-        
+
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using RentMe.Controller;
-using System.Windows.Forms;
+﻿using RentMe.Controller;
 using RentMe.Model;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 namespace RentMe.View
 {
     /// <summary>
@@ -30,15 +30,15 @@ namespace RentMe.View
             InitializeComponent();
             this._cartController = new RentCartController();
             this.rentController = new FurnitureRentController();
-            List<ReceiptItem> receiptList = new List<ReceiptItem> ();
+            List<ReceiptItem> receiptList = new List<ReceiptItem>();
             this.member = searchMember;
             _ = new List<RentFurniture>();
         }
 
         private void ViewCartDialog_Load(object sender, EventArgs e)
         {
-           this.DisplayRentData();
-           
+            this.DisplayRentData();
+
         }
         /// <summary>
         /// Displays the rent data.
@@ -108,9 +108,9 @@ namespace RentMe.View
             if (result == DialogResult.Yes)
             {
                 this.CreateReceipt();
-                this.rentController.AddFurnituresToRent(this.cartList);               
+                this.rentController.AddFurnituresToRent(this.cartList);
                 this._cartController.UpdateRentalCart(this.member);
-                this.cartList.Clear();               
+                this.cartList.Clear();
             }
             else
             {
@@ -121,16 +121,16 @@ namespace RentMe.View
 
         private void ShowReceipt()
         {
-            
-                using (Form viewReceiptDialog = new View.ReceiptDialog(this.receiptList, this.member.FName + " " + this.member.LName, true))
+
+            using (Form viewReceiptDialog = new View.ReceiptDialog(this.receiptList, this.member.FName + " " + this.member.LName, true))
+            {
+                DialogResult result = viewReceiptDialog.ShowDialog();
+                if (result == DialogResult.OK)
                 {
-                    DialogResult result = viewReceiptDialog.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    return;
                 }
-            
+            }
+
 
         }
 
@@ -138,16 +138,16 @@ namespace RentMe.View
         {
 
             var list = from x in this.cartList
-                           select new ReceiptItem
-                           {
-                               FurnitureID = x.FurnitureID,
-                               Description = x.Description,
-                               RentalDate = DateTime.Now,
-                               DailyRate=x.RentalAmount,
-                               NumberOfDays = (int)(x.DueDate - DateTime.Today).TotalDays,
-                               Quantity = x.FurnitureRentQuantity,
-                               SubTotal = (decimal)x.TotalItemRentalAmount
-                           };
+                       select new ReceiptItem
+                       {
+                           FurnitureID = x.FurnitureID,
+                           Description = x.Description,
+                           RentalDate = DateTime.Now,
+                           DailyRate = x.RentalAmount,
+                           NumberOfDays = (int)(x.DueDate - DateTime.Today).TotalDays,
+                           Quantity = x.FurnitureRentQuantity,
+                           SubTotal = (decimal)x.TotalItemRentalAmount
+                       };
             this.receiptList = list.ToList();
             if (this.receiptList.Any())
             {
@@ -158,7 +158,7 @@ namespace RentMe.View
 
 
 
-    
+
         private void EmptyCartButton_Click(object sender, EventArgs e)
         {
             if (this.cartList.Any())
@@ -180,9 +180,9 @@ namespace RentMe.View
             if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "DeleteItem")
             {
                 if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                this.cartList.RemoveAt(cartDataGrideView.CurrentCell.RowIndex);
+                    this.cartList.RemoveAt(cartDataGrideView.CurrentCell.RowIndex);
                 this._cartController.DeleteCartItem(cartDataGrideView.CurrentCell.RowIndex);
-                this.rentFurnitureBindingSource.RemoveCurrent();               
+                this.rentFurnitureBindingSource.RemoveCurrent();
                 this.CalculateTotal();
             }
 

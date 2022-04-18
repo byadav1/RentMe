@@ -29,7 +29,7 @@ namespace RentMe.Controller
         /// </summary>      
         /// <returns>List of style</returns>
         public List<string> GetFurnituresStyle()
-        {          
+        {
             return FurnitureDAL.GetFurnitureStyles();
         }
 

@@ -32,8 +32,8 @@ namespace RentMe.DAL
                             State state = new State
                             {
                                 StateCode = reader["StateCode"].ToString(),
-                                StateName = reader["StateName"].ToString()                                
-                            };                          
+                                StateName = reader["StateName"].ToString()
+                            };
 
                             states.Add(state);
                         }
@@ -62,7 +62,7 @@ namespace RentMe.DAL
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
                     selectCommand.Parameters.AddWithValue("StateName", state.StateName);
-                    state.StateCode = selectCommand.ExecuteScalar().ToString();                                       
+                    state.StateCode = selectCommand.ExecuteScalar().ToString();
                 }
             }
 

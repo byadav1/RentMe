@@ -4,7 +4,7 @@
     /// This class models a RentMe Furniture item.
     /// </summary>
     public class Furniture
-    {       
+    {
         /// <summary>
         /// Furniture properties.
         /// </summary>

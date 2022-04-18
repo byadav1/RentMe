@@ -24,7 +24,7 @@ namespace RentMe.DAL
             List<Transaction> transactions = rentals.Concat(returns).ToList();
             transactions = transactions.OrderBy(transaction => transaction.TransactionID)
                 .ThenBy(transaction => transaction.TransactionType).ToList();
-            
+
             return transactions;
         }
 
@@ -33,7 +33,7 @@ namespace RentMe.DAL
         /// </summary>
         /// <returns>List of RentMe Rental Transactions</returns>
         public static List<Transaction> GetRentalTransactions()
-        {          
+        {
             List<Transaction> transactions = new List<Transaction>();
             string selectStatement = "SELECT rt.TransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
                                         "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, " +
@@ -92,7 +92,7 @@ namespace RentMe.DAL
 
             foreach (Transaction transaction in rentals)
             {
-                if(IsActiveRental(transaction))
+                if (IsActiveRental(transaction))
                 {
                     activeRentalTransactions.Add(transaction);
                 }
@@ -226,7 +226,7 @@ namespace RentMe.DAL
             List<Transaction> transactions = rentals.Concat(returns).ToList();
             transactions = transactions.OrderBy(t => t.TransactionID)
                 .ThenBy(t => t.TransactionType).ToList();
-            
+
             return transactions;
         }
 
@@ -238,7 +238,7 @@ namespace RentMe.DAL
         /// <returns>RentalTransaction list</returns>
         public static List<Transaction> GetRentalsFromSearch(Transaction transaction, bool activeOnly)
         {
-            TransactionValidator.ValidateTransactionNotNull(transaction);           
+            TransactionValidator.ValidateTransactionNotNull(transaction);
             List<Transaction> transactions = new List<Transaction>();
             string selectStatement = "SELECT rt.TransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
                                      "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, " +
@@ -309,7 +309,7 @@ namespace RentMe.DAL
                             {
                                 Console.WriteLine(IsActiveRental(transaction));
                                 transactions.Add(transaction);
-                            }                                                     
+                            }
                         }
                     }
                 }

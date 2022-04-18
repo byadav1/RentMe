@@ -540,7 +540,7 @@ namespace RentMe.View
         private void RefreshEmployeeUpdate(Employee employeeUpdateData)
         {
 
-             List<Employee> employeeData = this.employeesController.GetEmployeesFromSearch(employeeUpdateData);
+            List<Employee> employeeData = this.employeesController.GetEmployeesFromSearch(employeeUpdateData);
             if (employeeData.Count == 1)
             {
                 this.employeeSearchDetails = employeeData[0];
@@ -659,7 +659,7 @@ namespace RentMe.View
                     {
                         this.passwordTextBox.Text = "";
                         this.RefreshEmployeeUpdate(employeeUpdateData);
-                        this.UpdateStatusMessage("Employee login updated successfully", false);                       
+                        this.UpdateStatusMessage("Employee login updated successfully", false);
                     }
                     else
                     {

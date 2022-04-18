@@ -1,16 +1,11 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using RentMe.Validators;
-using System;
 using RentMe.View;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RentMe.UserControls
@@ -23,10 +18,12 @@ namespace RentMe.UserControls
         private readonly MembersController membersController;
         private readonly RentalTransactionController rentalTransactionController;
         private readonly ReturnTransactionController returnTransactionController;
+        private readonly EmployeesController employeeController;
         private Member memberSearchDetails;
         private List<RentalTransaction> rentalTransactionList;
         private List<ReturnTransaction> returnTransactionsList;
         private List<ReceiptItem> receiptItemsList;
+
 
 
         /// <summary>
@@ -38,6 +35,7 @@ namespace RentMe.UserControls
             this.membersController = new MembersController();
             this.rentalTransactionController = new RentalTransactionController();
             this.returnTransactionController = new ReturnTransactionController();
+            this.employeeController = new EmployeesController();
             this.rentalTransactionList = new List<RentalTransaction>();
             this.returnTransactionsList = new List<ReturnTransaction>();
             this.receiptItemsList = new List<ReceiptItem>();
@@ -84,6 +82,11 @@ namespace RentMe.UserControls
             this.memberNameLabel.Visible = true;
         }
 
+        private int GetEmployeeID()
+        {
+            return this.employeeController.GetLoginEmployeeData().EmployeeID;
+        }
+
 
 
         private void SearchButtonClick(object sender, System.EventArgs e)
@@ -110,12 +113,12 @@ namespace RentMe.UserControls
             catch (ArgumentException ae)
             {
                 this.UpdateStatusMessage(ae.Message, true);
-               
+
             }
             catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
-                
+
             }
         }
 
@@ -147,12 +150,27 @@ namespace RentMe.UserControls
 
         private void ProcessReturnButton_Click(object sender, EventArgs e)
         {
-            this.ProcessReturn();
-            String memberNameDisplay = "Name: " + this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
-            this.GetReturnConfirmDialog(memberNameDisplay);
-            this.CreateReceipt();
-            String memberName = this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
-            this.GetReceiptDialog(memberName);
+            try
+            {
+                this.ProcessReturn();
+                String memberNameDisplay = "Name: " + this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
+                if (!this.GetReturnConfirmDialog(memberNameDisplay))
+                {
+                    this.returnTransactionsList.Clear();
+                    return;
+                }
+                this.CreateReceipt();
+                String memberName = this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
+                this.GetReceiptDialog(memberName);
+                this.searchTextbox.Text = "";
+                this.ClearField();
+            }
+            catch (Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
+
+            }
+
         }
 
         private void CreateReceipt()
@@ -183,61 +201,68 @@ namespace RentMe.UserControls
                 bool isSelected = Convert.ToBoolean(row.Cells["returnMe"].Value);
                 if (isSelected)
                 {
-                    
-                        int returnQuantity = Int32.Parse(row.Cells["ReturnQuantity"].Value.ToString());
-                        if (returnQuantity > 0)
+                    if (!int.TryParse(row.Cells["ReturnQuantity"].Value.ToString(), out int quatityvalue))
+                    {
+                        throw new ArgumentException("Quantity should be a valid number");
+                    }
+
+                    int returnQuantity = Int32.Parse(row.Cells["ReturnQuantity"].Value.ToString());
+                    if (returnQuantity > 0)
+                    {
+                        ReturnTransaction returnTransaction = new ReturnTransaction
                         {
-                            ReturnTransaction returnTransaction = new ReturnTransaction
-                            {
-                                Description = (row.Cells["Description"].Value.ToString()),
-                                FurnitureID = int.Parse(row.Cells["FurnitureID"].Value.ToString()),
-                                RentedItemsID = int.Parse(row.Cells["RentedItemsID"].Value.ToString()),
-                                Quantity = int.Parse(row.Cells["ReturnQuantity"].Value.ToString()),
-                                FurnitureName = (row.Cells["FurnitureName"].Value.ToString()),
-                                RentDate = DateTime.Parse(row.Cells["RentDate"].Value.ToString()),
-                                DueDate = DateTime.Parse(row.Cells["DueDate"].Value.ToString()),
-                                RentalRate = float.Parse(row.Cells["RentalRate"].Value.ToString()),
-                                ReturnDate = DateTime.Now,
-                                EmployeeID = 1
-                            };
+                            Description = (row.Cells["Description"].Value.ToString()),
+                            FurnitureID = int.Parse(row.Cells["FurnitureID"].Value.ToString()),
+                            RentedItemsID = int.Parse(row.Cells["RentedItemsID"].Value.ToString()),
+                            Quantity = int.Parse(row.Cells["ReturnQuantity"].Value.ToString()),
+                            FurnitureName = (row.Cells["FurnitureName"].Value.ToString()),
+                            RentDate = DateTime.Parse(row.Cells["RentDate"].Value.ToString()),
+                            DueDate = DateTime.Parse(row.Cells["DueDate"].Value.ToString()),
+                            RentalRate = float.Parse(row.Cells["RentalRate"].Value.ToString()),
+                            ReturnDate = DateTime.Now,
+                            EmployeeID = this.GetEmployeeID()
+                        };
 
-                            double days = Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays);
-                            if (days > 0)
-                            {
-                                returnTransaction.Days = days;
-                                returnTransaction.Fine = Convert.ToDecimal(returnTransaction.RentalRate * days);
-                                returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Fine;
-                            }
-                            else if (days < 0)
-                            {
-                                returnTransaction.Days = days;
-                                returnTransaction.Refund = Convert.ToDecimal(returnTransaction.RentalRate * Math.Abs(days));
-                                returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Refund;
-                            }
-                            else
-                            {
-                                returnTransaction.Days = 0;
-                                returnTransaction.Refund = 0;
-                                returnTransaction.Fine = 0;
-                                returnTransaction.SubTotal = 0;
-                            }
-
-                            this.returnTransactionsList.Add(returnTransaction);
-
-
+                        double days = Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays);
+                        if (days > 0)
+                        {
+                            returnTransaction.Days = days;
+                            returnTransaction.Fine = Convert.ToDecimal(returnTransaction.RentalRate * days);
+                            returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Fine;
+                        }
+                        else if (days < 0)
+                        {
+                            returnTransaction.Days = days;
+                            returnTransaction.Refund = Convert.ToDecimal(returnTransaction.RentalRate * Math.Abs(days));
+                            returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Refund;
                         }
                         else
                         {
-                            string message = "Return Quantity can't be zero or less than zero";
-                            this.UpdateStatusMessage(message, true);
+                            returnTransaction.Days = 0;
+                            returnTransaction.Refund = 0;
+                            returnTransaction.Fine = 0;
+                            returnTransaction.SubTotal = 0;
                         }
-                 
+
+                        this.returnTransactionsList.Add(returnTransaction);
+
+
+                    }
+                    else
+                    {
+                        string message = "Return Quantity can't be zero or less than zero";
+                        this.UpdateStatusMessage(message, true);
+                    }
 
                 }
             }
+            if (this.returnTransactionsList.Count == 0)
+            {
+                throw new ArgumentException("Must select an furniture to return");
+            }
         }
 
-        private void GetReturnConfirmDialog(String memberNameDisplay)
+        private Boolean GetReturnConfirmDialog(String memberNameDisplay)
         {
             using (Form ReturnConfirmDialog = new ReturnConfirmDialog(this.returnTransactionsList, memberNameDisplay))
             {
@@ -248,10 +273,16 @@ namespace RentMe.UserControls
                     {
                         this.returnTransactionController.AddReturnFurniture(returnTransaction);
                     }
-
+                    return true;
+                   
                 }
-
+                return false;
+                
             }
+
+
+
+
         }
 
         private void GetReceiptDialog(String memberName)
@@ -279,7 +310,7 @@ namespace RentMe.UserControls
             this.memberIDLabel.Text = "";
             this.memberIDLabel.Visible = false;
             this.memberNameLabel.Text = "";
-            this.memberNameLabel.Visible = false; 
+            this.memberNameLabel.Visible = false;
             this.statusMessageLabel.Text = "";
         }
 
@@ -288,5 +319,5 @@ namespace RentMe.UserControls
             this.ClearField();
         }
     }
-    
+
 }

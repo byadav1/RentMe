@@ -97,16 +97,16 @@ namespace RentMe.UserControls
                     Type = row.Cells["type"].Value.ToString(),
                     Active = Convert.ToBoolean(row.Cells["active"].Value.ToString())
                 };
-                
+
                 Form employeeServicesDialog = new EmployeeServicesDialog(true, employee);
                 Form owner = ((Form)this.TopLevelControl);
                 owner.Hide();
                 this.statusMessage.Visible = false;
-                DialogResult result = employeeServicesDialog.ShowDialog();              
+                DialogResult result = employeeServicesDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     owner.Show();
-                    this.RefreshControl();                    
+                    this.RefreshControl();
                 }
             }
             catch (Exception ex)

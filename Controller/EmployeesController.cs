@@ -38,8 +38,8 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
-        public bool Checkpassword(Employee employee,Employee updateEmployee)
-        {          
+        public bool Checkpassword(Employee employee, Employee updateEmployee)
+        {
             return EmployeesDAL.IsPasswordChange(employee, updateEmployee);
         }
 
@@ -105,7 +105,7 @@ namespace RentMe.Controller
                 throw new ArgumentNullException("Employee username cannot be null ");
             }
             EmployeesDAL.SetLoginEmployeeData(employee);
-           
+
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace RentMe.Controller
         /// <exception cref="ArgumentNullException">Employee username cannot be null</exception>
         public Employee GetLoginEmployeeData()
         {
-            
+
             return EmployeesDAL.GetLoginEmployeeData();
 
         }
@@ -145,7 +145,7 @@ namespace RentMe.Controller
         /// <param name="newEmployee">The new employee.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">Update cannot be performed as there is no change in data</exception>
-       public bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
+        public bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
         {
             if (oldEmployee == null && newEmployee == null)
             {

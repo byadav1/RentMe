@@ -1,8 +1,8 @@
-﻿using System;
-using System.Data.SqlClient;
-using RentMe.Model;
+﻿using RentMe.Model;
 using RentMe.Model.Validators;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {

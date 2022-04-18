@@ -62,11 +62,11 @@ namespace RentMe.UserControls
             }
             catch (ArgumentException ae)
             {
-                this.UpdateStatusMessage(ae.Message, true);               
+                this.UpdateStatusMessage(ae.Message, true);
             }
             catch (Exception ex)
             {
-                this.UpdateStatusMessage(ex.Message, true);                
+                this.UpdateStatusMessage(ex.Message, true);
             }
         }
 
@@ -110,7 +110,7 @@ namespace RentMe.UserControls
             {
                 this.UpdateStatusMessage(ex.Message, true);
             }
-            
+
         }
 
         /// <summary>

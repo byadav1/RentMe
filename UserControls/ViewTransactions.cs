@@ -37,7 +37,7 @@ namespace RentMe.UserControls
         public void RefreshControl()
         {
             try
-            {               
+            {
                 this.viewAllTransactionsButton.Enabled = false;
                 this.viewRentalsButton.Enabled = true;
                 this.viewActiveRentalsButton.Enabled = true;
@@ -49,10 +49,10 @@ namespace RentMe.UserControls
                 List<Transaction> rentals = this.transactionController.GetTransactions();
                 this.DisplayRentalsList(rentals);
             }
-             catch(Exception ex)
+            catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
-            }       
+            }
         }
 
         /// <summary>
@@ -68,12 +68,12 @@ namespace RentMe.UserControls
                 if (this.transactionController.ValidTransactionSearch(transaction))
                 {
                     this.SearchTransactions(transaction);
-                    this.DisplayRentalsList(this.transactionSearchResults);                    
+                    this.DisplayRentalsList(this.transactionSearchResults);
                     this.viewAllTransactionsButton.Enabled = true;
                     this.viewRentalsButton.Enabled = true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
             }
@@ -87,7 +87,7 @@ namespace RentMe.UserControls
         {
             Transaction rental = new Transaction();
             string search = this.searchTextBox.Text;
-  
+
             if (String.IsNullOrEmpty(search) || !Int32.TryParse(search, out int ID))
             {
                 throw new ArgumentException("Please enter a valid ID for search");
@@ -120,7 +120,7 @@ namespace RentMe.UserControls
             TransactionValidator.ValidateTransactionNotNull(transaction);
             string filter = this.filterResultsComboBox.GetItemText(this.filterResultsComboBox.SelectedItem);
             this.transactionSearchResults = this.transactionController
-                .SearchTransactions(transaction, filter);   
+                .SearchTransactions(transaction, filter);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace RentMe.UserControls
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ViewAllButtonClick(object sender, System.EventArgs e)
-        {           
+        {
             this.RefreshControl();
         }
 
@@ -141,7 +141,7 @@ namespace RentMe.UserControls
         private void ViewRentalsButtonClick(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 this.viewAllTransactionsButton.Enabled = true;
                 this.viewRentalsButton.Enabled = false;
                 this.viewActiveRentalsButton.Enabled = true;
@@ -153,7 +153,7 @@ namespace RentMe.UserControls
                 List<Transaction> rentals = this.transactionController.GetRentalTransactions();
                 this.DisplayRentalsList(rentals);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
             }
@@ -167,7 +167,7 @@ namespace RentMe.UserControls
         private void ViewActiveRentalsButtonClick(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 this.viewAllTransactionsButton.Enabled = true;
                 this.viewRentalsButton.Enabled = true;
                 this.viewActiveRentalsButton.Enabled = false;
@@ -193,7 +193,7 @@ namespace RentMe.UserControls
         private void ViewReturnsButtonClick(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 this.viewAllTransactionsButton.Enabled = true;
                 this.viewRentalsButton.Enabled = true;
                 this.viewActiveRentalsButton.Enabled = true;
@@ -205,10 +205,10 @@ namespace RentMe.UserControls
                 List<Transaction> rentals = this.transactionController.GetReturnTransactions();
                 this.DisplayRentalsList(rentals);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
-            }          
+            }
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace RentMe.UserControls
                 throw new ArgumentException("No transaction results found");
             }
             else
-            {              
+            {
                 this.transactionBindingSource.Clear();
                 this.transactionBindingSource.DataSource = rentals;
                 this.DecorateDataGridView();
@@ -239,7 +239,7 @@ namespace RentMe.UserControls
         private void DecorateDataGridView()
         {
             foreach (DataGridViewRow row in this.transactionDataGridView.Rows)
-            {               
+            {
                 if (string.Equals(row.Cells["TransactionType"].Value.ToString(), "Rental"))
                 {
                     row.DefaultCellStyle.BackColor = Color.PowderBlue;

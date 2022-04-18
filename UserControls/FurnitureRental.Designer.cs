@@ -91,7 +91,7 @@ namespace RentMe.UserControls
             this.furnitureRentalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.furnitureRentalTableLayoutPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.furnitureRentalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.furnitureRentalTableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.furnitureRentalTableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.furnitureRentalTableLayoutPanel.Name = "furnitureRentalTableLayoutPanel";
             this.furnitureRentalTableLayoutPanel.RowCount = 5;
             this.furnitureRentalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.72333F));
@@ -125,7 +125,7 @@ namespace RentMe.UserControls
             this.furnitureDateGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.furnitureDateGridView.EnableHeadersVisualStyles = false;
             this.furnitureDateGridView.Location = new System.Drawing.Point(2, 224);
-            this.furnitureDateGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.furnitureDateGridView.Margin = new System.Windows.Forms.Padding(2);
             this.furnitureDateGridView.Name = "furnitureDateGridView";
             this.furnitureDateGridView.RowHeadersWidth = 51;
             this.furnitureDateGridView.RowTemplate.Height = 24;
@@ -243,7 +243,7 @@ namespace RentMe.UserControls
             this.searchOptionTableLayout.Controls.Add(this.furnitureSearchButton, 6, 0);
             this.searchOptionTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchOptionTableLayout.Location = new System.Drawing.Point(2, 102);
-            this.searchOptionTableLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchOptionTableLayout.Margin = new System.Windows.Forms.Padding(2);
             this.searchOptionTableLayout.Name = "searchOptionTableLayout";
             this.searchOptionTableLayout.RowCount = 2;
             this.searchOptionTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.62389F));
@@ -256,7 +256,7 @@ namespace RentMe.UserControls
             this.categoryRadioButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.categoryRadioButton.AutoSize = true;
             this.categoryRadioButton.Location = new System.Drawing.Point(244, 17);
-            this.categoryRadioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.categoryRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.categoryRadioButton.Name = "categoryRadioButton";
             this.categoryRadioButton.Size = new System.Drawing.Size(139, 24);
             this.categoryRadioButton.TabIndex = 4;
@@ -271,7 +271,7 @@ namespace RentMe.UserControls
             this.idRadioButton.AutoSize = true;
             this.idRadioButton.Checked = true;
             this.idRadioButton.Location = new System.Drawing.Point(9, 17);
-            this.idRadioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.idRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.idRadioButton.Name = "idRadioButton";
             this.idRadioButton.Size = new System.Drawing.Size(116, 24);
             this.idRadioButton.TabIndex = 2;
@@ -284,7 +284,7 @@ namespace RentMe.UserControls
             // 
             this.furnitureIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.furnitureIDTextBox.Location = new System.Drawing.Point(137, 16);
-            this.furnitureIDTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.furnitureIDTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.furnitureIDTextBox.Name = "furnitureIDTextBox";
             this.furnitureIDTextBox.Size = new System.Drawing.Size(103, 26);
             this.furnitureIDTextBox.TabIndex = 3;
@@ -310,8 +310,8 @@ namespace RentMe.UserControls
             // 
             this.categoryComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(402, 15);
-            this.categoryComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.categoryComboBox.Location = new System.Drawing.Point(402, 18);
+            this.categoryComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(72, 28);
             this.categoryComboBox.TabIndex = 5;
@@ -321,8 +321,8 @@ namespace RentMe.UserControls
             // 
             this.styleComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(630, 15);
-            this.styleComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.styleComboBox.Location = new System.Drawing.Point(630, 18);
+            this.styleComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(125, 28);
             this.styleComboBox.TabIndex = 7;
@@ -334,7 +334,7 @@ namespace RentMe.UserControls
             this.stylerRadiobutton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.stylerRadiobutton.AutoSize = true;
             this.stylerRadiobutton.Location = new System.Drawing.Point(494, 17);
-            this.stylerRadiobutton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.stylerRadiobutton.Margin = new System.Windows.Forms.Padding(2);
             this.stylerRadiobutton.Name = "stylerRadiobutton";
             this.stylerRadiobutton.Size = new System.Drawing.Size(130, 24);
             this.stylerRadiobutton.TabIndex = 6;
@@ -349,7 +349,7 @@ namespace RentMe.UserControls
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton.Location = new System.Drawing.Point(934, 2);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(2);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 32);
             this.clearButton.TabIndex = 9;
@@ -362,7 +362,7 @@ namespace RentMe.UserControls
             this.furnitureSearchButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.furnitureSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.furnitureSearchButton.Location = new System.Drawing.Point(790, 2);
-            this.furnitureSearchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.furnitureSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.furnitureSearchButton.Name = "furnitureSearchButton";
             this.furnitureSearchButton.Size = new System.Drawing.Size(85, 32);
             this.furnitureSearchButton.TabIndex = 8;
@@ -379,7 +379,7 @@ namespace RentMe.UserControls
             this.tableLayoutPanel1.Controls.Add(this.rentAllButton, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.addToCartButton, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 576);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -391,7 +391,7 @@ namespace RentMe.UserControls
             this.rentAllButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rentAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rentAllButton.Location = new System.Drawing.Point(724, 9);
-            this.rentAllButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rentAllButton.Margin = new System.Windows.Forms.Padding(2);
             this.rentAllButton.Name = "rentAllButton";
             this.rentAllButton.Size = new System.Drawing.Size(90, 40);
             this.rentAllButton.TabIndex = 0;
@@ -404,7 +404,7 @@ namespace RentMe.UserControls
             this.addToCartButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addToCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addToCartButton.Location = new System.Drawing.Point(211, 9);
-            this.addToCartButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addToCartButton.Margin = new System.Windows.Forms.Padding(2);
             this.addToCartButton.Name = "addToCartButton";
             this.addToCartButton.Size = new System.Drawing.Size(90, 40);
             this.addToCartButton.TabIndex = 1;
@@ -444,7 +444,7 @@ namespace RentMe.UserControls
             this.furnitureRentalHeaderLableLayoutPanel.Controls.Add(this.memberInfoLabel, 2, 1);
             this.furnitureRentalHeaderLableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.furnitureRentalHeaderLableLayoutPanel.Location = new System.Drawing.Point(2, 2);
-            this.furnitureRentalHeaderLableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.furnitureRentalHeaderLableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.furnitureRentalHeaderLableLayoutPanel.Name = "furnitureRentalHeaderLableLayoutPanel";
             this.furnitureRentalHeaderLableLayoutPanel.RowCount = 2;
             this.furnitureRentalHeaderLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.28913F));
@@ -470,7 +470,7 @@ namespace RentMe.UserControls
             this.memberSearchButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memberSearchButton.Enabled = false;
             this.memberSearchButton.Location = new System.Drawing.Point(793, 2);
-            this.memberSearchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.memberSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.memberSearchButton.Name = "memberSearchButton";
             this.memberSearchButton.Size = new System.Drawing.Size(108, 48);
             this.memberSearchButton.TabIndex = 12;
@@ -483,7 +483,7 @@ namespace RentMe.UserControls
             this.memberIDRentTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memberIDRentTextBox.Enabled = false;
             this.memberIDRentTextBox.Location = new System.Drawing.Point(681, 2);
-            this.memberIDRentTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.memberIDRentTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.memberIDRentTextBox.Name = "memberIDRentTextBox";
             this.memberIDRentTextBox.Size = new System.Drawing.Size(108, 26);
             this.memberIDRentTextBox.TabIndex = 10;
@@ -560,7 +560,7 @@ namespace RentMe.UserControls
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.furnitureRentalTableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FurnitureRental";
             this.Size = new System.Drawing.Size(1043, 638);
             this.Load += new System.EventHandler(this.FurnitureRentalLoad);

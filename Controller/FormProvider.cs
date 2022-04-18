@@ -5,21 +5,21 @@
     /// of each form.
     /// </summary>
     public class FormProvider
-    { 
+    {
         /// <summary>
         /// Manages LoginForm instance.
         /// </summary>
         public static LoginForm LoginForm
+        {
+            get
             {
-                get
+                if (_loginForm == null)
                 {
-                    if (_loginForm == null)
-                    {
-                        _loginForm = new LoginForm();
-                    }
-                    return _loginForm;
+                    _loginForm = new LoginForm();
                 }
+                return _loginForm;
             }
-            private static LoginForm _loginForm;
+        }
+        private static LoginForm _loginForm;
     }
 }

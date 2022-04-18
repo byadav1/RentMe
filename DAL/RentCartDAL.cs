@@ -17,9 +17,9 @@ namespace RentMe.DAL
         /// <param name="itemList">The item list.</param>
         public static void AddCartItems(List<RentFurniture> itemList)
         {
-            if (_rentCartItems==null)
+            if (_rentCartItems == null)
             {
-                _rentCartItems = new List<RentFurniture>();              
+                _rentCartItems = new List<RentFurniture>();
             }
             else if (_rentCartItems.Any())
             {
@@ -39,7 +39,7 @@ namespace RentMe.DAL
             {
                 return _rentCartItems = new List<RentFurniture>();
             }
-            return _rentCartItems.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));   
+            return _rentCartItems.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));
 
         }
 
@@ -52,7 +52,7 @@ namespace RentMe.DAL
             if (_rentCartItems.Any())
             {
                 _rentCartItems.RemoveAll(s => s.FurnitureRentMemberID == member.MemberID);
-            } 
+            }
 
         }
 
@@ -60,7 +60,7 @@ namespace RentMe.DAL
         /// Removes the cart item.
         /// </summary>
         /// <param name="index">The index.</param>
-       public static void RemoveCartItem(int index)
+        public static void RemoveCartItem(int index)
         {
             if (_rentCartItems.Any())
             {

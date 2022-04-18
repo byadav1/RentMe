@@ -18,6 +18,6 @@ namespace RentMe.Model
         public int NumberOfDays { get; set; }
         public decimal LateFee { get; set; }
         public decimal RefundAmount { get; set; }
-        public decimal SubTotal { get; set; }        
+        public decimal SubTotal { get; set; }
     }
 }

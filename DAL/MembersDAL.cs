@@ -41,7 +41,7 @@ namespace RentMe.DAL
                                 DOB = (DateTime)reader["DateOfBirth"],
                                 Phone = reader["Phone"].ToString(),
                                 Sex = reader["Sex"].ToString(),
-                                Address1 = reader["Address1"].ToString(),                              
+                                Address1 = reader["Address1"].ToString(),
                                 City = reader["City"].ToString(),
                                 State = reader["State"].ToString(),
                                 Zip = reader["ZipCode"].ToString()
@@ -97,7 +97,7 @@ namespace RentMe.DAL
             }
             else if (MemberPhoneExists(member))
             {
-                selectStatement += "Phone = @Phone";               
+                selectStatement += "Phone = @Phone";
             }
             else if (MemberNameExists(member))
             {
@@ -125,7 +125,7 @@ namespace RentMe.DAL
                     {
                         selectCommand.Parameters.AddWithValue("FName", member.FName);
                         selectCommand.Parameters.AddWithValue("LName", member.LName);
-                    }                  
+                    }
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         while (reader.Read())
@@ -227,7 +227,7 @@ namespace RentMe.DAL
                                 member.Address2 = reader["Address2"].ToString();
                             }
 
-                           
+
                         }
                     }
                 }
@@ -452,7 +452,7 @@ namespace RentMe.DAL
                     }
                 }
             }
-        }        
+        }
     }
 }
 
