@@ -5,11 +5,22 @@ using System.Windows.Forms;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// This form models a Dialog which
+    /// displays the confirmation  for a
+    /// furniture transaction.
+    /// </summary>
     public partial class ReturnConfirmDialog : Form
     {
 
         private List<ReturnTransaction> returnTransactionList;
         private string memberName;
+
+        /// <summary>
+        /// constructor 
+        /// </summary>
+        /// <param name="returnTransaction"></param>
+        /// <param name="memberName"></param>
         public ReturnConfirmDialog(List<ReturnTransaction> returnTransaction, string memberName)
         {
             InitializeComponent();

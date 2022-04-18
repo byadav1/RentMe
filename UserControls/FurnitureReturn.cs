@@ -84,6 +84,7 @@ namespace RentMe.UserControls
 
         private int GetEmployeeID()
         {
+
             return this.employeeController.GetLoginEmployeeData().EmployeeID;
         }
 
@@ -165,6 +166,10 @@ namespace RentMe.UserControls
                 this.searchTextbox.Text = "";
                 this.ClearField();
             }
+            catch (NullReferenceException ne)
+            {
+                this.UpdateStatusMessage("Quantity can't be empty", true);
+            }
             catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
@@ -201,6 +206,7 @@ namespace RentMe.UserControls
                 bool isSelected = Convert.ToBoolean(row.Cells["returnMe"].Value);
                 if (isSelected)
                 {
+                   
                     if (!int.TryParse(row.Cells["ReturnQuantity"].Value.ToString(), out int quatityvalue))
                     {
                         throw new ArgumentException("Quantity should be a valid number");

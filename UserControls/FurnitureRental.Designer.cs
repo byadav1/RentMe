@@ -310,7 +310,7 @@ namespace RentMe.UserControls
             // 
             this.categoryComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(402, 18);
+            this.categoryComboBox.Location = new System.Drawing.Point(402, 15);
             this.categoryComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(72, 28);
@@ -321,7 +321,7 @@ namespace RentMe.UserControls
             // 
             this.styleComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(630, 18);
+            this.styleComboBox.Location = new System.Drawing.Point(630, 15);
             this.styleComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(125, 28);

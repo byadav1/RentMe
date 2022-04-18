@@ -3,6 +3,10 @@ using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// This class serves as the Data Access Layer
+    /// for the cs6232-g3 DB Employees Return Table.
+    /// </summary>
     public class ReturnTransactionDAL
     {
 

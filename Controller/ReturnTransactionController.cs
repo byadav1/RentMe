@@ -4,10 +4,16 @@ using System;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// The controller class that mediates between the RentalTransactionDAL and the view.
+    /// </summary>
     public class ReturnTransactionController
     {
         private ReturnTransactionDAL returnTransactionSource;
 
+        /// <summary>
+        /// Constructor that initialize ReturnTransactionDAL
+        /// </summary>
         public ReturnTransactionController()
         {
             this.returnTransactionSource = new ReturnTransactionDAL();
