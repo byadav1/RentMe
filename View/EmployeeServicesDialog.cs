@@ -70,9 +70,11 @@ namespace RentMe.View
                 if (this.ConfirmEmployeeRegistration(employee) == DialogResult.OK)
                 {
                     this.employeesController.RegisterNewEmployee(employee);
+                   
+                    this.ClearFields();
                     UpdateStatusMessage("Employee registration successfully!\n" +
-                    "EmployeeID is " + employee.EmployeeID, false);
-                    this.ToggleFormButtons(true);
+                   "EmployeeID is " + employee.EmployeeID, false);
+                    //this.ToggleFormButtons(true);
                 }
             }
             catch (ArgumentException ae)

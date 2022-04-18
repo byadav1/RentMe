@@ -195,7 +195,7 @@ namespace RentMe.UserControls
 
         /// <summary>
         /// Takes input from the search field
-        /// and returns a Member.
+        /// and returns a Employee.
         /// </summary>
         /// <returns></returns>
         private Employee CreateEmployeeFromSearch()
