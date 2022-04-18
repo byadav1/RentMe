@@ -14,13 +14,13 @@ namespace RentMe.Model
         public string Description { get; set; }
         public int FurnitureID { get; set; }
         public int Quantity { get; set; }
-        public double Days { get; set; }
+        public int Days { get; set; }
         public int EmployeeID { get; set; }
         public DateTime ReturnDate { get; set; }
         public DateTime RentDate { get; set; }
         public DateTime DueDate { get; set; }
         public string FurnitureName { get; set; }
-        public float RentalRate { get; set; }
+        public decimal RentalRate { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Fine { get; set; }
         public decimal Refund { get; set; }

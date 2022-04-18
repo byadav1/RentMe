@@ -122,9 +122,9 @@ namespace RentMe.View
                     this.receiptListView.Items[i].SubItems.Add(item.Description);
                     this.receiptListView.Items[i].SubItems.Add(item.RentalDate.ToShortDateString());
                     this.receiptListView.Items[i].SubItems.Add(Convert.ToString(item.Quantity));
-                    this.receiptListView.Items[i].SubItems.Add(item.DailyRate.ToString("c2"));
+                    this.receiptListView.Items[i].SubItems.Add(item.DailyRate.ToString("C2"));
                     this.receiptListView.Items[i].SubItems.Add(Convert.ToString(item.NumberOfDays));
-                    this.receiptListView.Items[i].SubItems.Add(item.SubTotal.ToString("c2"));
+                    this.receiptListView.Items[i].SubItems.Add(item.SubTotal.ToString("C2"));
                 }
                 else
                 {
@@ -133,10 +133,10 @@ namespace RentMe.View
                     this.receiptListView.Items[i].SubItems.Add(item.RentalDueDate.ToShortDateString());
                     this.receiptListView.Items[i].SubItems.Add(item.ReturnedDate.ToShortDateString());
                     this.receiptListView.Items[i].SubItems.Add(Convert.ToString(item.Quantity));
-                    this.receiptListView.Items[i].SubItems.Add(item.DailyRate.ToString("c2"));
+                    this.receiptListView.Items[i].SubItems.Add(item.DailyRate.ToString("C2"));
                     this.receiptListView.Items[i].SubItems.Add(Convert.ToString(item.NumberOfDays));
-                    this.receiptListView.Items[i].SubItems.Add(item.LateFee.ToString("c2"));
-                    this.receiptListView.Items[i].SubItems.Add(item.SubTotal.ToString("c2"));
+                    this.receiptListView.Items[i].SubItems.Add(item.LateFee.ToString("C2"));
+                    this.receiptListView.Items[i].SubItems.Add(item.SubTotal.ToString("C2"));
                 }
             }
         }

@@ -24,8 +24,6 @@ namespace RentMe.UserControls
         private readonly List<ReturnTransaction> returnTransactionsList;
         private readonly List<ReceiptItem> receiptItemsList;
 
-
-
         /// <summary>
         /// Constructor to initialize instant variables
         /// </summary>
@@ -54,16 +52,6 @@ namespace RentMe.UserControls
             {
                 throw new ArgumentException("Member search field cannot be empty");
             }
-            else if (new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$").IsMatch(search.Text))
-            {
-                member.Phone = search.Text;
-
-            }
-            else if (new Regex("[a-zA-Z] [a-zA-Z]").IsMatch(search.Text))
-            {
-                member.FName = search.Text.Substring(0, search.Text.IndexOf(" "));
-                member.LName = search.Text.Substring(search.Text.IndexOf(" ") + 1);
-            }
             else if (Int32.TryParse(search.Text, out int memberID))
             {
                 member.MemberID = memberID;
@@ -84,7 +72,6 @@ namespace RentMe.UserControls
 
         private int GetEmployeeID()
         {
-
             return this.employeeController.GetLoginEmployeeData().EmployeeID;
         }
 
@@ -114,12 +101,10 @@ namespace RentMe.UserControls
             catch (ArgumentException ae)
             {
                 this.UpdateStatusMessage(ae.Message, true);
-
             }
             catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
-
             }
         }
 
@@ -149,7 +134,7 @@ namespace RentMe.UserControls
             this.statusMessageLabel.Visible = true;
         }
 
-        private void ProcessReturnButton_Click(object sender, EventArgs e)
+        private void ProcessReturnButtonClick(object sender, EventArgs e)
         {
             try
             {
@@ -173,9 +158,7 @@ namespace RentMe.UserControls
             catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
-
             }
-
         }
 
         private void CreateReceipt()
@@ -226,12 +209,12 @@ namespace RentMe.UserControls
                             FurnitureName = (row.Cells["FurnitureName"].Value.ToString()),
                             RentDate = DateTime.Parse(row.Cells["RentDate"].Value.ToString()),
                             DueDate = DateTime.Parse(row.Cells["DueDate"].Value.ToString()),
-                            RentalRate = float.Parse(row.Cells["RentalRate"].Value.ToString()),
+                            RentalRate = decimal.Parse(row.Cells["RentalRate"].Value.ToString()),
                             ReturnDate = DateTime.Now,
                             EmployeeID = this.GetEmployeeID()
                         };
 
-                        double days = Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays);
+                        int days = Convert.ToInt32(Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays));
                         if (days > 0)
                         {
                             returnTransaction.Days = days;
@@ -253,15 +236,12 @@ namespace RentMe.UserControls
                         }
 
                         this.returnTransactionsList.Add(returnTransaction);
-
-
                     }
                     else
                     {
                         string message = "Return Quantity can't be zero or less than zero";
                         this.UpdateStatusMessage(message, true);
                     }
-
                 }
             }
             if (this.returnTransactionsList.Count == 0)
@@ -281,16 +261,12 @@ namespace RentMe.UserControls
                     {
                         this.returnTransactionController.AddReturnFurniture(returnTransaction);
                     }
-                    return true;
-                   
+
+                    return true;                  
                 }
-                return false;
-                
+
+                return false;               
             }
-
-
-
-
         }
 
         private void GetReceiptDialog(String memberName)
@@ -302,11 +278,10 @@ namespace RentMe.UserControls
                 {
                     return;
                 }
-
             }
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void ClearButtonClick(object sender, EventArgs e)
         {
             this.ClearField();
             this.searchTextbox.Text = "";
@@ -322,7 +297,7 @@ namespace RentMe.UserControls
             this.statusMessageLabel.Text = "";
         }
 
-        private void SearchTextbox_TextChanged(object sender, EventArgs e)
+        private void SearchTextboxTextChanged(object sender, EventArgs e)
         {
             this.ClearField();
         }

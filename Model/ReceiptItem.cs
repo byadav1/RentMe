@@ -14,7 +14,7 @@ namespace RentMe.Model
         public DateTime ReturnedDate { get; set; }
         public DateTime DueDate { get; set; }
         public int Quantity { get; set; }
-        public float DailyRate { get; set; }
+        public decimal DailyRate { get; set; }
         public int NumberOfDays { get; set; }
         public decimal LateFee { get; set; }
         public decimal RefundAmount { get; set; }

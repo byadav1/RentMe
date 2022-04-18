@@ -133,7 +133,7 @@ namespace RentMe.View
                            FurnitureID = x.FurnitureID,
                            Description = x.Description,
                            RentalDate = DateTime.Now,
-                           DailyRate = x.RentalAmount,
+                           DailyRate = Convert.ToDecimal(x.RentalAmount),
                            NumberOfDays = (int)(x.DueDate - DateTime.Today).TotalDays,
                            Quantity = x.FurnitureRentQuantity,
                            SubTotal = (decimal)x.TotalItemRentalAmount

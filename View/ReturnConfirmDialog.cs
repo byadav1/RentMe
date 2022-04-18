@@ -12,7 +12,6 @@ namespace RentMe.View
     /// </summary>
     public partial class ReturnConfirmDialog : Form
     {
-
         private readonly List<ReturnTransaction> returnTransactionList;
         private readonly string memberName;
 
@@ -32,7 +31,6 @@ namespace RentMe.View
         {
             this.memberNameLabel.Text = this.memberName;
             this.returnTransactionDataGridView.DataSource = this.returnTransactionList;
-
         }
 
         private void ReturnConfirmDialogLoad(object sender, EventArgs e)
