@@ -30,8 +30,10 @@ namespace RentMe.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RentalMainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rentalTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchMemberLabel = new System.Windows.Forms.Label();
             this.furnitureReturnHeaderLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -44,9 +46,8 @@ namespace RentMe.UserControls
             this.processButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.clearButton = new System.Windows.Forms.Button();
             this.processReturnbutton = new System.Windows.Forms.Button();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,10 +62,10 @@ namespace RentMe.UserControls
             this.ReturnMe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.RentalMainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.memberTabelLayoutPanel.SuspendLayout();
             this.processButtonLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RentalMainTableLayoutPanel
@@ -95,11 +96,13 @@ namespace RentMe.UserControls
             // 
             // rentalTransactionDataGridView
             // 
+            this.rentalTransactionDataGridView.AllowUserToAddRows = false;
+            this.rentalTransactionDataGridView.AllowUserToDeleteRows = false;
             this.rentalTransactionDataGridView.AutoGenerateColumns = false;
             this.rentalTransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rentalTransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RentedItemsID,
-            this.dataGridViewTextBoxColumn3,
+            this.FurnitureID,
             this.FurnitureName,
             this.Quantity,
             this.EmployeeID,
@@ -120,6 +123,10 @@ namespace RentMe.UserControls
             this.rentalTransactionDataGridView.RowTemplate.Height = 24;
             this.rentalTransactionDataGridView.Size = new System.Drawing.Size(1322, 290);
             this.rentalTransactionDataGridView.TabIndex = 26;
+            // 
+            // rentalTransactionBindingSource
+            // 
+            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
             // 
             // searchMemberLabel
             // 
@@ -178,6 +185,7 @@ namespace RentMe.UserControls
             this.searchTextbox.Name = "searchTextbox";
             this.searchTextbox.Size = new System.Drawing.Size(280, 28);
             this.searchTextbox.TabIndex = 0;
+            this.searchTextbox.TextChanged += new System.EventHandler(this.SearchTextbox_TextChanged);
             // 
             // memberTabelLayoutPanel
             // 
@@ -258,6 +266,7 @@ namespace RentMe.UserControls
             this.clearButton.TabIndex = 1;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // processReturnbutton
             // 
@@ -271,10 +280,6 @@ namespace RentMe.UserControls
             this.processReturnbutton.UseVisualStyleBackColor = true;
             this.processReturnbutton.Click += new System.EventHandler(this.ProcessReturnButton_Click);
             // 
-            // rentalTransactionBindingSource
-            // 
-            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
-            // 
             // RentedItemsID
             // 
             this.RentedItemsID.DataPropertyName = "RentedItemsID";
@@ -284,15 +289,15 @@ namespace RentMe.UserControls
             this.RentedItemsID.Visible = false;
             this.RentedItemsID.Width = 125;
             // 
-            // dataGridViewTextBoxColumn3
+            // FurnitureID
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "FurnitureID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "FurnitureID";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            this.dataGridViewTextBoxColumn3.Width = 125;
+            this.FurnitureID.DataPropertyName = "FurnitureID";
+            this.FurnitureID.HeaderText = "FurnitureID";
+            this.FurnitureID.MinimumWidth = 6;
+            this.FurnitureID.Name = "FurnitureID";
+            this.FurnitureID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FurnitureID.Visible = false;
+            this.FurnitureID.Width = 125;
             // 
             // FurnitureName
             // 
@@ -300,6 +305,7 @@ namespace RentMe.UserControls
             this.FurnitureName.HeaderText = "Furniture Name";
             this.FurnitureName.MinimumWidth = 6;
             this.FurnitureName.Name = "FurnitureName";
+            this.FurnitureName.ReadOnly = true;
             this.FurnitureName.Width = 125;
             // 
             // Quantity
@@ -308,6 +314,7 @@ namespace RentMe.UserControls
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.MinimumWidth = 6;
             this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
             this.Quantity.Width = 125;
             // 
             // EmployeeID
@@ -334,6 +341,7 @@ namespace RentMe.UserControls
             this.DueDate.HeaderText = "Due Date";
             this.DueDate.MinimumWidth = 6;
             this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
             this.DueDate.Width = 125;
             // 
             // RentDate
@@ -342,6 +350,7 @@ namespace RentMe.UserControls
             this.RentDate.HeaderText = "Rent Date";
             this.RentDate.MinimumWidth = 6;
             this.RentDate.Name = "RentDate";
+            this.RentDate.ReadOnly = true;
             this.RentDate.Width = 125;
             // 
             // Category
@@ -350,6 +359,7 @@ namespace RentMe.UserControls
             this.Category.HeaderText = "Category";
             this.Category.MinimumWidth = 6;
             this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
             this.Category.Width = 125;
             // 
             // Style
@@ -358,6 +368,7 @@ namespace RentMe.UserControls
             this.Style.HeaderText = "Style";
             this.Style.MinimumWidth = 6;
             this.Style.Name = "Style";
+            this.Style.ReadOnly = true;
             this.Style.Width = 125;
             // 
             // Description
@@ -366,14 +377,19 @@ namespace RentMe.UserControls
             this.Description.HeaderText = "Description";
             this.Description.MinimumWidth = 6;
             this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             this.Description.Width = 125;
             // 
             // RentalRate
             // 
             this.RentalRate.DataPropertyName = "RentalRate";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RentalRate.DefaultCellStyle = dataGridViewCellStyle1;
             this.RentalRate.HeaderText = "Rental Rate";
             this.RentalRate.MinimumWidth = 6;
             this.RentalRate.Name = "RentalRate";
+            this.RentalRate.ReadOnly = true;
             this.RentalRate.Width = 130;
             // 
             // ReturnQuantity
@@ -403,12 +419,12 @@ namespace RentMe.UserControls
             this.RentalMainTableLayoutPanel.ResumeLayout(false);
             this.RentalMainTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.memberTabelLayoutPanel.ResumeLayout(false);
             this.memberTabelLayoutPanel.PerformLayout();
             this.processButtonLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -431,7 +447,7 @@ namespace RentMe.UserControls
         private System.Windows.Forms.BindingSource rentalTransactionBindingSource;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentedItemsID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;

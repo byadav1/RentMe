@@ -30,14 +30,18 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.confirmReturnHeaderLabel = new System.Windows.Forms.Label();
             this.memberNameLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.confirmButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.confirmButton = new System.Windows.Forms.Button();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,9 +55,9 @@ namespace RentMe.View
             this.Refund = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -75,6 +79,36 @@ namespace RentMe.View
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.803922F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1188, 504);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // returnTransactionDataGridView
+            // 
+            this.returnTransactionDataGridView.AutoGenerateColumns = false;
+            this.returnTransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.returnTransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FurnitureName,
+            this.RentedItemsID,
+            this.Quantity,
+            this.Days,
+            this.EmployeeID,
+            this.ReturnDate,
+            this.RentDate,
+            this.DueDate,
+            this.RentalRate,
+            this.Fine,
+            this.Refund,
+            this.SubTotal});
+            this.returnTransactionDataGridView.DataSource = this.returnTransactionBindingSource;
+            this.returnTransactionDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.returnTransactionDataGridView.Location = new System.Drawing.Point(3, 121);
+            this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
+            this.returnTransactionDataGridView.RowHeadersWidth = 51;
+            this.returnTransactionDataGridView.RowTemplate.Height = 24;
+            this.returnTransactionDataGridView.Size = new System.Drawing.Size(1182, 329);
+            this.returnTransactionDataGridView.TabIndex = 5;
+            // 
+            // returnTransactionBindingSource
+            // 
+            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
             // 
             // confirmReturnHeaderLabel
             // 
@@ -116,6 +150,17 @@ namespace RentMe.View
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1182, 45);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(616, 3);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(87, 39);
+            this.CancelButton.TabIndex = 1;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
             // confirmButton
             // 
             this.confirmButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -127,46 +172,6 @@ namespace RentMe.View
             this.confirmButton.Text = "Confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
             this.confirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Location = new System.Drawing.Point(616, 3);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(25, 3, 3, 3);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(87, 39);
-            this.CancelButton.TabIndex = 1;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            // 
-            // returnTransactionDataGridView
-            // 
-            this.returnTransactionDataGridView.AutoGenerateColumns = false;
-            this.returnTransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.returnTransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FurnitureName,
-            this.RentedItemsID,
-            this.Quantity,
-            this.Days,
-            this.EmployeeID,
-            this.ReturnDate,
-            this.RentDate,
-            this.DueDate,
-            this.RentalRate,
-            this.Fine,
-            this.Refund,
-            this.SubTotal});
-            this.returnTransactionDataGridView.DataSource = this.returnTransactionBindingSource;
-            this.returnTransactionDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.returnTransactionDataGridView.Location = new System.Drawing.Point(3, 121);
-            this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
-            this.returnTransactionDataGridView.RowHeadersWidth = 51;
-            this.returnTransactionDataGridView.RowTemplate.Height = 24;
-            this.returnTransactionDataGridView.Size = new System.Drawing.Size(1182, 329);
-            this.returnTransactionDataGridView.TabIndex = 5;
-            // 
-            // returnTransactionBindingSource
-            // 
-            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
             // 
             // FurnitureName
             // 
@@ -238,6 +243,9 @@ namespace RentMe.View
             // RentalRate
             // 
             this.RentalRate.DataPropertyName = "RentalRate";
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RentalRate.DefaultCellStyle = dataGridViewCellStyle1;
             this.RentalRate.HeaderText = "RentalRate";
             this.RentalRate.MinimumWidth = 6;
             this.RentalRate.Name = "RentalRate";
@@ -246,6 +254,9 @@ namespace RentMe.View
             // Fine
             // 
             this.Fine.DataPropertyName = "Fine";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Fine.DefaultCellStyle = dataGridViewCellStyle2;
             this.Fine.HeaderText = "Fine";
             this.Fine.MinimumWidth = 6;
             this.Fine.Name = "Fine";
@@ -254,6 +265,9 @@ namespace RentMe.View
             // Refund
             // 
             this.Refund.DataPropertyName = "Refund";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Refund.DefaultCellStyle = dataGridViewCellStyle3;
             this.Refund.HeaderText = "Refund";
             this.Refund.MinimumWidth = 6;
             this.Refund.Name = "Refund";
@@ -262,6 +276,9 @@ namespace RentMe.View
             // SubTotal
             // 
             this.SubTotal.DataPropertyName = "SubTotal";
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.SubTotal.DefaultCellStyle = dataGridViewCellStyle4;
             this.SubTotal.HeaderText = "SubTotal";
             this.SubTotal.MinimumWidth = 6;
             this.SubTotal.Name = "SubTotal";
@@ -278,9 +295,9 @@ namespace RentMe.View
             this.Load += new System.EventHandler(this.ReturnConfirmDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
