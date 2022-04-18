@@ -143,9 +143,10 @@ namespace RentMe.View
                                FurnitureID = x.FurnitureID,
                                Description = x.Description,
                                RentalDate = DateTime.Now,
-                               DueDate = x.DueDate,
+                               DailyRate=x.RentalAmount,
+                               NumberOfDays = (int)(x.DueDate - DateTime.Today).TotalDays,
                                Quantity = x.FurnitureRentQuantity,
-                               SubTotal = (decimal)x.TotalCartCalculatedAmount
+                               SubTotal = (decimal)x.TotalItemRentalAmount
                            };
             this.receiptList = list.ToList();
             if (this.receiptList.Any())
