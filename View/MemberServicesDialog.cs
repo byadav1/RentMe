@@ -18,7 +18,7 @@ namespace RentMe.View
     {
         private readonly MembersController membersController;
         private readonly StatesController statesController;
-        private readonly Member memberSearchDetails;
+        private  Member memberSearchDetails;
 
         /// <summary>
         /// Initialize the form.
@@ -74,6 +74,9 @@ namespace RentMe.View
                 if (this.ConfirmMemberUpdate(member) == DialogResult.OK)
                 {
                     this.ProcessUpdate();
+                    this.memberSearchDetails = this.membersController.GetMemberFromSearch(member);
+                    this.SetFields(this.memberSearchDetails);
+                    this.ToggleFormButtons(false);
                 }               
             }
             catch (ArgumentException ae)
