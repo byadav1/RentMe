@@ -166,7 +166,7 @@ namespace RentMe.UserControls
                 this.searchTextbox.Text = "";
                 this.ClearField();
             }
-            catch (NullReferenceException ne)
+            catch (NullReferenceException )
             {
                 this.UpdateStatusMessage("Quantity can't be empty", true);
             }
