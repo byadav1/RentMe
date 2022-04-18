@@ -26,6 +26,7 @@ namespace RentMe.UserControls
         private Member memberSearchDetails;
         private List<RentalTransaction> rentalTransactionList;
         private List<ReturnTransaction> returnTransactionsList;
+        private List<ReceiptItem> receiptItemsList;
 
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace RentMe.UserControls
             this.returnTransactionController = new ReturnTransactionController();
             this.rentalTransactionList = new List<RentalTransaction>();
             this.returnTransactionsList = new List<ReturnTransaction>();
-
+            this.receiptItemsList = new List<ReceiptItem>();
         }
 
         /// <summary>
@@ -140,6 +141,36 @@ namespace RentMe.UserControls
 
         private void ProcessReturnButton_Click(object sender, EventArgs e)
         {
+            this.ProcessReturn();
+            String memberNameDisplay = "Name: " + this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
+            this.GetReturnConfirmDialog(memberNameDisplay);
+            this.CreateReceipt();
+            String memberName = this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
+            this.GetReceiptDialog(memberName);
+        }
+
+        private void CreateReceipt()
+        {
+            foreach (ReturnTransaction returnTransaction in this.returnTransactionsList)
+            {
+                ReceiptItem receiptItem = new ReceiptItem();
+                receiptItem.FurnitureID = returnTransaction.FurnitureID;
+                receiptItem.Description = returnTransaction.Description;
+                receiptItem.DailyRate = returnTransaction.RentalRate;
+                receiptItem.DueDate = returnTransaction.DueDate;
+                receiptItem.NumberOfDays = Convert.ToInt32(returnTransaction.Days);
+                receiptItem.Quantity = returnTransaction.Quantity;
+                receiptItem.ReturnedDate = returnTransaction.ReturnDate;
+                receiptItem.RefundAmount = returnTransaction.Refund;
+                receiptItem.LateFee = returnTransaction.Fine;
+                receiptItem.SubTotal = returnTransaction.SubTotal;
+
+                this.receiptItemsList.Add(receiptItem);
+            }
+        }
+
+        private void ProcessReturn()
+        {
             foreach (DataGridViewRow row in this.rentalTransactionDataGridView.Rows)
             {
 
@@ -162,9 +193,6 @@ namespace RentMe.UserControls
                             ReturnDate = DateTime.Now,
                             EmployeeID = 1
                         };
-
-
-                        //if (int.Parse(row.Cells["ReturnQuantity"].Value.ToString()) > )
 
                         double days = Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays);
                         if (days > 0)
@@ -199,11 +227,10 @@ namespace RentMe.UserControls
 
                 }
             }
+        }
 
-            String memberNameDisplay = "Name: " + this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
-            String memberName = this.memberSearchDetails.FName + " " + this.memberSearchDetails.LName;
-
-
+        private void GetReturnConfirmDialog(String memberNameDisplay)
+        {
             using (Form ReturnConfirmDialog = new ReturnConfirmDialog(this.returnTransactionsList, memberNameDisplay))
             {
                 DialogResult result = ReturnConfirmDialog.ShowDialog();
@@ -217,27 +244,11 @@ namespace RentMe.UserControls
                 }
 
             }
+        }
 
-            List<ReceiptItem> receiptItemsList = new List<ReceiptItem>();
-            foreach (ReturnTransaction returnTransaction in this.returnTransactionsList)
-            {
-                ReceiptItem receiptItem = new ReceiptItem();
-                receiptItem.FurnitureID = returnTransaction.FurnitureID;
-                receiptItem.Description = returnTransaction.Description;
-                receiptItem.DailyRate = returnTransaction.RentalRate;
-                receiptItem.DueDate = returnTransaction.DueDate;
-                receiptItem.NumberOfDays = Convert.ToInt32(returnTransaction.Days);
-                receiptItem.Quantity = returnTransaction.Quantity;
-                receiptItem.ReturnedDate = returnTransaction.ReturnDate;
-                receiptItem.RefundAmount = returnTransaction.Refund;
-                receiptItem.LateFee = returnTransaction.Fine;
-                receiptItem.SubTotal = returnTransaction.SubTotal;
-
-                receiptItemsList.Add(receiptItem);
-            }
-
-
-            using (Form ReceiptDialog = new ReceiptDialog(receiptItemsList, memberName, false))
+        private void GetReceiptDialog(String memberName)
+        {
+            using (Form ReceiptDialog = new ReceiptDialog(this.receiptItemsList, memberName, false))
             {
                 DialogResult result = ReceiptDialog.ShowDialog();
                 if (result == DialogResult.OK)
@@ -246,10 +257,17 @@ namespace RentMe.UserControls
                 }
 
             }
-
         }
 
-
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            this.rentalTransactionDataGridView.DataSource = null;
+            this.memberIDLabel.Text = "";
+            this.memberIDLabel.Visible = false;
+            this.memberNameLabel.Text = "";
+            this.memberNameLabel.Visible = false;
+            this.searchTextbox.Text = "";
+        }
     }
     
 }

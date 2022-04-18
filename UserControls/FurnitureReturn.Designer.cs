@@ -32,19 +32,6 @@ namespace RentMe.UserControls
             this.components = new System.ComponentModel.Container();
             this.RentalMainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rentalTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.searchMemberLabel = new System.Windows.Forms.Label();
-            this.furnitureReturnHeaderLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.searchTextbox = new System.Windows.Forms.TextBox();
-            this.memberTabelLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.memberNameLabel = new System.Windows.Forms.Label();
-            this.memberIDLabel = new System.Windows.Forms.Label();
-            this.statusMessageLabel = new System.Windows.Forms.Label();
-            this.processButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.clearButton = new System.Windows.Forms.Button();
-            this.processReturnbutton = new System.Windows.Forms.Button();
             this.RentedItemsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +46,19 @@ namespace RentMe.UserControls
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnMe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.searchMemberLabel = new System.Windows.Forms.Label();
+            this.furnitureReturnHeaderLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchTextbox = new System.Windows.Forms.TextBox();
+            this.memberTabelLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.memberNameLabel = new System.Windows.Forms.Label();
+            this.memberIDLabel = new System.Windows.Forms.Label();
+            this.statusMessageLabel = new System.Windows.Forms.Label();
+            this.processButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.processReturnbutton = new System.Windows.Forms.Button();
             this.RentalMainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
@@ -120,6 +120,123 @@ namespace RentMe.UserControls
             this.rentalTransactionDataGridView.RowTemplate.Height = 24;
             this.rentalTransactionDataGridView.Size = new System.Drawing.Size(1322, 290);
             this.rentalTransactionDataGridView.TabIndex = 26;
+            // 
+            // RentedItemsID
+            // 
+            this.RentedItemsID.DataPropertyName = "RentedItemsID";
+            this.RentedItemsID.HeaderText = "RentedItemsID";
+            this.RentedItemsID.MinimumWidth = 6;
+            this.RentedItemsID.Name = "RentedItemsID";
+            this.RentedItemsID.Visible = false;
+            this.RentedItemsID.Width = 125;
+            // 
+            // FurnitureID
+            // 
+            this.FurnitureID.DataPropertyName = "FurnitureID";
+            this.FurnitureID.HeaderText = "FurnitureID";
+            this.FurnitureID.MinimumWidth = 6;
+            this.FurnitureID.Name = "FurnitureID";
+            this.FurnitureID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FurnitureID.Visible = false;
+            this.FurnitureID.Width = 125;
+            // 
+            // FurnitureName
+            // 
+            this.FurnitureName.DataPropertyName = "FurnitureName";
+            this.FurnitureName.HeaderText = "Furniture Name";
+            this.FurnitureName.MinimumWidth = 6;
+            this.FurnitureName.Name = "FurnitureName";
+            this.FurnitureName.Width = 125;
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 125;
+            // 
+            // EmployeeID
+            // 
+            this.EmployeeID.DataPropertyName = "EmployeeID";
+            this.EmployeeID.HeaderText = "EmployeeID";
+            this.EmployeeID.MinimumWidth = 6;
+            this.EmployeeID.Name = "EmployeeID";
+            this.EmployeeID.Visible = false;
+            this.EmployeeID.Width = 125;
+            // 
+            // MemberID
+            // 
+            this.MemberID.DataPropertyName = "MemberID";
+            this.MemberID.HeaderText = "MemberID";
+            this.MemberID.MinimumWidth = 6;
+            this.MemberID.Name = "MemberID";
+            this.MemberID.Visible = false;
+            this.MemberID.Width = 125;
+            // 
+            // DueDate
+            // 
+            this.DueDate.DataPropertyName = "DueDate";
+            this.DueDate.HeaderText = "Due Date";
+            this.DueDate.MinimumWidth = 6;
+            this.DueDate.Name = "DueDate";
+            this.DueDate.Width = 125;
+            // 
+            // RentDate
+            // 
+            this.RentDate.DataPropertyName = "RentDate";
+            this.RentDate.HeaderText = "Rent Date";
+            this.RentDate.MinimumWidth = 6;
+            this.RentDate.Name = "RentDate";
+            this.RentDate.Width = 125;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.MinimumWidth = 6;
+            this.Category.Name = "Category";
+            this.Category.Width = 125;
+            // 
+            // Style
+            // 
+            this.Style.DataPropertyName = "Style";
+            this.Style.HeaderText = "Style";
+            this.Style.MinimumWidth = 6;
+            this.Style.Name = "Style";
+            this.Style.Width = 125;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.Width = 125;
+            // 
+            // RentalRate
+            // 
+            this.RentalRate.DataPropertyName = "RentalRate";
+            this.RentalRate.HeaderText = "Rental Rate";
+            this.RentalRate.MinimumWidth = 6;
+            this.RentalRate.Name = "RentalRate";
+            this.RentalRate.Width = 130;
+            // 
+            // ReturnQuantity
+            // 
+            this.ReturnQuantity.HeaderText = "Return Quantity";
+            this.ReturnQuantity.MinimumWidth = 6;
+            this.ReturnQuantity.Name = "ReturnQuantity";
+            this.ReturnQuantity.Width = 125;
+            // 
+            // ReturnMe
+            // 
+            this.ReturnMe.HeaderText = "Return Me";
+            this.ReturnMe.MinimumWidth = 6;
+            this.ReturnMe.Name = "ReturnMe";
+            this.ReturnMe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ReturnMe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ReturnMe.Width = 130;
             // 
             // rentalTransactionBindingSource
             // 
@@ -262,6 +379,7 @@ namespace RentMe.UserControls
             this.clearButton.TabIndex = 1;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // processReturnbutton
             // 
@@ -274,123 +392,6 @@ namespace RentMe.UserControls
             this.processReturnbutton.Text = "Process Return";
             this.processReturnbutton.UseVisualStyleBackColor = true;
             this.processReturnbutton.Click += new System.EventHandler(this.ProcessReturnButton_Click);
-            // 
-            // RentedItemsID
-            // 
-            this.RentedItemsID.DataPropertyName = "RentedItemsID";
-            this.RentedItemsID.HeaderText = "RentedItemsID";
-            this.RentedItemsID.MinimumWidth = 6;
-            this.RentedItemsID.Name = "RentedItemsID";
-            this.RentedItemsID.Visible = false;
-            this.RentedItemsID.Width = 125;
-            // 
-            // FurnitureID
-            // 
-            this.FurnitureID.DataPropertyName = "FurnitureID";
-            this.FurnitureID.HeaderText = "FurnitureID";
-            this.FurnitureID.MinimumWidth = 6;
-            this.FurnitureID.Name = "FurnitureID";
-            this.FurnitureID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.FurnitureID.Visible = false;
-            this.FurnitureID.Width = 125;
-            // 
-            // FurnitureName
-            // 
-            this.FurnitureName.DataPropertyName = "FurnitureName";
-            this.FurnitureName.HeaderText = "Furniture Name";
-            this.FurnitureName.MinimumWidth = 6;
-            this.FurnitureName.Name = "FurnitureName";
-            this.FurnitureName.Width = 125;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 125;
-            // 
-            // EmployeeID
-            // 
-            this.EmployeeID.DataPropertyName = "EmployeeID";
-            this.EmployeeID.HeaderText = "EmployeeID";
-            this.EmployeeID.MinimumWidth = 6;
-            this.EmployeeID.Name = "EmployeeID";
-            this.EmployeeID.Visible = false;
-            this.EmployeeID.Width = 125;
-            // 
-            // MemberID
-            // 
-            this.MemberID.DataPropertyName = "MemberID";
-            this.MemberID.HeaderText = "MemberID";
-            this.MemberID.MinimumWidth = 6;
-            this.MemberID.Name = "MemberID";
-            this.MemberID.Visible = false;
-            this.MemberID.Width = 125;
-            // 
-            // DueDate
-            // 
-            this.DueDate.DataPropertyName = "DueDate";
-            this.DueDate.HeaderText = "Due Date";
-            this.DueDate.MinimumWidth = 6;
-            this.DueDate.Name = "DueDate";
-            this.DueDate.Width = 125;
-            // 
-            // RentDate
-            // 
-            this.RentDate.DataPropertyName = "RentDate";
-            this.RentDate.HeaderText = "Rent Date";
-            this.RentDate.MinimumWidth = 6;
-            this.RentDate.Name = "RentDate";
-            this.RentDate.Width = 125;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
-            this.Category.Width = 125;
-            // 
-            // Style
-            // 
-            this.Style.DataPropertyName = "Style";
-            this.Style.HeaderText = "Style";
-            this.Style.MinimumWidth = 6;
-            this.Style.Name = "Style";
-            this.Style.Width = 125;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.Width = 125;
-            // 
-            // RentalRate
-            // 
-            this.RentalRate.DataPropertyName = "RentalRate";
-            this.RentalRate.HeaderText = "Rental Rate";
-            this.RentalRate.MinimumWidth = 6;
-            this.RentalRate.Name = "RentalRate";
-            this.RentalRate.Width = 130;
-            // 
-            // ReturnQuantity
-            // 
-            this.ReturnQuantity.HeaderText = "Return Quantity";
-            this.ReturnQuantity.MinimumWidth = 6;
-            this.ReturnQuantity.Name = "ReturnQuantity";
-            this.ReturnQuantity.Width = 125;
-            // 
-            // ReturnMe
-            // 
-            this.ReturnMe.HeaderText = "Return Me";
-            this.ReturnMe.MinimumWidth = 6;
-            this.ReturnMe.Name = "ReturnMe";
-            this.ReturnMe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ReturnMe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ReturnMe.Width = 130;
             // 
             // FurnitureReturn
             // 

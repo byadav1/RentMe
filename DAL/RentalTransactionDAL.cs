@@ -24,11 +24,17 @@ namespace RentMe.DAL
         {
             List<RentalTransaction> rentalTransactionList = new List<RentalTransaction>();
             String selectStatement =
-                "SELECT TransactionID, Rentdate, Duedate, employeeID, memberID, " +
+                "With Return_CTE ( RentedItemsID, TotalQuantity) as " +
+                "( select RentedItemsID, sum(quantity) " +
+                " from ReturnTransaction " +
+                "group by RentedItemsID) " +
+                "SELECT rt.TransactionID, Rentdate, Duedate, rt.employeeID, memberID, " +
                 "ri.furnitureID, s.name as style, c.name as category, description, " +
-                "ri.quantity, Daily_rental_rate as RentalRate, f.name, ri.RentedItemsID " +
+                "ri.Quantity - rtn.TotalQuantity as Quantity, Daily_rental_rate as RentalRate," +
+                "f.name, ri.RentedItemsID " +
                 "FROM RentalTransactions rt " +
                 "JOIN RentedItems ri ON rt.TransactionID = ri.RentalTransactionID " +
+                "JOIN Return_CTE rtn ON ri.RentedItemsID = rtn.RentedItemsID " +
                 "JOIN Furnitures f ON ri.furnitureID = f.furnitureID " +
                 "JOIN Categories c ON f.categoryID = c.categoryID " +
                 "JOIN Styles s ON f.styleID = s.styleID " +
