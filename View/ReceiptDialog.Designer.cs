@@ -108,6 +108,7 @@ namespace RentMe.View
             this.receiptListView.Size = new System.Drawing.Size(794, 241);
             this.receiptListView.TabIndex = 5;
             this.receiptListView.UseCompatibleStateImageBehavior = false;
+            this.receiptListView.View = System.Windows.Forms.View.Details;
             // 
             // closeButton
             // 

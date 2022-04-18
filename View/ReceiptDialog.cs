@@ -100,6 +100,8 @@ namespace RentMe.View
                 this.receiptListView.Columns.Add("Late Fee");
                 this.receiptListView.Columns.Add("Subtotal");
             }
+            this.receiptListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.receiptListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace RentMe.View
             this.ValidateReceipt(receipt);
             for (int i = 0; i < receipt.Count; i++)
             {
-                ReceiptItem item = receipt[i];
+                var item = receipt[i];
                 ReceiptItemValidator.ValidateReceiptItemNotNull(item);
                 if (isRental)
                 {
