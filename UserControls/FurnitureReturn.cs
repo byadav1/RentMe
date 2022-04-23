@@ -170,7 +170,7 @@ namespace RentMe.UserControls
                     FurnitureID = returnTransaction.FurnitureID,
                     Description = returnTransaction.Description,
                     DailyRate = returnTransaction.RentalRate,
-                    DueDate = returnTransaction.DueDate,
+                    RentalDueDate = returnTransaction.DueDate,
                     NumberOfDays = Convert.ToInt32(returnTransaction.Days),
                     Quantity = returnTransaction.Quantity,
                     ReturnedDate = returnTransaction.ReturnDate,
@@ -214,17 +214,18 @@ namespace RentMe.UserControls
                             EmployeeID = this.GetEmployeeID()
                         };
 
-                        int days = Convert.ToInt32(Math.Abs((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays));
-                        if (days > 0)
+                        int rentDays = Convert.ToInt32((returnTransaction.RentDate - returnTransaction.ReturnDate).TotalDays);
+                        int days = Convert.ToInt32((returnTransaction.DueDate - returnTransaction.ReturnDate).TotalDays);
+                        if (days < 0)
                         {
-                            returnTransaction.Days = days;
-                            returnTransaction.Fine = Convert.ToDecimal(returnTransaction.RentalRate * days);
+                            returnTransaction.Days = Math.Abs(rentDays);
+                            returnTransaction.Fine = returnTransaction.RentalRate * Math.Abs(days);
                             returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Fine;
                         }
-                        else if (days < 0)
+                        else if (days > 0)
                         {
-                            returnTransaction.Days = days;
-                            returnTransaction.Refund = Convert.ToDecimal(returnTransaction.RentalRate * Math.Abs(days));
+                            returnTransaction.Days = Math.Abs(rentDays);
+                            returnTransaction.Refund = returnTransaction.RentalRate * days;
                             returnTransaction.SubTotal = returnTransaction.Quantity * returnTransaction.Refund;
                         }
                         else
@@ -259,6 +260,7 @@ namespace RentMe.UserControls
                 {
                     foreach (ReturnTransaction returnTransaction in this.returnTransactionsList)
                     {
+
                         this.returnTransactionController.AddReturnFurniture(returnTransaction);
                     }
 
@@ -276,6 +278,7 @@ namespace RentMe.UserControls
                 DialogResult result = ReceiptDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
+                    this.returnTransactionsList.Clear();
                     return;
                 }
             }

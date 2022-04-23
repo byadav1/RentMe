@@ -29,7 +29,9 @@ namespace RentMe.View
 
         private void PopulateForm()
         {
+           
             this.memberNameLabel.Text = this.memberName;
+            this.returnTransactionDataGridView.DataSource = null;
             this.returnTransactionDataGridView.DataSource = this.returnTransactionList;
         }
 
