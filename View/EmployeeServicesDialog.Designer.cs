@@ -432,6 +432,7 @@ namespace RentMe.View
             this.dobPicker.TabIndex = 7;
             this.dobPicker.Value = new System.DateTime(2022, 3, 14, 0, 0, 0, 0);
             this.dobPicker.Enter += new System.EventHandler(this.FormFieldChanged);
+            this.dobPicker.MouseEnter += new System.EventHandler(this.DOBPickerEnter);
             // 
             // address1TextBox
             // 
@@ -484,6 +485,7 @@ namespace RentMe.View
             this.sexComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sexComboBox.FormattingEnabled = true;
             this.sexComboBox.Items.AddRange(new object[] {
+            "",
             "Male",
             "Female"});
             this.sexComboBox.Location = new System.Drawing.Point(315, 152);

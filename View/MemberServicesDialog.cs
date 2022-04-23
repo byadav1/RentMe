@@ -41,18 +41,20 @@ namespace RentMe.View
         /// </summary>
         private void InitializeControls(bool isUpdate)
         {
-            this.stateComboBox.DataSource = this.statesController.GetStateNames();
+            List<string> states = this.statesController.GetStateNames();
+            states.Insert(0, "");
+            this.stateComboBox.DataSource = states;
+            this.dobPicker.CustomFormat = " ";
 
             if (isUpdate)
             {
-                this.SetFields(this.memberSearchDetails);
-                this.ToggleFormButtons(false);
+                this.ToggleFormButtons(true);
+                this.SetFields(this.memberSearchDetails);               
             }
             else
             {
-                this.sexComboBox.SelectedIndex = 0;
-                this.stateComboBox.SelectedIndex = 0;
-                this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
+                this.ToggleFormButtons(false);               
+                this.ClearFields();
             }
         }
 
@@ -75,14 +77,12 @@ namespace RentMe.View
                 {
                     this.ProcessUpdate();
                     this.memberSearchDetails = this.membersController.GetMemberFromSearch(member);
-                    this.SetFields(this.memberSearchDetails);
-                    this.ToggleFormButtons(false);
+                    this.SetFields(this.memberSearchDetails);                   
                 }
             }
             catch (ArgumentException ae)
             {
-                this.UpdateStatusMessage(ae.Message, true);
-                this.ToggleFormButtons(false);
+                this.UpdateStatusMessage(ae.Message, true);               
             }
             catch (Exception ex)
             {
@@ -280,6 +280,21 @@ namespace RentMe.View
         }
 
         /// <summary>
+        /// Event Handler for DOBPicker Value Change event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DOBPickerMouseEnter(object sender, EventArgs e)
+        {
+            if (this.dobPicker.Format == DateTimePickerFormat.Custom)
+            {
+                this.dobPicker.Format = DateTimePickerFormat.Short;
+                this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
+                this.dobPicker.Value = this.dobPicker.MaxDate;
+            }
+        }
+
+        /// <summary>
         /// Validates the required form fields.
         /// </summary>
         private void ValidateFormFields()
@@ -290,20 +305,32 @@ namespace RentMe.View
                 throw new Exception("Name should consist of letters and not:\n" +
                     "be empty, include numbers, or special characters");
             }
+            else if (this.sexComboBox.SelectedIndex < 1)
+            {
+                throw new Exception("Please select the employee's sex");
+            }
             else if (this.InvalidInput(this.phoneTextBox, this.GenerateRegexForTextBox(this.phoneTextBox)))
             {
                 throw new Exception("Invalid phone number.\n" +
                     "Should consist of numbers and be in XXX-XXX-XXXX format");
             }
+            else if (string.IsNullOrWhiteSpace(this.dobPicker.Text))
+            {
+                throw new Exception("Please select the employee's date of birth");
+            }
             else if (this.InvalidInput(this.address1TextBox, this.GenerateRegexForTextBox(this.address1TextBox)))
             {
                 throw new Exception("Address 1 cannot be empty:\n" +
                     "special characters except / - . # & are prohibited");
-            }
+            }           
             else if (this.InvalidInput(this.cityTextBox, this.GenerateRegexForTextBox(this.cityTextBox)))
             {
                 throw new Exception("City should consist of letters and not:\n " +
                     "be empty, include numbers, or special characters");
+            }
+            else if (this.stateComboBox.SelectedIndex < 1)
+            {
+                throw new Exception("Please select a state");
             }
             else if (this.InvalidInput(this.zipTextBox, this.GenerateRegexForTextBox(this.zipTextBox)))
             {
@@ -374,8 +401,8 @@ namespace RentMe.View
         /// </summary>
         private void ToggleFormButtons(bool enabled)
         {
-            this.updateButton.Enabled = !enabled;
-            this.registerButton.Enabled = enabled;
+            this.updateButton.Enabled = enabled;
+            this.registerButton.Enabled = !enabled;
         }
 
         /// <summary>
@@ -422,7 +449,7 @@ namespace RentMe.View
                     }
                     else if (control is DateTimePicker)
                     {
-                        (control as DateTimePicker).Value = (control as DateTimePicker).MaxDate;
+                        (control as DateTimePicker).Format = DateTimePickerFormat.Custom;
                     }
                     else if (control is CheckBox)
                     {
