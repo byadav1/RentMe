@@ -305,6 +305,11 @@ namespace RentMe.UserControls
         {
             this.ClearField();
         }
+
+        private void rentalTransactionDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 }

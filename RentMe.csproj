@@ -67,6 +67,7 @@
     <Compile Include="DAL\TransactionsDAL.cs" />
     <Compile Include="DAL\RentCartDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
+    <Compile Include="Model\Crypto\PasswordHash.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\RentFurniture.cs" />
@@ -220,9 +221,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Crypto\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\create_rentme.sql" />
     <Content Include="DB\spCreateFurnitureRental.sql" />

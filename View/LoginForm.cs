@@ -2,6 +2,7 @@
 using RentMe.Model;
 using RentMe.View;
 using System;
+using RentMe.Crypto;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -36,7 +37,7 @@ namespace RentMe
                 Employee employee = new Employee
                 {
                     Username = this.usernameTextBox.Text,
-                    Password = this.passwordTextBox.Text,
+                    Password = PasswordHash.GetSha256Hash(this.passwordTextBox.Text),
 
                 };
                 if (this.ValidLogin(employee))

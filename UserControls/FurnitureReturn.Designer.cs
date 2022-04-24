@@ -51,8 +51,8 @@ namespace RentMe.UserControls
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Style = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,8 +106,8 @@ namespace RentMe.UserControls
             this.FurnitureName,
             this.EmployeeID,
             this.MemberID,
-            this.DueDate,
             this.RentDate,
+            this.DueDate,
             this.Category,
             this.Style,
             this.Description,
@@ -123,6 +123,7 @@ namespace RentMe.UserControls
             this.rentalTransactionDataGridView.RowTemplate.Height = 24;
             this.rentalTransactionDataGridView.Size = new System.Drawing.Size(1322, 290);
             this.rentalTransactionDataGridView.TabIndex = 26;
+            this.rentalTransactionDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rentalTransactionDataGridView_CellContentClick);
             // 
             // rentalTransactionBindingSource
             // 
@@ -326,15 +327,6 @@ namespace RentMe.UserControls
             this.MemberID.Visible = false;
             this.MemberID.Width = 125;
             // 
-            // DueDate
-            // 
-            this.DueDate.DataPropertyName = "DueDate";
-            this.DueDate.HeaderText = "Due Date";
-            this.DueDate.MinimumWidth = 6;
-            this.DueDate.Name = "DueDate";
-            this.DueDate.ReadOnly = true;
-            this.DueDate.Width = 125;
-            // 
             // RentDate
             // 
             this.RentDate.DataPropertyName = "RentDate";
@@ -343,6 +335,15 @@ namespace RentMe.UserControls
             this.RentDate.Name = "RentDate";
             this.RentDate.ReadOnly = true;
             this.RentDate.Width = 125;
+            // 
+            // DueDate
+            // 
+            this.DueDate.DataPropertyName = "DueDate";
+            this.DueDate.HeaderText = "Due Date";
+            this.DueDate.MinimumWidth = 6;
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            this.DueDate.Width = 125;
             // 
             // Category
             // 
@@ -451,8 +452,8 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn Style;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
