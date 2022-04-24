@@ -52,6 +52,7 @@
     <Compile Include="Controller\FurnitureRentController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\MembersController.cs" />
+    <Compile Include="Controller\PasswordController.cs" />
     <Compile Include="Controller\RentalTransactionController.cs" />
     <Compile Include="Controller\ReturnTransactionController.cs" />
     <Compile Include="Controller\StatesController.cs" />
