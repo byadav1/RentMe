@@ -163,6 +163,7 @@ namespace RentMe.UserControls
 
         private void CreateReceipt()
         {
+            this.receiptItemsList.Clear();
             foreach (ReturnTransaction returnTransaction in this.returnTransactionsList)
             {
                 ReceiptItem receiptItem = new ReceiptItem
