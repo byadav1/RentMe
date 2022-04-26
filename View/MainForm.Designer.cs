@@ -39,17 +39,18 @@ namespace RentMe.View
             this.employeeSearch = new RentMe.UserControls.EmployeeSearch();
             this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
             this.furnitureRental = new RentMe.UserControls.FurnitureRental();
-            this.viewTransactionsTabPage = new System.Windows.Forms.TabPage();
-            this.viewTransactions = new RentMe.UserControls.ViewTransactions();
             this.furnitureReturnTabPage = new System.Windows.Forms.TabPage();
             this.furnitureReturn = new RentMe.UserControls.FurnitureReturn();
+            this.viewTransactionsTabPage = new System.Windows.Forms.TabPage();
+            this.viewTransactions = new RentMe.UserControls.ViewTransactions();
+            this.salesReportTabPage = new System.Windows.Forms.TabPage();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.searchMemberTabPage.SuspendLayout();
             this.searchEmployeeTabPage.SuspendLayout();
             this.furnitureSearchTabPage.SuspendLayout();
-            this.viewTransactionsTabPage.SuspendLayout();
             this.furnitureReturnTabPage.SuspendLayout();
+            this.viewTransactionsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // servicesTableLayoutPanel
@@ -99,10 +100,11 @@ namespace RentMe.View
             // 
             this.servicesTableLayoutPanel.SetColumnSpan(this.mainTabControl, 3);
             this.mainTabControl.Controls.Add(this.searchMemberTabPage);
-            this.mainTabControl.Controls.Add(this.searchEmployeeTabPage);
             this.mainTabControl.Controls.Add(this.furnitureSearchTabPage);
             this.mainTabControl.Controls.Add(this.furnitureReturnTabPage);
             this.mainTabControl.Controls.Add(this.viewTransactionsTabPage);
+            this.mainTabControl.Controls.Add(this.searchEmployeeTabPage);
+            this.mainTabControl.Controls.Add(this.salesReportTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainTabControl.Location = new System.Drawing.Point(3, 48);
@@ -171,26 +173,6 @@ namespace RentMe.View
             this.furnitureRental.Size = new System.Drawing.Size(1558, 802);
             this.furnitureRental.TabIndex = 0;
             // 
-            // viewTransactionsTabPage
-            // 
-            this.viewTransactionsTabPage.Controls.Add(this.viewTransactions);
-            this.viewTransactionsTabPage.Location = new System.Drawing.Point(4, 38);
-            this.viewTransactionsTabPage.Name = "viewTransactionsTabPage";
-            this.viewTransactionsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.viewTransactionsTabPage.Size = new System.Drawing.Size(1564, 808);
-            this.viewTransactionsTabPage.TabIndex = 5;
-            this.viewTransactionsTabPage.Text = "View Transactions";
-            this.viewTransactionsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // viewTransactions
-            // 
-            this.viewTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewTransactions.Location = new System.Drawing.Point(3, 3);
-            this.viewTransactions.Margin = new System.Windows.Forms.Padding(5);
-            this.viewTransactions.Name = "viewTransactions";
-            this.viewTransactions.Size = new System.Drawing.Size(1558, 802);
-            this.viewTransactions.TabIndex = 0;
-            // 
             // furnitureReturnTabPage
             // 
             this.furnitureReturnTabPage.Controls.Add(this.furnitureReturn);
@@ -211,6 +193,35 @@ namespace RentMe.View
             this.furnitureReturn.Size = new System.Drawing.Size(1558, 802);
             this.furnitureReturn.TabIndex = 0;
             // 
+            // viewTransactionsTabPage
+            // 
+            this.viewTransactionsTabPage.Controls.Add(this.viewTransactions);
+            this.viewTransactionsTabPage.Location = new System.Drawing.Point(4, 38);
+            this.viewTransactionsTabPage.Name = "viewTransactionsTabPage";
+            this.viewTransactionsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.viewTransactionsTabPage.Size = new System.Drawing.Size(1564, 808);
+            this.viewTransactionsTabPage.TabIndex = 5;
+            this.viewTransactionsTabPage.Text = "View Transactions";
+            this.viewTransactionsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // viewTransactions
+            // 
+            this.viewTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewTransactions.Location = new System.Drawing.Point(3, 3);
+            this.viewTransactions.Margin = new System.Windows.Forms.Padding(5);
+            this.viewTransactions.Name = "viewTransactions";
+            this.viewTransactions.Size = new System.Drawing.Size(1558, 802);
+            this.viewTransactions.TabIndex = 0;
+            // 
+            // salesReportTabPage
+            // 
+            this.salesReportTabPage.Location = new System.Drawing.Point(4, 38);
+            this.salesReportTabPage.Name = "salesReportTabPage";
+            this.salesReportTabPage.Size = new System.Drawing.Size(1564, 808);
+            this.salesReportTabPage.TabIndex = 7;
+            this.salesReportTabPage.Text = "Sales Report";
+            this.salesReportTabPage.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -229,8 +240,8 @@ namespace RentMe.View
             this.searchMemberTabPage.ResumeLayout(false);
             this.searchEmployeeTabPage.ResumeLayout(false);
             this.furnitureSearchTabPage.ResumeLayout(false);
-            this.viewTransactionsTabPage.ResumeLayout(false);
             this.furnitureReturnTabPage.ResumeLayout(false);
+            this.viewTransactionsTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -251,5 +262,6 @@ namespace RentMe.View
         private UserControls.FurnitureRental furnitureRental;
         private System.Windows.Forms.TabPage furnitureReturnTabPage;
         private UserControls.FurnitureReturn furnitureReturn;
+        private System.Windows.Forms.TabPage salesReportTabPage;
     }
 }

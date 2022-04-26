@@ -8,15 +8,15 @@ using System.Windows.Forms;
 
 namespace RentMe.UserControls
 {
+    /// <summary>
+    /// This UserControl models a search form where
+    /// the user will be able to view the
+    /// RentMe Transaction history. They will be able to 
+    /// search by an ID of either the Transaction, Employee,
+    /// or Member. A filter for active rentals can also be applied.
+    /// </summary>
     public partial class ViewTransactions : UserControl
-    {
-        /// <summary>
-        /// This UserControl models a search form where
-        /// the user will be able to view the
-        /// RentMe Transaction history. They will be able to 
-        /// search by an ID of either the Transaction, Employee,
-        /// or Member. A filter for active rentals can also be applied.
-        /// </summary>
+    {      
         private readonly TransactionsController transactionController;
         private List<Transaction> transactionSearchResults;
 
@@ -39,13 +39,14 @@ namespace RentMe.UserControls
             try
             {
                 this.viewAllTransactionsButton.Enabled = false;
-                this.viewRentalsButton.Enabled = true;
-                this.viewActiveRentalsButton.Enabled = true;
+                this.viewRentalsButton.Enabled = true;               
                 this.viewReturnsButton.Enabled = true;
+                this.statusMessage.Visible = false;
+
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
-                this.filterResultsComboBox.SelectedIndex = 0;
-                this.statusMessage.Visible = false;
+                this.filterResultsComboBox.SelectedIndex = 0;                
+
                 List<Transaction> rentals = this.transactionController.GetTransactions();
                 this.DisplayRentalsList(rentals);
             }
@@ -95,8 +96,8 @@ namespace RentMe.UserControls
 
             switch (this.searchByComboBox.SelectedItem)
             {
-                case "TransactionID":
-                    rental.TransactionID = ID;
+                case "RentalTransactionID":
+                    rental.RentalTransactionID = ID;
                     break;
                 case "EmployeeID":
                     rental.EmployeeID = ID;
@@ -143,40 +144,15 @@ namespace RentMe.UserControls
             try
             {
                 this.viewAllTransactionsButton.Enabled = true;
-                this.viewRentalsButton.Enabled = false;
-                this.viewActiveRentalsButton.Enabled = true;
+                this.viewRentalsButton.Enabled = false;              
                 this.viewReturnsButton.Enabled = true;
-                this.searchTextBox.Clear();
-                this.searchByComboBox.SelectedIndex = 0;
-                this.filterResultsComboBox.SelectedIndex = 0;
                 this.statusMessage.Visible = false;
-                List<Transaction> rentals = this.transactionController.GetRentalTransactions();
-                this.DisplayRentalsList(rentals);
-            }
-            catch (Exception ex)
-            {
-                this.UpdateStatusMessage(ex.Message, true);
-            }
-        }
 
-        /// <summary>
-        /// Event Handler for View Active Rentals button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ViewActiveRentalsButtonClick(object sender, EventArgs e)
-        {
-            try
-            {
-                this.viewAllTransactionsButton.Enabled = true;
-                this.viewRentalsButton.Enabled = true;
-                this.viewActiveRentalsButton.Enabled = false;
-                this.viewReturnsButton.Enabled = true;
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
                 this.filterResultsComboBox.SelectedIndex = 0;
-                this.statusMessage.Visible = false;
-                List<Transaction> rentals = this.transactionController.GetActiveRentalTransactions();
+                
+                List<Transaction> rentals = this.transactionController.GetRentalTransactions();
                 this.DisplayRentalsList(rentals);
             }
             catch (Exception ex)
@@ -195,13 +171,14 @@ namespace RentMe.UserControls
             try
             {
                 this.viewAllTransactionsButton.Enabled = true;
-                this.viewRentalsButton.Enabled = true;
-                this.viewActiveRentalsButton.Enabled = true;
+                this.viewRentalsButton.Enabled = true;               
                 this.viewReturnsButton.Enabled = false;
+                this.statusMessage.Visible = false;
+
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
                 this.filterResultsComboBox.SelectedIndex = 0;
-                this.statusMessage.Visible = false;
+                
                 List<Transaction> rentals = this.transactionController.GetReturnTransactions();
                 this.DisplayRentalsList(rentals);
             }

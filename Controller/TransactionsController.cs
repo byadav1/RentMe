@@ -15,7 +15,7 @@ namespace RentMe.Controller
         /// <summary>
         /// Gets all Transactions from RentalTransactions table.
         /// </summary>
-        /// <returns>List of Transactions</returns>
+        /// <returns>List of all RentMe Transactions</returns>
         public List<Transaction> GetTransactions()
         {
             return TransactionsDAL.GetTransactions();
@@ -28,15 +28,6 @@ namespace RentMe.Controller
         public List<Transaction> GetRentalTransactions()
         {
             return TransactionsDAL.GetRentalTransactions();
-        }
-
-        /// <summary>
-        /// Gets all active RentMe Rental Transactions.
-        /// </summary>
-        /// <returns>List of active RentMe Rental Transactions</returns>
-        public List<Transaction> GetActiveRentalTransactions()
-        {
-            return TransactionsDAL.GetActiveRentalTransactions();
         }
 
         /// <summary>
@@ -53,7 +44,7 @@ namespace RentMe.Controller
         /// exists based on search criteria.
         /// </summary>
         /// <param name="transaction"></param>
-        /// <returns>true if valid search</returns>
+        /// <returns>True if valid search</returns>
         public bool ValidTransactionSearch(Transaction transaction)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
@@ -65,7 +56,7 @@ namespace RentMe.Controller
         /// based on search input.
         /// </summary>
         /// <param name="transaction"></param>
-        /// <returns>Transaction list</returns>
+        /// <returns>List of searched RentMe transactions</returns>
         public List<Transaction> SearchTransactions(Transaction transaction, string searchFilter)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);

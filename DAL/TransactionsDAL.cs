@@ -16,13 +16,13 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets all RentMe transactions
         /// </summary>
-        /// <returns>RentMe Transaction list</returns>
+        /// <returns>List of all RentMe Transactions</returns>
         public static List<Transaction> GetTransactions()
         {
             List<Transaction> rentals = GetRentalTransactions();
             List<Transaction> returns = GetReturnTransactions();
             List<Transaction> transactions = rentals.Concat(returns).ToList();
-            transactions = transactions.OrderBy(transaction => transaction.TransactionID)
+            transactions = transactions.OrderBy(transaction => transaction.RentalTransactionID)
                 .ThenBy(transaction => transaction.TransactionType).ToList();
 
             return transactions;
@@ -35,7 +35,7 @@ namespace RentMe.DAL
         public static List<Transaction> GetRentalTransactions()
         {
             List<Transaction> transactions = new List<Transaction>();
-            string selectStatement = "SELECT rt.TransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
+            string selectStatement = "SELECT rt.TransactionID AS RentalTransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
                                         "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, " +
                                         "(f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
                                         "FROM RentalTransactions rt " +
@@ -60,7 +60,7 @@ namespace RentMe.DAL
                             Transaction transaction = new Transaction
                             {
                                 TransactionType = "Rental",
-                                TransactionID = Convert.ToInt32(reader["TransactionID"]),
+                                RentalTransactionID = Convert.ToInt32(reader["RentalTransactionID"]),
                                 EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
                                 MemberID = Convert.ToInt32(reader["MemberID"]),
                                 FurnitureName = reader["Furniture"].ToString(),
@@ -82,35 +82,15 @@ namespace RentMe.DAL
         }
 
         /// <summary>
-        /// Gets all active RentMe Rental Transactions.
-        /// </summary>
-        /// <returns>List of active RentMe Rental Transactions</returns>
-        public static List<Transaction> GetActiveRentalTransactions()
-        {
-            List<Transaction> rentals = GetRentalTransactions();
-            List<Transaction> activeRentalTransactions = new List<Transaction>();
-
-            foreach (Transaction transaction in rentals)
-            {
-                if (IsActiveRental(transaction))
-                {
-                    activeRentalTransactions.Add(transaction);
-                }
-            }
-
-            return activeRentalTransactions;
-        }
-
-        /// <summary>
         /// Gets all RentMe Return Transactions.
         /// </summary>
         /// <returns>List of RentMe Return Transactions</returns>
         public static List<Transaction> GetReturnTransactions()
         {
             List<Transaction> transactions = new List<Transaction>();
-            string selectStatement = "SELECT rt.TransactionID, rtrn.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
-                                        "c.Name AS Category, s.Name AS Style, rtrn.Quantity, rt.RentDate, rt.DueDate, rtrn.ReturnDate, " +
-                                        "(f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
+            string selectStatement = "SELECT rt.TransactionID AS RentalTransactionID, rtrn.TransactionID AS ReturnTransactionID, rtrn.EmployeeID, " +
+                                        "rt.MemberID, f.Name AS Furniture, c.Name AS Category, s.Name AS Style, rtrn.Quantity, rt.RentDate, " +
+                                        "rt.DueDate, rtrn.ReturnDate, (f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
                                         "FROM ReturnTransaction rtrn " +
                                         "JOIN RentedItems ri " +
                                         "ON rtrn.RentedItemsID = ri.RentedItemsID " +
@@ -135,7 +115,8 @@ namespace RentMe.DAL
                             Transaction transaction = new Transaction
                             {
                                 TransactionType = "Return",
-                                TransactionID = Convert.ToInt32(reader["TransactionID"]),
+                                RentalTransactionID = Convert.ToInt32(reader["RentalTransactionID"]),
+                                ReturnTransactionID = Convert.ToInt32(reader["ReturnTransactionID"]),
                                 EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
                                 MemberID = Convert.ToInt32(reader["MemberID"]),
                                 FurnitureName = reader["Furniture"].ToString(),
@@ -162,7 +143,7 @@ namespace RentMe.DAL
         /// exists based on search criteria.
         /// </summary>
         /// <param name="rentalTransaction"></param>
-        /// <returns>true if valid search</returns>
+        /// <returns>True if valid search</returns>
         public static bool ValidTransactionSearch(Transaction rentalTransaction)
         {
             TransactionValidator.ValidateTransactionNotNull(rentalTransaction);
@@ -181,7 +162,7 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="transaction"></param>
         /// <param name="searchFilter"></param>
-        /// <returns></returns>
+        /// <returns>List of searched RentMe transactions</returns>
         public static List<Transaction> SearchTransactions(Transaction transaction, string searchFilter)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
@@ -190,7 +171,6 @@ namespace RentMe.DAL
                 throw new ArgumentException("Invalid search criteria");
             }
 
-            _ = new List<Transaction>();
             List<Transaction> searchResults;
             switch (searchFilter)
             {
@@ -198,13 +178,10 @@ namespace RentMe.DAL
                     searchResults = GetTransactionsFromSearch(transaction);
                     break;
                 case "Rentals":
-                    searchResults = GetRentalsFromSearch(transaction, false);
+                    searchResults = GetRentalsFromSearch(transaction);
                     break;
                 case "Returns":
                     searchResults = GetReturnsFromSearch(transaction);
-                    break;
-                case "Active Rentals":
-                    searchResults = GetRentalsFromSearch(transaction, true);
                     break;
                 default:
                     throw new ArgumentException("No results");
@@ -218,13 +195,13 @@ namespace RentMe.DAL
         /// based on search input.
         /// </summary>
         /// <param name="transaction"></param>
-        /// <returns></returns>
+        /// <returns>List of RentMe transactions by search filter</returns>
         public static List<Transaction> GetTransactionsFromSearch(Transaction transaction)
         {
-            List<Transaction> rentals = GetRentalsFromSearch(transaction, false);
+            List<Transaction> rentals = GetRentalsFromSearch(transaction);
             List<Transaction> returns = GetReturnsFromSearch(transaction);
             List<Transaction> transactions = rentals.Concat(returns).ToList();
-            transactions = transactions.OrderBy(t => t.TransactionID)
+            transactions = transactions.OrderBy(t => t.RentalTransactionID)
                 .ThenBy(t => t.TransactionType).ToList();
 
             return transactions;
@@ -235,12 +212,12 @@ namespace RentMe.DAL
         /// based on search input.
         /// </summary>
         /// <param name="rentalTransaction"></param>
-        /// <returns>RentalTransaction list</returns>
-        public static List<Transaction> GetRentalsFromSearch(Transaction transaction, bool activeOnly)
+        /// <returns>List of RentMe rental transactions by search filter</returns>
+        public static List<Transaction> GetRentalsFromSearch(Transaction transaction)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
             List<Transaction> transactions = new List<Transaction>();
-            string selectStatement = "SELECT rt.TransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
+            string selectStatement = "SELECT rt.TransactionID AS RentalTransactionID, rt.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
                                      "c.Name AS Category, s.Name AS Style, ri.Quantity, rt.RentDate, rt.DueDate, " +
                                      "(f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
                                      "FROM RentalTransactions rt " +
@@ -255,7 +232,7 @@ namespace RentMe.DAL
                                      "WHERE ";
             if (TransactionIDExists(transaction))
             {
-                selectStatement += "rt.TransactionID = @TransactionID";
+                selectStatement += "rt.TransactionID = @RentalTransactionID";
             }
             else if (EmployeeIDExists(transaction))
             {
@@ -277,7 +254,7 @@ namespace RentMe.DAL
                 {
                     if (TransactionIDExists(transaction))
                     {
-                        selectCommand.Parameters.AddWithValue("TransactionID", transaction.TransactionID);
+                        selectCommand.Parameters.AddWithValue("RentalTransactionID", transaction.RentalTransactionID);
                     }
                     else if (EmployeeIDExists(transaction))
                     {
@@ -294,7 +271,7 @@ namespace RentMe.DAL
                             transaction = new Transaction
                             {
                                 TransactionType = "Rental",
-                                TransactionID = Convert.ToInt32(reader["TransactionID"]),
+                                RentalTransactionID = Convert.ToInt32(reader["RentalTransactionID"]),
                                 EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
                                 MemberID = Convert.ToInt32(reader["MemberID"]),
                                 FurnitureName = reader["Furniture"].ToString(),
@@ -305,11 +282,8 @@ namespace RentMe.DAL
                                 DueDate = (DateTime)reader["DueDate"],
                                 RentalCharge = decimal.Round(Convert.ToDecimal(reader["RentalCharge"].ToString()), 2, MidpointRounding.AwayFromZero)
                             };
-                            if ((activeOnly && IsActiveRental(transaction)) || !activeOnly)
-                            {
-                                Console.WriteLine(IsActiveRental(transaction));
-                                transactions.Add(transaction);
-                            }
+
+                            transactions.Add(transaction);                          
                         }
                     }
                 }
@@ -323,14 +297,14 @@ namespace RentMe.DAL
         /// based on search input.
         /// </summary>
         /// <param name="transaction"></param>
-        /// <returns>Transaction returns list</returns>
+        /// <returns>List of RentMe return transactions by search filter</returns>
         public static List<Transaction> GetReturnsFromSearch(Transaction transaction)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
             List<Transaction> transactions = new List<Transaction>();
-            string selectStatement = "SELECT rt.TransactionID, rtrn.EmployeeID, rt.MemberID, f.Name AS Furniture, " +
-                                        "c.Name AS Category, s.Name AS Style, rtrn.Quantity, rt.RentDate, rt.DueDate, rtrn.ReturnDate, " +
-                                        "(f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
+            string selectStatement = "SELECT rt.TransactionID AS RentalTransactionID, rtrn.TransactionID AS ReturnTransactionID, rtrn.EmployeeID, " +
+                                        "rt.MemberID, f.Name AS Furniture, c.Name AS Category, s.Name AS Style, rtrn.Quantity, rt.RentDate, " +
+                                        "rt.DueDate, rtrn.ReturnDate, (f.Daily_rental_rate * ri.Quantity) AS RentalCharge " +
                                         "FROM ReturnTransaction rtrn " +
                                         "JOIN RentedItems ri " +
                                         "ON rtrn.RentedItemsID = ri.RentedItemsID " +
@@ -345,7 +319,7 @@ namespace RentMe.DAL
                                         "WHERE ";
             if (TransactionIDExists(transaction))
             {
-                selectStatement += "rt.TransactionID = @TransactionID";
+                selectStatement += "rt.TransactionID = @RentalTransactionID";
             }
             else if (EmployeeIDExists(transaction))
             {
@@ -367,7 +341,7 @@ namespace RentMe.DAL
                 {
                     if (TransactionIDExists(transaction))
                     {
-                        selectCommand.Parameters.AddWithValue("TransactionID", transaction.TransactionID);
+                        selectCommand.Parameters.AddWithValue("RentalTransactionID", transaction.RentalTransactionID);
                     }
                     else if (EmployeeIDExists(transaction))
                     {
@@ -384,7 +358,8 @@ namespace RentMe.DAL
                             transaction = new Transaction
                             {
                                 TransactionType = "Return",
-                                TransactionID = Convert.ToInt32(reader["TransactionID"]),
+                                RentalTransactionID = Convert.ToInt32(reader["RentalTransactionID"]),
+                                ReturnTransactionID = Convert.ToInt32(reader["ReturnTransactionID"]),
                                 EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
                                 MemberID = Convert.ToInt32(reader["MemberID"]),
                                 FurnitureName = reader["Furniture"].ToString(),
@@ -410,19 +385,19 @@ namespace RentMe.DAL
         /// Return true if TransactionID exists.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if TransactionID exists</returns>
         private static bool TransactionIDExists(Transaction transaction)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
             string selectStatement = "SELECT COUNT(*) " +
                                         "FROM RentalTransactions " +
-                                        "WHERE TransactionID = @TransactionID";
+                                        "WHERE TransactionID = @RentalTransactionID";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.AddWithValue("TransactionID", transaction.TransactionID);
+                    selectCommand.Parameters.AddWithValue("RentalTransactionID", transaction.RentalTransactionID);
                     if (Convert.ToBoolean(selectCommand.ExecuteScalar()))
                     {
                         return true;
@@ -437,7 +412,7 @@ namespace RentMe.DAL
         /// Return true if EmployeeID exists.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if EmployeeID exists</returns>
         private static bool EmployeeIDExists(Transaction transaction)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
@@ -464,7 +439,7 @@ namespace RentMe.DAL
         /// Return true if MemberID exists.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if MemberID exists</returns>
         private static bool MemberIDExists(Transaction transaction)
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
@@ -483,37 +458,6 @@ namespace RentMe.DAL
                     }
 
                     return false;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns true if rental is still active.
-        /// </summary>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        private static bool IsActiveRental(Transaction transaction)
-        {
-            TransactionValidator.ValidateTransactionNotNull(transaction);
-            string selectStatement = "SELECT ri.RentalTransactionID, ri.RentedItemsID, ri.FurnitureID, ri.Quantity, SUM(rtrn.Quantity) " +
-                                        "FROM RentedItems ri " +
-                                        "JOIN ReturnTransaction rtrn " +
-                                        "ON ri.RentedItemsID = rtrn.RentedItemsID " +
-                                        "WHERE ri.RentalTransactionID = @TransactionID " +
-                                        "GROUP BY ri.RentalTransactionID, ri.RentedItemsID, ri.FurnitureID, ri.Quantity " +
-                                        "HAVING ri.Quantity - SUM(rtrn.Quantity) = 0";
-            using (SqlConnection connection = RentMeDBConnection.GetConnection())
-            {
-                connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-                    selectCommand.Parameters.AddWithValue("TransactionID", transaction.TransactionID);
-                    if (Convert.ToBoolean(selectCommand.ExecuteScalar()))
-                    {
-                        return false;
-                    }
-
-                    return true;
                 }
             }
         }

@@ -11,7 +11,8 @@ namespace RentMe.Model
         /// Transaction attributes.
         /// </summary>        
         public string TransactionType { get; set; }
-        public int TransactionID { get; set; }
+        public int RentalTransactionID { get; set; }
+        public int ReturnTransactionID { get; set; }
         public int EmployeeID { get; set; }
         public int MemberID { get; set; }
         public string FurnitureName { get; set; }

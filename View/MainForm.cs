@@ -68,9 +68,11 @@ namespace RentMe.View
                     this.currentUserLabel.Text = "Welcome, " + this.loginUser.FName + " " + this.loginUser.LName +
                         "!\nUsername: " + this.loginUser.Username;
                 }
+               
                 if (this.loginUser.Type == "Regular")
                 {
                     this.mainTabControl.TabPages.Remove(this.searchEmployeeTabPage);
+                    this.mainTabControl.TabPages.Remove(this.salesReportTabPage);
                     this.memberSearch.RefreshControl();
                 }
                 else
