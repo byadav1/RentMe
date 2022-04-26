@@ -215,16 +215,25 @@ namespace RentMe.UserControls
         /// </summary>
         private void DecorateDataGridView()
         {
-            foreach (DataGridViewRow row in this.transactionDataGridView.Rows)
+            try
             {
-                if (string.Equals(row.Cells["TransactionType"].Value.ToString(), "Rental"))
+                foreach (DataGridViewRow row in this.transactionDataGridView.Rows)
                 {
-                    row.DefaultCellStyle.BackColor = Color.PowderBlue;
+                    if (string.Equals(row.Cells["TransactionType"].Value.ToString(), "Rental"))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.PowderBlue;
+                        row.Cells["ReturnTransactionID"].Style.ForeColor = row.DefaultCellStyle.BackColor;
+                        row.Cells["ReturnTransactionID"].Style.SelectionForeColor = SystemColors.Highlight;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = Color.PaleGreen;
+                    }
                 }
-                else
-                {
-                    row.DefaultCellStyle.BackColor = Color.PaleGreen;
-                }
+            }
+            catch(Exception ex)
+            {
+                this.UpdateStatusMessage(ex.Message, true);
             }
         }
 
