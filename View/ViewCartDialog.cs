@@ -171,6 +171,43 @@ namespace RentMe.View
                 this.rentFurnitureBindingSource.RemoveCurrent();
                 this.CalculateTotal();
             }
+
+            if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "Edit")
+
+            {
+                string quantitydata = Convert.ToString(this.cartDataGrideView[6, this.cartDataGrideView.CurrentCell.RowIndex].Value);
+
+                DateTime dueDateUpdate = Convert.ToDateTime(this.cartDataGrideView[7, this.cartDataGrideView.CurrentCell.RowIndex].Value);
+
+
+                using (Form rentalDialog = new RentalEditDialog(quantitydata, dueDateUpdate))
+                {
+                    DialogResult result = rentalDialog.ShowDialog();
+
+                    
+                    if (result == DialogResult.Yes)
+                    {
+                        int dueDays = (int)(RentalEditDialog.NewDueDate - DateTime.Today).TotalDays;                      
+                        RentFurniture updateFurniture = new RentFurniture();
+                        updateFurniture.FurnitureID = (int)this.cartDataGrideView[0, this.cartDataGrideView.CurrentCell.RowIndex].Value;
+                        updateFurniture.Name = (string)this.cartDataGrideView[1, this.cartDataGrideView.CurrentCell.RowIndex].Value;
+                        updateFurniture.Category = (string)this.cartDataGrideView[2, this.cartDataGrideView.CurrentCell.RowIndex].Value;
+                        updateFurniture.Style = (string)this.cartDataGrideView[3, this.cartDataGrideView.CurrentCell.RowIndex].Value;
+                        updateFurniture.Description = (string)this.cartDataGrideView[4, this.cartDataGrideView.CurrentCell.RowIndex].Value;
+                        updateFurniture.RentalAmount = (float)this.cartDataGrideView[5, this.cartDataGrideView.CurrentCell.RowIndex].Value;
+                        updateFurniture.FurnitureRentQuantity = Convert.ToInt32( RentalEditDialog.NewQuantity);
+                        updateFurniture.DueDate = dueDateUpdate.AddDays(1);
+                        updateFurniture.FurnitureRentMemberID = this.member.MemberID;
+                        updateFurniture.TotalItemRentalAmount = 
+                            (float)this.cartDataGrideView[5, this.cartDataGrideView.CurrentCell.RowIndex].Value *
+                            (int)this.cartDataGrideView[6, this.cartDataGrideView.CurrentCell.RowIndex].Value * dueDays;                     
+                        this._cartController.UpdateCartItem(cartDataGrideView.CurrentCell.RowIndex, updateFurniture);
+                        this.DisplayRentData();
+                       
+                    };
+
+                }
+            }
         }
     }
 

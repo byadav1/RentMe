@@ -1,5 +1,6 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -52,6 +53,16 @@ namespace RentMe.Controller
         public void DeleteCartItem(int index)
         {
             RentCartDAL.RemoveCartItem(index);
+
+        }
+
+        /// <summary>
+        /// Updates the cart item.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        public void UpdateCartItem(int index, RentFurniture updateFurniture)
+        {
+            RentCartDAL.UpdateCartItem(index, updateFurniture);
 
         }
     }

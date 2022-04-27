@@ -46,6 +46,8 @@ namespace RentMe.UserControls
             {
                 this.DisplayResults();
             }
+            this.UpdateStatusMessage("Please note- Member ID is mandatory to rent Furniture.", false);
+            this.memberIDRentTextBox.BackColor = System.Drawing.Color.LightYellow;
         }
 
         private bool SetSearchValues()
