@@ -234,6 +234,7 @@
   <ItemGroup>
     <Content Include="DB\create_rentme.sql" />
     <Content Include="DB\spCreateFurnitureRental.sql" />
+    <Content Include="DB\spGetMostPopularFurnitureDuringDates.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

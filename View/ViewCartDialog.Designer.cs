@@ -47,18 +47,18 @@ namespace RentMe.View
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.emptyCartButton = new System.Windows.Forms.Button();
-            this.rentFurnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.FurnitureRentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteItem = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.furnitureIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FurnitureRentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalItemRentalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteItem = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rentFurnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cartDataGrideView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -122,7 +122,7 @@ namespace RentMe.View
             this.rentAmountlabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rentAmountlabel.AutoSize = true;
             this.rentAmountlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rentAmountlabel.Location = new System.Drawing.Point(42, 11);
+            this.rentAmountlabel.Location = new System.Drawing.Point(40, 11);
             this.rentAmountlabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.rentAmountlabel.Name = "rentAmountlabel";
             this.rentAmountlabel.Size = new System.Drawing.Size(183, 24);
@@ -134,7 +134,7 @@ namespace RentMe.View
             this.amountLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.amountLabel.AutoSize = true;
             this.amountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amountLabel.Location = new System.Drawing.Point(229, 13);
+            this.amountLabel.Location = new System.Drawing.Point(227, 13);
             this.amountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.amountLabel.Name = "amountLabel";
             this.amountLabel.Size = new System.Drawing.Size(49, 20);
@@ -146,7 +146,7 @@ namespace RentMe.View
             this.cancelCartButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cancelCartButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelCartButton.Location = new System.Drawing.Point(489, 7);
+            this.cancelCartButton.Location = new System.Drawing.Point(484, 7);
             this.cancelCartButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelCartButton.Name = "cancelCartButton";
             this.cancelCartButton.Size = new System.Drawing.Size(93, 32);
@@ -159,7 +159,7 @@ namespace RentMe.View
             this.submitOrderButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.submitOrderButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.submitOrderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitOrderButton.Location = new System.Drawing.Point(313, 7);
+            this.submitOrderButton.Location = new System.Drawing.Point(310, 7);
             this.submitOrderButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.submitOrderButton.Name = "submitOrderButton";
             this.submitOrderButton.Size = new System.Drawing.Size(142, 32);
@@ -201,7 +201,7 @@ namespace RentMe.View
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.23697F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.71386F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 339F));
             this.tableLayoutPanel2.Controls.Add(this.emptyCartButton, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.rentAmountlabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.amountLabel, 1, 0);
@@ -219,7 +219,7 @@ namespace RentMe.View
             // 
             this.emptyCartButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emptyCartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emptyCartButton.Location = new System.Drawing.Point(692, 7);
+            this.emptyCartButton.Location = new System.Drawing.Point(690, 7);
             this.emptyCartButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.emptyCartButton.Name = "emptyCartButton";
             this.emptyCartButton.Size = new System.Drawing.Size(158, 32);
@@ -228,9 +228,39 @@ namespace RentMe.View
             this.emptyCartButton.UseVisualStyleBackColor = true;
             this.emptyCartButton.Click += new System.EventHandler(this.EmptyCartButtonClick);
             // 
-            // rentFurnitureBindingSource
+            // FurnitureRentQuantity
             // 
-            this.rentFurnitureBindingSource.DataSource = typeof(RentMe.Model.RentFurniture);
+            this.FurnitureRentQuantity.DataPropertyName = "FurnitureRentQuantity";
+            this.FurnitureRentQuantity.HeaderText = "Rent Quantity";
+            this.FurnitureRentQuantity.MinimumWidth = 6;
+            this.FurnitureRentQuantity.Name = "FurnitureRentQuantity";
+            this.FurnitureRentQuantity.Width = 89;
+            // 
+            // DueDate
+            // 
+            this.DueDate.DataPropertyName = "DueDate";
+            this.DueDate.HeaderText = "Return DueDate";
+            this.DueDate.MinimumWidth = 6;
+            this.DueDate.Name = "DueDate";
+            this.DueDate.Width = 101;
+            // 
+            // DeleteItem
+            // 
+            this.DeleteItem.HeaderText = "Delete";
+            this.DeleteItem.MinimumWidth = 6;
+            this.DeleteItem.Name = "DeleteItem";
+            this.DeleteItem.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteItem.Text = "Delete";
+            this.DeleteItem.UseColumnTextForButtonValue = true;
+            this.DeleteItem.Width = 63;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.Text = "Edit";
+            this.Edit.Width = 31;
             // 
             // furnitureIDDataGridViewTextBoxColumn
             // 
@@ -278,23 +308,7 @@ namespace RentMe.View
             this.rentalAmountDataGridViewTextBoxColumn.HeaderText = "Rent Per day";
             this.rentalAmountDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rentalAmountDataGridViewTextBoxColumn.Name = "rentalAmountDataGridViewTextBoxColumn";
-            this.rentalAmountDataGridViewTextBoxColumn.Width = 94;
-            // 
-            // FurnitureRentQuantity
-            // 
-            this.FurnitureRentQuantity.DataPropertyName = "FurnitureRentQuantity";
-            this.FurnitureRentQuantity.HeaderText = "Rent Quantity";
-            this.FurnitureRentQuantity.MinimumWidth = 6;
-            this.FurnitureRentQuantity.Name = "FurnitureRentQuantity";
-            this.FurnitureRentQuantity.Width = 97;
-            // 
-            // DueDate
-            // 
-            this.DueDate.DataPropertyName = "DueDate";
-            this.DueDate.HeaderText = "Return DueDate";
-            this.DueDate.MinimumWidth = 6;
-            this.DueDate.Name = "DueDate";
-            this.DueDate.Width = 101;
+            this.rentalAmountDataGridViewTextBoxColumn.Width = 71;
             // 
             // totalItemRentalAmountDataGridViewTextBoxColumn
             // 
@@ -304,23 +318,9 @@ namespace RentMe.View
             this.totalItemRentalAmountDataGridViewTextBoxColumn.Name = "totalItemRentalAmountDataGridViewTextBoxColumn";
             this.totalItemRentalAmountDataGridViewTextBoxColumn.Width = 143;
             // 
-            // DeleteItem
+            // rentFurnitureBindingSource
             // 
-            this.DeleteItem.HeaderText = "Delete";
-            this.DeleteItem.MinimumWidth = 6;
-            this.DeleteItem.Name = "DeleteItem";
-            this.DeleteItem.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteItem.Text = "Delete";
-            this.DeleteItem.UseColumnTextForButtonValue = true;
-            this.DeleteItem.Width = 63;
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.Text = "Edit";
-            this.Edit.Width = 31;
+            this.rentFurnitureBindingSource.DataSource = typeof(RentMe.Model.RentFurniture);
             // 
             // ViewCartDialog
             // 
