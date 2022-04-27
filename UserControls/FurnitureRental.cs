@@ -469,6 +469,7 @@ namespace RentMe.UserControls
                 rentItem.Description = row.Cells[2].Value.ToString();
                 rentItem.Category = row.Cells[3].Value.ToString();
                 rentItem.Style = row.Cells[4].Value.ToString();
+                rentItem.AvailableQunatity = Int32.Parse(row.Cells[5].Value.ToString());
                 rentItem.DueDate = dueDate;
             }
             catch (Exception exe)

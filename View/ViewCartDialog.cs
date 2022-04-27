@@ -58,6 +58,7 @@ namespace RentMe.View
                         o.Category,
                         o.Style,
                         o.RentalAmount,
+                        o.AvailableQunatity,
                         o.TotalItemRentalAmount,
                         o.FurnitureRentQuantity,
                         o.DueDate
@@ -171,6 +172,67 @@ namespace RentMe.View
                 this.rentFurnitureBindingSource.RemoveCurrent();
                 this.CalculateTotal();
             }
+
+
+            if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "Edit")
+
+            {
+                string quantitydata = Convert.ToString(this.cartDataGrideView[6, this.cartDataGrideView.CurrentCell.RowIndex].Value);
+
+                DateTime dueDateUpdate = Convert.ToDateTime(this.cartDataGrideView[7, this.cartDataGrideView.CurrentCell.RowIndex].Value);
+
+
+                using (Form rentalDialog = new RentalEditDialog(quantitydata, dueDateUpdate))
+                {
+                    DialogResult result = rentalDialog.ShowDialog();
+
+
+                    if (result == DialogResult.Yes)
+                    {
+                        int dueDays = (int)(RentalEditDialog.NewDueDate - DateTime.Today).TotalDays;
+
+                        RentFurniture updateFurniture = this.cartList[(cartDataGrideView.CurrentCell.RowIndex)];
+                       
+                        if (ValidateUpdateQuanityAndDueDate(Convert.ToInt32(RentalEditDialog.NewQuantity), updateFurniture.AvailableQunatity, dueDays))
+                        {
+                            updateFurniture.FurnitureRentQuantity = Convert.ToInt32(RentalEditDialog.NewQuantity);
+                            updateFurniture.DueDate = Convert.ToDateTime(RentalEditDialog.NewDueDate);
+
+                            this._cartController.UpdateCartItem(cartDataGrideView.CurrentCell.RowIndex, updateFurniture);
+                            this.DisplayRentData();
+                        }
+                       
+
+                    };
+
+                }
+            }
+        }
+
+        private bool ValidateUpdateQuanityAndDueDate(int NewQuantity , int AvailableQunatity, int days)
+        {
+
+          
+            if (NewQuantity > AvailableQunatity && days > 365)
+            {
+                MessageBox.Show("Quantity exceeds to Available quantity or Due date exeeds 365 day limit.Please check.Avilablae quantity is "
+                    + AvailableQunatity, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+
+            }
+            else if (NewQuantity > AvailableQunatity)
+            {
+                MessageBox.Show("Quantity exceeds to Available quantity.Please check.Available quantity is "
+                 + AvailableQunatity, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (days > 365)
+            {
+                MessageBox.Show("Due date exeeds 365 day limit.Please check. ", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 

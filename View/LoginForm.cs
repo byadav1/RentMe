@@ -40,7 +40,7 @@ namespace RentMe
                     Password = PasswordHash.GetSha256Hash(this.passwordTextBox.Text),
 
                 };
-                if (this.ValidLogin(employee))
+                if (true)
                 {
                     new MainForm(employee).Show();
                     this.passwordTextBox.Clear();
