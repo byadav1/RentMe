@@ -2,7 +2,6 @@
 using RentMe.Model;
 using RentMe.View;
 using System;
-using RentMe.Crypto;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -16,6 +15,7 @@ namespace RentMe
     {
 
         private readonly EmployeesController employeesController;
+        private readonly PasswordController passwordController;
         /// <summary>
         /// Initializes LoginForm.
         /// </summary>
@@ -23,6 +23,7 @@ namespace RentMe
         {
             InitializeComponent();
             this.employeesController = new EmployeesController();
+            this.passwordController = new PasswordController();
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace RentMe
                 Employee employee = new Employee
                 {
                     Username = this.usernameTextBox.Text,
-                    Password = PasswordHash.GetSha256Hash(this.passwordTextBox.Text),
+                    Password = passwordController.GetSha256Hash(this.passwordTextBox.Text),
 
                 };
                 if (this.ValidLogin(employee))
