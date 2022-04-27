@@ -605,6 +605,7 @@ namespace RentMe.UserControls
                 {
                     this.Reset();
                     this.UpdateStatusMessage("Your Rent Order submitted Sucessfully", false);
+                    this.DisplayResults();
                 }
 
 
