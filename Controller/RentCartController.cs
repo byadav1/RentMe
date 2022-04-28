@@ -54,5 +54,15 @@ namespace RentMe.Controller
             RentCartDAL.RemoveCartItem(index);
 
         }
+
+        /// <summary>
+        /// Updates the cart item.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        public void UpdateCartItem(int index, RentFurniture updateFurniture)
+        {
+            RentCartDAL.UpdateCartItem(index, updateFurniture);
+
+        }
     }
 }

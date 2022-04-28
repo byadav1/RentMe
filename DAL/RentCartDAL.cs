@@ -68,5 +68,21 @@ namespace RentMe.DAL
             }
         }
 
+
+        /// <summary>
+        /// Removes the cart item.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        public static void UpdateCartItem(int index, RentFurniture updateFurniture)
+        {
+            if (_rentCartItems.Any())
+            {
+                _rentCartItems[index] = updateFurniture; // replace the value
+
+
+            }
+
+        }
+
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="Controller\FurnitureRentController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\MembersController.cs" />
+    <Compile Include="Controller\PasswordController.cs" />
     <Compile Include="Controller\RentalTransactionController.cs" />
     <Compile Include="Controller\ReturnTransactionController.cs" />
     <Compile Include="Controller\StatesController.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="DAL\TransactionsDAL.cs" />
     <Compile Include="DAL\RentCartDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
+    <Compile Include="Model\Crypto\PasswordHash.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\RentFurniture.cs" />
@@ -132,6 +134,12 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\RentalEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RentalEditDialog.designer.cs">
+      <DependentUpon>RentalEditDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ReturnConfirmDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +197,9 @@
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\RentalEditDialog.resx">
+      <DependentUpon>RentalEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ReturnConfirmDialog.resx">
       <DependentUpon>ReturnConfirmDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +235,7 @@
   <ItemGroup>
     <Content Include="DB\create_rentme.sql" />
     <Content Include="DB\spCreateFurnitureRental.sql" />
+    <Content Include="DB\spGetMostPopularFurnitureDuringDates.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

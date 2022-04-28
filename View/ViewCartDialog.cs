@@ -58,6 +58,7 @@ namespace RentMe.View
                         o.Category,
                         o.Style,
                         o.RentalAmount,
+                        o.AvailableQunatity,
                         o.TotalItemRentalAmount,
                         o.FurnitureRentQuantity,
                         o.DueDate
@@ -171,7 +172,37 @@ namespace RentMe.View
                 this.rentFurnitureBindingSource.RemoveCurrent();
                 this.CalculateTotal();
             }
+
+
+            if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "Edit")
+
+            {
+                string quantitydata = Convert.ToString(this.cartDataGrideView[6, this.cartDataGrideView.CurrentCell.RowIndex].Value);
+
+                DateTime dueDateUpdate = Convert.ToDateTime(this.cartDataGrideView[7, this.cartDataGrideView.CurrentCell.RowIndex].Value);
+                RentFurniture updateFurniture = this.cartList[(cartDataGrideView.CurrentCell.RowIndex)];
+
+                using (Form rentalDialog = new RentalEditDialog(quantitydata, dueDateUpdate , updateFurniture.AvailableQunatity))
+                {
+                    DialogResult result = rentalDialog.ShowDialog();
+
+
+                    if (result == DialogResult.Yes)
+                    {
+                         updateFurniture.FurnitureRentQuantity = Convert.ToInt32(RentalEditDialog.NewQuantity);
+                            updateFurniture.DueDate = Convert.ToDateTime(RentalEditDialog.NewDueDate);
+
+                            this._cartController.UpdateCartItem(cartDataGrideView.CurrentCell.RowIndex, updateFurniture);
+                            this.DisplayRentData();
+                        
+                       
+
+                    };
+
+                }
+            }
         }
+
     }
 
 }

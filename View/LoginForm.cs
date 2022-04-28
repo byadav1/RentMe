@@ -15,6 +15,7 @@ namespace RentMe
     {
 
         private readonly EmployeesController employeesController;
+        private readonly PasswordController passwordController;
         /// <summary>
         /// Initializes LoginForm.
         /// </summary>
@@ -22,6 +23,7 @@ namespace RentMe
         {
             InitializeComponent();
             this.employeesController = new EmployeesController();
+            this.passwordController = new PasswordController();
         }
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace RentMe
                 Employee employee = new Employee
                 {
                     Username = this.usernameTextBox.Text,
-                    Password = this.passwordTextBox.Text,
+                    Password = passwordController.GetSha256Hash(this.passwordTextBox.Text),
 
                 };
                 if (this.ValidLogin(employee))

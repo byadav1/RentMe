@@ -111,6 +111,7 @@ namespace RentMe.UserControls
                     this.memberIDRentTextBox.Enabled = true;
                     this.memberSearchButton.Enabled = true;
                     this.furnitureDateGridView.Enabled = true;
+                    this.MandateMemberSearch();
                 }
                 else
                 {
@@ -127,6 +128,15 @@ namespace RentMe.UserControls
 
         }
 
+        private void MandateMemberSearch()
+        {
+            if (!this.memberIDLabel.Visible && !this.memberFirstName.Visible)
+            {
+                this.UpdateStatusMessage("Please note. MemberID is Mandatory to rent a Furniture", false);
+                this.memberIDRentTextBox.Focus();
+                this.memberIDRentTextBox.BackColor = Color.LightYellow;
+            }
+        }
         private void FurnitureRentalLoad(object sender, EventArgs e)
         {
             this.styleComboBox.Enabled = false;
@@ -284,13 +294,15 @@ namespace RentMe.UserControls
                     List<Member> memberFoundList = this.memberController.GetMembersFromSearch(memberRental);
                     if (!memberFoundList.Any() || memberFoundList.Count > 1)
                     {
-                        this.UpdateStatusMessage("No member found or multipl member found.", true);
+                        this.UpdateStatusMessage("No member found or multiple member found.", true);
                     }
                     else
                     {
                         this.MemberRent = memberFoundList[0];
-
                         this.DisplayMemberDetails();
+                        this.memberIDRentTextBox.BackColor = Color.White;
+                        this.rentalStatusLabel.Visible = false;                        
+                        this.rentalStatusLabel.Text = "";
                     }
                 }
             }
@@ -469,6 +481,7 @@ namespace RentMe.UserControls
                 rentItem.Description = row.Cells[2].Value.ToString();
                 rentItem.Category = row.Cells[3].Value.ToString();
                 rentItem.Style = row.Cells[4].Value.ToString();
+                rentItem.AvailableQunatity = Int32.Parse(row.Cells[5].Value.ToString());
                 rentItem.DueDate = dueDate;
             }
             catch (Exception exe)
@@ -604,6 +617,7 @@ namespace RentMe.UserControls
                 {
                     this.Reset();
                     this.UpdateStatusMessage("Your Rent Order submitted Sucessfully", false);
+                    this.DisplayResults();
                 }
 
 
