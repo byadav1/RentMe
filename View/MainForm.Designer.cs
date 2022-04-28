@@ -34,23 +34,25 @@ namespace RentMe.View
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.searchMemberTabPage = new System.Windows.Forms.TabPage();
-            this.memberSearch = new RentMe.UserControls.MemberSearch();
-            this.searchEmployeeTabPage = new System.Windows.Forms.TabPage();
-            this.employeeSearch = new RentMe.UserControls.EmployeeSearch();
             this.furnitureSearchTabPage = new System.Windows.Forms.TabPage();
-            this.furnitureRental = new RentMe.UserControls.FurnitureRental();
             this.furnitureReturnTabPage = new System.Windows.Forms.TabPage();
-            this.furnitureReturn = new RentMe.UserControls.FurnitureReturn();
             this.viewTransactionsTabPage = new System.Windows.Forms.TabPage();
-            this.viewTransactions = new RentMe.UserControls.ViewTransactions();
+            this.searchEmployeeTabPage = new System.Windows.Forms.TabPage();
             this.salesReportTabPage = new System.Windows.Forms.TabPage();
+            this.memberSearch = new RentMe.UserControls.MemberSearch();
+            this.furnitureRental = new RentMe.UserControls.FurnitureRental();
+            this.furnitureReturn = new RentMe.UserControls.FurnitureReturn();
+            this.viewTransactions = new RentMe.UserControls.ViewTransactions();
+            this.employeeSearch = new RentMe.UserControls.EmployeeSearch();
+            this.mostPopularFurnitureBetweenDatesReportUserControl = new RentMe.UserControls.MostPopularFurnitureBetweenDatesReportUserControl();
             this.servicesTableLayoutPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.searchMemberTabPage.SuspendLayout();
-            this.searchEmployeeTabPage.SuspendLayout();
             this.furnitureSearchTabPage.SuspendLayout();
             this.furnitureReturnTabPage.SuspendLayout();
             this.viewTransactionsTabPage.SuspendLayout();
+            this.searchEmployeeTabPage.SuspendLayout();
+            this.salesReportTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // servicesTableLayoutPanel
@@ -125,34 +127,6 @@ namespace RentMe.View
             this.searchMemberTabPage.Text = "Search Member";
             this.searchMemberTabPage.UseVisualStyleBackColor = true;
             // 
-            // memberSearch
-            // 
-            this.memberSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberSearch.Location = new System.Drawing.Point(3, 3);
-            this.memberSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.memberSearch.Name = "memberSearch";
-            this.memberSearch.Size = new System.Drawing.Size(1558, 802);
-            this.memberSearch.TabIndex = 0;
-            // 
-            // searchEmployeeTabPage
-            // 
-            this.searchEmployeeTabPage.Controls.Add(this.employeeSearch);
-            this.searchEmployeeTabPage.Location = new System.Drawing.Point(4, 38);
-            this.searchEmployeeTabPage.Name = "searchEmployeeTabPage";
-            this.searchEmployeeTabPage.Size = new System.Drawing.Size(1564, 808);
-            this.searchEmployeeTabPage.TabIndex = 4;
-            this.searchEmployeeTabPage.Text = "Search Employee";
-            this.searchEmployeeTabPage.UseVisualStyleBackColor = true;
-            // 
-            // employeeSearch
-            // 
-            this.employeeSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeeSearch.Location = new System.Drawing.Point(0, 0);
-            this.employeeSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.employeeSearch.Name = "employeeSearch";
-            this.employeeSearch.Size = new System.Drawing.Size(1564, 808);
-            this.employeeSearch.TabIndex = 0;
-            // 
             // furnitureSearchTabPage
             // 
             this.furnitureSearchTabPage.Controls.Add(this.furnitureRental);
@@ -163,15 +137,6 @@ namespace RentMe.View
             this.furnitureSearchTabPage.TabIndex = 1;
             this.furnitureSearchTabPage.Text = "Search/Rent Furniture";
             this.furnitureSearchTabPage.UseVisualStyleBackColor = true;
-            // 
-            // furnitureRental
-            // 
-            this.furnitureRental.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.furnitureRental.Location = new System.Drawing.Point(3, 3);
-            this.furnitureRental.Margin = new System.Windows.Forms.Padding(5);
-            this.furnitureRental.Name = "furnitureRental";
-            this.furnitureRental.Size = new System.Drawing.Size(1558, 802);
-            this.furnitureRental.TabIndex = 0;
             // 
             // furnitureReturnTabPage
             // 
@@ -184,15 +149,6 @@ namespace RentMe.View
             this.furnitureReturnTabPage.Text = "Furniture Return";
             this.furnitureReturnTabPage.UseVisualStyleBackColor = true;
             // 
-            // furnitureReturn
-            // 
-            this.furnitureReturn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.furnitureReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.furnitureReturn.Location = new System.Drawing.Point(3, 3);
-            this.furnitureReturn.Name = "furnitureReturn";
-            this.furnitureReturn.Size = new System.Drawing.Size(1558, 802);
-            this.furnitureReturn.TabIndex = 0;
-            // 
             // viewTransactionsTabPage
             // 
             this.viewTransactionsTabPage.Controls.Add(this.viewTransactions);
@@ -204,6 +160,53 @@ namespace RentMe.View
             this.viewTransactionsTabPage.Text = "View Transactions";
             this.viewTransactionsTabPage.UseVisualStyleBackColor = true;
             // 
+            // searchEmployeeTabPage
+            // 
+            this.searchEmployeeTabPage.Controls.Add(this.employeeSearch);
+            this.searchEmployeeTabPage.Location = new System.Drawing.Point(4, 38);
+            this.searchEmployeeTabPage.Name = "searchEmployeeTabPage";
+            this.searchEmployeeTabPage.Size = new System.Drawing.Size(1564, 808);
+            this.searchEmployeeTabPage.TabIndex = 4;
+            this.searchEmployeeTabPage.Text = "Search Employee";
+            this.searchEmployeeTabPage.UseVisualStyleBackColor = true;
+            // 
+            // salesReportTabPage
+            // 
+            this.salesReportTabPage.Controls.Add(this.mostPopularFurnitureBetweenDatesReportUserControl);
+            this.salesReportTabPage.Location = new System.Drawing.Point(4, 38);
+            this.salesReportTabPage.Name = "salesReportTabPage";
+            this.salesReportTabPage.Size = new System.Drawing.Size(1564, 808);
+            this.salesReportTabPage.TabIndex = 7;
+            this.salesReportTabPage.Text = "Sales Report";
+            this.salesReportTabPage.UseVisualStyleBackColor = true;
+            // 
+            // memberSearch
+            // 
+            this.memberSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberSearch.Location = new System.Drawing.Point(3, 3);
+            this.memberSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.memberSearch.Name = "memberSearch";
+            this.memberSearch.Size = new System.Drawing.Size(1558, 802);
+            this.memberSearch.TabIndex = 0;
+            // 
+            // furnitureRental
+            // 
+            this.furnitureRental.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.furnitureRental.Location = new System.Drawing.Point(3, 3);
+            this.furnitureRental.Margin = new System.Windows.Forms.Padding(5);
+            this.furnitureRental.Name = "furnitureRental";
+            this.furnitureRental.Size = new System.Drawing.Size(1558, 802);
+            this.furnitureRental.TabIndex = 0;
+            // 
+            // furnitureReturn
+            // 
+            this.furnitureReturn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.furnitureReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.furnitureReturn.Location = new System.Drawing.Point(3, 3);
+            this.furnitureReturn.Name = "furnitureReturn";
+            this.furnitureReturn.Size = new System.Drawing.Size(1558, 802);
+            this.furnitureReturn.TabIndex = 0;
+            // 
             // viewTransactions
             // 
             this.viewTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -213,14 +216,23 @@ namespace RentMe.View
             this.viewTransactions.Size = new System.Drawing.Size(1558, 802);
             this.viewTransactions.TabIndex = 0;
             // 
-            // salesReportTabPage
+            // employeeSearch
             // 
-            this.salesReportTabPage.Location = new System.Drawing.Point(4, 38);
-            this.salesReportTabPage.Name = "salesReportTabPage";
-            this.salesReportTabPage.Size = new System.Drawing.Size(1564, 808);
-            this.salesReportTabPage.TabIndex = 7;
-            this.salesReportTabPage.Text = "Sales Report";
-            this.salesReportTabPage.UseVisualStyleBackColor = true;
+            this.employeeSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeeSearch.Location = new System.Drawing.Point(0, 0);
+            this.employeeSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.employeeSearch.Name = "employeeSearch";
+            this.employeeSearch.Size = new System.Drawing.Size(1564, 808);
+            this.employeeSearch.TabIndex = 0;
+            // 
+            // mostPopularFurnitureBetweenDatesReportUserControl
+            // 
+            this.mostPopularFurnitureBetweenDatesReportUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mostPopularFurnitureBetweenDatesReportUserControl.Location = new System.Drawing.Point(0, 0);
+            this.mostPopularFurnitureBetweenDatesReportUserControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.mostPopularFurnitureBetweenDatesReportUserControl.Name = "mostPopularFurnitureBetweenDatesReportUserControl";
+            this.mostPopularFurnitureBetweenDatesReportUserControl.Size = new System.Drawing.Size(1564, 808);
+            this.mostPopularFurnitureBetweenDatesReportUserControl.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -238,10 +250,11 @@ namespace RentMe.View
             this.servicesTableLayoutPanel.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
             this.searchMemberTabPage.ResumeLayout(false);
-            this.searchEmployeeTabPage.ResumeLayout(false);
             this.furnitureSearchTabPage.ResumeLayout(false);
             this.furnitureReturnTabPage.ResumeLayout(false);
             this.viewTransactionsTabPage.ResumeLayout(false);
+            this.searchEmployeeTabPage.ResumeLayout(false);
+            this.salesReportTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -263,5 +276,6 @@ namespace RentMe.View
         private System.Windows.Forms.TabPage furnitureReturnTabPage;
         private UserControls.FurnitureReturn furnitureReturn;
         private System.Windows.Forms.TabPage salesReportTabPage;
+        private UserControls.MostPopularFurnitureBetweenDatesReportUserControl mostPopularFurnitureBetweenDatesReportUserControl;
     }
 }

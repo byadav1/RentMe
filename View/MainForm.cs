@@ -110,6 +110,9 @@ namespace RentMe.View
                 case "View Transactions":
                     this.viewTransactions.RefreshControl();
                     break;
+                case "Sales Report":
+                    this.mostPopularFurnitureBetweenDatesReportUserControl.RefreshControl();
+                    break;
                 default:
                     break;
             }

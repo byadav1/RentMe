@@ -382,6 +382,35 @@ namespace RentMe.DAL
         }
 
         /// <summary>
+        /// Returns the earliest RentMe rental transaction.
+        /// </summary>
+        /// <returns>Earliest RentMe rental transaction</returns>
+        public static DateTime GetEarliestRentalTransaction()
+        {
+            DateTime earliestRentalTransaction = new DateTime();
+            string selectStatement = "SELECT MIN(RentDate) AS EarliestRentalDate " +
+                                        "FROM RentalTransactions";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            earliestRentalTransaction = (DateTime) reader["EarliestRentalDate"];
+                        }
+                                            
+                    }
+                }
+            }
+
+            return earliestRentalTransaction;
+        }
+
+        /// <summary>
         /// Return true if TransactionID exists.
         /// </summary>
         /// <param name="member"></param>

@@ -1,6 +1,7 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using RentMe.Model.Validators;
+using System;
 using System.Collections.Generic;
 
 namespace RentMe.Controller
@@ -61,6 +62,15 @@ namespace RentMe.Controller
         {
             TransactionValidator.ValidateTransactionNotNull(transaction);
             return TransactionsDAL.SearchTransactions(transaction, searchFilter);
+        }
+
+        /// <summary>
+        /// Returns the earliest RentMe rental transaction.
+        /// </summary>
+        /// <returns>Earliest RentMe rental transaction</returns>
+        public DateTime GetEarliestRentalTransaction()
+        {
+            return TransactionsDAL.GetEarliestRentalTransaction();
         }
     }
 }
