@@ -27,25 +27,42 @@ namespace RentMe.View
             this.memberName = memberName;
         }
 
-        private void PopulateForm()
-        {
-           
-            this.memberNameLabel.Text = this.memberName;
-            this.returnTransactionDataGridView.DataSource = null;
-            this.returnTransactionDataGridView.DataSource = this.returnTransactionList;
-        }
-
+        /// <summary>
+        /// Event Handler for Dialog load.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReturnConfirmDialogLoad(object sender, EventArgs e)
         {
             this.PopulateForm();
         }
 
+        /// <summary>
+        /// Populate the form fields.
+        /// </summary>
+        private void PopulateForm()
+        {         
+            this.memberNameLabel.Text = this.memberName;
+            this.returnTransactionDataGridView.DataSource = null;
+            this.returnTransactionDataGridView.DataSource = this.returnTransactionList;
+        }
+
+        /// <summary>
+        /// Event Handler for Confirmation button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConfirmButtonClick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
+        /// <summary>
+        /// Event Handler for Cancel button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelButtonClick(object sender, EventArgs e)
         {
             this.Close();

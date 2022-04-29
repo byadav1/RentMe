@@ -75,7 +75,6 @@ namespace RentMe.View
                     this.ClearFields();
                     UpdateStatusMessage("Employee registration successfully!\n" +
                    "EmployeeID is " + employee.EmployeeID, false);
-
                 }
             }
             catch (ArgumentException ae)
@@ -275,11 +274,13 @@ namespace RentMe.View
             return result;
         }
 
-        /// <summary>
-        /// Prompts the user to confirm
-        /// an update to an Employee's login credentials.
-        /// </summary>
-        /// <param name="incident"></param>
+       /// <summary>
+       /// Prompts the user to confirm
+       /// an update to an Employee's
+       /// login credentials
+       /// </summary>
+       /// <param name="employee"></param>
+       /// <returns>Is OK?</returns>
         private DialogResult ConfirmUpdateEmployeeLogin(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -514,7 +515,7 @@ namespace RentMe.View
             try
             {
                 Employee employeeUpdateData = this.ReadData();
-                //detect the change in username and passoerd field
+                //Detect change in username and password field
                 if (this.CheckPasswordOrUserNameUpdate(employeeUpdateData))
                 {
                     this.UpdateStatusMessage("Username and password has to be changed using Update Login", true);
@@ -527,9 +528,7 @@ namespace RentMe.View
                     if (this.employeesController.UpdateEmployeeInformation(this.employeeSearchDetails, employeeUpdateData))
                     {
                         this.RefreshEmployeeUpdate(employeeUpdateData);
-
                         this.UpdateStatusMessage("Employee information updated successfully", false);
-
                     }
                     else
                     {
@@ -537,7 +536,6 @@ namespace RentMe.View
                             "Something went wrong with the process or employee data is updated at the backend", true);
                     };
                 }
-
                 else
                 {
                     this.UpdateStatusMessage("No changes detected for employee profile", true);
@@ -554,6 +552,10 @@ namespace RentMe.View
             }
         }
 
+        /// <summary>
+        /// Refreshes the employee update data.
+        /// </summary>
+        /// <param name="employeeUpdateData"></param>
         private void RefreshEmployeeUpdate(Employee employeeUpdateData)
         {
             List<Employee> employeeData = this.employeesController.GetEmployeesFromSearch(employeeUpdateData);
@@ -564,11 +566,10 @@ namespace RentMe.View
             }
         }
 
-
         /// <summary>
         /// Read change in data for an employeee
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Employee from fields</returns>
         private Employee ReadData()
         {
             State state = new State
@@ -601,12 +602,11 @@ namespace RentMe.View
             return employeeUpdateData;
         }
 
-
         /// <summary>
         /// Check if the any of the data has changed to update
         /// </summary>
         /// <param name="employeeUpdateData"></param>
-        /// <returns></returns>
+        /// <returns>True if modified</returns>
         private bool CheckUpdates(Employee employeeUpdateData)
         {
             List<Employee> lstOld_employeeData = new List<Employee>();
@@ -616,8 +616,6 @@ namespace RentMe.View
             lstNew_employeeData.Add(employeeUpdateData);
             if (lstOld_employeeData.Count > 0 && lstNew_employeeData.Count > 0)
             {
-
-
                 var result = lstNew_employeeData.Where(l2 =>
                       lstOld_employeeData.Any(l1 => l2.EmployeeID == l1.EmployeeID
                               && ((!String.Equals(l1.FName, l2.FName, StringComparison.OrdinalIgnoreCase)) ||

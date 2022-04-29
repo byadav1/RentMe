@@ -6,10 +6,9 @@
     public class State
     {
         /// <summary>
-        /// State attributes
+        /// State attributes.
         /// </summary>
         public string StateCode { get; set; }
         public string StateName { get; set; }
-
     }
 }

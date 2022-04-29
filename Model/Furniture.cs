@@ -6,7 +6,7 @@
     public class Furniture
     {
         /// <summary>
-        /// Furniture properties.
+        /// Furniture attributes.
         /// </summary>
         public int FurnitureID { get; set; }
         public string Name { get; set; }

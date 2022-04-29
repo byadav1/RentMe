@@ -8,7 +8,7 @@ namespace RentMe.Model
     public class ReturnTransaction
     {
         /// <summary>
-        /// Return transaction properties
+        /// Return transaction attributes.
         /// </summary>
         public int RentedItemsID { get; set; }
         public string Description { get; set; }

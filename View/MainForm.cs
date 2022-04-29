@@ -14,20 +14,13 @@ namespace RentMe.View
         private Employee loginUser;
         private readonly EmployeesController employeeController;
 
-        public MainForm()
-        {
-            InitializeComponent();
-
-        }
         /// <summary>
         /// Initializes MainForm with login user
         /// </summary>
         public MainForm(Employee currentLoginUser)
         {
             InitializeComponent();
-
             this.employeeController = new EmployeesController();
-
             this.employeeController.LoginCurrentEmployeeData(currentLoginUser);
         }
 

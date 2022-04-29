@@ -8,7 +8,7 @@ namespace RentMe.Model
     public class RentalTransaction
     {
         /// <summary>
-        /// Rental transaction properties
+        /// Rental transaction attributes.
         /// </summary>
         public int TransactionID { get; set; }
         public int RentedItemsID { get; set; }

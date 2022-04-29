@@ -33,10 +33,16 @@ namespace RentMe.View
             _ = new List<RentFurniture>();
         }
 
+        /// <summary>
+        /// Event Handler for Dialog load.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ViewCartDialogLoad(object sender, EventArgs e)
         {
             this.DisplayRentData();
         }
+
         /// <summary>
         /// Displays the rent data.
         /// </summary>
@@ -91,6 +97,11 @@ namespace RentMe.View
             this.emptyCartButton.Enabled = true;
         }
 
+        /// <summary>
+        /// Event Handler for Submit Order button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SubmitOrderButtonClick(object sender, EventArgs e)
         {
             if (!this.cartList.Any())
@@ -114,18 +125,9 @@ namespace RentMe.View
             }
         }
 
-        private void ShowReceipt()
-        {
-            using (Form viewReceiptDialog = new View.ReceiptDialog(this.receiptList, this.member.FName + " " + this.member.LName, true))
-            {
-                DialogResult result = viewReceiptDialog.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    return;
-                }
-            }
-        }
-
+        /// <summary>
+        /// Creates the receipt.
+        /// </summary>
         private void CreateReceipt()
         {
             var list = from x in this.cartList
@@ -147,6 +149,26 @@ namespace RentMe.View
             }
         }
 
+        /// <summary>
+        /// Shows the receipt.
+        /// </summary>
+        private void ShowReceipt()
+        {
+            using (Form viewReceiptDialog = new View.ReceiptDialog(this.receiptList, this.member.FName + " " + this.member.LName, true))
+            {
+                DialogResult result = viewReceiptDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event Handler for Empty Cart button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EmptyCartButtonClick(object sender, EventArgs e)
         {
             if (this.cartList.Any())
@@ -162,6 +184,11 @@ namespace RentMe.View
             this.emptyCartButton.Enabled = false;
         }
 
+        /// <summary>
+        /// Event Handler for DataGridViewCell click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CartDataGrideViewCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "DeleteItem")
@@ -172,7 +199,6 @@ namespace RentMe.View
                 this.rentFurnitureBindingSource.RemoveCurrent();
                 this.CalculateTotal();
             }
-
 
             if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "Edit")
 
@@ -186,23 +212,17 @@ namespace RentMe.View
                 {
                     DialogResult result = rentalDialog.ShowDialog();
 
-
                     if (result == DialogResult.Yes)
                     {
                          updateFurniture.FurnitureRentQuantity = Convert.ToInt32(RentalEditDialog.NewQuantity);
                             updateFurniture.DueDate = Convert.ToDateTime(RentalEditDialog.NewDueDate);
 
                             this._cartController.UpdateCartItem(cartDataGrideView.CurrentCell.RowIndex, updateFurniture);
-                            this.DisplayRentData();
-                        
-                       
-
+                            this.DisplayRentData();                                           
                     };
-
                 }
             }
         }
 
     }
-
 }

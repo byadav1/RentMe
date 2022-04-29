@@ -100,6 +100,7 @@ namespace RentMe.View
                 this.receiptListView.Columns.Add("Late Fee");
                 this.receiptListView.Columns.Add("Subtotal");
             }
+
             this.receiptListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.receiptListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
@@ -146,7 +147,7 @@ namespace RentMe.View
         /// Get total for receipt.
         /// </summary>
         /// <param name="receipt"></param>
-        /// <returns></returns>
+        /// <returns>Receipt total</returns>
         private decimal GetTotal(List<ReceiptItem> receipt)
         {
             decimal total = 0;

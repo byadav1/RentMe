@@ -8,7 +8,7 @@ namespace RentMe.Model
     public class Employee
     {
         /// <summary>
-        /// Employee properties.
+        /// Employee attributes.
         /// </summary>
         public int EmployeeID { get; set; }
         public string FName { get; set; }

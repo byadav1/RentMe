@@ -137,7 +137,7 @@ namespace RentMe.View
         /// Checks the updates.
         /// </summary>
         /// <param name="memberUpdateData">The member update data.</param>
-        /// <returns></returns>
+        /// <returns>True if modified</returns>
         private bool CheckUpdates(Member memberUpdateData)
         {
             List<Member> lstOld_MemberData = new List<Member>();
@@ -215,34 +215,39 @@ namespace RentMe.View
                 State = this.statesController.GetStateCode(state).StateCode,
                 Zip = this.zipTextBox.Text
             };
+
             return member;
         }
 
         /// <summary>
         /// Prompts the user to confirm
-        /// that they want to register a RentMe member.
+        /// registration of RentMe member.
         /// </summary>
-        /// <param name="incident"></param>
+        /// <param name="member"></param>
+        /// <returns>Is OK?</returns>
         private DialogResult ConfirmMemberRegistration(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
             DialogResult result = MessageBox.Show("Are you sure you want to register new RentMe member:\n" +
                 member.FName + " " + member.LName + "?",
                 "Confirm Member Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
             return result;
         }
 
         /// <summary>
         /// Prompts the user to confirm
-        /// that they want to update a RentMe member.
+        /// the update of a RentMe member.
         /// </summary>
-        /// <param name="incident"></param>
+        /// <param name="member"></param>
+        /// <returns>Is OK?</returns>
         private DialogResult ConfirmMemberUpdate(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
             DialogResult result = MessageBox.Show("Are you sure you want to update RentMe member:\n" +
                 member.FName + " " + member.LName + "?",
                 "Confirm Member Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
             return result;
         }
 
@@ -344,7 +349,7 @@ namespace RentMe.View
         /// </summary>
         /// <param name="textBox"></param>
         /// <param name="regex"></param>
-        /// <returns></returns>
+        /// <returns>True for invalid input</returns>
         private bool InvalidInput(TextBox textBox, Regex regex)
         {
             if (textBox == null || regex == null)
@@ -360,7 +365,7 @@ namespace RentMe.View
         /// the passed TextBox form field.
         /// </summary>
         /// <param name="textBox"></param>
-        /// <returns></returns>
+        /// <returns>Regex for form field</returns>
         private Regex GenerateRegexForTextBox(TextBox textBox)
         {
             if (textBox == null)

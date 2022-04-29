@@ -8,13 +8,12 @@ namespace RentMe.Model
     public class RentFurniture
     {
         /// <summary>
-        /// Furniture Renting properties.
+        /// Furniture Renting attributes.
         /// </summary>
         public int FurnitureID { get; set; }
         public int FurnitureRentQuantity { get; set; }
         public int FurnitureRentEmployeeID { get; set; }
         public int FurnitureRentMemberID { get; set; }
-
         public int AvailableQunatity { get; set; }
         public DateTime DueDate { get; set; }
         public string Name { get; set; }

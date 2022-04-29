@@ -7,7 +7,6 @@ namespace RentMe.Model.Validators
     /// </summary>
     public class FurnitureValidator
     {
-
         /// <summary>
         /// Throw exception if Furniture object is null.
         /// </summary>

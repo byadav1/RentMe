@@ -13,9 +13,9 @@ namespace RentMe
     /// </summary>
     public partial class LoginForm : Form
     {
-
         private readonly EmployeesController employeesController;
         private readonly PasswordController passwordController;
+
         /// <summary>
         /// Initializes LoginForm.
         /// </summary>
@@ -39,7 +39,6 @@ namespace RentMe
                 {
                     Username = this.usernameTextBox.Text,
                     Password = passwordController.GetSha256Hash(this.passwordTextBox.Text),
-
                 };
                 if (this.ValidLogin(employee))
                 {

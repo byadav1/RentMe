@@ -139,10 +139,10 @@
     <Compile Include="UserControls\ViewTransactions.Designer.cs">
       <DependentUpon>ViewTransactions.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EmployeeServicesDialog.cs">
+    <Compile Include="View\Dialogs\EmployeeServicesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EmployeeServicesDialog.Designer.cs">
+    <Compile Include="View\Dialogs\EmployeeServicesDialog.Designer.cs">
       <DependentUpon>EmployeeServicesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
@@ -159,34 +159,34 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RentalEditDialog.cs">
+    <Compile Include="View\Dialogs\RentalEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\RentalEditDialog.designer.cs">
+    <Compile Include="View\Dialogs\RentalEditDialog.designer.cs">
       <DependentUpon>RentalEditDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ReturnConfirmDialog.cs">
+    <Compile Include="View\Dialogs\ReturnConfirmDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ReturnConfirmDialog.Designer.cs">
+    <Compile Include="View\Dialogs\ReturnConfirmDialog.Designer.cs">
       <DependentUpon>ReturnConfirmDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewCartDialog.cs">
+    <Compile Include="View\Dialogs\ViewCartDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ViewCartDialog.Designer.cs">
+    <Compile Include="View\Dialogs\ViewCartDialog.Designer.cs">
       <DependentUpon>ViewCartDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MemberServicesDialog.cs">
+    <Compile Include="View\Dialogs\MemberServicesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MemberServicesDialog.Designer.cs">
+    <Compile Include="View\Dialogs\MemberServicesDialog.Designer.cs">
       <DependentUpon>MemberServicesDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ReceiptDialog.cs">
+    <Compile Include="View\Dialogs\ReceiptDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ReceiptDialog.Designer.cs">
+    <Compile Include="View\Dialogs\ReceiptDialog.Designer.cs">
       <DependentUpon>ReceiptDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="_cs6232_g3DataSet.Designer.cs">
@@ -222,7 +222,7 @@
     <EmbeddedResource Include="UserControls\ViewTransactions.resx">
       <DependentUpon>ViewTransactions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EmployeeServicesDialog.resx">
+    <EmbeddedResource Include="View\Dialogs\EmployeeServicesDialog.resx">
       <DependentUpon>EmployeeServicesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
@@ -231,21 +231,21 @@
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RentalEditDialog.resx">
+    <EmbeddedResource Include="View\Dialogs\RentalEditDialog.resx">
       <DependentUpon>RentalEditDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ReturnConfirmDialog.resx">
+    <EmbeddedResource Include="View\Dialogs\ReturnConfirmDialog.resx">
       <DependentUpon>ReturnConfirmDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ViewCartDialog.resx">
+    <EmbeddedResource Include="View\Dialogs\ViewCartDialog.resx">
       <DependentUpon>ViewCartDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\RentMe.Model.RentFurniture.datasource" />
-    <EmbeddedResource Include="View\MemberServicesDialog.resx">
+    <EmbeddedResource Include="View\Dialogs\MemberServicesDialog.resx">
       <DependentUpon>MemberServicesDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ReceiptDialog.resx">
+    <EmbeddedResource Include="View\Dialogs\ReceiptDialog.resx">
       <DependentUpon>ReceiptDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\RentMe.Model.Employee.datasource" />
