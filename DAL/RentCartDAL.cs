@@ -28,6 +28,7 @@ namespace RentMe.DAL
             }
             _rentCartItems = itemList;
         }
+
         /// <summary>
         /// Gets the cart items.
         /// </summary>
@@ -39,8 +40,8 @@ namespace RentMe.DAL
             {
                 return _rentCartItems = new List<RentFurniture>();
             }
-            return _rentCartItems.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));
 
+            return _rentCartItems.FindAll(s => s.FurnitureRentMemberID == (member.MemberID));
         }
 
         /// <summary>
@@ -53,7 +54,6 @@ namespace RentMe.DAL
             {
                 _rentCartItems.RemoveAll(s => s.FurnitureRentMemberID == member.MemberID);
             }
-
         }
 
         /// <summary>
@@ -68,21 +68,17 @@ namespace RentMe.DAL
             }
         }
 
-
         /// <summary>
-        /// Removes the cart item.
+        /// Updates the cart item.
         /// </summary>
         /// <param name="index">The index.</param>
         public static void UpdateCartItem(int index, RentFurniture updateFurniture)
         {
             if (_rentCartItems.Any())
             {
-                _rentCartItems[index] = updateFurniture; // replace the value
-
-
+                // Replace the value
+                _rentCartItems[index] = updateFurniture; 
             }
-
         }
-
     }
 }

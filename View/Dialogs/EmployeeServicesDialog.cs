@@ -480,7 +480,7 @@ namespace RentMe.View
 
                 // Delete operation
                 string message;
-                if (this.employeesController.DeleteOrRestoreEmployee(this.employeeSearchDetails))
+                if (this.employeesController.DeactivateORActivateEmployee(this.employeeSearchDetails))
                 {
                     if (this.employeeSearchDetails.Active)
                     {

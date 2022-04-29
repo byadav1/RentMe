@@ -13,8 +13,8 @@ namespace RentMe.DAL
     /// </summary>
     public class EmployeesDAL
     {
-
         private static Employee _loginEmployee;
+
         /// <summary>
         /// Gets all RentMe Members from Members table.
         /// </summary>
@@ -72,7 +72,7 @@ namespace RentMe.DAL
         /// Return true if Employee account exists.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>True if Employee account exists</returns>
         public static bool ValidEmployeeLogin(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -105,7 +105,7 @@ namespace RentMe.DAL
         /// EmployeeID, Phone, or Full Name.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>True if Employee exists</returns>
         public static bool ValidEmployeeSearch(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -123,7 +123,7 @@ namespace RentMe.DAL
         /// Return Employee information based upon search.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns>Searched employee</returns>
+        /// <returns>Searched employee list</returns>
         public static List<Employee> GetEmployeesFromSearch(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -203,10 +203,10 @@ namespace RentMe.DAL
         }
 
         /// <summary>
-        /// Sets the login employee data.
+        /// Sets the login credentials
+        /// for a RentMe Employee.
         /// </summary>
-        /// <param name="employee">The employee.</param>
-        /// <returns></returns>
+        /// <param name="employee"></param>
         public static void SetLoginEmployeeData(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -248,21 +248,18 @@ namespace RentMe.DAL
                     }
                 }
             }
+
             _loginEmployee = employee;
-
-
         }
 
         /// <summary>
         /// Gets the login employee data.
         /// </summary>
         /// <param name="employee">The employee.</param>
-        /// <returns></returns>
+        /// <returns>Data for logged in Employee</returns>
         public static Employee GetLoginEmployeeData()
         {
             return _loginEmployee;
-
-
         }
 
         /// <summary>
@@ -323,7 +320,7 @@ namespace RentMe.DAL
         /// Return true if EmployeeID exists.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>True if EmployeeID exists</returns>
         private static bool EmployeeIDExists(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -350,7 +347,7 @@ namespace RentMe.DAL
         /// Return true if Phone exists.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>True if Employee phone exists</returns>
         private static bool EmployeePhoneExists(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -381,7 +378,7 @@ namespace RentMe.DAL
         /// Return true if FName and LName exists.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>True if Employee name exists</returns>
         private static bool EmployeeNameExists(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -410,10 +407,10 @@ namespace RentMe.DAL
         }
 
         /// <summary>
-        /// Deactivates  or activate employee.
+        /// Deactivates or activate employee.
         /// </summary>
         /// <param name="employee">The employee.</param>
-        /// <returns></returns>
+        /// <returns>True for successful employee deactivation or activation</returns>
         public static bool DeactivateORActivateEmployee(Employee employee)
         {
             string selectStatement;
@@ -462,24 +459,23 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="oldEmployee">The old employee.</param>
         /// <param name="newEmployee">The new employee.</param>
-        /// <returns>bool on successful or failed updates</returns>
+        /// <returns>True for successful employee profile update</returns>
         public static bool UpdateEmployeeDetails(Employee oldEmployee, Employee newEmployee)
         {
-            string selectStatement =
-                 " UPDATE Employees SET " +
-                      " FNAME=@NewFName , LNAME=@NewLName , " +
-                      " Sex=@NewSex , DateOfBirth=@NewDob , " +
-                       " Phone=@NewPhone ,  City=@NewCity , " +
-                      " zipcode=@NewZip , State=@NewState, " +
-                      " Address1=@NewAddress1 , Address2=@NewAddress2, " +
-
-                      "EMPLOYEE_TYPE=@Newtype  " +
-                       "Where EmployeeID=@oldEmployeeID  AND FNAME=@OldFName AND " +
-                      " LNAME=@OldLName AND Sex=@OldSex AND " +
-                      " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
-                      " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
-                      " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL) AND " +
-                      " EMPLOYEE_TYPE= @Oldtype";
+            string selectStatement = "UPDATE Employees SET " +
+                                        "FNAME = @NewFName, LNAME = @NewLName, " +
+                                        "Sex = @NewSex, DateOfBirth = @NewDob, " +
+                                        "Phone = @NewPhone,  City = @NewCity, " +
+                                        "zipcode = @NewZip, State = @NewState, " +
+                                        "Address1 = @NewAddress1, Address2 = @NewAddress2, " +
+                                        "EMPLOYEE_TYPE = @Newtype  " +
+                                        "WHERE EmployeeID = @oldEmployeeID AND FNAME = @OldFName AND " +
+                                        "LNAME = @OldLName AND Sex = @OldSex AND " +
+                                        "DateOfBirth = @OldDob AND Phone = @OldPhone AND " +
+                                        "City = @OldCity AND zipcode = @OldZip AND State = @OldState AND " +
+                                        "(Address1 = @OldAddress1 OR Address1 IS NULL) AND " +
+                                        "(Address2 = @OldAddress2 OR Address2 IS NULL) AND " +
+                                        "EMPLOYEE_TYPE = @Oldtype";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -566,10 +562,14 @@ namespace RentMe.DAL
         /// </returns>
         public static bool IsPasswordChange(Employee oldEmployee, Employee newEmployee)
         {
+            string selectStatement = "SELECT COUNT(*) " +
+                                          "FROM Employees e " +
+                                          "JOIN Accounts a " +
+                                          "ON a.AccountID = e.AccountID " +
+                                          "WHERE e.EmployeeID = @ID " +
+                                          "AND a.username = @user " +
+                                          "AND a.Password <> @changedPassword";
 
-            string selectStatement =
-                  "select count(*) from employees e join accounts a on a.AccountID = e.AccountID " +
-                    "WHERE e.EmployeeID = @ID and a.username=@user AND a.Password <> @changedPassword";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -584,35 +584,36 @@ namespace RentMe.DAL
             }
         }
 
-
         /// <summary>
         /// Updates the password.
         /// </summary>
         /// <param name="oldEmployee">The old employee.</param>
         /// <param name="newEmployee">The new employee.</param>
-        /// <returns></returns>
+        /// <returns>True for successful employee login credential update</returns>
         public static bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
         {
             string selectStatement = "";
             if (!string.IsNullOrEmpty(newEmployee.Username) && !string.IsNullOrEmpty(newEmployee.Password) && newEmployee.Username != oldEmployee.Username)
             {
-                selectStatement =
-                     "UPDATE Accounts  set Accounts.Password = @newPassword , Accounts.username=@newUser from Employees e ,accounts a " +
-                       "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
+                selectStatement = "UPDATE Accounts " +
+                                     "SET Accounts.Password = @newPassword, " +
+                                     "Accounts.username = @newUser " +
+                                     "FROM Employees e, accounts a " +
+                                     "WHERE a.username = @oldUser AND e.EmployeeID = @oldEmployee ";
             }
             else if (!string.IsNullOrEmpty(newEmployee.Username) && newEmployee.Username != oldEmployee.Username)
             {
-
-                selectStatement =
-                    "UPDATE Accounts  set  Accounts.username=@newUser from Employees e ,accounts a " +
-                      "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
+                selectStatement = "UPDATE Accounts " +
+                                    "SET Accounts.username = @newUser " +
+                                    "FROM Employees e,accounts a " +
+                                    "WHERE a.username = @oldUser AND e.EmployeeID = @oldEmployee ";
             }
             else if (!string.IsNullOrEmpty(newEmployee.Password))
             {
-                selectStatement =
-                 "UPDATE Accounts  set Accounts.Password = @newPassword  from Employees e ,accounts a " +
-                   "where a.username =@oldUser  and e.EmployeeID = @oldEmployee ";
-
+                selectStatement = "UPDATE Accounts " +
+                                    "SET Accounts.Password = @newPassword " +
+                                    "FROM Employees e, accounts a " +
+                                    "WHERE a.username = @oldUser AND e.EmployeeID = @oldEmployee ";
             }
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())

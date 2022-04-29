@@ -9,7 +9,6 @@ namespace RentMe.DAL
     /// </summary>
     public class ReturnTransactionDAL
     {
-
         /// <summary>
         /// Add return furnitures to database
         /// </summary>

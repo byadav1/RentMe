@@ -80,9 +80,9 @@ namespace RentMe.Controller
         /// Deletes  or restore employee.
         /// </summary>
         /// <param name="employee">The employee.</param>
-        /// <returns>True for successful deactivation</returns>
+        /// <returns>True for successful employee deactivation or activation</returns>
         /// <exception cref="ArgumentNullException">Delete cannot be performed</exception>
-        public bool DeleteOrRestoreEmployee(Employee employee)
+        public bool DeactivateORActivateEmployee(Employee employee)
         {
             if (employee == null)
             {

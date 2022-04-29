@@ -69,13 +69,11 @@ namespace RentMe.DAL
                             rentalTransaction.RentedItemsID = (int)reader["RentedItemsID"];
 
                             rentalTransactionList.Add(rentalTransaction);
-
                         }
-
                     }
                 }
-
             }
+
             return rentalTransactionList;
         }
     }

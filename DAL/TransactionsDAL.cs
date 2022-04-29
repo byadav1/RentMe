@@ -31,7 +31,7 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets all RentMe Rental Transactions.
         /// </summary>
-        /// <returns>List of RentMe Rental Transactions</returns>
+        /// <returns>List of all RentMe Rental Transactions</returns>
         public static List<Transaction> GetRentalTransactions()
         {
             List<Transaction> transactions = new List<Transaction>();
@@ -84,7 +84,7 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets all RentMe Return Transactions.
         /// </summary>
-        /// <returns>List of RentMe Return Transactions</returns>
+        /// <returns>List of all RentMe Return Transactions</returns>
         public static List<Transaction> GetReturnTransactions()
         {
             List<Transaction> transactions = new List<Transaction>();
@@ -143,7 +143,7 @@ namespace RentMe.DAL
         /// exists based on search criteria.
         /// </summary>
         /// <param name="rentalTransaction"></param>
-        /// <returns>True if valid search</returns>
+        /// <returns>True if valid Transaction search</returns>
         public static bool ValidTransactionSearch(Transaction rentalTransaction)
         {
             TransactionValidator.ValidateTransactionNotNull(rentalTransaction);

@@ -15,7 +15,7 @@ namespace RentMe.DAL
         /// Return Furniture information based upon search.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>List of RentMe Furniture</returns>
         public static List<Furniture> GetFurniture(Furniture furnitureSearh)
         {
             FurnitureValidator.ValidateFurnitureNotNull(furnitureSearh);
@@ -97,7 +97,7 @@ namespace RentMe.DAL
         /// Return true if FurnitureID exists.
         /// </summary>
         /// <param name="furnitureSearh"></param>
-        /// <returns></returns>
+        /// <returns>True if FurnitureID exists</returns>
         private static bool FurnitureIDExists(Furniture furnitureSearh)
         {
             FurnitureValidator.ValidateFurnitureNotNull(furnitureSearh);
@@ -125,7 +125,7 @@ namespace RentMe.DAL
         /// Return true if Furniture Category exists.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if Furniture Category exists</returns>
         private static bool FurnitureCategoryExists(Furniture furnitureSearh)
         {
             FurnitureValidator.ValidateFurnitureNotNull(furnitureSearh);
@@ -153,7 +153,7 @@ namespace RentMe.DAL
         /// Return true if Furniture Style exists.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if Furniture Style exists</returns>
         private static bool FurnitureStyleExists(Furniture furnitureSearh)
         {
             FurnitureValidator.ValidateFurnitureNotNull(furnitureSearh);
@@ -178,14 +178,13 @@ namespace RentMe.DAL
         }
 
         /// <summary>
-        /// Gets the list of all style name from database
+        /// Gets the list of all style names from database.
         /// </summary>
-        /// <returns>furniture style list</returns>
+        /// <returns>List of Furniture styles</returns>
         public static List<String> GetFurnitureStyles()
         {
             List<String> styleList = new List<String>();
-            string selectStatement =
-                  "SELECT Name FROM Styles";
+            string selectStatement = "SELECT Name FROM Styles";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -208,14 +207,13 @@ namespace RentMe.DAL
         }
 
         /// <summary>
-        /// Gets the list of all category name from database
+        /// Gets the list of all category names from database
         /// </summary>
-        /// <returns>furniture category list</returns>
+        /// <returns>List of Furniture categories</returns>
         public static List<String> GetFurnitureCategories()
         {
             List<String> categoryList = new List<String>();
-            string selectStatement =
-                  "SELECT Name FROM Categories ";
+            string selectStatement = "SELECT Name FROM Categories ";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {

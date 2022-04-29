@@ -16,7 +16,7 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets all RentMe Members from Members table.
         /// </summary>
-        /// <returns>List of RentMe members</returns>
+        /// <returns>List of all RentMe members</returns>
         public static List<Member> GetMembers()
         {
             List<Member> members = new List<Member>();
@@ -65,7 +65,7 @@ namespace RentMe.DAL
         /// MemberID, Phone, or Full Name.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if Member exists</returns>
         public static bool ValidMemberSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
@@ -83,7 +83,7 @@ namespace RentMe.DAL
         /// Return Member information based upon search.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>List of Members based on search filter</returns>
         public static List<Member> GetMembersFromSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
@@ -162,7 +162,7 @@ namespace RentMe.DAL
         /// Return Member information based upon search.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>Member based on search filter</returns>
         public static Member GetMemberFromSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
@@ -226,8 +226,6 @@ namespace RentMe.DAL
                             {
                                 member.Address2 = reader["Address2"].ToString();
                             }
-
-
                         }
                     }
                 }
@@ -236,12 +234,10 @@ namespace RentMe.DAL
             return member;
         }
 
-
         /// <summary>
-        /// Register and return a new RentMe Member.
+        /// Register a new RentMe Member.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
         public static void RegisterNewMember(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
@@ -280,13 +276,14 @@ namespace RentMe.DAL
         /// Return true if MemberID exists.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if MemberID exists</returns>
         private static bool MemberIDExists(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
             string selectStatement = "SELECT COUNT(*) " +
                                         "FROM Members " +
                                         "WHERE MemberID = @MemberID";
+
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -307,7 +304,7 @@ namespace RentMe.DAL
         /// Return true if Phone exists.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if Member phone exists</returns>
         private static bool MemberPhoneExists(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
@@ -318,6 +315,7 @@ namespace RentMe.DAL
             string selectStatement = "SELECT COUNT(*) " +
                                         "FROM Members " +
                                         "WHERE Phone = @Phone";
+
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -338,7 +336,7 @@ namespace RentMe.DAL
         /// Return true if FName and LName exists.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if Member name exists</returns>
         private static bool MemberNameExists(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
@@ -349,6 +347,7 @@ namespace RentMe.DAL
             string selectStatement = "SELECT COUNT(*) " +
                                         "FROM Members " +
                                         "WHERE Fname = @FName AND Lname = @LName";
+
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -371,23 +370,20 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="oldMember">The old member.</param>
         /// <param name="newMember">The new member.</param>
-        /// <returns>bool on succesdful or failed updates</returns>
+        /// <returns>True if Member profile successfully updated</returns>
         public static bool UpdateMemberDetails(Member oldMember, Member newMember)
         {
-            string selectStatement =
-                  " UPDATE MEMBERS SET " +
-                       " FNAME=@NewFName , LNAME=@NewLName , " +
-                       " Sex=@NewSex , DateOfBirth=@NewDob , " +
-                        " Phone=@NewPhone ,  City=@NewCity , " +
-                       " zipcode=@NewZip , State=@NewState, " +
-                       " Address1=@NewAddress1 , Address2=@NewAddress2 " +
-                        "Where MEMBERID=@OldMemberID  AND FNAME=@OldFName AND " +
-                       " LNAME=@OldLName AND Sex=@OldSex AND " +
-                       " DateOfBirth=@OldDob AND Phone=@OldPhone AND " +
-                       " City=@OldCity AND zipcode=@OldZip AND State=@OldState AND " +
-                       " (Address1=@OldAddress1 OR Address1 IS NULL) AND (Address2=@OldAddress2 OR Address2 IS NULL)";
-
-
+            string selectStatement = "UPDATE MEMBERS SET " +
+                                        "FNAME = @NewFName, LNAME = @NewLName, " +
+                                        "Sex = @NewSex, DateOfBirth = @NewDob, " +
+                                        "Phone = @NewPhone,  City = @NewCity, " +
+                                        "zipcode = @NewZip, State = @NewState, " +
+                                        "Address1 = @NewAddress1, Address2 = @NewAddress2 " +
+                                        "WHERE MEMBERID = @OldMemberID AND FNAME = @OldFName AND " +
+                                        "LNAME = @OldLName AND Sex = @OldSex AND " +
+                                        "DateOfBirth = @OldDob AND Phone = @OldPhone AND " +
+                                        "City = @OldCity AND zipcode = @OldZip AND State = @OldState AND " +
+                                        "(Address1 = @OldAddress1 OR Address1 IS NULL) AND (Address2 = @OldAddress2 OR Address2 IS NULL)";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
