@@ -28,10 +28,9 @@ namespace RentMe.Controller
         /// Gets the rent item.
         /// </summary>
         /// <param name="memberID">The member identifier.</param>
-        /// <returns>List<RentFurniture></returns>
+        /// <returns>List of items in cart</returns>
         public List<RentFurniture> GetRentItem(Member memberID)
         {
-
             return RentCartDAL.GetCartItems(memberID);
         }
 
@@ -42,7 +41,6 @@ namespace RentMe.Controller
         public void UpdateRentalCart(Member member)
         {
             RentCartDAL.UpdateCartItems(member);
-
         }
 
         /// <summary>
@@ -52,7 +50,6 @@ namespace RentMe.Controller
         public void DeleteCartItem(int index)
         {
             RentCartDAL.RemoveCartItem(index);
-
         }
 
         /// <summary>
@@ -62,7 +59,6 @@ namespace RentMe.Controller
         public void UpdateCartItem(int index, RentFurniture updateFurniture)
         {
             RentCartDAL.UpdateCartItem(index, updateFurniture);
-
         }
     }
 }

@@ -23,9 +23,5 @@ namespace RentMe.Controller
                 FurnitureRentalDAL.AddRentalItems(rentFurnitureList);
             }
         }
-
     }
-
-
-
 }

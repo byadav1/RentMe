@@ -87,7 +87,7 @@ namespace RentMe.UserControls
                     this.memberSearchDetails = this.membersController.GetMemberFromSearch(this.memberSearchDetails);
 
 
-                    this.rentalTransactionList = this.rentalTransactionController.GetRetalTransactionByMemberID(this.memberSearchDetails.MemberID);
+                    this.rentalTransactionList = this.rentalTransactionController.GetRentalTransactionByMemberID(this.memberSearchDetails.MemberID);
 
                     if (this.rentalTransactionList.Count == 0)
                     {

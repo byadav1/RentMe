@@ -24,7 +24,7 @@ namespace RentMe.Controller
         /// <summary>
         /// Update the member details from the DAL.
         /// </summary>
-        /// <returns>List of product name</returns>
+        /// <returns>True for successful member profile update</returns>
         public bool UpdateMemberInformation(Member oldMember, Member newMember)
         {
             MemberValidator.ValidateMemberNotNull(oldMember);
@@ -37,7 +37,7 @@ namespace RentMe.Controller
         /// based on search criteria.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>True if member exists</returns>
         public bool ValidMemberSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
@@ -45,10 +45,21 @@ namespace RentMe.Controller
         }
 
         /// <summary>
+        /// Return member using search input.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>Searched Member</returns>
+        public Member GetMemberFromSearch(Member member)
+        {
+            MemberValidator.ValidateMemberNotNull(member);
+            return MembersDAL.GetMemberFromSearch(member);
+        }
+
+        /// <summary>
         /// Return members using search input.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns></returns>
+        /// <returns>Searched members</returns>
         public List<Member> GetMembersFromSearch(Member member)
         {
             MemberValidator.ValidateMemberNotNull(member);
@@ -63,17 +74,6 @@ namespace RentMe.Controller
         {
             MemberValidator.ValidateMemberNotNull(member);
             MembersDAL.RegisterNewMember(member);
-        }
-
-        /// <summary>
-        /// Return member using search input.
-        /// </summary>
-        /// <param name="member"></param>
-        /// <returns></returns>
-        public Member GetMemberFromSearch(Member member)
-        {
-            MemberValidator.ValidateMemberNotNull(member);
-            return MembersDAL.GetMemberFromSearch(member);
         }
     }
 }

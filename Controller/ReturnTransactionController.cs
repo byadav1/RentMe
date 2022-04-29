@@ -31,8 +31,6 @@ namespace RentMe.Controller
             }
 
             this.returnTransactionSource.AddReturnFurniture(returnTransaction);
-
         }
-
     }
 }

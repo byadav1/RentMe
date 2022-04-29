@@ -16,7 +16,7 @@ namespace RentMe.Controller
         /// <summary>
         /// Gets all RentMe Employees from Employees table.
         /// </summary>
-        /// <returns>List of RentMe members</returns>
+        /// <returns>List of RentMe employees</returns>
         public List<Employee> GetEmployees()
         {
             return EmployeesDAL.GetEmployees();
@@ -26,7 +26,7 @@ namespace RentMe.Controller
         /// Return true if employee account exists.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>True if employee account exists</returns>
         public bool ValidEmployeeLogin(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -37,7 +37,7 @@ namespace RentMe.Controller
         /// Return true if employee password exists.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>True for account password match</returns>
         public bool Checkpassword(Employee employee, Employee updateEmployee)
         {
             return EmployeesDAL.IsPasswordChange(employee, updateEmployee);
@@ -48,7 +48,7 @@ namespace RentMe.Controller
         /// based on search criteria.
         /// </summary>
         /// <param name="employee"></param>
-        /// <returns>Valid employee search</returns>
+        /// <returns>True if employee exists</returns>
         public bool ValidEmployeeSearch(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -80,7 +80,7 @@ namespace RentMe.Controller
         /// Deletes  or restore employee.
         /// </summary>
         /// <param name="employee">The employee.</param>
-        /// <returns></returns>
+        /// <returns>True for successful deactivation</returns>
         /// <exception cref="ArgumentNullException">Delete cannot be performed</exception>
         public bool DeleteOrRestoreEmployee(Employee employee)
         {
@@ -116,9 +116,7 @@ namespace RentMe.Controller
         /// <exception cref="ArgumentNullException">Employee username cannot be null</exception>
         public Employee GetLoginEmployeeData()
         {
-
             return EmployeesDAL.GetLoginEmployeeData();
-
         }
 
         /// <summary>
@@ -126,7 +124,7 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="oldEmployee">The old employee.</param>
         /// <param name="newEmployee">The new employe.</param>
-        /// <returns></returns>
+        /// <returns>True for successful employee profile update</returns>
         /// <exception cref="ArgumentNullException">Update cannot be performed with no change in data</exception>
         public bool UpdateEmployeeInformation(Employee oldEmployee, Employee newEmployee)
         {
@@ -143,7 +141,7 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="oldEmployee">The old employee.</param>
         /// <param name="newEmployee">The new employee.</param>
-        /// <returns></returns>
+        /// <returns>True for successful employee credentials update</returns>
         /// <exception cref="ArgumentNullException">Update cannot be performed as there is no change in data</exception>
         public bool UpdateEmployeeUserNameORPassword(Employee oldEmployee, Employee newEmployee)
         {

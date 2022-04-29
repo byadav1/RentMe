@@ -15,7 +15,7 @@ namespace RentMe.Controller
         /// <summary>
         /// Get list of all States.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of states</returns>
         public List<State> GetStates()
         {
             return StatesDAL.GetStates();
@@ -24,7 +24,7 @@ namespace RentMe.Controller
         /// <summary>
         /// Get list of all State names.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of state names</returns>
         public List<string> GetStateNames()
         {
             List<string> states = new List<string>(50);
@@ -40,7 +40,7 @@ namespace RentMe.Controller
         /// Returns the acronym form for given State.
         /// </summary>
         /// <param name="state"></param>
-        /// <returns></returns>
+        /// <returns>State with code</returns>
         public State GetStateCode(State state)
         {
             StateValidator.ValidateStateNamePresent(state);
@@ -51,7 +51,7 @@ namespace RentMe.Controller
         /// Returns the full name for a given State.
         /// </summary>
         /// <param name="state"></param>
-        /// <returns></returns>
+        /// <returns>State with name</returns>
         public State GetStateName(State state)
         {
             StateValidator.ValidateStateCodePresent(state);

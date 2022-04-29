@@ -23,11 +23,10 @@ namespace RentMe.Controller
             return FurnitureDAL.GetFurniture(furniture);
         }
 
-
         /// <summary>
-        /// Return furniture style
+        /// Return furniture styles
         /// </summary>      
-        /// <returns>List of style</returns>
+        /// <returns>List of styles</returns>
         public List<string> GetFurnituresStyle()
         {
             return FurnitureDAL.GetFurnitureStyles();
@@ -36,7 +35,7 @@ namespace RentMe.Controller
         /// <summary>
         /// Return furniture Category
         /// </summary>      
-        /// <returns>List of Category</returns>
+        /// <returns>List of Categories</returns>
         public List<string> GetFurnituresCategory()
         {
             return FurnitureDAL.GetFurnitureCategories();

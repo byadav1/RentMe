@@ -25,7 +25,7 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="member"></param>
         /// <returns>RentalTransaction list </returns>
-        public List<RentalTransaction> GetRetalTransactionByMemberID(int memberID)
+        public List<RentalTransaction> GetRentalTransactionByMemberID(int memberID)
         {
             if (memberID <= 0)
             {
@@ -33,6 +33,5 @@ namespace RentMe.Controller
             }
             return this.rentalTransactionDAL.GetRentalTransactionByMemberID(memberID);
         }
-
     }
 }
