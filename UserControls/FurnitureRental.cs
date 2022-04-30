@@ -139,13 +139,20 @@ namespace RentMe.UserControls
         }
         private void FurnitureRentalLoad(object sender, EventArgs e)
         {
+            this.DisableRenting();
+            this.LoadComboBox();
+            this.furnitureIDTextBox.Focus();
+        }
+
+        private void DisableRenting()
+        {
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;
             this.furnitureDateGridView.Columns[7].Visible = false;
             this.furnitureDateGridView.Columns[8].Visible = false;
             this.furnitureDateGridView.Columns[9].Visible = false;
             this.furnitureDateGridView.ReadOnly = true;
-            this.LoadComboBox();
+            this.idRadioButton.Checked=true;
             this.furnitureIDTextBox.Focus();
         }
 
@@ -214,6 +221,7 @@ namespace RentMe.UserControls
             this.idRadioButton.Checked = false;
             this.categoryRadioButton.Checked = false;
             this.ClearFields();
+            this.DisableRenting();
         }
 
         private void StyleComboBoxKeyPress(object sender, KeyPressEventArgs e)
@@ -228,17 +236,16 @@ namespace RentMe.UserControls
 
         private void IdRadioButtonCheckedChanged(object sender, EventArgs e)
         {
-            this.ClearFields();
+            this.ResetDataOnRadioChange();
             this.furnitureIDTextBox.Enabled = true;
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;
-            this.memberIDRentTextBox.Enabled = false;
-            this.memberSearchButton.Enabled = false;
+      
         }
 
         private void CategoryRadioButtonCheckedChanged(object sender, EventArgs e)
         {
-            this.ClearFields();
+            this.ResetDataOnRadioChange();
             this.furnitureIDTextBox.Enabled = false;
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = true;
@@ -246,17 +253,22 @@ namespace RentMe.UserControls
 
         private void StylerRadiobuttonCheckedChanged(object sender, EventArgs e)
         {
-            this.ClearFields();
+            this.ResetDataOnRadioChange();
             this.furnitureIDTextBox.Enabled = false;
             this.styleComboBox.Enabled = true;
             this.categoryComboBox.Enabled = false;
-            this.memberIDRentTextBox.Enabled = false;
-            this.memberSearchButton.Enabled = false;
-            this.memberIDRentTextBox.Enabled = false;
-            this.memberSearchButton.Enabled = false;
-            this.memberIDRentTextBox.Enabled = false;
-            this.memberSearchButton.Enabled = false;
+          
+        }
 
+        private void ResetDataOnRadioChange()
+        {
+            this.furnitureIDTextBox.Text = "";
+            this.categoryComboBox.Text = "";
+            this.styleComboBox.Text = "";
+            this.furnitureBindingSource.DataSource = null;
+            this.rentalStatusLabel.Visible = false;
+            this.rentalStatusLabel.Text = "";
+           
         }
         /// <summary>
         /// Furnitures the rental visible changed.
