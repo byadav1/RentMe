@@ -11,7 +11,7 @@ GO
 -- Create date: April 27 2022
 -- Description: Create an entry in the Furniture Rental table
 -- =============================================
-ALTER   PROCEDURE[dbo].[spGetMostPopularFurnitureDuringDates] (
+CREATE   PROCEDURE[dbo].[spGetMostPopularFurnitureDuringDates] (
   @StartDate  date,
     @EndDate  date
 )

@@ -27,7 +27,7 @@ namespace RentMe.DAL
                                   "FROM Furnitures f " +
                                   "JOIN Categories c ON c.CategoryID = f.CategoryID " +
                                   "JOIN Styles s ON s.StyleID = f.StyleID " +
-                                  "WHERE F.FurnitureID = @FurnitureID";
+                                  "WHERE F.FurnitureID = @FurnitureID ";
             }
             else if (!string.IsNullOrEmpty(furnitureSearh.Category) && FurnitureCategoryExists(furnitureSearh))
             {
@@ -35,7 +35,7 @@ namespace RentMe.DAL
                                   "FROM Furnitures f " +
                                   "JOIN Categories c ON c.CategoryID = f.CategoryID " +
                                   "JOIN Styles s ON s.StyleID = f.StyleID " +
-                                  "WHERE c.Name = @Category";
+                                  "WHERE c.Name = @Category ";
             }
             else if (!string.IsNullOrEmpty(furnitureSearh.Style) && FurnitureStyleExists(furnitureSearh))
             {
@@ -43,7 +43,7 @@ namespace RentMe.DAL
                                   "FROM Furnitures f " +
                                   "JOIN Categories c ON c.CategoryID = f.CategoryID " +
                                   "JOIN Styles s ON s.StyleID = f.StyleID " +
-                                  "WHERE s.Name = @Style";
+                                  "WHERE s.Name = @Style ";
             }
             else
             {

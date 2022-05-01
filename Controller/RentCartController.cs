@@ -1,5 +1,6 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -31,6 +32,10 @@ namespace RentMe.Controller
         /// <returns>List of items in cart</returns>
         public List<RentFurniture> GetRentItem(Member memberID)
         {
+            if (memberID == null)
+            {
+                throw new ArgumentException("Member cannot be null");
+            }
             return RentCartDAL.GetCartItems(memberID);
         }
 
@@ -40,6 +45,10 @@ namespace RentMe.Controller
         /// <param name="member">The member.</param>
         public void UpdateRentalCart(Member member)
         {
+            if (member == null)
+            {
+                throw new ArgumentException("Member cannot be null");
+            }
             RentCartDAL.UpdateCartItems(member);
         }
 
@@ -57,7 +66,12 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="index">The index.</param>
         public void UpdateCartItem(int index, RentFurniture updateFurniture)
+
         {
+            if (updateFurniture == null)
+            {
+                throw new ArgumentException("Furniture details cannot be null");
+            }
             RentCartDAL.UpdateCartItem(index, updateFurniture);
         }
     }

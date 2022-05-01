@@ -128,6 +128,7 @@ namespace RentMe.UserControls
 
         }
 
+
         private void MandateMemberSearch()
         {
             if (!this.memberIDLabel.Visible && !this.memberFirstName.Visible)
@@ -547,9 +548,9 @@ namespace RentMe.UserControls
                 {
                     return "Quantity exceeds available furniture count or Quantity cannot be 0. Rental days cannot be 0 or more than 365";
                 }
-                else if (rentCount < 0 || rentCount > availableCount)
+                else if (rentCount < 1 || rentCount > availableCount)
                 {
-                    return "Please check the quantity it exceeds the available furniture count";
+                    return "Please check the quantity, it exceeds the available furniture count or Quantity cannot be zero  ";
                 }
                 else if (dueDays > 365)
                 {
@@ -569,16 +570,24 @@ namespace RentMe.UserControls
         /// </summary>
         private void Reset()
         {
-            foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
+            try
             {
-                row.Cells[7].Value = "";
-                row.Cells[9].Value = false;
-                row.Cells[8].Value = "";
-                row.Cells[7].Style.BackColor = Color.White;
-                row.Cells[8].Style.BackColor = Color.White; ;
-                row.Cells[9].Style.BackColor = Color.White;
+                foreach (DataGridViewRow row in this.furnitureDateGridView.Rows)
+                {
+                    row.Cells[7].Value = "";
+                    row.Cells[9].Value = false;
+                    row.Cells[8].Value = "";
+                    row.Cells[7].Style.BackColor = Color.White;
+                    row.Cells[8].Style.BackColor = Color.White; ;
+                    row.Cells[9].Style.BackColor = Color.White;
 
+                }
             }
+            catch (Exception e)
+            {
+                this.UpdateStatusMessage(e.Message, true);
+            }
+
         }
 
         /// <summary>
@@ -620,20 +629,27 @@ namespace RentMe.UserControls
 
         private void ViewCartLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.rentalStatusLabel.Text = "";
-            this.rentalStatusLabel.Visible = false;
-            using (Form viewCartDialog = new View.ViewCartDialog(this.MemberRent))
+            try
             {
-                DialogResult result = viewCartDialog.ShowDialog();
-                if (result == DialogResult.OK)
+                this.rentalStatusLabel.Text = "";
+                this.rentalStatusLabel.Visible = false;
+                using (Form viewCartDialog = new View.ViewCartDialog(this.MemberRent))
                 {
-                    this.Reset();
-                    this.UpdateStatusMessage("Your Rent Order submitted Sucessfully", false);
-                    this.DisplayResults();
+                    DialogResult result = viewCartDialog.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        this.Reset();
+                        
+                        this.DisplayResults();
+                        this.UpdateStatusMessage("Your Rent Order submitted Sucessfully", false);
+                    }
                 }
-
-
             }
+            catch (Exception exe)
+            {
+                this.UpdateStatusMessage(exe.Message, true);
+            }
+
         }
 
         private void FurnitureDateGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

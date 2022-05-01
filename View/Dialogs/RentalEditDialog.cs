@@ -24,6 +24,7 @@ namespace RentMe.View
             this.AvailableQuantity = availableQuantity;
             this.rentQuantityTextBox.Text = quantitydata;
             this.rentDateTimePicker.Value = dueDateUpdate;
+            this.availableLabel.Text="** Available Quantity is "+ availableQuantity;
         }
 
         /// <summary>

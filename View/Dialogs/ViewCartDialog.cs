@@ -31,6 +31,7 @@ namespace RentMe.View
             _ = new List<ReceiptItem>();
             this.member = searchMember;
             _ = new List<RentFurniture>();
+
         }
 
         /// <summary>
@@ -72,6 +73,7 @@ namespace RentMe.View
                     this.CalculateTotal();
                     this.submitOrderButton.Enabled = true;
                     this.emptyCartButton.Enabled = true;
+                   
                 }
                 else
                 {
@@ -114,10 +116,11 @@ namespace RentMe.View
 
             if (result == DialogResult.Yes)
             {
-                this.CreateReceipt();
+               
                 this.rentController.AddFurnituresToRent(this.cartList);
                 this._cartController.UpdateRentalCart(this.member);
-                this.cartList.Clear();               
+                this.cartList.Clear();
+                this.CreateReceipt();
             }
             else
             {
@@ -130,37 +133,52 @@ namespace RentMe.View
         /// </summary>
         private void CreateReceipt()
         {
-            var list = from x in this.cartList
-                       select new ReceiptItem
-                       {
-                           FurnitureID = x.FurnitureID,
-                           Description = x.Description,
-                           RentalDate = DateTime.Now,
-                           DailyRate = Convert.ToDecimal(x.RentalAmount),
-                           NumberOfDays = (int)(x.DueDate - DateTime.Today).TotalDays,
-                           Quantity = x.FurnitureRentQuantity,
-                           SubTotal = (decimal)x.TotalItemRentalAmount
-                       };
+            try { 
+                var list = from x in this.cartList
+                           select new ReceiptItem
+                           {
+                               FurnitureID = x.FurnitureID,
+                               Description = x.Description,
+                               RentalDate = DateTime.Now,
+                               DailyRate = Convert.ToDecimal(x.RentalAmount),
+                               NumberOfDays = (int)(x.DueDate - DateTime.Today).TotalDays,
+                               Quantity = x.FurnitureRentQuantity,
+                               SubTotal = (decimal)x.TotalItemRentalAmount
+                           };
 
-            this.receiptList = list.ToList();
-            if (this.receiptList.Any())
-            {
-                this.ShowReceipt();
+                this.receiptList = list.ToList();
+                if (this.receiptList.Any())
+                {
+                    this.ShowReceipt();
+                }
             }
-        }
+             catch (Exception e)
+            {
+                MessageBox.Show("Receipt display failed text , "+ e.Message, "Receipt",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
 
         /// <summary>
         /// Shows the receipt.
         /// </summary>
         private void ShowReceipt()
         {
-            using (Form viewReceiptDialog = new View.ReceiptDialog(this.receiptList, this.member.FName + " " + this.member.LName, true))
+            try
             {
-                DialogResult result = viewReceiptDialog.ShowDialog();
-                if (result == DialogResult.OK)
+                using (Form viewReceiptDialog = new View.ReceiptDialog(this.receiptList, this.member.FName + " " + this.member.LName, true))
                 {
-                    return;
+                    DialogResult result = viewReceiptDialog.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        return;
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Receipt display failed text , "+ e.Message, "Receipt",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -191,38 +209,49 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void CartDataGrideViewCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "DeleteItem")
-            {
-                if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    this.cartList.RemoveAt(cartDataGrideView.CurrentCell.RowIndex);
-                this._cartController.DeleteCartItem(cartDataGrideView.CurrentCell.RowIndex);
-                this.rentFurnitureBindingSource.RemoveCurrent();
-                this.CalculateTotal();
-            }
-
-            if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "Edit")
-
-            {
-                string quantitydata = Convert.ToString(this.cartDataGrideView[6, this.cartDataGrideView.CurrentCell.RowIndex].Value);
-
-                DateTime dueDateUpdate = Convert.ToDateTime(this.cartDataGrideView[7, this.cartDataGrideView.CurrentCell.RowIndex].Value);
-                RentFurniture updateFurniture = this.cartList[(cartDataGrideView.CurrentCell.RowIndex)];
-
-                using (Form rentalDialog = new RentalEditDialog(quantitydata, dueDateUpdate , updateFurniture.AvailableQunatity))
+            try {
+                if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "DeleteItem")
                 {
-                    DialogResult result = rentalDialog.ShowDialog();
-
-                    if (result == DialogResult.Yes)
+                    if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                         updateFurniture.FurnitureRentQuantity = Convert.ToInt32(RentalEditDialog.NewQuantity);
+                        this.cartList.RemoveAt(cartDataGrideView.CurrentCell.RowIndex);
+                        this._cartController.DeleteCartItem(cartDataGrideView.CurrentCell.RowIndex);
+                        this.rentFurnitureBindingSource.RemoveCurrent();
+                        this.CalculateTotal();
+                    }
+                }
+
+                if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "EditItem")
+
+                {
+                    string quantitydata = Convert.ToString(this.cartDataGrideView[6, this.cartDataGrideView.CurrentCell.RowIndex].Value);
+
+                    DateTime dueDateUpdate = Convert.ToDateTime(this.cartDataGrideView[7, this.cartDataGrideView.CurrentCell.RowIndex].Value);
+                    RentFurniture updateFurniture = this.cartList[(cartDataGrideView.CurrentCell.RowIndex)];
+
+                    using (Form rentalDialog = new RentalEditDialog(quantitydata, dueDateUpdate, updateFurniture.AvailableQunatity))
+                    {
+                        DialogResult result = rentalDialog.ShowDialog();
+
+                        if (result == DialogResult.Yes)
+                        {
+                            updateFurniture.FurnitureRentQuantity = Convert.ToInt32(RentalEditDialog.NewQuantity);
                             updateFurniture.DueDate = Convert.ToDateTime(RentalEditDialog.NewDueDate);
 
                             this._cartController.UpdateCartItem(cartDataGrideView.CurrentCell.RowIndex, updateFurniture);
-                            this.DisplayRentData();                                           
-                    };
+                            this.DisplayRentData();
+                        };
+                    }
                 }
+            
             }
-        }
+            catch (Exception exe)
+            {
+                MessageBox.Show("Edit/delete display failed text , "+ exe.Message, "Receipt",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+}
 
     }
 }
