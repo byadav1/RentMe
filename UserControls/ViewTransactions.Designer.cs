@@ -30,8 +30,25 @@ namespace RentMe.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.viewTransactionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.transactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.searchTransactionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.searchMemberLabel = new System.Windows.Forms.Label();
+            this.searchByComboBox = new System.Windows.Forms.ComboBox();
+            this.filterResultsComboBox = new System.Windows.Forms.ComboBox();
+            this.viewTransactionsHeaderLabel = new System.Windows.Forms.Label();
+            this.statusMessage = new System.Windows.Forms.Label();
+            this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.viewRentalsButton = new System.Windows.Forms.Button();
+            this.viewReturnsButton = new System.Windows.Forms.Button();
+            this.viewAllTransactionsButton = new System.Windows.Forms.Button();
+            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalTransactionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnTransactionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,24 +62,11 @@ namespace RentMe.UserControls
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.searchTransactionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.searchMemberLabel = new System.Windows.Forms.Label();
-            this.searchByComboBox = new System.Windows.Forms.ComboBox();
-            this.filterResultsComboBox = new System.Windows.Forms.ComboBox();
-            this.viewTransactionsHeaderLabel = new System.Windows.Forms.Label();
-            this.statusMessage = new System.Windows.Forms.Label();
-            this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.viewRentalsButton = new System.Windows.Forms.Button();
-            this.viewReturnsButton = new System.Windows.Forms.Button();
-            this.viewAllTransactionsButton = new System.Windows.Forms.Button();
             this.viewTransactionsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             this.searchTransactionsTableLayoutPanel.SuspendLayout();
             this.buttonsTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // viewTransactionsTableLayoutPanel
@@ -123,127 +127,6 @@ namespace RentMe.UserControls
             this.transactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.transactionDataGridView.Size = new System.Drawing.Size(1074, 392);
             this.transactionDataGridView.TabIndex = 27;
-            // 
-            // TransactionType
-            // 
-            this.TransactionType.DataPropertyName = "TransactionType";
-            this.TransactionType.HeaderText = "TransactionType";
-            this.TransactionType.MinimumWidth = 6;
-            this.TransactionType.Name = "TransactionType";
-            this.TransactionType.ReadOnly = true;
-            this.TransactionType.Width = 144;
-            // 
-            // RentalTransactionID
-            // 
-            this.RentalTransactionID.DataPropertyName = "RentalTransactionID";
-            this.RentalTransactionID.HeaderText = "Rental TransactionID";
-            this.RentalTransactionID.MinimumWidth = 6;
-            this.RentalTransactionID.Name = "RentalTransactionID";
-            this.RentalTransactionID.ReadOnly = true;
-            this.RentalTransactionID.Width = 155;
-            // 
-            // ReturnTransactionID
-            // 
-            this.ReturnTransactionID.DataPropertyName = "ReturnTransactionID";
-            this.ReturnTransactionID.HeaderText = "Return TransactionID";
-            this.ReturnTransactionID.MinimumWidth = 6;
-            this.ReturnTransactionID.Name = "ReturnTransactionID";
-            this.ReturnTransactionID.ReadOnly = true;
-            this.ReturnTransactionID.Width = 157;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "EmployeeID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "EmployeeID";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 112;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "MemberID";
-            this.dataGridViewTextBoxColumn4.HeaderText = "MemberID";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 101;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "FurnitureName";
-            this.dataGridViewTextBoxColumn5.HeaderText = "FurnitureName";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 131;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "FurnitureCategory";
-            this.dataGridViewTextBoxColumn6.HeaderText = "FurnitureCategory";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 151;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "FurnitureStyle";
-            this.dataGridViewTextBoxColumn7.HeaderText = "FurnitureStyle";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Quantity";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Quantity";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "RentalDate";
-            this.dataGridViewTextBoxColumn9.HeaderText = "RentalDate";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 108;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "DueDate";
-            this.dataGridViewTextBoxColumn10.HeaderText = "DueDate";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 93;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "ReturnDate";
-            this.dataGridViewTextBoxColumn11.HeaderText = "ReturnDate";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "RentalCharge";
-            this.dataGridViewTextBoxColumn12.HeaderText = "RentalCharge";
-            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Width = 124;
-            // 
-            // transactionBindingSource
-            // 
-            this.transactionBindingSource.DataSource = typeof(RentMe.Model.Transaction);
             // 
             // searchTransactionsTableLayoutPanel
             // 
@@ -315,7 +198,7 @@ namespace RentMe.UserControls
             "TransactionID",
             "EmployeeID",
             "MemberID"});
-            this.searchByComboBox.Location = new System.Drawing.Point(168, 8);
+            this.searchByComboBox.Location = new System.Drawing.Point(168, 7);
             this.searchByComboBox.Name = "searchByComboBox";
             this.searchByComboBox.Size = new System.Drawing.Size(200, 30);
             this.searchByComboBox.TabIndex = 4;
@@ -331,7 +214,7 @@ namespace RentMe.UserControls
             "All Transactions",
             "Rentals",
             "Returns"});
-            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 7);
+            this.filterResultsComboBox.Location = new System.Drawing.Point(382, 8);
             this.filterResultsComboBox.Name = "filterResultsComboBox";
             this.filterResultsComboBox.Size = new System.Drawing.Size(200, 30);
             this.filterResultsComboBox.TabIndex = 6;
@@ -421,6 +304,138 @@ namespace RentMe.UserControls
             this.viewAllTransactionsButton.UseVisualStyleBackColor = true;
             this.viewAllTransactionsButton.Click += new System.EventHandler(this.ViewAllButtonClick);
             // 
+            // transactionBindingSource
+            // 
+            this.transactionBindingSource.DataSource = typeof(RentMe.Model.Transaction);
+            // 
+            // TransactionType
+            // 
+            this.TransactionType.DataPropertyName = "TransactionType";
+            this.TransactionType.HeaderText = "TransactionType";
+            this.TransactionType.MinimumWidth = 6;
+            this.TransactionType.Name = "TransactionType";
+            this.TransactionType.ReadOnly = true;
+            this.TransactionType.Width = 144;
+            // 
+            // RentalTransactionID
+            // 
+            this.RentalTransactionID.DataPropertyName = "RentalTransactionID";
+            this.RentalTransactionID.HeaderText = "Rental TransactionID";
+            this.RentalTransactionID.MinimumWidth = 6;
+            this.RentalTransactionID.Name = "RentalTransactionID";
+            this.RentalTransactionID.ReadOnly = true;
+            this.RentalTransactionID.Width = 155;
+            // 
+            // ReturnTransactionID
+            // 
+            this.ReturnTransactionID.DataPropertyName = "ReturnTransactionID";
+            this.ReturnTransactionID.HeaderText = "Return TransactionID";
+            this.ReturnTransactionID.MinimumWidth = 6;
+            this.ReturnTransactionID.Name = "ReturnTransactionID";
+            this.ReturnTransactionID.ReadOnly = true;
+            this.ReturnTransactionID.Width = 157;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "EmployeeID";
+            this.dataGridViewTextBoxColumn3.HeaderText = "EmployeeID";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 112;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "MemberID";
+            this.dataGridViewTextBoxColumn4.HeaderText = "MemberID";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 101;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "FurnitureName";
+            this.dataGridViewTextBoxColumn5.HeaderText = "FurnitureName";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 131;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "FurnitureCategory";
+            this.dataGridViewTextBoxColumn6.HeaderText = "FurnitureCategory";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 151;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "FurnitureStyle";
+            this.dataGridViewTextBoxColumn7.HeaderText = "FurnitureStyle";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Quantity";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "RentalDate";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn9.HeaderText = "RentalDate";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 108;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "DueDate";
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn10.HeaderText = "DueDate";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 93;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "ReturnDate";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn11.HeaderText = "ReturnDate";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "RentalCharge";
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn12.HeaderText = "RentalCharge";
+            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Width = 124;
+            // 
             // ViewTransactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -431,10 +446,10 @@ namespace RentMe.UserControls
             this.viewTransactionsTableLayoutPanel.ResumeLayout(false);
             this.viewTransactionsTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             this.searchTransactionsTableLayoutPanel.ResumeLayout(false);
             this.searchTransactionsTableLayoutPanel.PerformLayout();
             this.buttonsTableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

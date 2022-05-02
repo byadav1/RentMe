@@ -30,11 +30,11 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -170,9 +170,9 @@ namespace RentMe.View
             // ReturnDate
             // 
             this.ReturnDate.DataPropertyName = "ReturnDate";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.ReturnDate.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ReturnDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.ReturnDate.HeaderText = "ReturnDate";
             this.ReturnDate.MinimumWidth = 6;
             this.ReturnDate.Name = "ReturnDate";
@@ -181,9 +181,9 @@ namespace RentMe.View
             // RentalRate
             // 
             this.RentalRate.DataPropertyName = "RentalRate";
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.RentalRate.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.RentalRate.DefaultCellStyle = dataGridViewCellStyle2;
             this.RentalRate.HeaderText = "RentalRate";
             this.RentalRate.MinimumWidth = 6;
             this.RentalRate.Name = "RentalRate";
@@ -192,9 +192,9 @@ namespace RentMe.View
             // Fine
             // 
             this.Fine.DataPropertyName = "Fine";
-            dataGridViewCellStyle8.Format = "C2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Fine.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Fine.DefaultCellStyle = dataGridViewCellStyle3;
             this.Fine.HeaderText = "Fine";
             this.Fine.MinimumWidth = 6;
             this.Fine.Name = "Fine";
@@ -203,9 +203,9 @@ namespace RentMe.View
             // Refund
             // 
             this.Refund.DataPropertyName = "Refund";
-            dataGridViewCellStyle9.Format = "C2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.Refund.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Refund.DefaultCellStyle = dataGridViewCellStyle4;
             this.Refund.HeaderText = "Refund";
             this.Refund.MinimumWidth = 6;
             this.Refund.Name = "Refund";
@@ -214,9 +214,9 @@ namespace RentMe.View
             // SubTotal
             // 
             this.SubTotal.DataPropertyName = "SubTotal";
-            dataGridViewCellStyle10.Format = "C2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.SubTotal.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.SubTotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.SubTotal.HeaderText = "SubTotal";
             this.SubTotal.MinimumWidth = 6;
             this.SubTotal.Name = "SubTotal";
@@ -282,6 +282,7 @@ namespace RentMe.View
             // 
             // cancelButton
             // 
+            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.cancelButton.Location = new System.Drawing.Point(624, 4);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(33, 4, 4, 4);
