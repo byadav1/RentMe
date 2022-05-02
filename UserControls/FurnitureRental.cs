@@ -153,7 +153,7 @@ namespace RentMe.UserControls
             this.furnitureDateGridView.Columns[8].Visible = false;
             this.furnitureDateGridView.Columns[9].Visible = false;
             this.furnitureDateGridView.ReadOnly = true;
-            this.idRadioButton.Checked=true;
+            this.idRadioButton.Checked = true;
             this.furnitureIDTextBox.Focus();
         }
 
@@ -241,7 +241,7 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Enabled = true;
             this.styleComboBox.Enabled = false;
             this.categoryComboBox.Enabled = false;
-      
+
         }
 
         private void CategoryRadioButtonCheckedChanged(object sender, EventArgs e)
@@ -258,7 +258,7 @@ namespace RentMe.UserControls
             this.furnitureIDTextBox.Enabled = false;
             this.styleComboBox.Enabled = true;
             this.categoryComboBox.Enabled = false;
-          
+
         }
 
         private void ResetDataOnRadioChange()
@@ -269,7 +269,7 @@ namespace RentMe.UserControls
             this.furnitureBindingSource.DataSource = null;
             this.rentalStatusLabel.Visible = false;
             this.rentalStatusLabel.Text = "";
-           
+
         }
         /// <summary>
         /// Furnitures the rental visible changed.
@@ -314,7 +314,7 @@ namespace RentMe.UserControls
                         this.MemberRent = memberFoundList[0];
                         this.DisplayMemberDetails();
                         this.memberIDRentTextBox.BackColor = Color.White;
-                        this.rentalStatusLabel.Visible = false;                        
+                        this.rentalStatusLabel.Visible = false;
                         this.rentalStatusLabel.Text = "";
                     }
                 }
@@ -639,7 +639,7 @@ namespace RentMe.UserControls
                     if (result == DialogResult.OK)
                     {
                         this.Reset();
-                        
+
                         this.DisplayResults();
                         this.UpdateStatusMessage("Your Rent Order submitted Sucessfully", false);
                     }

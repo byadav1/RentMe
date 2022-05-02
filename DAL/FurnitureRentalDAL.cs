@@ -10,7 +10,7 @@ namespace RentMe.DAL
     /// Database class for furniture rental database transaction to rent a furniture
     /// </summary>
     public class FurnitureRentalDAL
-    {       
+    {
         /// <summary>
         /// Adds the rental items transaction to database with member id and Employee Id
         /// </summary>

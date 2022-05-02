@@ -283,7 +283,7 @@ namespace RentMe.DAL
                                 RentalCharge = decimal.Round(Convert.ToDecimal(reader["RentalCharge"].ToString()), 2, MidpointRounding.AwayFromZero)
                             };
 
-                            transactions.Add(transaction);                          
+                            transactions.Add(transaction);
                         }
                     }
                 }
@@ -400,9 +400,9 @@ namespace RentMe.DAL
                     {
                         if (reader.Read())
                         {
-                            earliestRentalTransaction = (DateTime) reader["EarliestRentalDate"];
+                            earliestRentalTransaction = (DateTime)reader["EarliestRentalDate"];
                         }
-                                            
+
                     }
                 }
             }

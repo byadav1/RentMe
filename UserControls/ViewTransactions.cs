@@ -16,7 +16,7 @@ namespace RentMe.UserControls
     /// or Member. A filter for active rentals can also be applied.
     /// </summary>
     public partial class ViewTransactions : UserControl
-    {      
+    {
         private readonly TransactionsController transactionController;
         private List<Transaction> transactionSearchResults;
 
@@ -39,13 +39,13 @@ namespace RentMe.UserControls
             try
             {
                 this.viewAllTransactionsButton.Enabled = false;
-                this.viewRentalsButton.Enabled = true;               
+                this.viewRentalsButton.Enabled = true;
                 this.viewReturnsButton.Enabled = true;
                 this.statusMessage.Visible = false;
 
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
-                this.filterResultsComboBox.SelectedIndex = 0;                
+                this.filterResultsComboBox.SelectedIndex = 0;
 
                 List<Transaction> rentals = this.transactionController.GetTransactions();
                 this.DisplayRentalsList(rentals);
@@ -144,14 +144,14 @@ namespace RentMe.UserControls
             try
             {
                 this.viewAllTransactionsButton.Enabled = true;
-                this.viewRentalsButton.Enabled = false;              
+                this.viewRentalsButton.Enabled = false;
                 this.viewReturnsButton.Enabled = true;
                 this.statusMessage.Visible = false;
 
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
                 this.filterResultsComboBox.SelectedIndex = 0;
-                
+
                 List<Transaction> rentals = this.transactionController.GetRentalTransactions();
                 this.DisplayRentalsList(rentals);
             }
@@ -171,14 +171,14 @@ namespace RentMe.UserControls
             try
             {
                 this.viewAllTransactionsButton.Enabled = true;
-                this.viewRentalsButton.Enabled = true;               
+                this.viewRentalsButton.Enabled = true;
                 this.viewReturnsButton.Enabled = false;
                 this.statusMessage.Visible = false;
 
                 this.searchTextBox.Clear();
                 this.searchByComboBox.SelectedIndex = 0;
                 this.filterResultsComboBox.SelectedIndex = 0;
-                
+
                 List<Transaction> rentals = this.transactionController.GetReturnTransactions();
                 this.DisplayRentalsList(rentals);
             }
@@ -231,7 +231,7 @@ namespace RentMe.UserControls
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this.UpdateStatusMessage(ex.Message, true);
             }

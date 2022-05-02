@@ -5,7 +5,6 @@ using RentMe.View;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace RentMe.UserControls
@@ -151,7 +150,7 @@ namespace RentMe.UserControls
                 this.searchTextbox.Text = "";
                 this.ClearField();
             }
-            catch (NullReferenceException )
+            catch (NullReferenceException)
             {
                 this.UpdateStatusMessage("Quantity can't be empty", true);
             }
@@ -192,7 +191,7 @@ namespace RentMe.UserControls
                 bool isSelected = Convert.ToBoolean(row.Cells["returnMe"].Value);
                 if (isSelected)
                 {
-                   
+
                     if (!int.TryParse(row.Cells["ReturnQuantity"].Value.ToString(), out int quatityvalue))
                     {
                         throw new ArgumentException("Quantity should be a valid number");
@@ -265,10 +264,10 @@ namespace RentMe.UserControls
                         this.returnTransactionController.AddReturnFurniture(returnTransaction);
                     }
 
-                    return true;                  
+                    return true;
                 }
 
-                return false;               
+                return false;
             }
         }
 

@@ -49,12 +49,12 @@ namespace RentMe.View
             if (isUpdate)
             {
                 this.ToggleFormButtons(true);
-                this.SetFields(this.employeeSearchDetails);               
+                this.SetFields(this.employeeSearchDetails);
             }
             else
             {
-                this.ToggleFormButtons(false);                           
-                this.ClearFields();               
+                this.ToggleFormButtons(false);
+                this.ClearFields();
             }
         }
 
@@ -274,13 +274,13 @@ namespace RentMe.View
             return result;
         }
 
-       /// <summary>
-       /// Prompts the user to confirm
-       /// an update to an Employee's
-       /// login credentials
-       /// </summary>
-       /// <param name="employee"></param>
-       /// <returns>Is OK?</returns>
+        /// <summary>
+        /// Prompts the user to confirm
+        /// an update to an Employee's
+        /// login credentials
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns>Is OK?</returns>
         private DialogResult ConfirmUpdateEmployeeLogin(Employee employee)
         {
             EmployeeValidator.ValidateEmployeeNotNull(employee);
@@ -318,7 +318,7 @@ namespace RentMe.View
                     }
                     else if (control is DateTimePicker)
                     {
-                        (control as DateTimePicker).Format = DateTimePickerFormat.Custom;                      
+                        (control as DateTimePicker).Format = DateTimePickerFormat.Custom;
                     }
                     else if (control is CheckBox)
                     {
@@ -364,7 +364,7 @@ namespace RentMe.View
                 this.isAdministratorCheckBox.Checked = false;
             }
 
-            this.DisplayEmployeeActiveStatus();           
+            this.DisplayEmployeeActiveStatus();
             this.DisableEmployeeData(this.employeeSearchDetails.Active);
         }
 
@@ -648,7 +648,7 @@ namespace RentMe.View
                 this.dobPicker.Format = DateTimePickerFormat.Short;
                 this.dobPicker.MaxDate = DateTime.Now.AddYears(-18);
                 this.dobPicker.Value = this.dobPicker.MaxDate;
-            }           
+            }
         }
 
         /// <summary>
@@ -759,6 +759,6 @@ namespace RentMe.View
         {
             this.DialogResult = DialogResult.OK;
             GC.Collect();
-        }        
+        }
     }
 }

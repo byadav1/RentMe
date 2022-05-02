@@ -9,14 +9,14 @@ namespace RentMe.View
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class RentalEditDialog : Form
     {
-        public static string NewQuantity  { get; set; }
+        public static string NewQuantity { get; set; }
         public static DateTime NewDueDate { get; set; }
 
         private readonly string currentQuantity;
         private readonly DateTime currenDueDate;
-        private int  AvailableQuantity;
+        private int AvailableQuantity;
 
-        public RentalEditDialog(string quantitydata,DateTime dueDateUpdate, int availableQuantity)
+        public RentalEditDialog(string quantitydata, DateTime dueDateUpdate, int availableQuantity)
         {
             InitializeComponent();
             this.currentQuantity = quantitydata;
@@ -24,7 +24,7 @@ namespace RentMe.View
             this.AvailableQuantity = availableQuantity;
             this.rentQuantityTextBox.Text = quantitydata;
             this.rentDateTimePicker.Value = dueDateUpdate;
-            this.availableLabel.Text="** Available Quantity is "+ availableQuantity;
+            this.availableLabel.Text = "** Available Quantity is " + availableQuantity;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace RentMe.View
             else
             {
                 this.DialogResult = DialogResult.None;
-            }       
+            }
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace RentMe.View
         /// and rental due date.
         /// </summary>
         /// <returns>True if valid update</returns>
-        private bool ValidateUpdateQuanityAndDueDate( )
+        private bool ValidateUpdateQuanityAndDueDate()
         {
             int dueDays = (int)(RentalEditDialog.NewDueDate - DateTime.Today).TotalDays;
             if (this.currentQuantity == this.rentQuantityTextBox.Text &&
@@ -85,6 +85,6 @@ namespace RentMe.View
             }
 
             return true;
-        }  
+        }
     }
 }

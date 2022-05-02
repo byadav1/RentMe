@@ -49,11 +49,11 @@ namespace RentMe.View
             if (isUpdate)
             {
                 this.ToggleFormButtons(true);
-                this.SetFields(this.memberSearchDetails);               
+                this.SetFields(this.memberSearchDetails);
             }
             else
             {
-                this.ToggleFormButtons(false);               
+                this.ToggleFormButtons(false);
                 this.ClearFields();
             }
         }
@@ -77,12 +77,12 @@ namespace RentMe.View
                 {
                     this.ProcessUpdate();
                     this.memberSearchDetails = this.membersController.GetMemberFromSearch(member);
-                    this.SetFields(this.memberSearchDetails);                   
+                    this.SetFields(this.memberSearchDetails);
                 }
             }
             catch (ArgumentException ae)
             {
-                this.UpdateStatusMessage(ae.Message, true);               
+                this.UpdateStatusMessage(ae.Message, true);
             }
             catch (Exception ex)
             {
@@ -327,7 +327,7 @@ namespace RentMe.View
             {
                 throw new Exception("Address 1 cannot be empty:\n" +
                     "special characters except / - . # & are prohibited");
-            }           
+            }
             else if (this.InvalidInput(this.cityTextBox, this.GenerateRegexForTextBox(this.cityTextBox)))
             {
                 throw new Exception("City should consist of letters and not:\n " +

@@ -73,7 +73,7 @@ namespace RentMe.View
                     this.CalculateTotal();
                     this.submitOrderButton.Enabled = true;
                     this.emptyCartButton.Enabled = true;
-                   
+
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace RentMe.View
 
             if (result == DialogResult.Yes)
             {
-               
+
                 this.rentController.AddFurnituresToRent(this.cartList);
                 this._cartController.UpdateRentalCart(this.member);
                 this.cartList.Clear();
@@ -133,7 +133,8 @@ namespace RentMe.View
         /// </summary>
         private void CreateReceipt()
         {
-            try { 
+            try
+            {
                 var list = from x in this.cartList
                            select new ReceiptItem
                            {
@@ -152,12 +153,12 @@ namespace RentMe.View
                     this.ShowReceipt();
                 }
             }
-             catch (Exception e)
+            catch (Exception e)
             {
-                MessageBox.Show("Receipt display failed text , "+ e.Message, "Receipt",
+                MessageBox.Show("Receipt display failed text , " + e.Message, "Receipt",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-}
+        }
 
         /// <summary>
         /// Shows the receipt.
@@ -177,7 +178,7 @@ namespace RentMe.View
             }
             catch (Exception e)
             {
-                MessageBox.Show("Receipt display failed text , "+ e.Message, "Receipt",
+                MessageBox.Show("Receipt display failed text , " + e.Message, "Receipt",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -198,7 +199,7 @@ namespace RentMe.View
                 this.submitOrderButton.Enabled = false;
                 this.amountLabel.Text = "$0.00";
             }
-           
+
             this.emptyCartButton.Enabled = false;
         }
 
@@ -209,7 +210,8 @@ namespace RentMe.View
         /// <param name="e"></param>
         private void CartDataGrideViewCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try {
+            try
+            {
                 if (this.cartDataGrideView.Columns[e.ColumnIndex].Name == "DeleteItem")
                 {
                     if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -243,15 +245,15 @@ namespace RentMe.View
                         };
                     }
                 }
-            
+
             }
             catch (Exception exe)
             {
-                MessageBox.Show("Edit/delete display failed text , "+ exe.Message, "Receipt",
+                MessageBox.Show("Edit/delete display failed text , " + exe.Message, "Receipt",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-}
+        }
 
     }
 }

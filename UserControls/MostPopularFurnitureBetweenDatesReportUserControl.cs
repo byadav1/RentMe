@@ -30,11 +30,11 @@ namespace RentMe.UserControls
         {
             this.mostPopularFurnitureBetweenDatesReportViewer.RefreshReport();
 
-            this.startDateTimePicker.MinDate = this.transactionsController.GetEarliestRentalTransaction();           
+            this.startDateTimePicker.MinDate = this.transactionsController.GetEarliestRentalTransaction();
             this.startDateTimePicker.MaxDate = DateTime.Now;
             this.startDateTimePicker.Value = this.startDateTimePicker.MinDate;
 
-            this.endDateTimePicker.MinDate = this.transactionsController.GetEarliestRentalTransaction();         
+            this.endDateTimePicker.MinDate = this.transactionsController.GetEarliestRentalTransaction();
             this.endDateTimePicker.MaxDate = DateTime.Now;
             this.endDateTimePicker.Value = this.endDateTimePicker.MaxDate;
         }
@@ -51,7 +51,7 @@ namespace RentMe.UserControls
                 this.ValidateDates();
                 int results = this.spGetMostPopularFurnitureDuringDatesTableAdapter
                     .GetData(this.startDateTimePicker.Value, this.endDateTimePicker.Value).Rows.Count;
-               
+
                 if (results > 0)
                 {
                     this.spGetMostPopularFurnitureDuringDatesTableAdapter.Fill(this._cs6232_g3DataSet.spGetMostPopularFurnitureDuringDates,

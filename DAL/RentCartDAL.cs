@@ -77,7 +77,7 @@ namespace RentMe.DAL
             if (_rentCartItems.Any())
             {
                 // Replace the value
-                _rentCartItems[index] = updateFurniture; 
+                _rentCartItems[index] = updateFurniture;
             }
         }
     }
